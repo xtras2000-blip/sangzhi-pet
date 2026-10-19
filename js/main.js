@@ -1,7 +1,7 @@
 import { STATS, GAME_VERSION, FOODS, GIFTS, STAGES, PLACES, STAGE_PLACES, OUTDOOR_SCALE, CHAR_FIT, stageScale, viewPlace, placeInfo } from './config.js';
 import { uiConfirm, closeConfirm } from './confirm.js';
 import * as ST from './story.js';
-import { newState, load, save, wipe, advance, stageOf, dayNumber, timeOfDay, moodState, dayKey } from './state.js';
+import { newState, load, save, wipe, advance, stageOf, dlgOf, dayNumber, timeOfDay, moodState, dayKey } from './state.js';
 import { loadDialogue, pickSys, quoteCaption, remember, eventById, pickNostalgia } from './dialogue.js';
 import { doAction, timedAction, pokeLine, arriveLine, morningLine } from './actions.js';
 import { ACTION_MIN, MSG_AT_MIN, NIGHT_SLEEP_MIN } from './config.js';
@@ -17,6 +17,7 @@ import * as MU from './music.js';
 import * as VO from './voice.js';
 import * as TT from './tantrum.js';
 import * as EP from './evplace.js';
+import * as CH from './chronicle.js';
 import { initGuard } from './guard.js';
 import { wantedSlot, normVolumes } from './music_map.js';
 import { showTitle, titleOpen } from './title.js';
@@ -281,6 +282,41 @@ function checkPhotoCards() {   // Stage 8: 포토카드 P01~P10
   return true;
 }
 /** v0.9.6 이벤트 앞 장면: 사건 → 친구 선택(말투만) → 쌍즈가 이유를 말함 → ✨ 새 장소. 그림 없음(지금 방 배경) */
+/** v0.9.7 친구 대화 장면(이벤트 직후 대화 · 엔딩 전 이야기): 줄들 → 말투만 고르는 선택 → 답 → 뒷말 */
+async function sayStep(raw) {
+  const m = raw.match(/^쌍즈(?:→([^:]+))?:\s*(.+)$/), narr = /^\(.*\)$/.test(raw);
+  const txt = MS.fill(m ? m[2] : raw.replace(/^\((.*)\)$/, '$1'), S.player.name);
+  if (m || !narr) { setOverride(eventExpr(txt), 60000); await box.show(m && m[1] ? `(${m[1]}) ${txt}` : txt, { wait: true }); } else await box.show(txt, { narr: true, wait: true });
+}
+async function runScene(tag, { title, steps = [], choice = [], after = [] }) {
+  if (UI.event) return false;
+  UI.event = tag; box.locked = true; renderActs();
+  try {
+    if (title) await box.show(title, { narr: true, wait: true });
+    for (const r of steps) await sayStep(r);
+    if (choice.length) {
+      box.show('뭐라고 해 줄까?', { narr: true, instant: true }); clearTimeout(box.hideTimer);
+      const pick = await box.choose(choice.map((c) => c.label));
+      const c = choice.find((x) => x.label === pick) || choice[0];
+      MO.noteReaction(S, `T:${tag}:${pick}`);
+      await sayStep(`쌍즈: ${c.reply}`);
+    }
+    for (const r of after) await sayStep(r);
+  } finally { UI.event = null; box.locked = false; box.hide(); renderActs(); }
+  return true;
+}
+/** 이벤트 직후 친구 대화(그 자리에서, 잠·다른 행동 전에 꼭). 끝나면 다음 할 일(엔딩 등) */
+async function runEvTalk() {
+  const t = CH.talkDue(S); if (!t || UI.event) return false;
+  const ev = eventById(t.id);
+  const ok = await runScene(`talk:${t.id}`, { title: `💬 방금 그 일 — ${ev ? ev.title : ''}`, steps: t.lines, choice: t.choice });
+  if (ok) { CH.talkDone(S, dayKey(gnow())); save(S); }
+  return ok;
+}
+async function runPreEnd(pe) {
+  const ok = await runScene(`pe:${pe.id}`, { title: `🌙 결혼 전 이야기 · ${pe.title}`, steps: pe.steps, choice: pe.choice, after: pe.after });
+  if (ok) { CH.preEndMark(S, pe.id, dayKey(gnow())); save(S); setTimeout(() => maybeEvent(), 1500); }
+}
 async function runPre(n) {
   if (UI.event) return;
   UI.event = `pre:${n.id}`; box.locked = true; renderActs();
@@ -310,7 +346,9 @@ function maybeEvent(delay = 1600) {
   checkRewards(); if (checkPhotoCards()) return;
   if (UI.event || UI.quiz || UI.mg || UI.card || S.asleep || DX.dexState().open) return;
   // v0.9.5: 이벤트는 여기서 바로 시작하지 않음 → 특별 장소가 열리고(✨NEW) 쌍즈가 가자고 함. 도착하면 시작(goPlace)
+  if (CH.talkDue(S)) { runEvTalk().then(() => maybeEvent()); return; }   // v0.9.7 이벤트 직후 대화가 최우선(다음 날로 안 넘김)
   { const ep = EP.pending(S); if (ep) { if (ep.pre && !(S.evPre || {})[ep.id]) runPre(ep); return; } }   // 앞 장면 보다가 껐으면 다시
+  { const pe = CH.preEndNext(S, stageOf(S).id, dayKey(gnow())); if (pe) { clearTimeout(evTimer); evTimer = setTimeout(() => { if (!UI.event && !UI.quiz && !UI.mg) runPreEnd(pe); }, delay); return; } }
   const id = dueEvent(S); if (!id) return;
   clearTimeout(evTimer); evTimer = setTimeout(() => {
     if (UI.event || UI.quiz || UI.mg || UI.card || DX.dexState().open || dueEvent(S) !== id) return;
@@ -377,6 +415,8 @@ async function playEvent(id) {
       }
     }
   };
+  // v0.9.7 장면 카드: 제 N화 · 제목 · 시기 + 지난 이야기(앞 이벤트와 원인→결과)
+  { const c = CH.chapter(id); if (c) { await box.show(CH.titleCard(id, ev.title), { narr: true, wait: true }); if (!UI.evSkip && c.recap) await box.show(`지난 이야기 — ${c.recap.replace(/^지난 화:\s*/, "")}`, { narr: true, wait: true }); } }
   try { await run(topSteps, true); }
   finally {
     S.events[id] = S.events[id] || dayKey(gnow()); save(S);   // Stage 7: 다시 보기여도 처음 본 날짜 유지
@@ -388,8 +428,9 @@ async function playEvent(id) {
     { const im2 = $('evImg2'); im2.classList.remove('show'); im2.removeAttribute('src'); im2.parentNode.classList.remove('shot'); UI.evShot = null; }
     document.body.classList.remove('in-event', 'in-evfull');
     toast(`📔 이벤트 '${ev.title}' 기록됨`);
-    if (END.shouldAutoEnding(id, wasSeen)) setTimeout(() => startEnding(), 900);   // 마지막 이벤트(E8)를 처음 끝내면 엔딩
-    else setTimeout(() => maybeEvent(), 1200);
+    if (!wasSeen && CH.queueTalk(S, id)) save(S);   // v0.9.7 그 자리에서 친구 대화(잠 막음)
+    const auto = END.shouldAutoEnding(id, wasSeen);
+    setTimeout(async () => { await runEvTalk(); if (auto) startEnding(); else maybeEvent(); }, 900);   // 마지막 이벤트(E8)를 처음 끝내면 대화 뒤 엔딩
   }
 }
 function skipEvent() {   // 건너뛰기: 남은 대사를 넘기고 보상만 기록
@@ -406,7 +447,15 @@ async function startEnding(all = false) {
   await END.playEnding({ state: S, all, events: getEvents(), cards: CL.PHOTOCARDS, hasArt: hasEventArt, days: dayNumber(S), outfits: DX.dexProgress(S).outfits,
     audio: { playBgmFade: () => { UI.endingPhase = 'strip'; updateMusic(); }, phase: (ph) => { UI.endingPhase = ph; updateMusic(); }, stopBgmFade: (ms) => { UI.endingPhase = null; MU.stopMusic(ms); } },
     beforeCredits: () => ST.playStory('end'),
-    onDone: () => { UI.ending = false; save(S); UI.lastRoomKey = ''; renderAll(); setTimeout(() => maybeEvent(), 1500); } });
+    onDone: async () => { UI.ending = false; save(S); UI.lastRoomKey = ''; renderAll(); await afterEndingChoice(); setTimeout(() => maybeEvent(), 1500); } });
+}
+/** v0.9.6 엔딩 뒤 갈림길: 에필로그(결혼 후 이야기) 계속 / 별이 다시 떨어짐(2회차). 창을 그냥 닫으면 에필로그 */
+async function afterEndingChoice() {
+  if (S.epilogue) return;
+  const ng = await uiConfirm('엔딩을 봤어요! 이제 어떻게 할까요?\n· 에필로그: 결혼한 쌍즈와 자쉬 오빠의 신혼 이야기. 친구가 놀러 가요. 원작 이벤트·시험은 더 없어요.\n· 2회차: 별이 다시 떨어지고 처음부터(도감·앨범은 이어져요).', { ok: '별이 다시 떨어져요 (2회차)', cancel: '에필로그 계속', danger: false });
+  if (ng && GL.canNewGamePlus(S)) { await startNewGamePlus(true); return; }
+  S.epilogue = true; S.evPending = null; S.tantrum = null; save(S); renderAll();
+  say({ line: { id: 'SYS_epi', text: `…결혼식 끝! 이제 진짜 우리 집이야. ${S.player.name || '너'}, 자주 놀러 와. 약속!` }, expr: 'E02', then: 'E01', note: '🏠 에필로그: 신혼 이야기' });
 }
 $('evVoice').addEventListener('click', (e) => { e.stopPropagation(); if (UI.evVoiceLines) VO.playLines(UI.evVoiceLines, { force: true }); else if (UI.evVoiceId) VO.playIllust(UI.evVoiceId, { force: true }); });
 $('evSkip').addEventListener('click', (e) => { e.stopPropagation(); AU.sfx('sfx_tap'); skipEvent(); });
@@ -449,6 +498,7 @@ $('actions').addEventListener('click', (e) => {
   const b = e.target.closest('.act'); if (!b || b.disabled || UI.event || UI.quiz || UI.mg) return;
   tick();
   const A = b.dataset.act;
+  if (CH.talkDue(S)) { AU.sfx('sfx_nope'); if (A === 'sleep') toast('💬 방금 일 얘기부터 하고 자요'); runEvTalk().then(() => maybeEvent()); return; }   // v0.9.7 이벤트 직후 대화 전엔 잠·다른 행동 안 됨
   { const ep = EP.pending(S); if (ep) { AU.sfx('sfx_nope'); bounceTantrum(); say({ line: { id: 'SYS_evp_lock', text: MS.fill(ep.line, S.player.name) }, expr: 'E13', then: 'E01', note: `▶ ${ep.icon} ${ep.name}에 가야 이야기가 시작돼요` }); return; } }
   if (TT.locked(S, A)) { AU.sfx('sfx_nope'); bounceTantrum(); say({ line: { id: 'SYS_tt_lock', text: MS.fill(S.tantrum.line, S.player.name) }, expr: 'E13', then: 'E01' }); return; }
   if (TT.capLeft(S, A) <= 0) { AU.sfx('sfx_nope'); say({ line: { id: 'SYS_cap', text: CAP_LINES[A] }, expr: 'E13', then: 'E01', note: `오늘 ${CAP_NAME[A]}는 다 했어요 · 내일 다시 ${TT.DAILY_CAPS[A]}번` }); return; }
@@ -544,7 +594,7 @@ $('debug').addEventListener('click', (e) => {
     S.gt.day = nxt.fromDay; S.gt.min = 9 * 60; S.exam.unlocked = STAGES.indexOf(nxt); S.exam.nextAt = 0; save(S); renderAll(); out.textContent = `→ ${nxt.name}`;
   }
   if (k === 'evt') { const ids = EV_ORDER; UI.dbgEv = ((UI.dbgEv ?? -1) + 1) % ids.length; $('debug').hidden = true; delete S.events[ids[UI.dbgEv]]; playEvent(ids[UI.dbgEv]); out.textContent = ids[UI.dbgEv]; }
-  if (k === 'nost') { const d = new Date(gnow()); const ctx = { on: '대화', stage: stageOf(S).dlg, state: moodState(S), place: S.place, crush: S.stats.crush, grade: S.stats.grade, month: d.getMonth() + 1, time: timeOfDay().id };
+  if (k === 'nost') { const d = new Date(gnow()); const ctx = { on: '대화', stage: dlgOf(S), state: moodState(S), place: S.place, crush: S.stats.crush, grade: S.stats.grade, month: d.getMonth() + 1, time: timeOfDay().id };
     for (const on of ['대화', '선물', '공부', '도착']) { const l = pickNostalgia({ ...ctx, on }, S, true); if (l) { say({ line: l, expr: l.expr }); out.textContent = l.id; return; } }
     out.textContent = '조건 맞는 회상 없음(설렘/장소/단계 확인)'; }
   if (k === 'quiz') { $('debug').hidden = true; runPop(QZ.pickPop(S)); }
@@ -863,7 +913,7 @@ async function boot() {
   initMobile({ save: () => save(S), toast, closeTop });
   buildStats(); bindCatch(); END.bindEnding(); AU.setSound(S.settings.sound);
   MU.initMusic(); MU.setMusicResolver(musicSlot); applyVolumes();
-  await Promise.all([loadIllustIndex(), loadDialogue(), ensureSheet(stageOf(S).id), ensureSheet(wantedSheet()), loadRooms([S.place || (STAGE_PLACES[stageOf(S).id] || [])[0]]), QZ.loadQuiz(), MO.loadMoments(), GL.loadGoals(), MS.loadMessenger(), ST.loadStory(), loadIcons(), loadCatchIcons(), VO.initVoice()]);
+  await Promise.all([loadIllustIndex(), loadDialogue(), ensureSheet(stageOf(S).id), ensureSheet(wantedSheet()), loadRooms([S.place || (STAGE_PLACES[stageOf(S).id] || [])[0]]), QZ.loadQuiz(), CH.loadChronicle(), MO.loadMoments(), GL.loadGoals(), MS.loadMessenger(), ST.loadStory(), loadIcons(), loadCatchIcons(), VO.initVoice()]);
   if (typeof window !== 'undefined') window.__voice = VO.voiceInfo;
   onSheet((id, kind) => { if (kind === 'thumb') return; if (kind === 'room') UI.lastRoomKey = ''; else UI.lastDraw = ''; renderScene(); });
   buildFeedMenu();   // Stage 7a: 픽셀 아이콘(catch.png) 로드 후
@@ -1056,10 +1106,10 @@ async function runTitle() {
 // 테스트/디버그용 훅
 function forceNost(on = '대화', extra = {}) {
   const d = new Date(gnow());
-  const ctx = { on, stage: stageOf(S).dlg, state: moodState(S), place: S.place, crush: S.stats.crush, grade: S.stats.grade, events: S.events || {}, month: d.getMonth() + 1, time: timeOfDay().id, ...extra };
+  const ctx = { on, stage: dlgOf(S), state: moodState(S), place: S.place, crush: S.stats.crush, grade: S.stats.grade, events: S.events || {}, month: d.getMonth() + 1, time: timeOfDay().id, ...extra };
   const l = pickNostalgia(ctx, S, true); if (l) say({ line: l, expr: l.expr }); return l;
 }
-window.SZ = { EP, buildPlaceMenu, TT, checkTantrum, showMsgPop, renderActs, MS, openMsgr: (id) => openMsgr(MS.episode(id)), askName, GL, openGoals, showCut, runSulk, reactionCount, startNewGamePlus, resetGame, MO, runMoment: (id) => runMoment(id ? MO.momentById(id) : MO.dueMoment(S)), gainFloat, END, startEnding, get ending() { return END.endingState(); }, get evShot() { return UI.evShot; }, skipEvent, checkPhotoCards, get state() { return S; }, get sheet() { return charSheet(); }, box, playEvent, forceNost, get event() { return UI.event; }, get food() { return UI.food; }, get lastLine() { return UI.lastLine; }, goPlace, get place() { return curPlace(); }, fastForward, say, setOverride, get anim() { return currentAnim(performance.now()).name; }, doAction: (a, x) => { const r = act(a, x); say(r); return r; }, spend, nightMsgFirst, get clock() { return clockText(S); }, renderAll, save: () => save(S),
+window.SZ = { EP, CH, afterEndingChoice, openDex: (t) => DX.openDex(S, t), buildPlaceMenu, TT, checkTantrum, showMsgPop, renderActs, MS, openMsgr: (id) => openMsgr(MS.episode(id)), askName, GL, openGoals, showCut, runSulk, reactionCount, startNewGamePlus, resetGame, MO, runMoment: (id) => runMoment(id ? MO.momentById(id) : MO.dueMoment(S)), gainFloat, END, startEnding, get ending() { return END.endingState(); }, get evShot() { return UI.evShot; }, skipEvent, checkPhotoCards, get state() { return S; }, get sheet() { return charSheet(); }, box, playEvent, forceNost, get event() { return UI.event; }, get food() { return UI.food; }, get lastLine() { return UI.lastLine; }, goPlace, get place() { return curPlace(); }, fastForward, say, setOverride, get anim() { return currentAnim(performance.now()).name; }, doAction: (a, x) => { const r = act(a, x); say(r); return r; }, spend, nightMsgFirst, get clock() { return clockText(S); }, renderAll, save: () => save(S),
   runPop: (id) => runPop(id ? QZ.quizData().questions.find((q) => q.id === id) : QZ.pickPop(S)), runExam, runTaste: (id) => runTaste(id ? QZ.quizData().taste.find((t) => t.id === id) : QZ.pickTaste(S)), get quiz() { return UI.quiz; }, QZ,
   MG, AU, MU, get music() { return MU.musicInfo(); }, get musicSlot() { return musicSlot(); }, startCatch, closeCatch, get mg() { return catchState(); }, mgDebug: catchDebug, buildPlayMenu,
   CL, DX, openDex: (t) => DX.openDex(S, t), closeDex: DX.closeDex, get dex() { return DX.dexState(); }, checkRewards, dexProgress: () => DX.dexProgress(S) };

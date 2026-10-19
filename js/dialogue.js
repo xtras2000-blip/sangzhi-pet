@@ -37,20 +37,25 @@ const SYS_EXPR = { dairy: 'E05', dairyRefuse: 'E13', tooSweet: 'E23', studyRefus
 const BASE_SYS = Object.fromEntries(Object.entries(SYSTEM_LINES).map(([k, v]) => [k, [...v]]));
 
 // ── 반복 방지 기록(풀마다 최근 N줄) ── 세이브(s.lineHist)에 묶이면 앱을 껐다 켜도 이어짐
-export const HIST_MAX = 24;
+export const HIST_MAX = 60;   // v0.9.8 24 → 60
+export const COOL_DAYS = 7;   // v0.9.8 같은 줄은 7일 안에 다시 안 나옴(후보가 하나라도 있으면)
 let HIST = {};
 let curStage = null;
 /** 세이브 객체의 기록 칸을 묶음(없으면 만들어 줌). 이후 pickLine/pickSys/pickMorning 기록이 여기에 쌓임 */
 export function bindHistory(h) { if (h && typeof h === 'object') HIST = h; return HIST; }
 export const lineHistory = () => HIST;
 /** 풀 크기 → 반복 금지 창 크기: 풀의 60%(최소 1, 최대 HIST_MAX). 2줄짜리 풀은 직전 줄만 */
-export const histWindow = (size) => Math.max(1, Math.min(HIST_MAX, Math.floor(size * 0.6), size - 1));
+export const histWindow = (size) => Math.max(1, Math.min(HIST_MAX, Math.floor(size * 0.85), size - 1));
 function histOf(key, size) { const a = HIST[key] || []; return a.slice(-histWindow(size)); }
 function histPush(key, id) {
   const a = (HIST[key] ||= []);
   const i = a.indexOf(id); if (i >= 0) a.splice(i, 1);
   a.push(id); while (a.length > HIST_MAX) a.shift();
 }
+/** v0.9.8 날짜 기록(세이브): id → 마지막으로 나온 게임 날. 14일 지난 건 지움 */
+const dayMap = () => (HIST._d ||= {});
+const coolOk = (id, day) => day == null || !(dayMap()[id] != null && day - dayMap()[id] < COOL_DAYS);
+function dayPush(id, day) { if (day == null || !id) return; const m = dayMap(); m[id] = day; for (const k in m) if (day - m[k] >= 14) delete m[k]; }
 const lruAge = (key, id) => { const a = HIST[key] || []; const i = a.indexOf(id); return i < 0 ? -1 : i; };
 
 const lastSys = {};
@@ -122,8 +127,17 @@ function weighted(items, wf) {
   for (const x of items) { r -= wf(x); if (r <= 0) return x; }
   return items[items.length - 1];
 }
+/** v0.9.8 상황 줄: {요일} {계절} {시간대} 를 그때 상황으로 채움(원본은 그대로) */
+const WEEK = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+const SEASON_KO = (m) => (m >= 3 && m <= 5 ? '봄' : m >= 6 && m <= 8 ? '여름' : m >= 9 && m <= 11 ? '가을' : '겨울');
+export function fillCtx(line, ctx = {}) {
+  if (!line || !/\{(요일|계절|시간대)\}/.test(line.text || '')) return line;
+  const wd = ctx.weekday != null ? ctx.weekday : new Date().getDay();
+  const text = line.text.replace(/\{요일\}/g, WEEK[wd]).replace(/\{계절\}/g, SEASON_KO(ctx.month || (new Date().getMonth() + 1))).replace(/\{시간대\}/g, ctx.time || '오후');
+  return { ...line, text };
+}
 const URGENT = new Set(['배고픔', '졸림', '샐짐']);
-const stageMatch = (l, st) => l.stage === 'any' || l.stage === st;
+const stageMatch = (l, st) => (st === '에필' ? l.stage === '에필' : l.stage === 'any' || l.stage === st);   // 에필로그 = 결혼 후 전용 줄만(공통 줄도 안 섞음)
 
 /** v0.9.6 시간선: after = 그 이벤트를 본 뒤에만(지난 일은 추억으로), before = 그 이벤트 전에만(미래 일 언급 금지). ctx.events 없으면 after 줄은 안 나옴 */
 export const timeOk = (l, ctx) => !(l.after && !((ctx && ctx.events) || {})[l.after]) && !(l.before && ((ctx && ctx.events) || {})[l.before]);
@@ -158,7 +172,8 @@ export function pickLine(ctx) {
   let pool = base(ctx.stage);
   // 졸업 후: 해당 행동/상태 조합 줄이 없으면 대학생 줄로 보충
   if (ctx.stage === '졸' && !pool.some((l) => l.state === ctx.state || l.state === 'any')) pool = pool.concat(base('대').filter((l) => l.stage === '대'));
-  if (!pool.length) pool = LINES.filter((l) => l.action === ctx.action && !l.place && !l.item && !l.cond && l.stage !== '졸');
+  if (!pool.length && ctx.stage === '에필') pool = LINES.filter((l) => l.stage === '에필' && l.action === '대화' && l.state === 'any');
+  if (!pool.length) pool = LINES.filter((l) => l.action === ctx.action && !l.place && !l.item && !l.cond && l.stage !== '졸' && l.stage !== '에필');
   if (!pool.length) pool = FALLBACK.filter((l) => l.action === ctx.action);
   if (!pool.length) pool = FALLBACK;
   const timed = pool.filter((l) => l.time === 'any' || l.time === ctx.time);
@@ -185,14 +200,18 @@ export function pickLine(ctx) {
   }
   // 풀 기록 창은 실제 후보 수에 맞춤(후보 20줄이면 최근 12줄 금지)
   const freshIn = (list) => { const H = histOf(key, list.length); return list.filter((l) => !recent.includes(l.id) && l.id !== lastId && !H.includes(l.id)); };
-  let fresh = freshIn(cand);
+  const cool = (list) => list.filter((l) => coolOk(l.id, ctx.day));
+  let fresh = cool(freshIn(cand));
   if (!fresh.length) {
     // 좁은 후보가 다 최근에 나왔으면: 같은 행동·단계·장소의 상태 맞는/무난한 줄로 넓혀서 다시 찾음
     const okState = ctx.strict ? (l) => l.state === ctx.state
       : (l) => l.state === ctx.state || l.state === 'any' || (ctx.state === 'any' && l.state === '기분좋음');
     const itemLines = cand.some((l) => l.item);
     const placeLines = ctx.action === '도착' && cand.some((l) => l.place);
-    fresh = freshIn(pool.filter((l) => okState(l) && (itemLines ? l.item === ctx.item : !l.item) && (!placeLines || l.place === ctx.place)));
+    fresh = cool(freshIn(pool.filter((l) => okState(l) && (itemLines ? l.item === ctx.item : !l.item) && (!placeLines || l.place === ctx.place))));
+    // v0.9.8 그래도 없으면 상태 무관(같은 행동·단계)으로 넓혀 7일 안 나온 줄
+    if (!fresh.length && !ctx.strict) fresh = cool(pool.filter((l) => !l.item && !l.place && l.id !== lastId && !recent.includes(l.id)));
+    if (!fresh.length && !ctx.strict) fresh = cool(pool.filter((l) => !l.item && !l.place && l.id !== lastId));
   }
   if (fresh.length) cand = fresh;
   else {
@@ -209,24 +228,25 @@ export function pickLine(ctx) {
   const inR = cand.filter((l) => (l.rarity || '일반') === rar);
   const line = weighted(inR, (l) => lineW(l, ctx));
   remember(line.id);
-  histPush(key, line.id);
-  return line;
+  histPush(key, line.id); dayPush(line.id, ctx.day);
+  return fillCtx(line, ctx);
 }
 
 /** 아침 인사/아침 문자(하루 시작). ctx: { stage, stats?, month?, day?, hist? } — 단계 전용 + 공통, 조건·반복 방지 */
 export function pickMorning(ctx = {}) {
   if (ctx.hist) bindHistory(ctx.hist);
   const st = ctx.stage || curStage;
-  let pool = MORNING.filter((l) => (l.stage === 'any' || l.stage === st) && condOk(l, ctx));
+  let pool = MORNING.filter((l) => stageMatch(l, st) && condOk(l, ctx));
   if (!pool.length) return pickSys('hello', st);
   const key = 'morning|' + st;
   const H = histOf(key, pool.length);
-  let c = pool.filter((l) => !H.includes(l.id) && l.id !== lastId);
+  let c = pool.filter((l) => !H.includes(l.id) && l.id !== lastId && coolOk(l.id, ctx.day));
+  if (!c.length) c = pool.filter((l) => l.id !== lastId && coolOk(l.id, ctx.day));
   if (!c.length) { const m = Math.min(...pool.map((l) => lruAge(key, l.id))); c = pool.filter((l) => lruAge(key, l.id) === m && l.id !== lastId); }
   if (!c.length) c = pool;
   const line = weighted(c, (l) => lineW(l, { stage: st }));
-  lastId = line.id; histPush(key, line.id);
-  return { rarity: '일반', expr: 'E01', ...line };
+  lastId = line.id; histPush(key, line.id); dayPush(line.id, ctx.day);
+  return fillCtx({ rarity: '일반', expr: 'E01', ...line }, ctx);
 }
 
 const SEASON = { winter: [12, 1, 2], spring: [3, 4, 5], summer: [6, 7, 8], autumn: [9, 10, 11] };

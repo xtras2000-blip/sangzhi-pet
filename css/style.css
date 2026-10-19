@@ -696,3 +696,11 @@ body.in-moment .bubble .cap { color: #e2447f; font-weight: 800; }
 .st-spark.go { animation: stSpark 1.1s ease-out; }
 @keyframes stSpark { 0% { opacity: 0; transform: scale(.9); } 40% { opacity: 1; transform: scale(1.05); } 100% { opacity: 0; transform: scale(1.15); } }
 .st-stage video { z-index: 2; transition: opacity .6s; } .st-stage video.fade { opacity: 0; }
+/* v0.9.7 연대기 */
+.timeline { list-style: none; padding: 0 0 0 14px; margin: 8px 0 0; display: flex; flex-direction: column; gap: 8px; border-left: 3px dashed var(--ink2); }
+.timeline .tl { position: relative; border: 3px solid var(--ink); border-radius: 10px; padding: 8px 10px; background: #F6F1F4; font-size: 13px; }
+.timeline .tl::before { content: ''; position: absolute; left: -24px; top: 12px; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); }
+.timeline .tl.seen { background: #FFF4F8; cursor: pointer; } .timeline .tl.seen::before { background: #FF8FB1; }
+.timeline .tl.next { background: #FFFBE8; border-style: dashed; } .timeline .tl.locked { opacity: .45; }
+.timeline .tl.pe { background: #EEF0FF; }
+.timeline .tl p { margin: 4px 0 0; line-height: 1.45; } .timeline .tl small { font-size: 10.5px; color: var(--ink2); }

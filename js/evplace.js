@@ -10,10 +10,10 @@ export const EVENT_PLACES = {
          // 이번 주 벌써 세 번째, 쌍옌 오빠는 거절 → 처음 본 오빠 친구(돤자쉬)에게 친오빠인 척 와 달라고 부탁하기로. 친구 선택은 말투만 바뀜
          pre: {
            steps: [
-             '(하굣길. 쌍즈가 구겨진 종이 한 장을 들고 터덜터덜 걸어온다)',
-             '쌍즈: {call}… 나 망했어. 이거 봐. 학부모 소환장.',
+             '(다음 날 하굣길. 쌍즈가 구겨진 그 소환장을 또 꺼내 들고 터덜터덜 걸어온다)',
+             '쌍즈: {call}… 이 소환장 말이야. 아직도 해결 못 했어. 나 망했어.',
              '쌍즈: 수업 시간에 창밖에서 엄마 새가 아기 새들 밥 주는 거 보고 있었거든. 천 선생님이 뭐 하냐길래 그대로 말했더니… 말대꾸래.',
-             '쌍즈: 이번 주에만 벌써 세 번째야. 엄마 알면 진짜 끝장이야. 쌍옌 오빠는 문자 보내자마자 \'안 가\'래. 치사해.',
+             '쌍즈: 이번 주에만 벌써 세 번째야. 엄마 알면 진짜 끝장이야. 쌍옌 오빠는 어제 수박까지 갖다 바쳤는데 끝까지 \'안 가\'래. 치사해.',
            ],
            choice: [
              { label: '헐… 새 구경은 좀 억울하다', reply: '그치?! 아기 새가 얼마나 귀여웠는데! …아, 이게 중요한 게 아니지.' },
@@ -28,7 +28,7 @@ export const EVENT_PLACES = {
   E2:  { place: 'ev_stationery', name: '학교 앞 문구점', icon: '⭐', city: '남우', drama: '종이별 모티프(학교 앞 문구점 별 종이)',
          line: '종이별 접는 종이 다 떨어졌어. 학교 앞 문구점 가자! …뭐 접냐고 묻지 마.' },
   E3:  { place: 'ev_dorm_desk', name: '기숙사 내 책상 (별 쪽지)', icon: '📝', city: '이허', drama: '8화 이허대 기숙사, 목표 쪽지',
-         line: '나 목표 쪽지 새로 쓸 거야. 기숙사 내 자리 가자, 오늘은 꼭 줄 하나 긋고 싶어.' },
+         line: '나 목표 쪽지에 줄 그을 거야. 옆방에서 건너와, 우리 방 내 자리에서 같이 보자!' },
   E4:  { place: 'ev_nanwu_airport', name: '남우 공항', icon: '✈️', city: '남우', drama: '이허행 비행기(혼자 떠난 장면)',
          line: '…나 공항 좀 데려다줄래? 아무것도 묻지 말고. 그냥… 꼭 확인할 게 있어.' },
   E5:  { place: 'ev_fountain_snow', name: '분수 광장 (첫눈)', icon: '❄️', city: '이허', drama: '11화 첫눈 날 분수 광장 소원',
@@ -62,6 +62,7 @@ export function setPending(s, evId, now = 0) {
 }
 /** 지금 대기 중인 이벤트(이미 본 거면 정리) */
 export function pending(s) {
+  if (s && s.epilogue) return null;
   const p = s.evPending; if (!p) return null;
   if ((s.events || {})[p.id]) { s.evPending = null; return null; }
   return { id: p.id, ...EVENT_PLACES[p.id] };

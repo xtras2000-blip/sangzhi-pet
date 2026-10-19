@@ -98,6 +98,7 @@ export function storyGate(s) {
   return { stage: id, need, seen: done.length, total: need.length, next: need.find((e) => !(s.events || {})[e]) || null, ok: done.length === need.length };
 }
 export function examDue(s, now = gnow()) {
+  if (s.epilogue) return false;
   if (isLastStage(s)) return false;
   if (!(dayStageIndex(s, now) > s.exam.unlocked)) return false;
   if (!storyGate(s).ok) return false;   // 이야기가 먼저(수치가 다 차도 기다림)

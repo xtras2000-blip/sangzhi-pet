@@ -38,11 +38,14 @@ const inR = (v, r) => !r || (v != null && v >= r[0] && v <= (r[1] ?? 1e9));
 export function isAvailable(s, ep, now = gnow(), stageId) {
   if (!ep || (!ep.generic && s.msgr && s.msgr.done[ep.id])) return false;
   const a = ep.avail || {};
-  if (a.stage && stageId && a.stage !== stageId) return false;
-  if (a.stages && stageId && !a.stages.includes(stageId)) return false;
+  if (!!s.epilogue !== (a.stage === 'epi')) return false;   // v0.9.6 에필로그 = 결혼 후 문자만, 그 전엔 결혼 후 문자 안 나옴
+  if (!s.epilogue && a.stage && stageId && a.stage !== stageId) return false;
+  if (!s.epilogue && a.stages && stageId && !a.stages.includes(stageId)) return false;
   if (a.fromHour != null && new Date(now).getHours() < a.fromHour) return false;
   if (a.day && dayNumber(s, now) < a.day) return false;
   if (a.afterEvent && !(s.events && s.events[a.afterEvent])) return false;
+  if (a.afterPE && !(s.preEnd && s.preEnd[a.afterPE])) return false;   // v0.9.8 엔딩 전 이야기(PE) 뒤에만
+  if (a.notPE && s.preEnd && s.preEnd[a.notPE]) return false;
   if (a.notEvent && s.events && s.events[a.notEvent]) return false;
   if (a.afterPre && !((s.evPre || {})[a.afterPre])) return false;   // v0.9.6 이벤트 앞 장면(E1 소환장)을 본 날
   if (a.afterPre && a.fresh != null) { const d = keyDays((s.evPre || {})[a.afterPre]); if (d == null || nowDays(now) - d > a.fresh) return false; }

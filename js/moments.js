@@ -23,7 +23,7 @@ export function dueMoment(s, now = gnow(), rnd = Math.random) {
   if (n >= (M.rules.perDay || 2)) return null;
   if (n >= 1 && rnd() >= (M.rules.secondChance ?? 0.35)) return null;   // 하루 첫 대화는 꼭, 두 번째부터는 확률
   const st = stageOf(s, now).id, today = dayKey(now), seen = rec(s).seen;
-  const pool = M.moments.filter((m) => m.stage === st || m.stage === 'any');
+  const pool = s.epilogue ? M.moments.filter((m) => m.stage === 'epi') : M.moments.filter((m) => (m.stage === st || m.stage === 'any') && !(m.after && !(s.events || {})[m.after]));   // v0.9.8 after = 그 이벤트 본 뒤에만
   const fresh = pool.filter((m) => (seen[m.id] || {}).last !== today);
   if (!fresh.length) return null;
   // 안 본 것 먼저, 그다음 덜 본 것(같은 순간은 하루 한 번)

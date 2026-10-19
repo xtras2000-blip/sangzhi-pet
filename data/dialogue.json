@@ -1,7 +1,7 @@
 {
  "character": "쌍즈(桑稚)",
  "note": "팬메이드 대사. 일반 대사는 모두 오리지널. action '회상' 줄만 QUOTES.md Part 1의 짧은 인용(작성자 번역)을 담고 quote 번호로 출처를 화면에 표기. stage: 중/고/대/졸/any",
- "count": 759,
+ "count": 1044,
  "lines": [
   {
    "id": "L001",
@@ -2194,7 +2194,8 @@
    "time": "any",
    "rarity": "일반",
    "expr": "E02",
-   "text": "그 오빠 생각하면 심장이 막 뛰어. 너한테 들려? 안 들리지? 다행이다…"
+   "text": "자쉬 오빠 생각하면 심장이 막 뛰어. 너한테 들려? 안 들리지? 다행이다…",
+   "after": "E0"
   },
   {
    "id": "L216",
@@ -2434,7 +2435,7 @@
    "time": "any",
    "rarity": "전설",
    "expr": "E19",
-   "text": "반지 모양 선물이네… 자쉬 오빠가 바닷가에서 이런 거 주면… 아, 아니 그냥 상상이야! 상상!",
+   "text": "반지 모양 선물이네… 예쁘다! 손가락에 껴 볼래. 어때, 어울려?",
    "after": "E12"
   },
   {
@@ -4441,7 +4442,7 @@
     ]
    },
    "text": "그때 자쉬 오빠한테 그랬어. \"세상에 그렇게 다정한 오빠라면, 똑같은 다정함을 두 배로 돌려받을 거야.\" 지금도 그렇게 믿어.",
-   "after": "E12"
+   "after": "E9"
   },
   {
    "id": "L423",
@@ -4481,7 +4482,7 @@
   },
   {
    "id": "L425",
-   "stage": "대",
+   "stage": "졸",
    "state": "any",
    "action": "회상",
    "time": "any",
@@ -4495,7 +4496,7 @@
     ]
    },
    "text": "속상할 때면 자쉬 오빠 말이 생각나. \"우는 게 아이의 권리라면, 평생 아이로 살아.\" …조금 괜찮아졌어.",
-   "after": "E12"
+   "after": "E6"
   },
   {
    "id": "L426",
@@ -4513,7 +4514,7 @@
     ]
    },
    "text": "\"우는 게 아이의 권리라면, 평생 아이로 살아.\" 자쉬 오빠 말대로, 오늘은 조금 울어도 되지?",
-   "after": "E12"
+   "after": "E6"
   },
   {
    "id": "L427",
@@ -6421,7 +6422,7 @@
    "time": "any",
    "rarity": "일반",
    "expr": "E02",
-   "text": "이허대 합격하면 그 오빠한테 제일 먼저… 아니, 너한테 제일 먼저 말할게!",
+   "text": "우리 둘 다 이허대 붙으면… 그 오빠한테 할 말은 그다음에 생각할래. 먼저 너랑 같이 붙는 게 목표야!",
    "pack": "x094"
   },
   {
@@ -6545,7 +6546,7 @@
    "time": "any",
    "rarity": "일반",
    "expr": "eat",
-   "text": "기숙사 식당 마라탕 진짜 맛있어. 너네 학교 식당은 어때?",
+   "text": "기숙사 식당 마라탕 진짜 맛있어. 옆방 사는 너랑 매일 먹으니까 더 맛있어.",
    "pack": "x094"
   },
   {
@@ -7222,7 +7223,7 @@
    "time": "any",
    "rarity": "일반",
    "expr": "E01",
-   "text": "너네 학교 축제는 언제야? 우리 학교 축제 오면 내가 다 쏠게!",
+   "text": "너네 과 축제 부스는 뭐야? 우리 과 부스 오면 내가 다 쏠게!",
    "pack": "x094"
   },
   {
@@ -7382,7 +7383,7 @@
    "time": "any",
    "rarity": "일반",
    "expr": "E10",
-   "text": "남우 가고 싶어… 엄마 밥, 우리 방, 너네 집 불빛.",
+   "text": "남우 가고 싶어… 엄마 밥, 우리 방. 그래도 옆방에 네가 있어서 버텨.",
    "pack": "x094"
   },
   {
@@ -8546,6 +8547,3045 @@
    "expr": "E02",
    "text": "나중에 할머니가 돼도 너는 옆에 있을 것 같아. 그런 예감이 들어.",
    "tag": "star"
+  },
+  {
+   "id": "EPL001",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "신혼집 커튼 색 아직도 못 정했어. 자쉬 오빠는 다 좋대. 그게 제일 어려워!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL002",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너 올 때마다 우리 집이 더 집 같아져. 자주 와.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL003",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "결혼식 날 네가 나보다 더 울었던 거 기억나? 나 그거 평생 놀릴 거야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL004",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "요즘 자쉬 오빠가 아침마다 계란 라면 끓여 줘. 내가 중학생 때 좋아하던 거 아직 기억하더라.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL005",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "문패에 이름 두 개 나란히 있는 거 봤어? 볼 때마다 이상하게 웃음 나.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL006",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠 이제 부업 안 해도 돼서 저녁에 같이 밥 먹을 수 있어. 그게 제일 좋아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL007",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쌍옌 오빠가 어제 또 와서 냉장고 털어 갔어. 처남 행세 제대로야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL008",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "엄마가 반찬 보내 주셨어. 예전엔 그렇게 반대하시더니, 이젠 자쉬 오빠 몫까지 꼭 챙기셔.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL009",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "우리 이번 주말에 바닷가 순환도로 자전거 탈래? 셋이서. 자쉬 오빠가 간식 싸 온대.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL010",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "신혼인데 싸울 일이 없어서 심심해. …아, 이건 자랑이야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL011",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너랑 이렇게 우리 집 소파에 앉아 있으니까 기숙사 시절 생각난다.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL012",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 너 오면 꼭 디저트 사 놓으래. 내 친구는 자기 친구래.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL013",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "결혼반지 끼고 설거지하다가 거품에 빠질 뻔했어. 십 년은 감수했어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL014",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 저녁은 내가 했어! …맛은 묻지 마. 자쉬 오빠는 맛있대.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL015",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "우리 집 화분 이름 지어 줘. 자쉬 오빠가 지은 이름은 너무 진지해.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL016",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "요즘 나 '사모님' 소리 들으면 뒤돌아봐. 아직 적응 안 돼!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL017",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너 없었으면 나 그 시절 어떻게 버텼을까. 진짜 고마워.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL018",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 요즘 퇴근하면 '다녀왔어' 하는데, 그 말이 너무 좋아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL019",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "청첩장 남은 거 하나 보관해 뒀어. 너 이름 쓴 거. 기념품이야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL020",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이 집 창문으로 바다가 조금 보여. 조금이지만 우리 거야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL021",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "다음 달에 엄마 아빠 집들이 오신대. 자쉬 오빠가 벌써 긴장했어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL022",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠 생일에 뭐 줄까? 이번엔 진짜 몰래 준비할 거야. 너만 알아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL023",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "둘이 장 보러 가면 자쉬 오빠는 할인 스티커부터 봐. 그 버릇 귀여워.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL024",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "중학생 때 우리가 이런 날 상상이나 했을까? 난… 사실 조금 했어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL025",
+   "stage": "에필",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 비 오니까 집에서 영화 보자. 자쉬 오빠가 팝콘 담당이야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL026",
+   "stage": "에필",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오늘 그냥 다 좋아! 날씨도, 우리 집도, 너도.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL027",
+   "stage": "에필",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "자쉬 오빠가 출근하면서 쪽지 남겼어. 보여 줄까? …아니다, 비밀.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL028",
+   "stage": "에필",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "너 오는 날은 집 청소를 두 번 해. 그만큼 반가워!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL029",
+   "stage": "에필",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "결혼했는데도 자쉬 오빠가 웃으면 아직 심장이 쿵 해. 이거 정상이야?",
+   "after": "E8"
+  },
+  {
+   "id": "EPL030",
+   "stage": "에필",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "아까 자쉬 오빠가 '우리 쌍즈' 하는데… 아 몰라, 얼굴 빨개졌어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL031",
+   "stage": "에필",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 또 내 딸기 젤리 먹었어. 결혼 서약에 젤리 조항 넣을 걸 그랬어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL032",
+   "stage": "에필",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 자쉬 오빠 야근이래. 저녁 혼자 먹게 생겼어… 너 남아 줄 거지?",
+   "after": "E8"
+  },
+  {
+   "id": "EPL033",
+   "stage": "에필",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쌍옌 오빠가 신혼집 와서 '좁다'래. 다시는 안 불러!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL034",
+   "stage": "에필",
+   "state": "배고픔",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "배고파… 신혼집 냉장고에 왜 반찬만 있고 간식이 없지?",
+   "after": "E8"
+  },
+  {
+   "id": "EPL035",
+   "stage": "에필",
+   "state": "졸림",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어제 자쉬 오빠랑 앨범 정리하다가 새벽까지 깼어. 졸려…",
+   "after": "E8"
+  },
+  {
+   "id": "EPL036",
+   "stage": "에필",
+   "state": "공부",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "회사 일 집에 싸 왔어. 옆에서 응원만 해 줘. 그거면 돼.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL037",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 먹으니까 더 맛있다. 우리 집 식탁 첫 손님도 너였잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL038",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 만든 반찬이야. 많이 먹어! 칭찬은 내가 대신 전할게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL039",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "신혼집 첫 김치찌개야. 이번엔 안 태웠어!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL040",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "계란 라면은 역시 셋이 먹어야 제맛이지.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL041",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "엄마표 반찬에 자쉬 오빠표 계란말이. 오늘 상 완벽해.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL042",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "딸기 탕후루 후식으로 사 왔어. 우리 중학생 때처럼.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL043",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "밥 먹고 설거지는 가위바위보! 자쉬 오빠는 이미 졌어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL044",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "식탁 의자 세 개 산 이유? 너 자리야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL045",
+   "stage": "에필",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "기다렸어! 배고파서 숟가락부터 들고 있었어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL046",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이 그릇 결혼 선물로 받은 거야. 너도 기억나지? 네가 준 거잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL047",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 배달 시키자. 신혼이라도 쉬는 날은 필요해.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL048",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 남은 거 도시락 싸 간대. 알뜰한 건 여전해.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL049",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "보드게임 하자! 지는 사람이 다음에 디저트 사기.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL050",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "우리 집 베란다에서 별 보자. 오늘 맑대.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL051",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "결혼식 영상 같이 볼래? 너 우는 장면 다시 보자ㅋㅋ",
+   "after": "E8"
+  },
+  {
+   "id": "EPL052",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠까지 셋이 카드 게임! 자쉬 오빠는 표정 관리 못 해서 맨날 져.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL053",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "사진 찍자! 신혼집 방문 기념.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL054",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "바닷가 산책 가자. 우리 집에서 걸어서 십 분이야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL055",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "옛날 앨범 꺼내 볼까? 중학생 때 우리 진짜 웃겼다.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL056",
+   "stage": "에필",
+   "state": "기분좋음",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오늘은 하루 종일 놀 거야! 집안일은 내일의 나에게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL057",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "퍼즐 맞추자. 웨딩 사진 퍼즐, 자쉬 오빠가 주문했어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL058",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "노래방 가자! 축가 불렀던 그 노래 다시 불러 줘.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL059",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "잘 자, 너. 오늘 와 줘서 고마워. 손님방 이불 새 거야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL060",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠는 벌써 잠들었어. 우리도 이제 자자.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL061",
+   "stage": "에필",
+   "state": "졸림",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "하암… 오늘 집들이 준비하느라 녹초야. 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL062",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "잘 자! 내일 아침은 자쉬 오빠가 계란 라면 끓여 준대.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL063",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "불 끈다~ 내일 또 수다 떨자.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL064",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "창문 열어 두면 파도 소리 들려. 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL065",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하루도 좋았다. 너도 좋은 꿈 꿔.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL066",
+   "stage": "에필",
+   "state": "졸림",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "눈이 감겨… 자쉬 오빠, 나 먼저 잘게. 너도 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL067",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "잘 자 인사 하러 와 준 거야? 헤헤, 고마워.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL068",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "내일 늦잠 자도 돼. 주말이잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL069",
+   "stage": "에필",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "요즘은 회사 자료 공부 중이야. 학생 때보다 어려워!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL070",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이번 프로젝트 끝나면 자쉬 오빠랑 여행 갈 거야. 그러니까 지금 집중!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL071",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "옆에서 같이 책 읽어 줘. 너 있으면 집중 잘 돼.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL072",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 커피 타 줬어. 오늘 야근도 버틸 수 있어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL073",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자격증 시험 준비 중이야. 시험은 학생 때로 끝인 줄 알았는데.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL074",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "기획서 다 썼다! 칭찬해 줘.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL075",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠한테 엑셀 배웠어. 이 사람 모르는 게 없어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL076",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 공부는 여기까지. 남은 건 내일의 나에게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL077",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "집들이 선물이야? 고마워! 현관에 제일 잘 보이게 둘게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL078",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "와, 커플 머그잔! 자쉬 오빠랑 나눠 쓸게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL079",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 우리 신혼집에 딱이다. 역시 너는 내 취향 다 알아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL080",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "선물 받을 때마다 결혼식 날 생각나. 그때도 네가 제일 먼저 와 줬잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL081",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 이거 보고 '역시 쌍즈 친구'래. 칭찬이야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL082",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워! 다음엔 내가 너희 집 갈 때 더 큰 거 들고 갈 거야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL083",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이 꽃 거실에 둘게. 집이 환해졌어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL084",
+   "stage": "에필",
+   "state": "기분좋음",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "완전 감동이야. 사진 찍어서 단톡에 자랑할래.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL085",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "디저트 선물은 언제나 정답이야. 자쉬 오빠 몫은… 생각해 볼게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL086",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "우리 사진 액자? 침실 말고 거실에 걸자. 다 보이게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL087",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어서 와! 신발은 아무 데나 둬. 우리 집이 네 집이야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL088",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "왔어? 자쉬 오빠가 너 온다고 아침부터 청소했어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL089",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "야! 마침 디저트 꺼내려던 참이었어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL090",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "신혼집 투어 다시 해 줄까? 지난번 이후로 화분이 하나 늘었어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL091",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "우리 집 비밀번호 바꿨어. 너한테만 알려 줄게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL092",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어서 와~ 바닷바람 맞으면서 왔지? 차 한 잔 줄게.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL093",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오, 딱 맞춰 왔네. 자쉬 오빠가 막 퇴근해서 같이 저녁 먹자.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL094",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "반가워! 오늘은 자고 가. 손님방 준비해 놨어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL095",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "중학생 때 교무실 기억나? 자쉬 오빠가 우리 자쉬 오빠인 척 와 줬던 날. 그날부터였나 봐.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL096",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "남우 공항에서 혼자 이허 갔던 날, 그때 나 진짜 바보 같았지. 너한테만 말했었잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL097",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠한테 여자 친구 있는 줄 알고 2년 동안 모른 척했던 거… 지금 생각하면 다 오해였어. 그래도 그 덕에 공부는 했다!",
+   "after": "E8"
+  },
+  {
+   "id": "EPL098",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이허대 합격 발표, 너랑 나란히 앉아서 같이 봤잖아. 둘 다 붙었을 때 소리 질렀던 거 아직 기억나.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL099",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 맹장 수술했을 때 병원 복도에서 너랑 같이 기다렸잖아. 그때 손 엄청 떨었어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL100",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "바닷가에서 고백 들었던 밤… 그때도 너한테 제일 먼저 문자 보냈었지.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL101",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "엄마 아빠가 반대하셨을 때, 자쉬 오빠가 남우로 회사를 옮기고 빚을 다 갚았어. 그걸 보고 마음 여셨지.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL102",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 회사 일에 부업까지 하던 시절 생각하면 지금 이 집이 꿈 같아.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL103",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠는 술을 안 마시잖아. 알코올 알레르기래. 그 대신 다들 취하면 끝까지 챙기는 사람이야.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL104",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "첫눈 오던 날 분수대 앞에서 셋이 사진 찍었었잖아. 그 사진 아직 냉장고에 붙어 있어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL105",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "결혼식 날 아침에 네가 내 머리 만져 줬지. 손 떨면서. 평생 못 잊어.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL106",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쌍옌 오빠가 결혼식에서 축사하다 울었던 거, 자쉬 오빠는 절대 인정 안 해.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL107",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "중학생 때 꼬맹이 소리 듣고 씩씩대던 나, 이제 '사모님'이야. 신기하지.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL108",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "기숙사에서 밤새 고민 상담해 줬던 거 고마워. 그때 너 없었으면 포기했을지도 몰라.",
+   "after": "E8"
+  },
+  {
+   "id": "EPL109",
+   "stage": "에필",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠 집에 처음 갔을 때 너무 소박해서 놀랐던 거, 지금은 우리 집이 됐어.",
+   "after": "E8"
+  },
+  {
+   "id": "P98001",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 저녁은 셋이 김밥 말자! 옆구리 터지는 사람이 설거지.",
+   "after": "E8"
+  },
+  {
+   "id": "P98002",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일} 저녁엔 무조건 국수야. 우리 집 규칙이야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98003",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}엔 역시 이 반찬이지. 엄마한테 배웠어.",
+   "after": "E8"
+  },
+  {
+   "id": "P98004",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "신혼집 밥솥이 드디어 밥을 안 태웠어! 축하해 줘.",
+   "after": "E8"
+  },
+  {
+   "id": "P98005",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 회사에서 받아 온 귤이야. 후식으로 까 먹자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98006",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 내가 볶음밥 했어. 계란 두 개 넣었어. 너 거 특별히.",
+   "after": "E8"
+  },
+  {
+   "id": "P98007",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 장 봐 온 걸로 차리니까 더 맛있다.",
+   "after": "E8"
+  },
+  {
+   "id": "P98008",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "반찬 하나 남기면 자쉬 오빠가 다 먹어. 그래서 하나 더 해.",
+   "after": "E8"
+  },
+  {
+   "id": "P98009",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "마라탕 시킬까? 너는 고수 빼고, 나는 맵게. 옛날처럼.",
+   "after": "E8"
+  },
+  {
+   "id": "P98010",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "된장찌개 간 좀 봐 줘. 너 입맛이 제일 정확해.",
+   "after": "E8"
+  },
+  {
+   "id": "P98011",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "밥 먹고 산책하자. 바닷바람 맞으면 소화 잘 돼.",
+   "after": "E8"
+  },
+  {
+   "id": "P98012",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 메뉴는 냉장고 파먹기야. 의외로 맛있을걸?",
+   "after": "E8"
+  },
+  {
+   "id": "P98013",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "숟가락 세 개 놓는 게 이제 자연스러워.",
+   "after": "E8"
+  },
+  {
+   "id": "P98014",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 만든 계란말이, 오늘은 모양이 하트야. 실수래.",
+   "after": "E8"
+  },
+  {
+   "id": "P98015",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{시간대}에 먹는 라면이 제일 맛있는 거 알지?",
+   "after": "E8"
+  },
+  {
+   "id": "P98016",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "밥 먹으면서 결혼식 사진 또 보자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98017",
+   "stage": "에필",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "배부르다… 디저트 배는 따로 있지만.",
+   "after": "E8"
+  },
+  {
+   "id": "P98018",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "퍼즐 천 조각짜리 샀어. 오늘 반만 하자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98019",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일}이니까 영화 한 편! 고르는 건 너야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98020",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "베란다에서 비눗방울 불자. 어른도 해도 돼.",
+   "after": "E8"
+  },
+  {
+   "id": "P98021",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠 몰래 자쉬 오빠 사진으로 스티커 만들자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98022",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "보드게임 2라운드! 지난번엔 내가 졌으니까.",
+   "after": "E8"
+  },
+  {
+   "id": "P98023",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "동네 오락실 가자. 인형 뽑기 내가 다 뽑아 줄게.",
+   "after": "E8"
+  },
+  {
+   "id": "P98024",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절} 바다 보러 가자. 걸어서 십 분이잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "P98025",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 쿠키 굽자. 모양은 별 모양!",
+   "after": "E8"
+  },
+  {
+   "id": "P98026",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "노래 맞히기 게임 하자. 우리 중학생 때 노래로.",
+   "after": "E8"
+  },
+  {
+   "id": "P98027",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자전거 타러 갈래? 이번엔 셋이 나란히.",
+   "after": "E8"
+  },
+  {
+   "id": "P98028",
+   "stage": "에필",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "사진첩 정리하면서 웃긴 사진 대회 하자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98029",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "요즘 요리책 공부 중이야. 오늘은 3장!",
+   "after": "E8"
+  },
+  {
+   "id": "P98030",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "회사 발표 자료 같이 봐 줄래? 너 설명 잘하잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "P98031",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 게임 기획 얘기해 주는데 반은 못 알아들었어. 공부해야지.",
+   "after": "E8"
+  },
+  {
+   "id": "P98032",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "영어 회화 다시 시작했어. 같이 단어 외우자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98033",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일}마다 도서관 가기로 했어. 오늘이 그날.",
+   "after": "E8"
+  },
+  {
+   "id": "P98034",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "가계부 쓰는 법 공부 중이야. 숫자가 무서워.",
+   "after": "E8"
+  },
+  {
+   "id": "P98035",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "운전면허 필기 공부 중! 문제 내 줘.",
+   "after": "E8"
+  },
+  {
+   "id": "P98036",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "디자인 공모전 준비하고 있어. 아이디어 좀 같이 내 줘.",
+   "after": "E8"
+  },
+  {
+   "id": "P98037",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "책 한 권 다 읽었어! 너도 읽어 볼래?",
+   "after": "E8"
+  },
+  {
+   "id": "P98038",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "집중 안 될 때는 너 옆에 앉아 있으면 돼. 신기하지.",
+   "after": "E8"
+  },
+  {
+   "id": "P98039",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 {시간대}까지만 하고 쉬자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98040",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자격증 기출 30문제 풀었어. 칭찬해 줘.",
+   "after": "E8"
+  },
+  {
+   "id": "P98041",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 코딩 기초 가르쳐 준대. 너도 같이 배울래?",
+   "after": "E8"
+  },
+  {
+   "id": "P98042",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "신문 경제면 읽는 연습 중이야. 어려워!",
+   "after": "E8"
+  },
+  {
+   "id": "P98043",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 손글씨 연습! 청첩장 봉투 쓸 때 창피했거든.",
+   "after": "E8"
+  },
+  {
+   "id": "P98044",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "엄마 레시피 노트 정리하는 중. 이것도 공부야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98045",
+   "stage": "에필",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "중국어 단어장 다시 꺼냈어. 같이 외우자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98046",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 너무 웃어서 볼이 아파. 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98047",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이불 새로 빨았어. 햇볕 냄새 나지?",
+   "after": "E8"
+  },
+  {
+   "id": "P98048",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "잘 자, 내일은 늦잠 대회야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98049",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일} 밤은 왜 이렇게 아쉽지. 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98050",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "창밖에 별 많다. 하나 보고 자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98051",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 손님방에 수면등 켜 놨어. 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98052",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "내일 아침 메뉴는 비밀. 잘 자!",
+   "after": "E8"
+  },
+  {
+   "id": "P98053",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 와 줘서 고마워. 꿈에서도 놀자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98054",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "하암… 먼저 눕는 사람이 이긴 거야. 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98055",
+   "stage": "에필",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "파도 소리 자장가 틀어 줄게. 잘 자.",
+   "after": "E8"
+  },
+  {
+   "id": "P98056",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 우리 집 냉장고에 붙일래. 제일 잘 보이는 데.",
+   "after": "E8"
+  },
+  {
+   "id": "P98057",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "와, 내가 갖고 싶던 거! 어떻게 알았어?",
+   "after": "E8"
+  },
+  {
+   "id": "P98058",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워! 자쉬 오빠한테도 자랑할래.",
+   "after": "E8"
+  },
+  {
+   "id": "P98059",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이건 신혼집 거실에 딱이야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98060",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}에 딱 맞는 선물이다. 센스 최고.",
+   "after": "E8"
+  },
+  {
+   "id": "P98061",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "받기만 해서 미안해. 다음엔 내 차례야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98062",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "포장지도 안 버릴 거야. 예쁘잖아.",
+   "after": "E8"
+  },
+  {
+   "id": "P98063",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "선물 받으니까 중학생 때 생일 생각난다.",
+   "after": "E8"
+  },
+  {
+   "id": "P98064",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 보니까 너랑 같이 산 첫 머리핀 생각나.",
+   "after": "E8"
+  },
+  {
+   "id": "P98065",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워. 오늘 하루가 반짝반짝해졌어.",
+   "after": "E8"
+  },
+  {
+   "id": "P98066",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "자쉬 오빠가 이거 보고 부러워하겠다. 안 빌려줄 거야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98067",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "결혼 기념일 선물 고민 중이었는데, 힌트 얻었다!",
+   "after": "E8"
+  },
+  {
+   "id": "P98068",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이건 손님방 네 자리에 둘게. 다음에 와서 써.",
+   "after": "E8"
+  },
+  {
+   "id": "P98069",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워! 답례로 내일 탕후루 쏠게.",
+   "after": "E8"
+  },
+  {
+   "id": "P98070",
+   "stage": "에필",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 들고 사진 찍자. 기념이야.",
+   "after": "E8"
+  },
+  {
+   "id": "P98071",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어서 와! 마침 자쉬 오빠가 디저트 사 왔어.",
+   "after": "E8"
+  },
+  {
+   "id": "P98072",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "왔어? {요일}에 오니까 더 반갑다.",
+   "after": "E8"
+  },
+  {
+   "id": "P98073",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "현관 비밀번호 안 까먹었지? 헤헤.",
+   "after": "E8"
+  },
+  {
+   "id": "P98074",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어서 와~ 오늘은 자고 갈 거지?",
+   "after": "E8"
+  },
+  {
+   "id": "P98075",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{시간대}에 와 줬네. 차 한 잔 줄게.",
+   "after": "E8"
+  },
+  {
+   "id": "P98076",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "반가워! 신발은 그냥 벗어 둬.",
+   "after": "E8"
+  },
+  {
+   "id": "P98077",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "딱 맞춰 왔다. 방금 쿠키 나왔어.",
+   "after": "E8"
+  },
+  {
+   "id": "P98078",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어서 와, 우리 집 단골손님!",
+   "after": "E8"
+  },
+  {
+   "id": "P98079",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘도 와 줘서 고마워. 들어와 들어와.",
+   "after": "E8"
+  },
+  {
+   "id": "P98080",
+   "stage": "에필",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "왔구나! 화분이 너 기다렸대.",
+   "after": "E8"
+  },
+  {
+   "id": "P98081",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일}엔 왜 이렇게 집중이 안 될까. 같이 하자."
+  },
+  {
+   "id": "P98082",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "숙제 끝내고 탕후루 먹자. 약속!"
+  },
+  {
+   "id": "P98083",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너 옆에서 하면 집중이 두 배야."
+  },
+  {
+   "id": "P98084",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 {시간대}까지만 하고 쉬자. 진짜로."
+  },
+  {
+   "id": "P98085",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "형광펜 세 개 다 썼어. 공부한 티 나지?"
+  },
+  {
+   "id": "P98086",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "모르는 거 하나만 물어봐도 돼? …사실 다섯 개."
+  },
+  {
+   "id": "P98087",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}이라 그런지 졸려. 손가락으로 쿡 찔러 줘."
+  },
+  {
+   "id": "P98088",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 하니까 시간이 빨리 간다."
+  },
+  {
+   "id": "P98089",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 계획표 다 지웠어! 다 했다는 뜻이야."
+  },
+  {
+   "id": "P98090",
+   "stage": "중",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쉬는 시간 10분! 딱 10분만."
+  },
+  {
+   "id": "P98091",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워! 진짜 소중히 쓸게."
+  },
+  {
+   "id": "P98092",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 내 책상 제일 잘 보이는 데 둘래."
+  },
+  {
+   "id": "P98093",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어떻게 알았어? 갖고 싶던 거야!"
+  },
+  {
+   "id": "P98094",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}에 딱 맞는 선물이다."
+  },
+  {
+   "id": "P98095",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "포장지도 안 버릴 거야. 예쁘잖아."
+  },
+  {
+   "id": "P98096",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "받기만 해서 미안해. 다음엔 내가 줄게."
+  },
+  {
+   "id": "P98097",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하루가 반짝반짝해졌어."
+  },
+  {
+   "id": "P98098",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너는 내 취향 다 알아. 무서울 정도로."
+  },
+  {
+   "id": "P98099",
+   "stage": "중",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일} 점심은 이 맛이지!"
+  },
+  {
+   "id": "P98100",
+   "stage": "중",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 먹으니까 더 맛있다."
+  },
+  {
+   "id": "P98101",
+   "stage": "중",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}엔 역시 따뜻한 국물이야."
+  },
+  {
+   "id": "P98102",
+   "stage": "중",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{시간대}에 먹는 밥이 제일 맛있어."
+  },
+  {
+   "id": "P98103",
+   "stage": "중",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "한 입만 바꿔 먹자. 공평하게."
+  },
+  {
+   "id": "P98104",
+   "stage": "중",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "배부르다… 근데 디저트 배는 따로 있어."
+  },
+  {
+   "id": "P98105",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일}엔 왜 이렇게 집중이 안 될까. 같이 하자."
+  },
+  {
+   "id": "P98106",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "모의고사 끝내고 탕후루 먹자. 약속!"
+  },
+  {
+   "id": "P98107",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너 옆에서 하면 집중이 두 배야."
+  },
+  {
+   "id": "P98108",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 {시간대}까지만 하고 쉬자. 진짜로."
+  },
+  {
+   "id": "P98109",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "형광펜 세 개 다 썼어. 공부한 티 나지?"
+  },
+  {
+   "id": "P98110",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "모르는 거 하나만 물어봐도 돼? …사실 다섯 개."
+  },
+  {
+   "id": "P98111",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}이라 그런지 졸려. 손가락으로 쿡 찔러 줘."
+  },
+  {
+   "id": "P98112",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 하니까 시간이 빨리 간다."
+  },
+  {
+   "id": "P98113",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 계획표 다 지웠어! 다 했다는 뜻이야."
+  },
+  {
+   "id": "P98114",
+   "stage": "고",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쉬는 시간 10분! 딱 10분만."
+  },
+  {
+   "id": "P98115",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워! 진짜 소중히 쓸게."
+  },
+  {
+   "id": "P98116",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 내 책상 제일 잘 보이는 데 둘래."
+  },
+  {
+   "id": "P98117",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어떻게 알았어? 갖고 싶던 거야!"
+  },
+  {
+   "id": "P98118",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}에 딱 맞는 선물이다."
+  },
+  {
+   "id": "P98119",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "포장지도 안 버릴 거야. 예쁘잖아."
+  },
+  {
+   "id": "P98120",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "받기만 해서 미안해. 다음엔 내가 줄게."
+  },
+  {
+   "id": "P98121",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하루가 반짝반짝해졌어."
+  },
+  {
+   "id": "P98122",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너는 내 취향 다 알아. 무서울 정도로."
+  },
+  {
+   "id": "P98123",
+   "stage": "고",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일} 점심은 이 맛이지!"
+  },
+  {
+   "id": "P98124",
+   "stage": "고",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 먹으니까 더 맛있다."
+  },
+  {
+   "id": "P98125",
+   "stage": "고",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}엔 역시 따뜻한 국물이야."
+  },
+  {
+   "id": "P98126",
+   "stage": "고",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{시간대}에 먹는 밥이 제일 맛있어."
+  },
+  {
+   "id": "P98127",
+   "stage": "고",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "한 입만 바꿔 먹자. 공평하게."
+  },
+  {
+   "id": "P98128",
+   "stage": "고",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "배부르다… 근데 디저트 배는 따로 있어."
+  },
+  {
+   "id": "P98129",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일}엔 왜 이렇게 집중이 안 될까. 같이 하자."
+  },
+  {
+   "id": "P98130",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "중간고사 끝내고 탕후루 먹자. 약속!"
+  },
+  {
+   "id": "P98131",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너 옆에서 하면 집중이 두 배야."
+  },
+  {
+   "id": "P98132",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 {시간대}까지만 하고 쉬자. 진짜로."
+  },
+  {
+   "id": "P98133",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "형광펜 세 개 다 썼어. 공부한 티 나지?"
+  },
+  {
+   "id": "P98134",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "모르는 거 하나만 물어봐도 돼? …사실 다섯 개."
+  },
+  {
+   "id": "P98135",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}이라 그런지 졸려. 손가락으로 쿡 찔러 줘."
+  },
+  {
+   "id": "P98136",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 하니까 시간이 빨리 간다."
+  },
+  {
+   "id": "P98137",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 계획표 다 지웠어! 다 했다는 뜻이야."
+  },
+  {
+   "id": "P98138",
+   "stage": "대",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쉬는 시간 10분! 딱 10분만."
+  },
+  {
+   "id": "P98139",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워! 진짜 소중히 쓸게."
+  },
+  {
+   "id": "P98140",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 내 책상 제일 잘 보이는 데 둘래."
+  },
+  {
+   "id": "P98141",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어떻게 알았어? 갖고 싶던 거야!"
+  },
+  {
+   "id": "P98142",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}에 딱 맞는 선물이다."
+  },
+  {
+   "id": "P98143",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "포장지도 안 버릴 거야. 예쁘잖아."
+  },
+  {
+   "id": "P98144",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "받기만 해서 미안해. 다음엔 내가 줄게."
+  },
+  {
+   "id": "P98145",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하루가 반짝반짝해졌어."
+  },
+  {
+   "id": "P98146",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너는 내 취향 다 알아. 무서울 정도로."
+  },
+  {
+   "id": "P98147",
+   "stage": "대",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일} 점심은 이 맛이지!"
+  },
+  {
+   "id": "P98148",
+   "stage": "대",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 먹으니까 더 맛있다."
+  },
+  {
+   "id": "P98149",
+   "stage": "대",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}엔 역시 따뜻한 국물이야."
+  },
+  {
+   "id": "P98150",
+   "stage": "대",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{시간대}에 먹는 밥이 제일 맛있어."
+  },
+  {
+   "id": "P98151",
+   "stage": "대",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "한 입만 바꿔 먹자. 공평하게."
+  },
+  {
+   "id": "P98152",
+   "stage": "대",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "배부르다… 근데 디저트 배는 따로 있어."
+  },
+  {
+   "id": "P98153",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일}엔 왜 이렇게 집중이 안 될까. 같이 하자."
+  },
+  {
+   "id": "P98154",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "보고서 끝내고 탕후루 먹자. 약속!"
+  },
+  {
+   "id": "P98155",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너 옆에서 하면 집중이 두 배야."
+  },
+  {
+   "id": "P98156",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 {시간대}까지만 하고 쉬자. 진짜로."
+  },
+  {
+   "id": "P98157",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "형광펜 세 개 다 썼어. 공부한 티 나지?"
+  },
+  {
+   "id": "P98158",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "모르는 거 하나만 물어봐도 돼? …사실 다섯 개."
+  },
+  {
+   "id": "P98159",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}이라 그런지 졸려. 손가락으로 쿡 찔러 줘."
+  },
+  {
+   "id": "P98160",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 하니까 시간이 빨리 간다."
+  },
+  {
+   "id": "P98161",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 계획표 다 지웠어! 다 했다는 뜻이야."
+  },
+  {
+   "id": "P98162",
+   "stage": "졸",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쉬는 시간 10분! 딱 10분만."
+  },
+  {
+   "id": "P98163",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "고마워! 진짜 소중히 쓸게."
+  },
+  {
+   "id": "P98164",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이거 내 책상 제일 잘 보이는 데 둘래."
+  },
+  {
+   "id": "P98165",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "어떻게 알았어? 갖고 싶던 거야!"
+  },
+  {
+   "id": "P98166",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}에 딱 맞는 선물이다."
+  },
+  {
+   "id": "P98167",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "포장지도 안 버릴 거야. 예쁘잖아."
+  },
+  {
+   "id": "P98168",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "받기만 해서 미안해. 다음엔 내가 줄게."
+  },
+  {
+   "id": "P98169",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하루가 반짝반짝해졌어."
+  },
+  {
+   "id": "P98170",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너는 내 취향 다 알아. 무서울 정도로."
+  },
+  {
+   "id": "P98171",
+   "stage": "졸",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{요일} 점심은 이 맛이지!"
+  },
+  {
+   "id": "P98172",
+   "stage": "졸",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "같이 먹으니까 더 맛있다."
+  },
+  {
+   "id": "P98173",
+   "stage": "졸",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{계절}엔 역시 따뜻한 국물이야."
+  },
+  {
+   "id": "P98174",
+   "stage": "졸",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "{시간대}에 먹는 밥이 제일 맛있어."
+  },
+  {
+   "id": "P98175",
+   "stage": "졸",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "한 입만 바꿔 먹자. 공평하게."
+  },
+  {
+   "id": "P98176",
+   "stage": "졸",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "배부르다… 근데 디저트 배는 따로 있어."
   }
  ],
  "events": [
@@ -8618,8 +11658,8 @@
    "unlock": "성적≥60",
    "inspired": "8화 기숙사에서 별 쪽지 '목표'에 줄 긋기(원작 모티프; 메모 문구는 소설)",
    "script": [
-    "(기숙사 밤. 스탠드 불빛 아래 예전에 접어 둔 별 쪽지를 펼친다)",
-    "쌍즈: …이 줄, 이제 그을래. 혼자 보는 거니까 상관없잖아.",
+    "(기숙사 밤. 옆방에서 건너온 너와 둘이, 스탠드 불빛 아래 예전에 접어 둔 별 쪽지를 펼친다)",
+    "쌍즈: …이 줄, 이제 그을래. 너니까 보여 주는 거야. 1번 '이허대 합격'. 우리 둘 다 해냈잖아!",
     "쌍즈: 보, 보지 마!! 꿈 목록이야. 1번은 이미 이뤘고… 2번은… 아무튼 아무것도 아니야!!",
     "[보상] 희귀 대사 해금"
    ]
@@ -9250,7 +12290,7 @@
    "id": "M050",
    "stage": "대",
    "expr": "E01",
-   "text": "좋은 아침! 너네 학교는 오늘 몇 교시부터야?"
+   "text": "좋은 아침! 너 오늘 몇 교시부터야? 같이 나가자, 옆방 친구!"
   },
   {
    "id": "M051",
@@ -9575,6 +12615,96 @@
      2
     ]
    }
+  },
+  {
+   "id": "EPM01",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "좋은 아침, {call}! 자쉬 오빠가 아침 차려 놨어. 같이 먹자."
+  },
+  {
+   "id": "EPM02",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "굿모닝~ 신혼집 창문으로 햇살 들어온다."
+  },
+  {
+   "id": "EPM03",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "일어났어? 오늘 우리 집 놀러 와!"
+  },
+  {
+   "id": "EPM04",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "아침부터 자쉬 오빠랑 누가 커피 내릴지 가위바위보 했어. 이겼다!"
+  },
+  {
+   "id": "EPM05",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "{call}, 잘 잤어? 나는 자쉬 오빠 코골이에 깼어ㅋㅋ"
+  },
+  {
+   "id": "EPM06",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "오늘 출근길에 바닷가 들렀어. 너한테 사진 보낼게."
+  },
+  {
+   "id": "EPM07",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "좋은 아침! 엄마가 아침부터 반찬 챙겨 먹으래."
+  },
+  {
+   "id": "EPM08",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "주말 아침이다! 늦잠 자고 브런치 먹자."
+  },
+  {
+   "id": "EPM09",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "아침 계란 라면 완성. 냄새 맡고 오면 한 그릇 줄게."
+  },
+  {
+   "id": "EPM10",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "{call}! 오늘 날씨 좋다. 우리 산책 가자."
+  },
+  {
+   "id": "EPM11",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "자쉬 오빠 출근 배웅하고 왔어. 이제 너랑 수다 떨 시간."
+  },
+  {
+   "id": "EPM12",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "일어나자마자 결혼 앨범 또 봤어. 아침부터 행복해."
+  },
+  {
+   "id": "EPM13",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "좋은 아침~ 화분에 물 줬어. 하나도 안 죽었어!"
+  },
+  {
+   "id": "EPM14",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "아침부터 쌍옌 오빠가 전화했어. 반찬 얻으러 온대."
+  },
+  {
+   "id": "EPM15",
+   "stage": "에필",
+   "expr": "E01",
+   "text": "오늘도 좋은 하루! 저녁은 우리 집에서 먹자."
   }
  ],
  "system": {

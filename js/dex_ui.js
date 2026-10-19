@@ -9,6 +9,7 @@ import { ORDER as EV_ORDER } from './events.js';
 import { drawRoomImg, drawSheetFrame, animInfo, hasSheet, cellOf, hasRoomImg, ensureSheet, thumbOf, onSheet } from './sprite.js';
 import { catchIconSrc, iconHtml } from './catch_ui.js';
 import * as QZ from './quiz.js';
+import * as CHR from './chronicle.js';
 
 const $ = (id) => document.getElementById(id);
 let WARDROBE = [], TASTE_META = { cell: 64, icons: {} }, TASTE_IMG = null, CATALOG = null;
@@ -89,7 +90,7 @@ function paintOutfit(w, state) {
 }
 
 // ── 화면 ──
-const TABS = [['cards', '📸', '카드'], ['outfits', '👗', '옷장'], ['items', '🎁', '수집'], ['events', '📔', '이벤트'], ['lines', '💬', '대사'], ['growth', '📈', '성장']];
+const TABS = [['cards', '📸', '카드'], ['outfits', '👗', '옷장'], ['items', '🎁', '수집'], ['events', '📔', '이벤트'], ['story', '📜', '연대기'], ['lines', '💬', '대사'], ['growth', '📈', '성장']];
 export const setDexState = (state) => { S = state; };
 export function openDex(state, tab) {
   S = state; if (tab) TAB = tab;
@@ -105,7 +106,7 @@ function renderDex() {
   const pk = { cards: p.cards, outfits: p.outfits, items: p.items, events: p.events, lines: p.lines };
   $('dexTabs').innerHTML = TABS.map(([id, ic, nm]) => `<button class="dtab${id === TAB ? ' on' : ''}" data-tab="${id}"><i>${ic}</i><b>${nm}</b>${pk[id] ? `<small>${pk[id].pct}%</small>` : `<small>D+${dayNumber(S)}</small>`}</button>`).join('');
   const body = $('dexBody'); body.scrollTop = 0;
-  body.innerHTML = ({ cards: tabCards, outfits: tabOutfits, items: tabItems, events: tabEvents, lines: tabLines, growth: tabGrowth })[TAB](p);
+  body.innerHTML = ({ cards: tabCards, outfits: tabOutfits, items: tabItems, events: tabEvents, story: tabStory, lines: tabLines, growth: tabGrowth })[TAB](p);
 }
 const bar = (pc) => `<span class="pbar"><span style="width:${Math.max(0, Math.min(100, pc))}%"></span></span>`;
 const head = (t, have, total, pc, note = '') => `<div class="dhead"><b>${t}</b><span>${have}/${total} · ${pc}%</span>${bar(pc)}${note ? `<p class="dnote">${note}</p>` : ''}</div>`;
@@ -178,6 +179,22 @@ function tabItems(p) {
 let EXTRA = { reactions: () => null };
 export function setDexExtra(o) { EXTRA = { ...EXTRA, ...o }; }
 const seenEv = () => ({ ...((S.archive || {}).events || {}), ...(S.events || {}) });   // 2회차: 이전 회차에서 본 이벤트도 다시 보기 가능
+/** v0.9.7 연대기: 본 이야기를 원작 순서대로(제 N화 · 시기 · 한 줄 요약), 다음 화는 잠김 */
+function tabStory() {
+  const titleOf = (id) => (getEvents().find((e) => e.id === id) || {}).title || id;
+  const rows = CHR.timeline(S, EV_ORDER, titleOf);
+  const pe = CHR.chronicleData().preEnding || [], pes = S.preEnd || {};
+  const peRow = (S.events || {}).E6 ? `<li class="tl pe"><b>🌙 결혼 전 이야기</b> <small>${pe.filter((x) => pes[x.id]).length}/${pe.length}</small><p>${pe.map((x) => (pes[x.id] ? x.title : '???')).join(' · ')}</p></li>` : '';
+  const epi = S.epilogue ? '<li class="tl seen"><b>🏠 에필로그</b><p>결혼 뒤 신혼 이야기가 이어지고 있어요.</p></li>' : '';
+  return `<div class="dhead"><b>📜 이야기 연대기</b><small>원작 순서 · 탭하면 다시 보기</small></div><ol class="timeline">${rows.map((r) => {
+    if (r.id === 'E8' && peRow) return peRow + row(r);
+    return row(r);
+  }).join('')}${epi}</ol>`;
+  function row(r) {
+    return r.seen ? `<li class="tl seen" data-replay="${r.id}"><b>제 ${r.ch}화 · ${r.title}</b> <small>${r.period}</small><p>${r.summary}</p></li>`
+      : `<li class="tl ${r.next ? 'next' : 'locked'}"><b>제 ${r.ch}화 · 🔒 ${r.title}</b> <small>${r.period}</small>${r.summary ? `<p>${r.summary}</p>` : ''}</li>`;
+  }
+}
 function tabEvents(p) {
   const evs = EV_ORDER.map((id) => getEvents().find((e) => e.id === id)).filter(Boolean);
   const SEEN = seenEv();

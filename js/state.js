@@ -70,6 +70,8 @@ export function migrate(raw) {
   // Stage 5 이전 저장: 이미 날짜로 올라간 단계는 그대로 인정(강등 없음)
   if (!hadExam) s.exam.unlocked = dayStageIndex(s, gameNow(s));
   s.asleep = false;   // 예전 '실제 시간 동안 잠' 상태 해제(이제 잠은 바로 끝남)
+  // v0.9.6 엔딩 뒤: 이미 엔딩(E8)까지 본 예전 저장 → 에필로그(결혼 후) 모드. 2회차는 events 가 비어 있어 해당 없음
+  if (s.epilogue === undefined) s.epilogue = !!(s.ending && s.events && s.events.E8);
   return s;
 }
 
@@ -182,7 +184,11 @@ export function stageFromDay(s, k) {
   return st.fromDay - (prev && s && s.goals && s.goals.done && s.goals.done[prev.id] ? 1 : 0);
 }
 /** 현재 단계 = min(날짜 단계, 시험으로 열린 단계). Stage 5부터 다음 단계는 성장 시험 통과가 필요 */
+/** v0.9.6 대사 단계: 에필로그면 '에필'(결혼 후 전용 줄만), 아니면 단계의 dlg */
+export const dlgOf = (s, now = gnow()) => (s && s.epilogue ? '에필' : stageOf(s, now).dlg);
+export const isEpilogue = (s) => !!(s && s.epilogue);
 export function stageOf(s, now = gnow()) {
+  if (s && s.epilogue) return STAGES[STAGES.length - 1];   // 에필로그 = 졸업 후 고정
   const i = dayStageIndex(s, now);
   const u = s.exam && typeof s.exam.unlocked === 'number' ? s.exam.unlocked : STAGES.length - 1;
   return STAGES[Math.max(0, Math.min(i, u))];
