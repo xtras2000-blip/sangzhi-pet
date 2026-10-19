@@ -162,7 +162,7 @@ export async function playSlot(slot, opts = {}) {
   if (!t) { note(`${slot}: 곡 없음 → 무음`); stopCur(fout); return; }
   if (M.cur && M.cur.t.id === t.id) return;   // 같은 곡(예: 낮→밤 같은 곡)은 이어서
   bus();
-  const p = await makePlayer(t); if (!p) { note(`${slot}: ${t.base} 재생 실패`); return; }
+  const p = await makePlayer(t); if (!p) { note(`${slot}: ${t.base} 재생 실패 → 이전 곡 페이드 아웃`); if (my === M.seq) stopCur(fout); return; }   // 실패해도 타이틀 곡이 남지 않게
   if (my !== M.seq) { p.stop(0); return; }
   stopCur(fout);
   p.start(fin); M.cur = p; note(`${slot}: ${t.base} (${p.mode})`);

@@ -144,6 +144,8 @@ export async function playEnding(opts) {
   cancelAnimationFrame(RUN.raf); RUN.timers.forEach(clearTimeout); RUN.timers = [];
   imgs.forEach(unloadImg);
 
+  // ── 1.5) 액자 이야기 엔딩(F1 → F2 → V2, 그 뒤 F3 위로 크레딧) ──
+  if (opts.beforeCredits) { RUN.paused = true; await opts.beforeCredits(); if (!RUN) return; RUN.paused = false; }
   // ── 2) 크레딧 ──
   RUN.phase = 'credits'; opts.audio?.phase?.('credits'); RUN.paused = false; root.classList.remove('strip'); root.classList.add('credits');
   const statHtml = (D.statLines || []).map((l) => `<li>${esc(fill(l, stats))}</li>`).join('');

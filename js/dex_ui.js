@@ -202,7 +202,7 @@ function tabGrowth() {
   const fmt = (t) => { if (!t) return ''; const d = new Date(t); return `${d.getMonth() + 1}/${d.getDate()}`; };
   const ST = { done: '✅ 지남', now: '⭐ 지금', exam: '📝 시험 볼 수 있어요', next: '⏳ 다음', later: '🔒' };
   const ex = S.exam || {}, last = (ex.history || []).slice(-1)[0];
-  const examLine = QZ.examDue(S) ? '📝 지금 성장 시험을 볼 수 있어요!' : ex.nextAt && ex.nextAt > Date.now() ? `📝 재도전: 내일부터 (${fmt(ex.nextAt)})` : tl.find((x) => x.state === 'next') ? `⏳ 다음 시험: D+${tl.find((x) => x.state === 'next').fromDay}부터` : CL.reached(S) >= 3 ? '🎓 모든 시험 통과!' : '';
+  const examLine = QZ.examDue(S) ? '📝 지금 성장 시험을 볼 수 있어요!' : ex.nextDay && (S.gt.day || 0) < ex.nextDay ? `📝 재도전: 내일(D+${ex.nextDay})부터` : ex.nextAt && ex.nextAt > Date.now() ? `📝 재도전: 내일부터 (${fmt(ex.nextAt)})` : tl.find((x) => x.state === 'next') ? `⏳ 다음 시험: D+${tl.find((x) => x.state === 'next').fromDay}부터` : CL.reached(S) >= 3 ? '🎓 모든 시험 통과!' : '';
   const end = CL.endingChecklist(S), ended = !!(S.events || {}).E8;
   return `<div class="dhead"><b>📈 성장 기록</b><span>D+${day} · ${stageOf(S).name}</span><p class="dnote">처음 만난 날 ${fmt(S.createdAt)} · 밥 ${S.stats_meta.feeds} · 대화 ${S.stats_meta.talks} · 공부 ${S.stats_meta.studies} · 놀기 ${S.stats_meta.plays} · 선물 ${S.stats_meta.gifts}</p></div>` +
     `<ol class="tline">${tl.map((x) => `<li class="${x.state}"><b>${x.name}</b><span>D+${x.fromDay}${x.toDay ? `~${x.toDay}` : '~'}</span><small>${ST[x.state]}${x.passedAt && (x.state === 'done' || x.state === 'now') ? ` · ${fmt(x.passedAt)}부터` : ''}</small></li>`).join('')}</ol>` +

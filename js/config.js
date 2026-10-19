@@ -1,7 +1,7 @@
 // 게임 상수 — PLAN.md v0.2 §5 기준
 export const SCHEMA_VERSION = 1;
 export const SAVE_KEY = 'sangzhi-pet.save';
-export const GAME_VERSION = '0.9.4';
+export const GAME_VERSION = '0.9.5';
 
 export const STATS = [
   { key: 'hunger', label: '배고픔', icon: '🍚', color: '#FFB36B', hint: '높을수록 배불러요' },

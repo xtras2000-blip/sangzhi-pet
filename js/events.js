@@ -36,9 +36,9 @@ export const EVENT_RULES = {
   // 생일(4/22) 당일, 아니면 E6 뒤 대학 D+13부터. ORDER에서 E8보다 앞이라 엔딩 전에 꼭 나옴
   E7: (s, now) => { const d = new Date(now); return UG(s, now) && ((d.getMonth() === 3 && d.getDate() === 22) || (seen(s, 'E6') && dayNumber(s, now) >= UNI_FROM + 5)); },
   E11: (s, now) => UG(s, now) && seen(s, 'E6') && flag(s, 'noodle_postE6'),
-  E13: (s, now) => (st(s, now) === 'grad' || (st(s, now) === 'uni' && dayNumber(s, now) >= GRAD_FROM - 1)) && seen(s, 'E11') && s.place === 'beach' && isDay(now),   // 예전엔 P02(고등학생 때만 얻는 카드)도 필요 → 놓치면 영영 불가라 뺌
+  E13: (s, now) => (st(s, now) === 'grad' || (st(s, now) === 'uni' && dayNumber(s, now) >= GRAD_FROM - 1)) && seen(s, 'E11') && isDay(now),   // v0.9.5: 'beach에 먼저 있어야' 조건 제거 — 장소 해금(✨ 새 장소)이 대신 안내(숨은 이중 잠금 버그)   // 예전엔 P02(고등학생 때만 얻는 카드)도 필요 → 놓치면 영영 불가라 뺌
   // Stage 7: 졸업 후 + E6(고백)을 본 뒤 + 설렘 80 + 바닷가. 시간대 제한 없음
-  E8: (s, now) => st(s, now) === 'grad' && seen(s, 'E6') && s.stats.crush >= 80 && s.place === 'beach',
+  E8: (s, now) => st(s, now) === 'grad' && seen(s, 'E6') && s.stats.crush >= 80,   // 바닷가 조건은 장소 해금(밤바다 산책로)으로
 };
 /** 원작 회차 순서 (1→2→4→7~8→8→8→10→11→12→15→15→17→24→25화) */
 export const ORDER = ['E0', 'E1', 'E2', 'E4', 'E3', 'E12', 'E9', 'E5', 'E10', 'E6', 'E7', 'E11', 'E13', 'E8'];

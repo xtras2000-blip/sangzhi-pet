@@ -1,7 +1,7 @@
 {
  "character": "쌍즈(桑稚)",
  "note": "팬메이드 대사. 일반 대사는 모두 오리지널. action '회상' 줄만 QUOTES.md Part 1의 짧은 인용(작성자 번역)을 담고 quote 번호로 출처를 화면에 표기. stage: 중/고/대/졸/any",
- "count": 754,
+ "count": 759,
  "lines": [
   {
    "id": "L001",
@@ -8428,6 +8428,61 @@
    "text": "바닷가 도착! 신발 벗고 모래 밟을래.",
    "place": "beach",
    "pack": "x094"
+  },
+  {
+   "id": "L755",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "너 처음 이사 온 날, 이상하게 하나도 낯설지 않았어. 원래 알던 사람처럼.",
+   "tag": "star"
+  },
+  {
+   "id": "L756",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "어젯밤에 별똥별 봤어! 근데 왜 네 생각이 났지? 이상해.",
+   "tag": "star"
+  },
+  {
+   "id": "L757",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "너랑 있으면 가끔 반짝반짝해 보여. …눈이 피곤한가?",
+   "tag": "star"
+  },
+  {
+   "id": "L758",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "종이별 접다가 문득 생각했어. 너는 꼭 별 같아. 갑자기 나타나서 계속 곁에 있잖아.",
+   "tag": "star"
+  },
+  {
+   "id": "L759",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "나중에 할머니가 돼도 너는 옆에 있을 것 같아. 그런 예감이 들어.",
+   "tag": "star"
   }
  ],
  "events": [

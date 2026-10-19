@@ -92,7 +92,9 @@ export const isLastStage = (s) => s.exam.unlocked >= STAGES.length - 1;
 /** 날짜는 찼는데 아직 시험을 안 통과한 상태 + 재도전 시각이 지났는지 */
 export function examDue(s, now = gnow()) {
   if (isLastStage(s)) return false;
-  return dayStageIndex(s, now) > s.exam.unlocked && now >= (s.exam.nextAt || 0);
+  if (!(dayStageIndex(s, now) > s.exam.unlocked)) return false;
+  if (s.exam.nextDay) return ((s.gt && s.gt.day) || 0) >= s.exam.nextDay;   // v0.9.5: 재도전은 '게임 속 다음 날'(실제 하루 기다리던 잠김 버그)
+  return now >= (s.exam.nextAt || 0);
 }
 /** 현재(해금된) 단계의 ✅ 문항 3개. 그 단계 문항 우선, 모자라면 이전 단계 ✅ + 작품 상식. 직전 시험에 낸 건 가능하면 피함 */
 export function pickExam(s, rnd = Math.random) {
@@ -127,7 +129,7 @@ export function finishExam(s, nCorrect, now = gnow()) {
   log(s, { type: 'exam', stage: from.id, n: nCorrect, ok: pass });
   if (pass) {
     s.exam.unlocked = Math.min(STAGES.length - 1, s.exam.unlocked + 1);
-    s.exam.fails = 0; s.exam.nextAt = 0; s.exam.asked = [];
+    s.exam.fails = 0; s.exam.nextAt = 0; s.exam.nextDay = 0; s.exam.asked = [];
     const to = STAGES[s.exam.unlocked];
     const card = `card_${to.id}`;
     if (!s.collection.cards.includes(card)) s.collection.cards.push(card);
@@ -135,7 +137,7 @@ export function finishExam(s, nCorrect, now = gnow()) {
     return { pass, to, card };
   }
   s.exam.fails++;
-  const d = new Date(now); d.setHours(24, 0, 0, 0); s.exam.nextAt = d.getTime();
+  s.exam.nextAt = 0; s.exam.nextDay = ((s.gt && s.gt.day) || 1) + 1;
   add(s, 'mood', 2);   // 벌점 없음. 같이 공부해 줘서 고마움
   return { pass, to: from };
 }

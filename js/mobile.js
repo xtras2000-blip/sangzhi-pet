@@ -69,6 +69,15 @@ export function initMobile({ save, toast, closeTop }) {
   }, 1500);
 
   // 8) 서비스워커 (오프라인·홈 화면 앱). ?nosw=1 이면 해제
+  // 앱(또는 웹) 버전이 바뀌면 옛 서비스워커·캐시 정리 → 덮어 설치해도 옛 코드/데이터가 안 돎(저장은 그대로)
+  try {
+    const KV = 'sangzhi-pet.ver';
+    if (localStorage.getItem(KV) !== GAME_VERSION) {
+      localStorage.setItem(KV, GAME_VERSION);
+      if (typeof caches !== 'undefined') caches.keys().then((ks) => ks.forEach((k) => k !== 'sz-music' && caches.delete(k))).catch(() => {});
+      if (/SangzhiPersonal/.test(navigator.userAgent) && navigator.serviceWorker) navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister())).catch(() => {});
+    }
+  } catch {}
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
     if (new URLSearchParams(location.search).has('nosw')) navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
     else {
