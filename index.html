@@ -94,10 +94,10 @@
 
   <div class="tantrum" id="tantrum" hidden role="alert"><i id="ttIcon">🎒</i><p><b id="ttWant"></b><span id="ttLine"></span><small id="ttLock"></small></p><button id="ttGo">데려가기 ›</button></div>
   <nav class="actions" id="actions">
-    <button class="act" data-act="feed"><i>🍙</i><b>밥 주기</b></button>
-    <button class="act" data-act="play"><u class="cap" data-cap="play"></u><i>🎮</i><b>놀아주기</b></button>
+    <button class="act" data-act="feed"><i>🍙</i><b>같이 먹기</b></button>
+    <button class="act" data-act="play"><u class="cap" data-cap="play"></u><i>🎮</i><b>같이 놀기</b></button>
     <button class="act" data-act="study"><u class="cap" data-cap="study"></u><i>✏️</i><b>공부</b></button>
-    <button class="act" data-act="sleep"><i>🛏️</i><b id="sleepLabel">재우기</b></button>
+    <button class="act" data-act="sleep"><i>🛏️</i><b id="sleepLabel">잘 자 인사</b></button>
     <button class="act" data-act="talk"><u class="cap" data-cap="talk"></u><i>💬</i><b>대화</b></button>
     <button class="act" data-act="gift"><u class="cap" data-cap="gift"></u><i>🎁</i><b>선물</b></button>
   </nav>
@@ -129,7 +129,7 @@
   </div>
 </div>
 
-<!-- Stage 6: 놀아주기 메뉴 -->
+<!-- Stage 6: 같이 놀기 메뉴 -->
 <div class="sheet" id="playSheet" hidden>
   <div class="sheet-card">
     <h3>🎮 뭐 하고 놀까?</h3>
@@ -189,7 +189,7 @@
     <p class="small muted" id="musicNote"></p>
     <p class="small">저장은 이 기기 브라우저(localStorage)에만 돼요. 앱을 닫아도 시간은 흘러요(최대 48시간 반영).</p>
     <button class="ng-btn" id="btnNG" hidden>🔁 2회차 시작 <small>(도감·포토카드·반응 기록은 이어서)</small></button>
-    <button class="danger" id="btnReset">처음부터 다시 키우기</button>
+    <button class="danger" id="btnReset">처음부터 다시</button>
     <p class="small muted">팬메이드 · 비상업 · 전연령. 원작: 竹已 《偷偷藏不住》 / 드라마 《투투장부주》(2023). 캐릭터 그림은 오리지널 픽셀 디자인이에요.<br><span id="verLabel"></span><br>문제가 보이면 주소 끝에 <b>?debug=1</b> 을 붙여 열고 🐞 → 「피드백 복사」를 눌러 보내 주세요.</p>
     <button class="ghost" data-close>닫기</button>
   </div>

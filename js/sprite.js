@@ -145,6 +145,7 @@ export async function loadRooms(preload = []) {
   for (const [id, p] of Object.entries(PLACES)) for (const k of ['img', 'night', 'dusk']) {
     if (p[k] && (!have || have.has(p[k]))) ROOM_HAVE[`${id}|${k}`] = p[k];
   }
+  for (const [id, p] of Object.entries(PLACES)) if (p.fallback && !ROOM_HAVE[`${id}|img`]) for (const k of ['img', 'night', 'dusk']) { const f = ROOM_HAVE[`${p.fallback}|${k}`]; if (f) ROOM_HAVE[`${id}|${k}`] = f; else delete ROOM_HAVE[`${id}|${k}`]; }
   await Promise.all(preload.filter(Boolean).map(ensureRoom));
 }
 function loadRoomKey(key) {

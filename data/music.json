@@ -244,6 +244,12 @@
    "ost06",
    "ost06i",
    "bgm_first_snow_ending"
+  ],
+  "place:school@high:day": [
+   "bgm_school"
+  ],
+  "place:school@high:night": [
+   "bgm_school"
   ]
  },
  "gain": {

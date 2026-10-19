@@ -29,7 +29,7 @@ export const SYSTEM_LINES = {
   giftEnough: ['또 줘? 오늘은 벌써 많이 받았는데… 아껴 뒀다가 내일 줘. 헤헤.', '고마워! 근데 선물은 가끔 받아야 더 설레는 거야. 내일 또 줘!', '이거 다 받으면 내 서랍 터져! …내일 하나 더 줘.'],
   tooFull: ['배불러… 더 먹으면 굴러다닐 거야. 디저트 배는 따로 있지만!', '방금 먹었잖아! 이따가 줘.'],
   goodStreak: ['요즘 컨디션 최고야! 시험도 자신 있어. 헤헤.', '매일 챙겨 줘서 그런가, 몸이 가벼워! 고마워.'],
-  crushDaily: ['오늘은 심장이 너무 바빴어… 내일 또 설레게 해 줘.'],
+  crushDaily: ['오늘은 자쉬 오빠 얘기만 해서 심장이 너무 바빴어… 내일 또 들어 줘.'],
   crushStage: ['이 마음… 아직은 여기까지만. 조금 더 크면 알게 될 거야.'],
   hello: ['왔어? 헤헤.', '어, 왔다! 오늘은 뭐 할 거야?'],
 };
@@ -125,8 +125,11 @@ function weighted(items, wf) {
 const URGENT = new Set(['배고픔', '졸림', '샐짐']);
 const stageMatch = (l, st) => l.stage === 'any' || l.stage === st;
 
+/** v0.9.6 시간선: after = 그 이벤트를 본 뒤에만(지난 일은 추억으로), before = 그 이벤트 전에만(미래 일 언급 금지). ctx.events 없으면 after 줄은 안 나옴 */
+export const timeOk = (l, ctx) => !(l.after && !((ctx && ctx.events) || {})[l.after]) && !(l.before && ((ctx && ctx.events) || {})[l.before]);
 /** 줄 조건(cond): { mood:[min,max], crush:[..], grade:[..], energy:[..], hunger:[..], months:[..], minDay } — 스탯이 없으면 조건 줄은 안 나옴 */
 export function condOk(l, ctx) {
+  if (!timeOk(l, ctx)) return false;
   const c = l.cond; if (!c) return true;
   const st = ctx.stats; 
   for (const k of ['mood', 'crush', 'grade', 'energy', 'hunger']) if (c[k]) {
@@ -231,6 +234,7 @@ const SEASON = { winter: [12, 1, 2], spring: [3, 4, 5], summer: [6, 7, 8], autum
 export function nostalgiaCandidates(ctx) {
   return LINES.filter((l) => {
     if (l.action !== '회상' || l.stage !== ctx.stage) return false;   // 단계 정확히 일치 = 스포일러 방지
+    if (!timeOk(l, ctx)) return false;
     const t = l.trig || {};
     if (t.on && !t.on.includes(ctx.on)) return false;
     if (t.minCrush != null && (ctx.crush ?? 0) < t.minCrush) return false;
@@ -245,6 +249,7 @@ export function nostalgiaCandidates(ctx) {
 }
 /** 회상 발동: 조건 맞음 + NOSTALGIA_P 확률 + 하루 1번. 안 본 줄 우선. s = 게임 상태(daily.nost, seenLines) */
 export function pickNostalgia(ctx, s, force = false) {
+  if (s && !ctx.events) ctx = { ...ctx, events: s.events || {} };
   if (!s || (s.daily?.nost || 0) >= 1 && !force) return null;
   let c = nostalgiaCandidates(ctx).filter((l) => l.id !== lastId && !recent.includes(l.id));
   if (!c.length) return null;

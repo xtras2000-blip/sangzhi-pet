@@ -13,7 +13,7 @@ export const reached = (s) => (s.exam && typeof s.exam.unlocked === 'number' ? s
 // ── 카드 카탈로그 ──
 // 사진 구도: 기존 v5 스프라이트 프레임(stage, anim) + 장소 배경. 새 일러스트(스타일 C)는 아직 없음
 const EXAM_CARDS = [
-  { id: 'card_high', title: '고등학생이 됐어!', stage: 'high', anim: 'E01', place: 'school', rarity: '희귀' },
+  { id: 'card_high', title: '고등학생이 됐어!', stage: 'high', anim: 'E01', place: 'school@high', rarity: '희귀' },
   { id: 'card_uni', title: '이허대학 합격!', stage: 'uni', anim: 'E15', place: 'campus', rarity: '희귀' },
   { id: 'card_grad', title: '졸업 축하해', stage: 'grad', anim: 'E11', place: 'apartment', rarity: '희귀' },
 ];
@@ -41,7 +41,7 @@ export const PHOTOCARDS = [
 export const STICKERS = ['strawberry', 'tanghulu', 'lollipop', 'jelly', 'fruit_tart', 'paper_star', 'cream_cake', 'rice', 'noodle'];
 const STICKER_NAME = { strawberry: '딸기', tanghulu: '딸기 탕후루', lollipop: '막대사탕', jelly: '젤리', fruit_tart: '과일 타르트', paper_star: '종이별', cream_cake: '생크림 케이크', rice: '집밥', noodle: '계란 라면' };
 export const PHOTO_EXPR = { E01: '웃음', E02: '수줍음', E07: '공부 중', E15: '감동', E19: '새빨개짐' };
-const STAGE_PLACE = { mid: 'home_nanwu', high: 'school', uni: 'campus', grad: 'apartment' };
+const STAGE_PLACE = { mid: 'home_nanwu', high: 'school@high', uni: 'campus', grad: 'apartment' };
 const STAGE_NAME = Object.fromEntries(STAGES.map((x) => [x.id, x.name]));
 
 /** 전체 카드 목록. kind: exam | event | line | sticker | photo | legend */
@@ -129,7 +129,7 @@ export const OUTFIT_RULES = {
   W17: { test: R('grad'), text: '졸업 후가 되면' },
   W31: { test: DAYS('grad', 18), text: '졸업 후 · D+18' },
   W04: { test: C('high', 30), text: '고등학생 · 설렘 30' },
-  W06: { test: META('high', 'plays', 10), text: '고등학생 · 놀아주기 10번' },
+  W06: { test: META('high', 'plays', 10), text: '고등학생 · 같이 놀기 10번' },
   W08: { test: C('high', 45), text: '고등학생 · 설렘 45' },
   W07: { test: EV('E4'), text: '이벤트 「혼자 떠난 비행기」' },
   W09: { test: C('uni', 50), text: '대학생 · 설렘 50' },

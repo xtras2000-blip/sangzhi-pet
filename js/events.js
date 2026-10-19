@@ -86,7 +86,7 @@ export function parseScript(ev) {
     if ((m = raw.match(/^\[선택\]\s*(.+)$/))) return { kind: 'choice', options: m[1].split('/').map((x) => x.trim()) };
     if ((m = raw.match(/^\[보상\]\s*(.+)$/))) return { kind: 'reward', text: m[1] };
     if ((m = raw.match(/^\[엔딩\]\s*(.+)$/))) return { kind: 'ending', text: m[1] };
-    if ((m = raw.match(/^쌍즈:\s*(.+)$/))) return { kind: 'say', text: m[1] };
+    if ((m = raw.match(/^쌍즈(?:→([^:]+))?:\s*(.+)$/))) return m[1] ? { kind: 'say', text: m[2], to: m[1] } : { kind: 'say', text: m[2] };   // v0.9.6: '쌍즈→자쉬 오빠에게:' = 받는 사람 표시
     return { kind: 'narr', text: raw.replace(/^\((.*)\)$/, '$1') };
   });
 }

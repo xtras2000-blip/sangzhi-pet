@@ -1,7 +1,7 @@
 // 게임 상수 — PLAN.md v0.2 §5 기준
 export const SCHEMA_VERSION = 1;
 export const SAVE_KEY = 'sangzhi-pet.save';
-export const GAME_VERSION = '0.9.5';
+export const GAME_VERSION = '0.9.6';
 
 export const STATS = [
   { key: 'hunger', label: '배고픔', icon: '🍚', color: '#FFB36B', hint: '높을수록 배불러요' },
@@ -24,6 +24,10 @@ export const MAX_OFFLINE_H = 48;
 export const LOW = { hunger: 30, mood: 30, energy: 20 };
 
 // 성장 단계 (접속 일수 기준. 성장 시험 게이트는 Stage 3에서 추가)
+// v0.9.6 성장 시험 이야기 잠금: 이 단계의 원작 이벤트를 다 봐야 다음 단계 시험이 열림(수치가 먼저 차도 기다림)
+// 원작 순서: 중(1~3화 첫 만남·가짜 보호자) → 고(종이별·혼자 떠난 비행기) → 대(재회·꿈 목록·병원·첫눈·중앙 에어컨·고백)
+// E7·E11(대·졸 공통 조건)·E13·E8은 졸업 후에도 계속 나오므로 잠금에 넣지 않음(라면 플래그 등으로 영영 잠기는 일 방지)
+export const STORY_GATE = { mid: ['E0', 'E1'], high: ['E2', 'E4'], uni: ['E12', 'E3', 'E9', 'E5', 'E10', 'E6'] };
 export const STAGES = [
   { id: 'mid',  name: '중학생', fromDay: 1,  dlg: '중' },
   { id: 'high', name: '고등학생', fromDay: 4, dlg: '고' },
@@ -71,14 +75,23 @@ export const GIFTS = [
 export const PLACES = {
   home_nanwu: { name: '쌍즈네 집', icon: '🏠', city: '남우', canon: 'L02/L03', img: 'bedroom_day.png', night: 'bedroom_night.png', fx: 0.46, home: true },
   school:     { name: '욱일중학', icon: '🏫', city: '남우', canon: 'L01', img: 'school_day.png', dusk: 'school_dusk.png', fx: 0.5 },
+  // v0.9.6 학교는 단계를 따라감: 고등학생 = 욱일중학 고등부(원작 旭日中学 高中部). 저장 id 는 그대로 'school', 화면용 id 만 'school@high'
+  // 그림 school_high_day.png 가 없으면 중학교 그림으로(fallback). 대학생·졸업 후엔 학교 대신 이허대 캠퍼스(campus)
+  'school@high': { name: '욱일고등학교', icon: '🏫', city: '남우', canon: 'L01(旭日中学 高中部)', img: 'school_high_day.png', dusk: 'school_high_dusk.png', fx: 0.5, fallback: 'school', view: true },
   dessert:    { name: '디저트 가게', icon: '🍰', city: '남우', canon: 'L05/L21', img: 'dessert_day.png', night: 'dessert_night.png', fx: 0.5 },
   dorm:       { name: '기숙사', icon: '🏠', city: '이허', canon: 'L09', img: 'dorm_day.png', night: 'dorm_night.png', fx: 0.34, home: true },
   apartment:  { name: '우리 집', icon: '🏠', city: '이허', canon: '—', img: 'apartment_day.png', night: 'apartment_night.png', fx: 0.36, home: true },
   yihe_street:{ name: '이허 항구 거리', icon: '⛵', city: '이허', canon: 'L12(沙坡尾)', img: 'yihe_street_day.png', night: 'yihe_street_night.png', fx: 0.56, outdoor: true },
   campus:     { name: '이허대학교', icon: '🎓', city: '이허', canon: 'L09(厦门工学院)', img: 'campus_day.png', night: 'campus_night.png', fx: 0.34, outdoor: true },
+  // v0.9.6 이벤트 장소 배경(메뉴엔 안 나옴, 이벤트 중 방 화면 뒤 배경). incoming_illust/ev_*.png → tools/build_room.py
+  ev_school_office: { name: '욱일중학 교무실', icon: '📋', city: '남우', canon: 'E1', img: 'ev_school_office_day.png', fx: 0.5, ev: true },
+  ev_nanwu_airport: { name: '남우 공항', icon: '✈️', city: '남우', canon: 'E4', img: 'ev_nanwu_airport_day.png', fx: 0.5, ev: true },
   beach:      { name: '바닷가', icon: '🌊', city: '이허', canon: 'L20(同安彩虹沙滩)', img: 'beach_day.png', dusk: 'beach_dusk.png', fx: 0.42, outdoor: true },
 };
 // 단계별 갈 수 있는 곳 (첫 번째 = 집)
+/** 화면용 장소 id(이름·배경·음악 슬롯): 저장 id + 단계 → 'school@high' 등 */
+export const viewPlace = (id, st) => (id && PLACES[`${id}@${st}`] ? `${id}@${st}` : id);
+export const placeInfo = (id, st) => PLACES[viewPlace(id, st)] || PLACES[id] || {};
 export const STAGE_PLACES = {
   mid:  ['home_nanwu', 'school', 'dessert'],
   high: ['home_nanwu', 'school', 'dessert'],

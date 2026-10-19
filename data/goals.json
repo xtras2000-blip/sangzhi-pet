@@ -2,36 +2,172 @@
  "note": "단계별 목표판. kind: count(단계 카운터 key ≥ n) | event(id 봄) | flag(포토카드 플래그) | stat(스탯 key ≥ n) | streak(공부 연속 ≥ n) | care(좋은 날 연속 ≥ n). 다 깨면 다음 단계 성장 시험이 하루 일찍 열려요(졸업 후는 마지막이라 보상 대사만). hints: 다음 이벤트 실루엣 밑에 나오는 힌트. 원작 근거 없는 게임 설계",
  "stages": {
   "mid": [
-   { "id": "mid_tanghulu", "text": "딸기 탕후루 2번 먹이기", "kind": "count", "key": "tanghulu", "n": 2, "icon": "🍓" },
-   { "id": "mid_study", "text": "숙제 같이 하기(공부) 3번", "kind": "count", "key": "study", "n": 3, "icon": "✏️" },
-   { "id": "mid_moment", "text": "설렘 순간에서 좋은 대답 2번", "kind": "count", "key": "momentGood", "n": 2, "icon": "💓" },
-   { "id": "mid_E1", "text": "이벤트 「꼬맹이의 가짜 보호자」 보기", "kind": "event", "id2": "E1", "icon": "📔" }
+   {
+    "id": "mid_tanghulu",
+    "text": "같이 딸기 탕후루 먹기 2번",
+    "kind": "count",
+    "key": "tanghulu",
+    "n": 2,
+    "icon": "🍓"
+   },
+   {
+    "id": "mid_study",
+    "text": "숙제 같이 하기(공부) 3번",
+    "kind": "count",
+    "key": "study",
+    "n": 3,
+    "icon": "✏️"
+   },
+   {
+    "id": "mid_moment",
+    "text": "설렘 순간에서 좋은 대답 2번",
+    "kind": "count",
+    "key": "momentGood",
+    "n": 2,
+    "icon": "💓"
+   },
+   {
+    "id": "mid_E1",
+    "text": "이벤트 「꼬맹이의 가짜 보호자」 보기",
+    "kind": "event",
+    "id2": "E1",
+    "icon": "📔"
+   }
   ],
   "high": [
-   { "id": "high_streak", "text": "공부 3일 연속", "kind": "streak", "n": 3, "icon": "📚" },
-   { "id": "high_dairy", "text": "우유 디저트를 똑똑하게 거절하는 쌍즈 보기", "kind": "count", "key": "dairyRefuse", "n": 1, "icon": "🥛" },
-   { "id": "high_mg", "text": "디저트 받기 '좋아' 이상 1판", "kind": "count", "key": "mgGood", "n": 1, "icon": "🎮" },
-   { "id": "high_good", "text": "좋은 컨디션의 날 2일", "kind": "count", "key": "goodDay", "n": 2, "icon": "🌤️" },
-   { "id": "high_E2", "text": "이벤트 「종이별 유리병」 보기", "kind": "event", "id2": "E2", "icon": "⭐" }
+   {
+    "id": "high_streak",
+    "text": "공부 3일 연속",
+    "kind": "streak",
+    "n": 3,
+    "icon": "📚"
+   },
+   {
+    "id": "high_dairy",
+    "text": "우유 디저트를 똑똑하게 거절하는 쌍즈 보기",
+    "kind": "count",
+    "key": "dairyRefuse",
+    "n": 1,
+    "icon": "🥛"
+   },
+   {
+    "id": "high_mg",
+    "text": "디저트 받기 '좋아' 이상 1판",
+    "kind": "count",
+    "key": "mgGood",
+    "n": 1,
+    "icon": "🎮"
+   },
+   {
+    "id": "high_good",
+    "text": "좋은 컨디션의 날 2일",
+    "kind": "count",
+    "key": "goodDay",
+    "n": 2,
+    "icon": "🌤️"
+   },
+   {
+    "id": "high_E2",
+    "text": "이벤트 「종이별 유리병」 보기",
+    "kind": "event",
+    "id2": "E2",
+    "icon": "⭐"
+   }
   ],
   "uni": [
-   { "id": "uni_E12", "text": "이벤트 「계단 위의 재회」 보기", "kind": "event", "id2": "E12", "icon": "🌙" },
-   { "id": "uni_beach", "text": "바닷가 같이 가기", "kind": "count", "key": "place_beach", "n": 1, "icon": "🌊" },
-   { "id": "uni_grade", "text": "성적 60 넘기기", "kind": "stat", "key": "grade", "n": 60, "icon": "🎓" },
-   { "id": "uni_moment", "text": "설렘 순간 3번", "kind": "count", "key": "moment", "n": 3, "icon": "💓" },
-   { "id": "uni_E9", "text": "이벤트 「병원 보호자」 보기", "kind": "event", "id2": "E9", "icon": "🏥" }
+   {
+    "id": "uni_E12",
+    "text": "이벤트 「계단 위의 재회」 보기",
+    "kind": "event",
+    "id2": "E12",
+    "icon": "🌙"
+   },
+   {
+    "id": "uni_beach",
+    "text": "바닷가 같이 가기",
+    "kind": "count",
+    "key": "place_beach",
+    "n": 1,
+    "icon": "🌊"
+   },
+   {
+    "id": "uni_grade",
+    "text": "성적 60 넘기기",
+    "kind": "stat",
+    "key": "grade",
+    "n": 60,
+    "icon": "🎓"
+   },
+   {
+    "id": "uni_moment",
+    "text": "설렘 순간 3번",
+    "kind": "count",
+    "key": "moment",
+    "n": 3,
+    "icon": "💓"
+   },
+   {
+    "id": "uni_E9",
+    "text": "이벤트 「병원 보호자」 보기",
+    "kind": "event",
+    "id2": "E9",
+    "icon": "🏥"
+   }
   ],
   "grad": [
-   { "id": "grad_noodle", "text": "계란 라면 끓여 주기 2번", "kind": "count", "key": "noodle", "n": 2, "icon": "🍜" },
-   { "id": "grad_beach", "text": "바닷가 산책 3번", "kind": "count", "key": "place_beach", "n": 3, "icon": "🌊" },
-   { "id": "grad_good", "text": "좋은 컨디션의 날 2일", "kind": "count", "key": "goodDay", "n": 2, "icon": "🌤️" },
-   { "id": "grad_E13", "text": "이벤트 「나란히 달리는 자전거」 보기", "kind": "event", "id2": "E13", "icon": "🚲" }
+   {
+    "id": "grad_noodle",
+    "text": "같이 계란 라면 먹기 2번",
+    "kind": "count",
+    "key": "noodle",
+    "n": 2,
+    "icon": "🍜"
+   },
+   {
+    "id": "grad_beach",
+    "text": "바닷가 산책 3번",
+    "kind": "count",
+    "key": "place_beach",
+    "n": 3,
+    "icon": "🌊"
+   },
+   {
+    "id": "grad_good",
+    "text": "좋은 컨디션의 날 2일",
+    "kind": "count",
+    "key": "goodDay",
+    "n": 2,
+    "icon": "🌤️"
+   },
+   {
+    "id": "grad_E13",
+    "text": "이벤트 「나란히 달리는 자전거」 보기",
+    "kind": "event",
+    "id2": "E13",
+    "icon": "🚲"
+   }
   ]
  },
- "doneLine": { "mid": "목표 다 했다! 고등학생 시험, 하루 일찍 볼 수 있대!", "high": "목표 전부 완료! 대학 시험 하루 일찍 도전!", "uni": "다 해냈어! 졸업 시험도 하루 일찍!", "grad": "목표 전부 완료! …이제 바닷가에서 할 이야기만 남았어." },
+ "doneLine": {
+  "mid": "목표 다 했다! 고등학생 시험, 하루 일찍 볼 수 있대!",
+  "high": "목표 전부 완료! 대학 시험 하루 일찍 도전!",
+  "uni": "다 해냈어! 졸업 시험도 하루 일찍!",
+  "grad": "목표 전부 완료! …이제 바닷가에서 할 이야기만 남았어."
+ },
  "hints": {
-  "E0": "처음 만난 날", "E1": "설렘이 조금 더 쌓이면…", "E2": "매일 꾸준히 공부하면…", "E4": "고등학생의 마지막 날", "E3": "대학에서 성적을 올리면…",
-  "E12": "대학 첫날 밤, 광장에서", "E9": "설렘 40 · 재회 뒤에", "E5": "설렘 50 · 첫눈이 오면(대학 D+12부터)", "E10": "기말이 끝난 밤에",
-  "E6": "설렘 80이 되면", "E7": "생일, 또는 그날 뒤 대학 D+13부터", "E11": "그 뒤에 계란 라면을 먹이면…", "E13": "바닷가의 낮에", "E8": "졸업 후 · 설렘 80 · 바닷가"
+  "E0": "처음 만난 날",
+  "E1": "설렘이 조금 더 쌓이면…",
+  "E2": "매일 꾸준히 공부하면…",
+  "E4": "고등학생의 마지막 날",
+  "E3": "대학에서 성적을 올리면…",
+  "E12": "대학 첫날 밤, 광장에서",
+  "E9": "설렘 40 · 재회 뒤에",
+  "E5": "설렘 50 · 첫눈이 오면(대학 D+12부터)",
+  "E10": "기말이 끝난 밤에",
+  "E6": "설렘 80이 되면",
+  "E7": "생일, 또는 그날 뒤 대학 D+13부터",
+  "E11": "그 뒤에 같이 계란 라면을 먹으면…",
+  "E13": "바닷가의 낮에",
+  "E8": "졸업 후 · 설렘 80 · 바닷가"
  }
 }

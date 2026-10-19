@@ -1,4 +1,4 @@
-import { STATS, GAME_VERSION, FOODS, GIFTS, STAGES, PLACES, STAGE_PLACES, OUTDOOR_SCALE, CHAR_FIT, stageScale } from './config.js';
+import { STATS, GAME_VERSION, FOODS, GIFTS, STAGES, PLACES, STAGE_PLACES, OUTDOOR_SCALE, CHAR_FIT, stageScale, viewPlace, placeInfo } from './config.js';
 import { uiConfirm, closeConfirm } from './confirm.js';
 import * as ST from './story.js';
 import { newState, load, save, wipe, advance, stageOf, dayNumber, timeOfDay, moodState, dayKey } from './state.js';
@@ -9,7 +9,7 @@ import { dueEvent, dueCards, parseScript, branchSteps, eventExpr, eventShots, OR
 import { loadIllustIndex, preloadArt, hasEventArt } from './illust.js';
 import * as END from './ending.js';
 import { DialogBox } from './dialogbox.js';
-import { drawChar, drawRoom, ensureSheet, onSheet, loadedSheets, trimSheets, touchSheet, hasSheet, cellOf, scaleRefOf, animInfo, drawSheetFrame, snapDev, blitSharp, LEGACY_EXPR, loadRooms, hasRoomImg, drawRoomImg } from './sprite.js';
+import { drawChar, drawRoom, ensureSheet, onSheet, loadedSheets, trimSheets, touchSheet, hasSheet, cellOf, scaleRefOf, animInfo, drawSheetFrame, snapDev, blitSharp, LEGACY_EXPR, loadRooms, hasRoomImg, drawRoomImg, ensureRoom } from './sprite.js';
 import * as QZ from './quiz.js';
 import * as MG from './minigame.js';
 import * as AU from './audio.js';
@@ -51,7 +51,7 @@ function goPlace(id) {
     const ev = EP.arrive(S, id); if (!ev || UI.event) return;
     spend(ACTION_MIN.place); AU.sfx('sfx_sparkle'); renderActs(); playEvent(ev); return;
   }
-  const p = PLACES[id]; if (!p || id === S.place) { $('placeSheet').hidden = true; return; }
+  const p = PLACES[id] && placeInfo(id, stageOf(S).id); if (!p || id === S.place) { $('placeSheet').hidden = true; return; }
   if (S.asleep) { toast('자는 중이에요'); return; }
   S.place = id; $('placeSheet').hidden = true; UI.lastRoomKey = ''; bump(S, `place_${id}`); spend(ACTION_MIN.place);
   // Stage 4: 장소·단계별 도착 대사(dialogue.json action '도착'), 없으면 기본 문구
@@ -78,7 +78,7 @@ const PLACE_LINES = {
 };
 function buildPlaceMenu() {
   const st = stageOf(S).id;
-  $('placeMenu').innerHTML = placesFor(st).map((id) => { const p = PLACES[id];
+  $('placeMenu').innerHTML = placesFor(st).map((id) => { const p = placeInfo(id, st);
     return `<button class="food place${id === S.place ? ' cur' : ''}" data-place="${id}"><i>${p.icon}</i><b>${p.name}</b><small>${p.city}${p.home ? ' · 집' : ''}</small></button>`; }).join('');
   const sp = EP.specialPlaces(S).map((p) => `<button class="food place evspot" data-place="${p.id}"><em class="newb">✨NEW</em><i>${p.icon}</i><b>${p.name}</b><small>${p.city} · 이야기</small></button>`).join('');
   $('placeMenu').innerHTML = sp + $('placeMenu').innerHTML;
@@ -181,7 +181,7 @@ function renderChar() {
 }
 
 // ── Stage 9: 배경음악 슬롯 (js/music.js, data/music.json) — 화면 상태가 바뀔 때마다 부름(같은 슬롯이면 아무것도 안 함) ──
-const musicSlot = () => wantedSlot({ title: UI.title, ending: UI.endingPhase, event: UI.event, mg: UI.mg, place: curPlace(), tod: timeOfDay().id });
+const musicSlot = () => wantedSlot({ title: UI.title, ending: UI.endingPhase, event: UI.event, mg: UI.mg, place: viewPlace(curPlace(), stageOf(S).id), tod: timeOfDay().id });
 function updateMusic() { try { MU.playSlot(musicSlot()); } catch {} }
 function applyVolumes() { const v = normVolumes(S.settings); S.settings.bgm = v.bgm; S.settings.sfx = v.sfx; AU.setSfxVolume(v.sfx); MU.applySettings(S.settings); VO.setVoice({ on: S.settings.voice !== false, sound: v.sound, vol: S.settings.voiceVol ?? 1 }); }
 function renderScene() {
@@ -195,18 +195,20 @@ function renderScene() {
   const room = $('room'), stage = $('stage');
   const w = Math.max(60, Math.round(stage.clientWidth / 4)), h = Math.max(60, Math.round(stage.clientHeight / 4));
   const place = curPlace();
-  $('placeLabel').textContent = place ? `${PLACES[place].icon} ${PLACES[place].name}` : '';
+  const vplace = viewPlace(place, st.id), pinfo = placeInfo(place, st.id);
+  $('placeLabel').textContent = place ? `${pinfo.icon} ${pinfo.name}` : '';
   const decor = place ? DX.decorSources(S, place) : [];   // Stage 7: 방 꾸미기
-  const key = `${w}x${h}|${tod.id}|${st.id}|${place}|${decor.map((d) => d.item).join(',')}`;
+  const key = `${w}x${h}|${UI.bgPlace || ''}|${tod.id}|${st.id}|${place}|${decor.map((d) => d.item).join(',')}`;
   if (key !== UI.lastRoomKey) {
     let ok = true;
-    if (place && hasRoomImg(place)) ok = drawRoomImg(room, { tod: tod.id, place, aspect: stage.clientWidth / stage.clientHeight, decor });
+    if (UI.bgPlace && hasRoomImg(UI.bgPlace)) ok = drawRoomImg(room, { tod: tod.id, place: UI.bgPlace, aspect: stage.clientWidth / stage.clientHeight });   // v0.9.6 이벤트 장소 배경
+    else if (place && hasRoomImg(vplace)) ok = drawRoomImg(room, { tod: tod.id, place: vplace, aspect: stage.clientWidth / stage.clientHeight, decor });
     else { room.width = w; room.height = h; drawRoom(room, { tod: tod.id, stage: st.id }); }
     if (ok) UI.lastRoomKey = key;   // 배경을 아직 불러오는 중이면 다음에 다시
   }
   document.body.classList.toggle('asleep', S.asleep);
   $('btnExam').hidden = !QZ.examDue(S) || S.asleep || !!UI.quiz;
-  $('sleepLabel').textContent = S.gt.min >= NIGHT_SLEEP_MIN ? '재우기' : '낮잠';
+  $('sleepLabel').textContent = S.gt.min >= NIGHT_SLEEP_MIN ? '잘 자 인사' : '낮잠';
   document.querySelectorAll('.act').forEach((b) => (b.disabled = S.asleep && b.dataset.act !== 'sleep'));
   renderActs();
   // 캐릭터 크기: 무대 높이에 맞는 정수 배율
@@ -278,17 +280,42 @@ function checkPhotoCards() {   // Stage 8: 포토카드 P01~P10
   whenFree(() => { AU.sfx('sfx_sparkle'); DX.showCard(c, { reveal: { dup: false, why: 'pcard' }, state: S }); setOverride('E19', 3000, 'E01'); }, 900);
   return true;
 }
+/** v0.9.6 이벤트 앞 장면: 사건 → 친구 선택(말투만) → 쌍즈가 이유를 말함 → ✨ 새 장소. 그림 없음(지금 방 배경) */
+async function runPre(n) {
+  if (UI.event) return;
+  UI.event = `pre:${n.id}`; box.locked = true; renderActs();
+  const say1 = async (raw) => {
+    const m = raw.match(/^쌍즈(?:→([^:]+))?:\s*(.+)$/), txt = MS.fill(m ? m[2] : raw.replace(/^\((.*)\)$/, '$1'), S.player.name);
+    if (m) { setOverride(eventExpr(txt), 60000); await box.show(m[1] ? `(${m[1]}) ${txt}` : txt, { wait: true }); } else await box.show(txt, { narr: true, wait: true });
+  };
+  try {
+    for (const r of n.pre.steps) await say1(r);
+    box.show('뭐라고 해 줄까?', { narr: true, instant: true }); clearTimeout(box.hideTimer);
+    const pick = await box.choose(n.pre.choice.map((c) => c.label));
+    const c = n.pre.choice.find((x) => x.label === pick) || n.pre.choice[0];
+    MO.noteReaction(S, `P:${n.id}:${pick}`);
+    await say1(`쌍즈: ${c.reply}`);
+    for (const r of n.pre.after) await say1(r);
+  } finally {
+    (S.evPre = S.evPre || {})[n.id] = dayKey(gnow()); save(S);   // 날짜 = 그날 밤 문자(gm_summons)용
+    UI.event = null; box.locked = false; box.hide();
+  }
+  AU.sfx('sfx_sparkle'); try { navigator.vibrate && navigator.vibrate([60, 60, 60]); } catch {}
+  say({ line: { id: 'SYS_evp', text: MS.fill(n.line, S.player.name) }, expr: 'E02', then: 'E01', note: `✨ 새 장소: ${n.icon} ${n.name}` });
+  renderActs();
+}
 function maybeEvent(delay = 1600) {
   if (UI.ending || UI.msgr) return;
   if (!UI.event && !UI.quiz && !UI.mg) checkGoalDone();
   checkRewards(); if (checkPhotoCards()) return;
   if (UI.event || UI.quiz || UI.mg || UI.card || S.asleep || DX.dexState().open) return;
   // v0.9.5: 이벤트는 여기서 바로 시작하지 않음 → 특별 장소가 열리고(✨NEW) 쌍즈가 가자고 함. 도착하면 시작(goPlace)
-  if (EP.pending(S)) return;
+  { const ep = EP.pending(S); if (ep) { if (ep.pre && !(S.evPre || {})[ep.id]) runPre(ep); return; } }   // 앞 장면 보다가 껐으면 다시
   const id = dueEvent(S); if (!id) return;
   clearTimeout(evTimer); evTimer = setTimeout(() => {
     if (UI.event || UI.quiz || UI.mg || UI.card || DX.dexState().open || dueEvent(S) !== id) return;
     const n = EP.setPending(S, id, S.gt.min); if (!n) return;
+    if (n.pre && !(S.evPre || {})[id]) { S.tantrum = null; save(S); runPre(n); return; }   // v0.9.6: 이벤트 앞 장면(E1 소환장) → 끝나면 새 장소
     S.tantrum = null; save(S); AU.sfx('sfx_sparkle'); try { navigator.vibrate && navigator.vibrate([60, 60, 60]); } catch {}
     say({ line: { id: 'SYS_evp', text: MS.fill(n.line, S.player.name) }, expr: 'E02', then: 'E01', note: `✨ 새 장소: ${n.icon} ${n.name}` });
     renderActs();
@@ -296,7 +323,8 @@ function maybeEvent(delay = 1600) {
 }
 async function playEvent(id) {
   const ev = eventById(id); if (!ev || UI.event || UI.quiz) return;
-  UI.event = id; UI.evSkip = false; box.locked = true; updateMusic();   // 이벤트 곡: 방 음악 페이드 아웃 → 이벤트 곡 페이드 인
+  UI.event = id; UI.evSkip = false; box.locked = true; updateMusic();
+  { const bp = (EP.EVENT_PLACES[id] || {}).place; UI.bgPlace = bp && PLACES[bp] ? bp : null; if (UI.bgPlace) { await ensureRoom(UI.bgPlace).catch(() => {}); UI.lastRoomKey = ''; renderScene(); } }   // 이벤트 곡: 방 음악 페이드 아웃 → 이벤트 곡 페이드 인
   const wasSeen = !!(S.events || {})[id];
   // Stage 8: 전체 화면 일러스트(지연 로딩) + 천천히 패닝. 그림이 없으면 예전처럼 방 화면 위 베일
   const art = await preloadArt('event', id);
@@ -336,7 +364,7 @@ async function playEvent(id) {
       }
       if (st.kind === 'reward' || st.kind === 'ending') { if (!S.rewards.includes(st.text)) S.rewards.push(st.text); }
       if (UI.evSkip) continue;
-      if (st.kind === 'say') { setOverride(eventExpr(st.text), 60000); await box.show(st.text, { wait: true }); }
+      if (st.kind === 'say') { setOverride(eventExpr(st.text), 60000); await box.show(st.to ? `(${st.to}) ${st.text}` : st.text, { wait: true }); }
       else if (st.kind === 'narr') await box.show(st.text, { narr: true, wait: true });
       else if (st.kind === 'reward' || st.kind === 'ending') await box.show(`${st.kind === 'ending' ? '🌅 엔딩' : '🎁 보상'}: ${st.text}`, { narr: true, wait: true });
       else if (st.kind === 'choice') {
@@ -352,7 +380,7 @@ async function playEvent(id) {
   try { await run(topSteps, true); }
   finally {
     S.events[id] = S.events[id] || dayKey(gnow()); save(S);   // Stage 7: 다시 보기여도 처음 본 날짜 유지
-    UI.event = null; UI.ov = null; box.locked = false; $('eventVeil').hidden = true; box.hide();
+    UI.event = null; UI.ov = null; UI.bgPlace = null; UI.lastRoomKey = ''; box.locked = false; $('eventVeil').hidden = true; box.hide();
     if (!END.shouldAutoEnding(id, wasSeen)) updateMusic();   // 다시 장소 음악(엔딩으로 이어지면 엔딩 곡이 받음)
     if (bub.parentNode !== home) home.insertBefore(bub, homeNext);
     VO.stopVoice(); UI.evVoiceId = null; UI.evVoiceLines = null; $('evVoice').hidden = true;
@@ -479,7 +507,7 @@ function resetGame() {
   return S;
 }
 $('btnReset').onclick = async () => {
-  if (!(await uiConfirm('정말 처음부터 다시 키울까요?\n저장된 기록이 모두 지워져요.', { ok: '새로 시작' }))) return;
+  if (!(await uiConfirm('정말 처음부터 다시 할까요?\n저장된 기록이 모두 지워져요.', { ok: '새로 시작' }))) return;
   resetGame(); renderAll(); await ST.playStory('open'); await askName(); renderAll();
   say({ line: { id: 'SYS_new', text: '안녕! 나 쌍즈야. 앞으로 잘 부탁해! …꼬맹이라고 부르면 삐질 거야.' }, expr: 'E01' });
 };
@@ -583,7 +611,7 @@ async function runPop(q) {
   await sleepMs(900);
   quizClose();
   react(r, { caption: q.gen ? (q.kind === 'study' ? '✏️ 성적 +4 (맞혔을 때)' : '') : `출처: ${srcText(q.src)}${q.verified ? '' : ' · ⚠️ 미확인'}` });
-  const dt = deltaText(r.delta); toast(r.piece ? `🧩 포토카드 조각 획득! · ${dt}` : dt || '같이 놀아 줘서 고마워!');
+  const dt = deltaText(r.delta); toast(r.piece ? `🧩 포토카드 조각 획득! · ${dt}` : dt || '같이 놀아서 재밌었어!');
   save(S);
 }
 
@@ -592,7 +620,7 @@ async function runExam() {
   const L = QZ.quizData().lines, from = STAGES[S.exam.unlocked], to = STAGES[S.exam.unlocked + 1];
   const head = (i, dots) => `<span class="tag">📝 성장 시험</span><span>${from.name} → ${to.name}</span><span class="dots">${dots}</span>`;
   quizOpen('exam', head(0, '○○○'));
-  ask(L.examIntro + (QZ.careBonus(S) ? '\n✨ 컨디션 보너스! 요즘 잘 챙겨 줘서 보기가 2개만 나와.' : QZ.hintLevel(S) ? `\n${L.examHint}` : ''), 'E07');
+  ask(L.examIntro + (QZ.careBonus(S) ? '\n✨ 컨디션 보너스! 요즘 컨디션 좋아서 보기가 2개만 나와.' : QZ.hintLevel(S) ? `\n${L.examHint}` : ''), 'E07');
   const foot = $('quizFoot');
   const go = await new Promise((res) => {
     const a = document.createElement('button'); a.textContent = '시작!'; a.onclick = (e) => { e.stopPropagation(); res(true); };
@@ -656,7 +684,7 @@ function examNudge() {
 }
 
 
-// ── Stage 6: 놀아주기 → 미니게임 메뉴 ──
+// ── Stage 6: 같이 놀기 → 미니게임 메뉴 ──
 function buildPlayMenu() {
   MG.ensureMg(S);
   const n = MG.playsToday(S), left = Math.max(0, MG.FULL_PLAYS - n), best = S.minigame.best[stageOf(S).id] || 0;
@@ -777,7 +805,9 @@ function openGoals() {
   const next = STAGES[STAGES.indexOf(st) + 1];
   const note = b.finished ? (next ? `✅ 다 했어요! ${next.name} 성장 시험이 하루 일찍 열려요.` : '✅ 목표 전부 완료!') : next ? `다 하면 ${next.name} 성장 시험이 하루 일찍 열려요.` : '마지막 단계 목표예요.';
   $('goalTitle').textContent = `🎯 ${st.name} 목표판 · ${b.done}/${b.total}`;
-  $('goalBody').innerHTML = `<div class="gbar"><i style="width:${b.pct}%"></i></div><p class="gnote">${note}</p>
+  const sg = QZ.storyGate(S), sgHint = sg.next ? (GL.goalsData().hints || {})[sg.next] || '' : '';
+  const gateLine = next ? `<p class="gnote gate">📝 ${next.name} 성장 시험까지: 이벤트 ${sg.seen}/${sg.total}${sg.ok ? ' ✅' : ` · 다음: ${sgHint || '조금 더 함께 지내면…'}`}</p>` : '';
+  $('goalBody').innerHTML = gateLine + `<div class="gbar"><i style="width:${b.pct}%"></i></div><p class="gnote">${note}</p>
     <ul class="glist">${b.list.map((m) => `<li class="${m.ok ? 'ok' : ''}"><span>${m.icon || '•'}</span><b>${m.text}</b><small>${m.cur}/${m.n}</small></li>`).join('')}</ul>
     ${nx ? `<div class="gnext"><div class="gsil" style="background-image:url('assets/events/${nx.id}_t.webp')"></div><div><small>다음 이야기</small><b>${nx.id} · ???</b><small>힌트: ${nx.hint || '조금 더 함께 지내면…'}</small></div></div>` : ''}
     <p class="gcare">${careLine}<br>💓 오늘 설렘 +${Math.round(S.daily.crushGain || 0)}/${room.daily} · 이 단계 상한 ${room.stageCap}${rx ? `<br>💬 아직 못 본 반응 ${rx.left}개` : ''}</p>`;
@@ -797,7 +827,7 @@ function reactionCount() {
 }
 async function startNewGamePlus(skipAsk) {
   if (!GL.canNewGamePlus(S)) return;
-  if (skipAsk !== true && !(await uiConfirm(`${(S.ng || 0) + 2}회차를 시작할까요? 키우기는 처음부터지만 도감·포토카드·반응 기록은 이어져요. 새 선택지(✨)도 열려요.`, { ok: '시작', danger: false }))) return;
+  if (skipAsk !== true && !(await uiConfirm(`${(S.ng || 0) + 2}회차를 시작할까요? 이야기는 처음부터지만 도감·포토카드·반응 기록은 이어져요. 새 선택지(✨)도 열려요.`, { ok: '시작', danger: false }))) return;
   S = GL.newGamePlus(S); DX.setDexState(S); save(S); $('settingsSheet').hidden = true; UI.lastRoomKey = ''; UI.lastCrush = null; renderAll();
   say({ line: { id: 'SYS_ng', text: (ST.storyData() && ST.storyData().ngPlus) || '…별이 또 떨어졌다. 어? 처음 보는 사람 같지 않아. 이상하다. 아무튼, 잘 부탁해!' }, expr: 'E02', then: 'E01' });
   setTimeout(() => maybeEvent(), 3000);
@@ -936,7 +966,7 @@ function renderActs() {
   }
   $('ttGo').textContent = '데려가기 ›';
   if (!t || S.asleep) { el.hidden = true; return; }
-  const K = TT.KINDS[t.kind], P = PLACES[t.want] || {};
+  const K = TT.KINDS[t.kind], P = placeInfo(t.want, stageOf(S).id);
   $('ttIcon').textContent = K.icon; $('ttWant').textContent = `${K.label}! ${P.icon || ''} ${P.name || ''}`;
   $('ttLine').textContent = MS.fill(t.line, S.player.name);
   $('ttLock').textContent = `🔒 ${K.locks.map((x) => ({ play: '놀기', study: '공부', gift: '선물' })[x]).join('·')} 잠김 · 오래 무시하면 삐져요`;
@@ -1026,7 +1056,7 @@ async function runTitle() {
 // 테스트/디버그용 훅
 function forceNost(on = '대화', extra = {}) {
   const d = new Date(gnow());
-  const ctx = { on, stage: stageOf(S).dlg, state: moodState(S), place: S.place, crush: S.stats.crush, grade: S.stats.grade, month: d.getMonth() + 1, time: timeOfDay().id, ...extra };
+  const ctx = { on, stage: stageOf(S).dlg, state: moodState(S), place: S.place, crush: S.stats.crush, grade: S.stats.grade, events: S.events || {}, month: d.getMonth() + 1, time: timeOfDay().id, ...extra };
   const l = pickNostalgia(ctx, S, true); if (l) say({ line: l, expr: l.expr }); return l;
 }
 window.SZ = { EP, buildPlaceMenu, TT, checkTantrum, showMsgPop, renderActs, MS, openMsgr: (id) => openMsgr(MS.episode(id)), askName, GL, openGoals, showCut, runSulk, reactionCount, startNewGamePlus, resetGame, MO, runMoment: (id) => runMoment(id ? MO.momentById(id) : MO.dueMoment(S)), gainFloat, END, startEnding, get ending() { return END.endingState(); }, get evShot() { return UI.evShot; }, skipEvent, checkPhotoCards, get state() { return S; }, get sheet() { return charSheet(); }, box, playEvent, forceNost, get event() { return UI.event; }, get food() { return UI.food; }, get lastLine() { return UI.lastLine; }, goPlace, get place() { return curPlace(); }, fastForward, say, setOverride, get anim() { return currentAnim(performance.now()).name; }, doAction: (a, x) => { const r = act(a, x); say(r); return r; }, spend, nightMsgFirst, get clock() { return clockText(S); }, renderAll, save: () => save(S),

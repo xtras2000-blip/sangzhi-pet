@@ -5,7 +5,7 @@
 //  - 성장 시험: ✅(verified)만. 3문제 중 2개 맞히면 통과 → 다음 단계 해금 + 포토카드
 //    탈락: 벌점 없음, 다음 날(자정 이후) 다시. 3번 이상 탈락 → 보기 2개(힌트), 5번 이상 → 정답에 ✨ 표시 = 절대 막히지 않음
 //  - 취향 맞히기: 단계 해금된 세트만, 하루 3번. scored=false(드라마 미확인) 세트는 설렘 점수 없음 + 라벨 표시
-import { STAGES, RARITY_WEIGHT } from './config.js';
+import { STAGES, RARITY_WEIGHT, STORY_GATE } from './config.js';
 import { clamp, dayStageIndex, stageOf, gainCrush, gnow } from './state.js';
 import { buildPool, shuffled } from './quizgen.js';
 // v0.9.4: 자동 생성 문항(대사·이벤트·음식·과목). 대사 데이터는 dialogue.js 가 넣어 줌(setGenSource)
@@ -42,7 +42,8 @@ function log(s, e) { s.quiz.log.push({ ...e, t: Date.now() }); if (s.quiz.log.le
 /** stageDlg 이하 문항. verifiedOnly=true면 ✅만 */
 export function poolFor(stageDlg, { verifiedOnly = false, s = null, kind = null } = {}) {
   const r = stageRank(stageDlg === '졸' ? '졸' : stageDlg);
-  const base = Q.questions.filter((q) => stageRank(q.stage) <= r && (!verifiedOnly || q.verified));
+  const evOk = (q) => !q.need || !s || (s.events || {})[q.need];   // v0.9.6 시간선: 아직 안 본 장면 문항은 안 냄
+  const base = Q.questions.filter((q) => stageRank(q.stage) <= r && (!verifiedOnly || q.verified) && evOk(q));
   if (verifiedOnly) return base;   // 성장 시험은 손으로 쓴 ✅ 문항만
   const gen = genPool().filter((q) => (q.kind === 'study' ? q.stage === stageDlg : stageRank(q.stage) <= r) && (!q.need || (s && (s.events || {})[q.need])));
   const all = [...base, ...gen];
@@ -90,17 +91,25 @@ export function answerPop(s, q, choice, rnd = Math.random) {
 // ── C. 성장 시험 ──
 export const isLastStage = (s) => s.exam.unlocked >= STAGES.length - 1;
 /** 날짜는 찼는데 아직 시험을 안 통과한 상태 + 재도전 시각이 지났는지 */
+/** v0.9.6 이야기 잠금: 지금 단계의 필수 이벤트 진행 { need, seen, total, next, ok } */
+export function storyGate(s) {
+  const id = (STAGES[(s.exam && s.exam.unlocked) || 0] || {}).id, need = STORY_GATE[id] || [];
+  const done = need.filter((e) => (s.events || {})[e]);
+  return { stage: id, need, seen: done.length, total: need.length, next: need.find((e) => !(s.events || {})[e]) || null, ok: done.length === need.length };
+}
 export function examDue(s, now = gnow()) {
   if (isLastStage(s)) return false;
   if (!(dayStageIndex(s, now) > s.exam.unlocked)) return false;
+  if (!storyGate(s).ok) return false;   // 이야기가 먼저(수치가 다 차도 기다림)
   if (s.exam.nextDay) return ((s.gt && s.gt.day) || 0) >= s.exam.nextDay;   // v0.9.5: 재도전은 '게임 속 다음 날'(실제 하루 기다리던 잠김 버그)
   return now >= (s.exam.nextAt || 0);
 }
 /** 현재(해금된) 단계의 ✅ 문항 3개. 그 단계 문항 우선, 모자라면 이전 단계 ✅ + 작품 상식. 직전 시험에 낸 건 가능하면 피함 */
 export function pickExam(s, rnd = Math.random) {
   const dlg = STAGES[s.exam.unlocked].dlg;
-  const own = Q.questions.filter((q) => q.verified && q.stage === dlg);
-  const rest = poolFor(dlg, { verifiedOnly: true }).filter((q) => q.stage !== dlg);
+  const seenQ = (q) => !q.need || (s.events || {})[q.need];
+  const own = Q.questions.filter((q) => q.verified && q.stage === dlg && seenQ(q));
+  const rest = poolFor(dlg, { verifiedOnly: true, s }).filter((q) => q.stage !== dlg);
   const fresh = (arr) => arr.filter((q) => !s.exam.asked.includes(q.id));
   const shuffled = (arr) => arr.map((q) => [rnd(), q]).sort((a, b) => a[0] - b[0]).map((x) => x[1]);
   const order = [...shuffled(fresh(own)), ...shuffled(own.filter((q) => s.exam.asked.includes(q.id))), ...shuffled(fresh(rest)), ...shuffled(rest)];

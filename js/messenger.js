@@ -44,6 +44,8 @@ export function isAvailable(s, ep, now = gnow(), stageId) {
   if (a.day && dayNumber(s, now) < a.day) return false;
   if (a.afterEvent && !(s.events && s.events[a.afterEvent])) return false;
   if (a.notEvent && s.events && s.events[a.notEvent]) return false;
+  if (a.afterPre && !((s.evPre || {})[a.afterPre])) return false;   // v0.9.6 이벤트 앞 장면(E1 소환장)을 본 날
+  if (a.afterPre && a.fresh != null) { const d = keyDays((s.evPre || {})[a.afterPre]); if (d == null || nowDays(now) - d > a.fresh) return false; }
   if (a.afterEvent && a.fresh != null) {   // 원작 장면 문자는 그 장면 본 날(~fresh일 뒤)까지만. 옛날 일을 '오늘'처럼 말하지 않게
     const d = keyDays(s.events[a.afterEvent]);
     if (d != null && nowDays(now) - d > a.fresh) return false;
@@ -82,9 +84,10 @@ function chooseGeneric(s, gen, stageId) {
 /** 오늘 밤 올 문자: 하루 1번. 원작 장면 문자(대본)가 먼저, 없으면 그 단계 평범한 날 문자(반복 없이). 고른 건 그날 고정(s.msgr.plan) */
 export function pending(s, now = gnow(), stageId) {
   const day = dayNumber(s, now);
-  if (s.msgr && s.msgr.last === day) return null;
+  // v0.9.6: 오늘 있었던 장면(이벤트·앞 장면) 문자가 최우선 — 그날 밤 바로, 지금 일처럼. 오늘 문자를 이미 받았어도 그 뒤에 생긴 장면이면 한 번 더
   const sc = episodes().find((e) => !e.generic && isAvailable(s, e, now, stageId));
-  if (sc) return sc;
+  if (sc && (!(s.msgr && s.msgr.last === day) || (sc.avail || {}).fresh === 0)) return sc;
+  if (s.msgr && s.msgr.last === day) return null;
   const plan = s.msgr.plan;
   if (plan && plan.day === day && plan.stage === stageId) { const e = episode(plan.id); if (e && isAvailable(s, e, now, stageId)) return e; }
   const gen = episodes().filter((e) => e.generic && isAvailable(s, e, now, stageId));
