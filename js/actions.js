@@ -3,7 +3,8 @@ import { noteFood } from './collection.js';
 import { noteMoment } from './events.js';
 import { clamp, moodState, stageOf, timeOfDay, dayKey, gainCrush, bump, gnow, passTime, endDay } from './state.js';
 import { FOODS, GIFTS, DESSERT_DAILY_LIMIT, GIFT_CRUSH_DAILY, TALK_FULL, TALK_MOOD, TALK_MOOD_LOW, TALK_CRUSH_DAILY, PLAY_FULL, PLAY_MOOD, PLAY_MOOD_LOW, FULL_HUNGER, ACTION_MIN, NIGHT_SLEEP_MIN, NAP_ENERGY, NIGHT_ENERGY } from './config.js';
-import { pickLine, pickSys, pickNostalgia } from './dialogue.js';
+import { pickLine, pickSys, pickNostalgia, pickMorning } from './dialogue.js';
+import { fill } from './messenger.js';
 
 // 대사 내용으로 표정 보정 (EXPRESSIONS.md 트리거)
 export function textExpr(t = '') {
@@ -16,7 +17,13 @@ export function textExpr(t = '') {
 // 받침 유무로 조사 고르기: josa('스케치북','을','를') → '스케치북을'
 export const josa = (w, a, b) => { const c = w.charCodeAt(w.length - 1); const has = c >= 0xAC00 && c <= 0xD7A3 ? (c - 0xAC00) % 28 > 0 : false; return w + (has ? a : b); };
 const add = (s, k, v) => (k === 'crush' ? gainCrush(s, v) : (s.stats[k] = clamp(s.stats[k] + v)));
-export const ctxFor = (s, action, state, strict = false, extra = {}) => ({ action, state: state ?? moodState(s), stage: stageOf(s).dlg, time: timeOfDay().id, place: s.place || null, strict, ...extra });
+// stats/month/day = 조건 대사(cond)용, hist = 풀별 반복 방지 기록(세이브 s.lineHist에 저장)
+export const ctxFor = (s, action, state, strict = false, extra = {}) => ({ action, state: state ?? moodState(s), stage: stageOf(s).dlg, time: timeOfDay().id, place: s.place || null, strict, stats: s.stats, month: new Date(gnow()).getMonth() + 1, hist: (s.lineHist ||= {}), ...extra });
+/** 아침(하루 시작) 인사·아침 문자: 단계별 풀에서 반복 없이 */
+export function morningLine(s) {
+  const line = pickMorning({ stage: stageOf(s).dlg, stats: s.stats, month: new Date(gnow()).getMonth() + 1, hist: (s.lineHist ||= {}) });
+  return { line: { ...line, text: fill(line.text, s.player && s.player.name) }, expr: line.expr || 'E01' };
+}
 // 회상(원작 명장면) 시도: 조건 맞으면 25%·하루 1번
 const nostCtx = (s, on, extra = {}) => { const d = new Date(gnow()); return { on, stage: stageOf(s).dlg, state: moodState(s), place: s.place || null, crush: s.stats.crush, grade: s.stats.grade, month: d.getMonth() + 1, time: timeOfDay().id, ...extra }; };
 export const tryNostalgia = (s, on, extra) => pickNostalgia(nostCtx(s, on, extra), s);

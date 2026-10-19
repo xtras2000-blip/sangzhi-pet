@@ -16,7 +16,7 @@ export function newState(now = Date.now()) {
     daily: newDaily(now),
     inventory: {},          // giftId -> count (Stage 5: 수집)
     seenLines: {},          // lineId -> count (Stage 4: 대사 도감)
-    settings: { sound: true, bgm: 0.7, sfx: 0.8 },    // Stage 6: 소리 기본 켬(브라우저는 첫 터치 이후에만 재생) · Stage 9: BGM·효과음 볼륨(0~1)
+    settings: { sound: true, bgm: 0.7, sfx: 0.8, voice: true, voiceVol: 1 },    // Stage 6: 소리 기본 켬(브라우저는 첫 터치 이후에만 재생) · Stage 9: BGM·효과음 볼륨(0~1)
     stats_meta: { feeds: 0, talks: 0, studies: 0, plays: 0, gifts: 0 },
     events: {},             // Stage 4: 본 이벤트 id -> 날짜
     rewards: [],            // Stage 4: 이벤트 보상(도감 등)

@@ -1,6 +1,7 @@
 // Stage 4: 말풍선 UX — 한 글자씩 타이핑, 탭하면 끝까지 표시 → 다시 탭하면 다음/닫기.
 // 레이아웃 흔들림 방지: 아직 안 나온 글자도 visibility:hidden으로 미리 깔아 두어 줄바꿈 위치가 처음부터 고정됨(word-break: keep-all).
 import { TYPE_MS } from './config.js';
+import { GUARD_MS } from './guard.js';
 
 const PAUSE = { '…': 7, '.': 5, '!': 5, '?': 5, ',': 3, '~': 2 };   // 문장부호 뒤 쉬는 시간(글자 수 단위)
 
@@ -27,7 +28,7 @@ export class DialogBox {
     this.cap.textContent = opts.caption || '';
     this.bubble.className = 'bubble show' + (r === '전설' ? ' legend' : r ? ' rare' : '') + (opts.narr ? ' narr' : '') + (opts.caption ? ' quote' : '') + (opts.wait ? ' wait' : '');
     this.choices.replaceChildren(); this.next.hidden = true;
-    this.waitTap = !!opts.wait;
+    this.waitTap = !!opts.wait; if (opts.wait) this.shownAt = performance.now();
     this.render();
     return new Promise((res) => {
       this.onDone = () => {
@@ -61,7 +62,8 @@ export class DialogBox {
   }
   hide() { clearTimeout(this.hideTimer); cancelAnimationFrame(this.raf); this.typing = false; this.waitTap = false; this.bubble.classList.remove('show'); }
   /** 탭: 타이핑 중 → 끝까지, 탭 대기 → 다음, 그 외 → 닫기 */
-  tap() {
+  tap(force = false) {
+    if (!force && this.shownAt && performance.now() - this.shownAt < GUARD_MS) return 'guard';   // 연타 보호: 새 대사는 잠깐 입력 무시
     if (this.typing) { cancelAnimationFrame(this.raf); this.n = this.full.length; this.onDone(); return 'skip'; }
     if (this.waitTap && this._tapResolve) { const r = this._tapResolve; this._tapResolve = null; this.waitTap = false; this.next.hidden = true; r(); return 'next'; }
     if (this.visible && !this.locked && !this.choices.childElementCount) { this.hide(); return 'close'; }
@@ -69,11 +71,11 @@ export class DialogBox {
   }
   /** 선택지 버튼 → Promise(고른 문자열) */
   choose(options) {
-    this.waitTap = false; this.next.hidden = true; clearTimeout(this.hideTimer);
+    this.waitTap = false; this.next.hidden = true; clearTimeout(this.hideTimer); const t0 = performance.now();
     return new Promise((res) => {
       this.choices.replaceChildren(...options.map((o) => {
         const b = document.createElement('button'); b.className = 'choice'; b.textContent = o;
-        b.onclick = (e) => { e.stopPropagation(); this.choices.replaceChildren(); res(o); };
+        b.onclick = (e) => { e.stopPropagation(); if (performance.now() - t0 < GUARD_MS) return; this.choices.replaceChildren(); res(o); };
         return b;
       }));
     });

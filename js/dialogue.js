@@ -5,6 +5,7 @@ import { RARITY_WEIGHT, RECENT_MAX, NOSTALGIA_P } from './config.js';
 let LINES = [];
 let EVENTS = [];
 let QUOTES = {};
+let MORNING = [];
 const recent = [];
 let lastId = null;
 let rnd = Math.random;
@@ -33,13 +34,39 @@ export const SYSTEM_LINES = {
   hello: ['왔어? 헤헤.', '어, 왔다! 오늘은 뭐 할 거야?'],
 };
 const SYS_EXPR = { dairy: 'E05', dairyRefuse: 'E13', tooSweet: 'E23', studyRefuse: 'E13', tooSleepyStudy: 'E21', wake: 'E21', autoWake: 'E01', sleepRefuse: 'E13', welcomeBack: 'E10', hello: 'E01', giftEnough: 'E02', tooFull: 'E13', goodStreak: 'E01', crushDaily: 'E19', crushStage: 'E02' };
+const BASE_SYS = Object.fromEntries(Object.entries(SYSTEM_LINES).map(([k, v]) => [k, [...v]]));
+
+// ── 반복 방지 기록(풀마다 최근 N줄) ── 세이브(s.lineHist)에 묶이면 앱을 껐다 켜도 이어짐
+export const HIST_MAX = 24;
+let HIST = {};
+let curStage = null;
+/** 세이브 객체의 기록 칸을 묶음(없으면 만들어 줌). 이후 pickLine/pickSys/pickMorning 기록이 여기에 쌓임 */
+export function bindHistory(h) { if (h && typeof h === 'object') HIST = h; return HIST; }
+export const lineHistory = () => HIST;
+/** 풀 크기 → 반복 금지 창 크기: 풀의 60%(최소 1, 최대 HIST_MAX). 2줄짜리 풀은 직전 줄만 */
+export const histWindow = (size) => Math.max(1, Math.min(HIST_MAX, Math.floor(size * 0.6), size - 1));
+function histOf(key, size) { const a = HIST[key] || []; return a.slice(-histWindow(size)); }
+function histPush(key, id) {
+  const a = (HIST[key] ||= []);
+  const i = a.indexOf(id); if (i >= 0) a.splice(i, 1);
+  a.push(id); while (a.length > HIST_MAX) a.shift();
+}
+const lruAge = (key, id) => { const a = HIST[key] || []; const i = a.indexOf(id); return i < 0 ? -1 : i; };
+
 const lastSys = {};
-export function pickSys(k) {
-  const a = SYSTEM_LINES[k];
-  let i = Math.floor(rnd() * a.length);
-  if (a.length > 1 && i === lastSys[k]) i = (i + 1) % a.length;   // 같은 시스템 대사 연속 금지
-  lastSys[k] = i;
-  return { id: `SYS_${k}_${i}`, text: a[i], rarity: '일반', expr: SYS_EXPR[k] || 'E01' };
+/** 시스템 대사. 줄은 문자열 또는 { text, stage?, expr? } (dialogue.json "system"이 기본값을 덮어씀/늘림) */
+export function pickSys(k, stage = curStage) {
+  const all = (SYSTEM_LINES[k] || SYSTEM_LINES.hello).map((x, i) => (typeof x === 'string' ? { text: x, i } : { ...x, i }));
+  let a = all.filter((x) => !x.stage || x.stage === 'any' || x.stage === stage);
+  if (!a.length) a = all;
+  const key = 'sys|' + k;
+  const h = histOf(key, a.length);
+  let c = a.filter((x) => !h.includes(x.i) && x.i !== lastSys[k]);
+  if (!c.length) c = a.filter((x) => x.i !== lastSys[k]);
+  if (!c.length) c = a;
+  const x = c[Math.floor(rnd() * c.length)];
+  lastSys[k] = x.i; histPush(key, x.i);
+  return { id: `SYS_${k}_${x.i}`, text: x.text, rarity: '일반', expr: x.expr || SYS_EXPR[k] || 'E01' };
 }
 
 /** 테스트용: 데이터 직접 주입 / 난수 교체 / 기록 초기화 */
@@ -47,11 +74,16 @@ export function setDialogue(j) {
   LINES = Array.isArray(j?.lines) ? j.lines : [];
   EVENTS = Array.isArray(j?.events) ? j.events : [];
   QUOTES = j?.quotes || {};
+  MORNING = Array.isArray(j?.morning) ? j.morning : [];
+  for (const k of Object.keys(SYSTEM_LINES)) if (!BASE_SYS[k]) delete SYSTEM_LINES[k];
+  for (const k of Object.keys(BASE_SYS)) SYSTEM_LINES[k] = [...BASE_SYS[k]];
+  for (const [k, v] of Object.entries(j?.system || {})) if (Array.isArray(v) && v.length) SYSTEM_LINES[k] = [...(BASE_SYS[k] || []), ...v];
   resetRecent();
   return LINES.length;
 }
 export const setRng = (f) => { rnd = f || Math.random; };
-export function resetRecent() { recent.length = 0; lastId = null; }
+export function resetRecent() { recent.length = 0; lastId = null; HIST = {}; for (const k in lastSys) delete lastSys[k]; }
+export const morningLines = () => MORNING;
 export const recentIds = () => [...recent];
 
 export async function loadDialogue(url = 'data/dialogue.json') {
@@ -93,23 +125,42 @@ function weighted(items, wf) {
 const URGENT = new Set(['배고픔', '졸림', '샐짐']);
 const stageMatch = (l, st) => l.stage === 'any' || l.stage === st;
 
+/** 줄 조건(cond): { mood:[min,max], crush:[..], grade:[..], energy:[..], hunger:[..], months:[..], minDay } — 스탯이 없으면 조건 줄은 안 나옴 */
+export function condOk(l, ctx) {
+  const c = l.cond; if (!c) return true;
+  const st = ctx.stats; 
+  for (const k of ['mood', 'crush', 'grade', 'energy', 'hunger']) if (c[k]) {
+    if (!st || st[k] == null) return false;
+    if (st[k] < c[k][0] || st[k] > (c[k][1] ?? 1e9)) return false;
+  }
+  if (c.months && !(ctx.month && c.months.includes(ctx.month))) return false;
+  if (c.minDay && !((ctx.day || 0) >= c.minDay)) return false;
+  return true;
+}
+/** 가중치: 조건이 맞아 나온 줄 ×2.5, 이 단계 전용 줄 ×1.5, 시간대 전용 줄 ×1.5, 데이터 w */
+const lineW = (l, ctx) => (l.w || 1) * (l.cond ? 2.5 : 1) * (l.stage === ctx.stage ? 1.5 : 1) * (l.time && l.time !== 'any' ? 1.5 : 1);
+
 /**
- * ctx: { action, state, stage:'중'|'고'|'대'|'졸', time, place?, item?, strict? }
+ * ctx: { action, state, stage:'중'|'고'|'대'|'졸', time, place?, item?, strict?, stats?, month?, hist? }
  * 1) 아이템 전용 줄(선물/음식) 65% 2) 장소 전용 줄(도착은 항상, 대화는 급한 상태가 아니면 40%)
- * 3) 상태 일치 줄 70% / 상태 any 줄. 시간대가 맞는 줄만. 최근 RECENT_MAX줄 제외(모자라면 직전 줄만 제외).
+ * 3) 상태 일치 줄 70% / 상태 any 줄. 시간대가 맞는 줄만. 조건(cond) 맞는 줄만.
+ * 반복 방지: 전체 최근 RECENT_MAX줄 + 풀(행동|단계)마다 최근 기록(풀 크기의 60%, 세이브에 저장). 모자라면 가장 오래전 줄(LRU)
  */
 export function pickLine(ctx) {
+  if (ctx.hist) bindHistory(ctx.hist);
+  if (ctx.stage) curStage = ctx.stage;
   const placeOk = (l) => (!l.place || l.place === ctx.place) && !(l.avoid && ctx.place && l.avoid.includes(ctx.place));
   const itemOk = (l) => !l.item || l.item === ctx.item;
-  const base = (st) => LINES.filter((l) => l.action === ctx.action && stageMatch(l, st) && placeOk(l) && itemOk(l));
+  const base = (st) => LINES.filter((l) => l.action === ctx.action && stageMatch(l, st) && placeOk(l) && itemOk(l) && condOk(l, ctx));
   let pool = base(ctx.stage);
   // 졸업 후: 해당 행동/상태 조합 줄이 없으면 대학생 줄로 보충
   if (ctx.stage === '졸' && !pool.some((l) => l.state === ctx.state || l.state === 'any')) pool = pool.concat(base('대').filter((l) => l.stage === '대'));
-  if (!pool.length) pool = LINES.filter((l) => l.action === ctx.action && !l.place && !l.item && l.stage !== '졸');
+  if (!pool.length) pool = LINES.filter((l) => l.action === ctx.action && !l.place && !l.item && !l.cond && l.stage !== '졸');
   if (!pool.length) pool = FALLBACK.filter((l) => l.action === ctx.action);
   if (!pool.length) pool = FALLBACK;
   const timed = pool.filter((l) => l.time === 'any' || l.time === ctx.time);
   if (timed.length) pool = timed;
+  const key = `${ctx.action}|${ctx.stage}${ctx.item ? '|' + ctx.item : ''}`;
 
   let cand = null;
   if (ctx.item) {
@@ -129,28 +180,50 @@ export function pickLine(ctx) {
     cand = (exact.length && (ctx.strict || rnd() < 0.7 || !generic.length)) ? exact : generic;
     if (!cand.length) cand = src;
   }
-  const isFresh = (l) => !recent.includes(l.id) && l.id !== lastId;
-  let fresh = cand.filter(isFresh);
+  // 풀 기록 창은 실제 후보 수에 맞춤(후보 20줄이면 최근 12줄 금지)
+  const freshIn = (list) => { const H = histOf(key, list.length); return list.filter((l) => !recent.includes(l.id) && l.id !== lastId && !H.includes(l.id)); };
+  let fresh = freshIn(cand);
   if (!fresh.length) {
     // 좁은 후보가 다 최근에 나왔으면: 같은 행동·단계·장소의 상태 맞는/무난한 줄로 넓혀서 다시 찾음
     const okState = ctx.strict ? (l) => l.state === ctx.state
       : (l) => l.state === ctx.state || l.state === 'any' || (ctx.state === 'any' && l.state === '기분좋음');
     const itemLines = cand.some((l) => l.item);
-    fresh = pool.filter((l) => okState(l) && (itemLines ? l.item === ctx.item : !l.item) && isFresh(l));
+    const placeLines = ctx.action === '도착' && cand.some((l) => l.place);
+    fresh = freshIn(pool.filter((l) => okState(l) && (itemLines ? l.item === ctx.item : !l.item) && (!placeLines || l.place === ctx.place)));
   }
   if (fresh.length) cand = fresh;
   else {
-    // 그래도 없으면 가장 오래전에 나온 줄(LRU). 직전 줄은 절대 다시 안 나옴
+    // 그래도 없으면 가장 오래전에 나온 줄(LRU: 풀 기록 + 전체 기록). 직전 줄은 절대 다시 안 나옴
     const notLast = cand.filter((l) => l.id !== lastId);
-    if (notLast.length) { const age = (l) => { const i = recent.indexOf(l.id); return i < 0 ? -1 : i; }; const m = Math.min(...notLast.map(age)); cand = notLast.filter((l) => age(l) === m); }
+    if (notLast.length) {
+      const age = (l) => { const a = lruAge(key, l.id); return a >= 0 ? a : recent.indexOf(l.id); };
+      const m = Math.min(...notLast.map(age)); cand = notLast.filter((l) => age(l) === m);
+    }
   }
 
   const rarities = [...new Set(cand.map((l) => l.rarity || '일반'))];
   const rar = weighted(rarities, (r) => RARITY_WEIGHT[r] ?? 1);
   const inR = cand.filter((l) => (l.rarity || '일반') === rar);
-  const line = inR[Math.floor(rnd() * inR.length)];
+  const line = weighted(inR, (l) => lineW(l, ctx));
   remember(line.id);
+  histPush(key, line.id);
   return line;
+}
+
+/** 아침 인사/아침 문자(하루 시작). ctx: { stage, stats?, month?, day?, hist? } — 단계 전용 + 공통, 조건·반복 방지 */
+export function pickMorning(ctx = {}) {
+  if (ctx.hist) bindHistory(ctx.hist);
+  const st = ctx.stage || curStage;
+  let pool = MORNING.filter((l) => (l.stage === 'any' || l.stage === st) && condOk(l, ctx));
+  if (!pool.length) return pickSys('hello', st);
+  const key = 'morning|' + st;
+  const H = histOf(key, pool.length);
+  let c = pool.filter((l) => !H.includes(l.id) && l.id !== lastId);
+  if (!c.length) { const m = Math.min(...pool.map((l) => lruAge(key, l.id))); c = pool.filter((l) => lruAge(key, l.id) === m && l.id !== lastId); }
+  if (!c.length) c = pool;
+  const line = weighted(c, (l) => lineW(l, { stage: st }));
+  lastId = line.id; histPush(key, line.id);
+  return { rarity: '일반', expr: 'E01', ...line };
 }
 
 const SEASON = { winter: [12, 1, 2], spring: [3, 4, 5], summer: [6, 7, 8], autumn: [9, 10, 11] };

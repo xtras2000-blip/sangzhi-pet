@@ -1,5 +1,5 @@
 {
- "_doc": "OST 슬롯 배치표 (OST_PLAN.md). 슬롯마다 우선순위 목록: 앞에서부터 파일이 있는 첫 곡을 틀어요. 'duck' = 지금 곡을 그대로 두고 소리만 줄임. 파일은 assets/music/ost/<file>.(m4a|ogg|mp3) — 확장자는 아무거나. 하나도 없으면 무음(또는 fallback 곡). · 임시(2026-10-19): 반주(i)·ost01이 아직 없어 타이틀·장소 목록 끝에 있는 보컬 곡을 덧붙임 → 반주 파일이 들어오면 앞 순서 곡이 자동으로 우선",
+ "_doc": "OST 슬롯 배치표 (OST_PLAN.md). 슬롯마다 우선순위 목록: 앞에서부터 파일이 있는 첫 곡을 틀어요. 'duck' = 지금 곡을 그대로 두고 소리만 줄임. 파일은 assets/music/ost/<file>.(m4a|ogg|mp3) — 확장자는 아무거나. 하나도 없으면 무음(또는 fallback 곡). · 임시(2026-10-19): 반주(i)·ost01이 아직 없어 타이틀·장소 목록 끝에 있는 보컬 곡을 덧붙임 → 반주 파일이 들어오면 앞 순서 곡이 자동으로 우선 · 2026-10-19 v0.9.4: 역할 분리 — 타이틀=OST, 장소=자체 작곡 BGM(assets/music/bgm, 공개 가능; 아직 없는 장소는 집/학교 곡 임시), 이벤트=OST(이상적인 곡 먼저, 끝에 지금 있는 ost02/03/05 중 분위기 맞는 곡)",
  "dir": "assets/music/ost/",
  "tracks": {
   "ost01": {
@@ -95,93 +95,72 @@
    "title": "첫눈 엔딩 (자체 작곡 CC0)",
    "kind": "fallback",
    "short": true
+  },
+  "bgm_home": {
+   "file": "bgm_home",
+   "dir": "assets/music/bgm/",
+   "title": "쌍즈네 집 (자체 작곡 CC0)",
+   "kind": "inst"
+  },
+  "bgm_school": {
+   "file": "bgm_school",
+   "dir": "assets/music/bgm/",
+   "title": "학교 가는 길 (자체 작곡 CC0)",
+   "kind": "inst"
   }
  },
  "slots": {
   "title": [
    "ost01",
-   "ost01i",
    "ost02"
   ],
   "place:home_nanwu:day": [
-   "ost02i",
-   "ost06i",
-   "ost05"
+   "bgm_home"
   ],
   "place:home_nanwu:night": [
-   "ost06i",
-   "ost02i",
-   "ost05"
+   "bgm_home"
   ],
   "place:school:day": [
-   "ost01i",
-   "ost02i",
-   "ost02"
+   "bgm_school"
   ],
   "place:school:night": [
-   "ost02i",
-   "ost01i",
-   "ost02"
+   "bgm_school"
   ],
   "place:dessert:day": [
-   "ost03i",
-   "ost01i",
-   "ost03"
+   "bgm_school"
   ],
   "place:dessert:night": [
-   "ost06i",
-   "ost03i",
-   "ost03"
+   "bgm_school"
   ],
   "place:dorm:day": [
-   "ost02i",
-   "ost01i",
-   "ost05"
+   "bgm_home"
   ],
   "place:dorm:night": [
-   "ost07i",
-   "ost06i",
-   "ost05"
+   "bgm_home"
   ],
   "place:campus:day": [
-   "ost01i",
-   "ost03i",
-   "ost02"
+   "bgm_school"
   ],
   "place:campus:night": [
-   "ost07i",
-   "ost04i",
-   "ost02"
+   "bgm_school"
   ],
   "place:yihe_street:day": [
-   "ost03i",
-   "ost01i",
-   "ost03"
+   "bgm_school"
   ],
   "place:yihe_street:night": [
-   "ost04i",
-   "ost07i",
-   "ost03"
+   "bgm_school"
   ],
   "place:apartment:day": [
-   "ost03i",
-   "ost01i",
-   "ost05"
+   "bgm_home"
   ],
   "place:apartment:night": [
-   "ost07i",
-   "ost04i",
-   "ost05"
+   "bgm_home"
   ],
   "place:beach:day": [
-   "ost04i",
-   "ost03i",
-   "ost03"
+   "bgm_school"
   ],
   "place:beach:night": [
-   "ost04i",
-   "ost07i",
-   "ost03"
+   "bgm_school"
   ],
   "quiz": "duck",
   "minigame": [
@@ -195,55 +174,66 @@
   ],
   "event:E1": [
    "ost01i",
-   "ost02i"
+   "ost02i",
+   "ost03"
   ],
   "event:E2": [
    "ost06i",
-   "ost06"
+   "ost06",
+   "ost02"
   ],
   "event:E4": [
-   "ost05",
-   "ost05i"
+   "ost05i",
+   "ost05"
   ],
   "event:E3": [
    "ost06",
-   "ost06i"
+   "ost06i",
+   "ost02"
   ],
   "event:E12": [
    "ost05i",
-   "ost07i"
+   "ost07i",
+   "ost05"
   ],
   "event:E9": [
    "ost04i",
-   "ost05i"
+   "ost05i",
+   "ost02"
   ],
   "event:E5": [
    "ost04i",
-   "ost04"
+   "ost04",
+   "ost02"
   ],
   "event:E10": [
    "ost02i",
-   "ost08"
+   "ost08",
+   "ost05"
   ],
   "event:E6": [
    "ost07",
-   "ost07i"
+   "ost07i",
+   "ost03"
   ],
   "event:E7": [
    "ost01",
-   "ost01i"
+   "ost01i",
+   "ost05"
   ],
   "event:E11": [
    "ost07i",
-   "ost03i"
+   "ost03i",
+   "ost03"
   ],
   "event:E13": [
-   "ost03",
-   "ost03i"
+   "ost03i",
+   "ost03"
   ],
   "event:E8": [
    "ost04",
-   "ost04i"
+   "ost04i",
+   "ost05"
   ],
   "ending:strip": [
    "ost02",

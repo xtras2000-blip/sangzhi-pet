@@ -90,6 +90,8 @@ export function newGamePlus(prev, now = gnow()) {
   s.archive = { events: { ...((prev.archive || {}).events || {}), ...(prev.events || {}) } };
   s.rewards = prev.rewards || [];
   s.player = { ...(prev.player || { name: '' }) };   // 이름은 2회차에도 그대로
+  // 반복 방지 기록도 이어감: 2회차엔 1회차에 덜 본 대사·평범한 날 문자가 먼저 나옴
+  s.lineHist = prev.lineHist || {}; s.msgr.used = (prev.msgr && prev.msgr.used) || {};
   return s;
 }
 export const canNewGamePlus = (s) => !!(s && s.ending);

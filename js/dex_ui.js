@@ -1,3 +1,4 @@
+import * as VO from './voice.js';
 // Stage 7: 도감 화면(카드·옷장·수집·이벤트·대사·성장) + 보상 카드 연출 + 방 꾸미기 소스. DOM 담당
 import { STAGES, FOODS, GIFTS, PLACES, stageScale } from './config.js';
 import { dayNumber, stageOf } from './state.js';
@@ -220,13 +221,15 @@ export function showCard(c, { reveal = null, state } = {}) {
   $('cardBody').innerHTML = `<div class="bigcard ${ILL(c) ? 'ill ' : ''}${R_CLASS[c.rarity]}${reveal ? ' flip' : ''}" style="position:relative">${pic}</div>
     <div class="cinfo"><span class="rar ${R_CLASS[c.rarity]}">${rTxt}</span><b>${own ? c.title : '???'}</b>${own && c.text ? `<p>“${c.text}”</p>` : ''}<small>${reveal ? (reveal.dup ? `또 나왔어요 ×${CL.cardCount(S, c.id)}` : 'NEW! 도감에 들어갔어요') : (own && c.ep ? `원작 ${c.ep} · ${c.how}` : c.how)}</small>
     ${reveal ? `<small>${reveal.why === 'pcard' ? `📸 명장면 포토카드 · 원작 ${c.ep}` : reveal.why === 'pieces' ? '🧩 조각 3개 → 전설 카드' : '하루 루틴 완료 보상 · 💗 설렘 +1'}</small>` : ''}</div>`;
+  const vid = own && ILL(c) ? (c.kind === 'pcard' ? c.pc : c.ev) : null;
+  if (vid && VO.hasVoice(vid)) { const b = document.createElement('button'); b.className = 'card-voice'; b.textContent = '🔊'; b.setAttribute('aria-label', '대사 다시 듣기'); b.onclick = (e) => { e.stopPropagation(); VO.playIllust(vid, { force: true }); }; $('cardBody').querySelector('.bigcard').appendChild(b); VO.playIllust(vid); }
   el.hidden = false;
 }
 export function bindDex(hooks = {}) {
   $('dexTabs').addEventListener('click', (e) => { const b = e.target.closest('[data-tab]'); if (b) { TAB = b.dataset.tab; hooks.tap?.(); renderDex(); } });
   $('dexBody').addEventListener('click', (e) => { const wr = e.target.closest('[data-wear]'); if (wr) { if (CL.equipOutfit(S, wr.dataset.wear, ctx())) { hooks.tap?.(); hooks.equip?.(wr.dataset.wear); const y = $('dexBody').scrollTop; renderDex(); $('dexBody').scrollTop = y; } return; } const en = e.target.closest('[data-ending]'); if (en) { hooks.tap?.(); closeDex(); hooks.ending?.(); return; } const rp = e.target.closest('[data-replay]'); if (rp) { hooks.tap?.(); closeDex(); hooks.replay?.(rp.dataset.replay); return; } const b = e.target.closest('[data-card]'); if (b) { hooks.tap?.(); showCard(catalog().find((c) => c.id === b.dataset.card)); } });
   $('dexClose').onclick = () => { hooks.tap?.(); closeDex(); hooks.close?.(); };
-  $('cardModal').addEventListener('click', () => { $('cardModal').hidden = true; if (!$('dex').hidden) renderDex(); hooks.cardClosed?.(); });
+  $('cardModal').addEventListener('click', () => { VO.stopVoice(); $('cardModal').hidden = true; if (!$('dex').hidden) renderDex(); hooks.cardClosed?.(); });
 }
 export const dexState = () => ({ open: !$('dex').hidden, tab: TAB, card: !$('cardModal').hidden });
 export const clearThumbs = () => THUMB.clear();

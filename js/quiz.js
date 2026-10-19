@@ -7,6 +7,15 @@
 //  - 취향 맞히기: 단계 해금된 세트만, 하루 3번. scored=false(드라마 미확인) 세트는 설렘 점수 없음 + 라벨 표시
 import { STAGES, RARITY_WEIGHT } from './config.js';
 import { clamp, dayStageIndex, stageOf, gainCrush, gnow } from './state.js';
+import { buildPool, shuffled } from './quizgen.js';
+// v0.9.4: 자동 생성 문항(대사·이벤트·음식·과목). 대사 데이터는 dialogue.js 가 넣어 줌(setGenSource)
+let GEN = null, GEN_SRC = () => ({}), GEN_KEY = '';
+export function setGenSource(fn) { GEN_SRC = fn || (() => ({})); GEN = null; }
+export function genPool() {
+  const src = GEN_SRC() || {}, key = `${(src.lines || []).length}|${(src.events || []).length}|${(Q.taste || []).length}`;
+  if (!GEN || key !== GEN_KEY) { GEN = buildPool({ ...src, taste: Q.taste || [] }); GEN_KEY = key; }
+  return GEN;
+}
 
 export const POP_RATE = 0.15;
 export const EXAM_SIZE = 3, EXAM_PASS = 2, HINT_AFTER = 3, SPARKLE_AFTER = 5, TASTE_PER_DAY = 3;
@@ -31,24 +40,31 @@ function log(s, e) { s.quiz.log.push({ ...e, t: Date.now() }); if (s.quiz.log.le
 
 // ── 출제 풀 ──
 /** stageDlg 이하 문항. verifiedOnly=true면 ✅만 */
-export function poolFor(stageDlg, { verifiedOnly = false } = {}) {
+export function poolFor(stageDlg, { verifiedOnly = false, s = null, kind = null } = {}) {
   const r = stageRank(stageDlg === '졸' ? '졸' : stageDlg);
-  return Q.questions.filter((q) => stageRank(q.stage) <= r && (!verifiedOnly || q.verified));
+  const base = Q.questions.filter((q) => stageRank(q.stage) <= r && (!verifiedOnly || q.verified));
+  if (verifiedOnly) return base;   // 성장 시험은 손으로 쓴 ✅ 문항만
+  const gen = genPool().filter((q) => (q.kind === 'study' ? q.stage === stageDlg : stageRank(q.stage) <= r) && (!q.need || (s && (s.events || {})[q.need])));
+  const all = [...base, ...gen];
+  return kind ? all.filter((q) => (kind === 'study' ? q.kind === 'study' : q.kind !== 'study')) : all.filter((q) => q.kind !== 'study');
 }
 
 // ── B. 팝퀴즈 ──
 export function shouldPop(s, rnd = Math.random) { return !s.asleep && poolFor(curDlg(s)).length > 0 && rnd() < POP_RATE; }
 /** 반복 없는 선택: 이번 바퀴(cycle)에 안 낸 것 중에서. 다 냈으면 새 바퀴(직전 문항은 제외) */
-export function pickPop(s, rnd = Math.random, now = gnow()) {
-  const pool = poolFor(curDlg(s, now));
+export function pickPop(s, rnd = Math.random, now = gnow(), { kind = null } = {}) {
+  const pool = poolFor(curDlg(s, now), { s, kind });
   if (!pool.length) return null;
+  // 반복 금지 기록(저장됨): 이번 바퀴에 낸 문항 + 최근 HIST 개는 다시 안 냄. 형식도 번갈아(같은 종류 연속 줄이기)
+  s.quiz.cycle = (s.quiz.cycle || []).slice(-400);
   let left = pool.filter((q) => !s.quiz.cycle.includes(q.id));
-  if (!left.length) { s.quiz.cycle = []; left = pool.filter((q) => q.id !== s.quiz.last); if (!left.length) left = pool; }
+  if (!left.length) { s.quiz.cycle = s.quiz.cycle.slice(-Math.min(30, Math.floor(pool.length / 2))); left = pool.filter((q) => !s.quiz.cycle.includes(q.id) && q.id !== s.quiz.last); if (!left.length) left = pool; }
+  const lastKind = s.quiz.lastKind; if (lastKind) { const other = left.filter((q) => (q.kind || 'hand') !== lastKind); if (other.length && rnd() < 0.75) left = other; }
   // 아직 못 맞힌 문항을 조금 더 자주
   const weak = left.filter((q) => !s.quiz.correct[q.id]);
   const q = pickOne(weak.length && rnd() < 0.7 ? weak : left, rnd);
-  s.quiz.cycle.push(q.id); s.quiz.last = q.id;
-  return q;
+  s.quiz.cycle.push(q.id); s.quiz.last = q.id; s.quiz.lastKind = q.kind || 'hand';
+  return shuffled(q, rnd);
 }
 
 /** 정답 처리(팝퀴즈). 반환: { ok, rarity, text, expr, then, fx, delta } — 오답은 스탯 감소 없음 */
@@ -58,8 +74,8 @@ export function answerPop(s, q, choice, rnd = Math.random) {
   if (ok) {
     s.quiz.correct[q.id] = (s.quiz.correct[q.id] || 0) + 1;
     const rarity = rollRarity(rnd);
-    const delta = rarity === '전설' ? { crush: 5, mood: 8 } : rarity === '희귀' ? { crush: 4, mood: 5 } : { crush: 3, mood: 3 };
-    add(s, 'crush', delta.crush); add(s, 'mood', delta.mood);
+    const delta = q.kind === 'study' ? { grade: 4, mood: 2 } : rarity === '전설' ? { crush: 5, mood: 8 } : rarity === '희귀' ? { crush: 4, mood: 5 } : { crush: 3, mood: 3 };
+    for (const [k, v] of Object.entries(delta)) add(s, k, v);
     let piece = false;
     if (rarity === '전설') { s.collection.pieces++; piece = true; }
     log(s, { type: 'pop', id: q.id, ok: true, rarity });

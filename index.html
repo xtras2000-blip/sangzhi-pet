@@ -92,13 +92,14 @@
     </div>
   </main>
 
+  <div class="tantrum" id="tantrum" hidden role="alert"><i id="ttIcon">🎒</i><p><b id="ttWant"></b><span id="ttLine"></span><small id="ttLock"></small></p><button id="ttGo">데려가기 ›</button></div>
   <nav class="actions" id="actions">
     <button class="act" data-act="feed"><i>🍙</i><b>밥 주기</b></button>
-    <button class="act" data-act="play"><i>🎮</i><b>놀아주기</b></button>
-    <button class="act" data-act="study"><i>✏️</i><b>공부</b></button>
+    <button class="act" data-act="play"><u class="cap" data-cap="play"></u><i>🎮</i><b>놀아주기</b></button>
+    <button class="act" data-act="study"><u class="cap" data-cap="study"></u><i>✏️</i><b>공부</b></button>
     <button class="act" data-act="sleep"><i>🛏️</i><b id="sleepLabel">재우기</b></button>
-    <button class="act" data-act="talk"><i>💬</i><b>대화</b></button>
-    <button class="act" data-act="gift"><i>🎁</i><b>선물</b></button>
+    <button class="act" data-act="talk"><u class="cap" data-cap="talk"></u><i>💬</i><b>대화</b></button>
+    <button class="act" data-act="gift"><u class="cap" data-cap="gift"></u><i>🎁</i><b>선물</b></button>
   </nav>
   <footer class="fan-note">fan-made · 비상업적 팬 작품 · 《투투장부주》 공식과 무관</footer>
   <!-- Stage 6: 미니게임 ① 디저트 받기 (js/catch_ui.js) -->
@@ -183,6 +184,8 @@
     <label class="row"><span>소리 (BGM·효과음)</span><input type="checkbox" id="optSound"></label>
     <label class="row vol"><span>🎵 배경음악</span><input type="range" id="optBgm" min="0" max="100" step="5"><output id="optBgmV"></output></label>
     <label class="row vol"><span>🔔 효과음</span><input type="range" id="optSfx" min="0" max="100" step="5"><output id="optSfxV"></output></label>
+    <label class="row" id="optVoiceRow"><span>🗣️ 음성 대사 (일러스트)</span><input type="checkbox" id="optVoice"></label>
+    <label class="row vol" id="optVoiceVolRow"><span>🗣️ 음성 볼륨</span><input type="range" id="optVoiceVol" min="0" max="100" step="5"><output id="optVoiceVolV"></output></label>
     <p class="small muted" id="musicNote"></p>
     <p class="small">저장은 이 기기 브라우저(localStorage)에만 돼요. 앱을 닫아도 시간은 흘러요(최대 48시간 반영).</p>
     <button class="ng-btn" id="btnNG" hidden>🔁 2회차 시작 <small>(도감·포토카드·반응 기록은 이어서)</small></button>
@@ -228,7 +231,7 @@
 </div>
 <div class="evfull" id="evFull" hidden role="dialog" aria-label="이벤트">
   <div class="ev-pic"><img id="evImg" alt=""><img id="evImg2" class="ev-shot" alt=""></div>
-  <div class="ev-top"><div><b id="evTitle"></b><small id="evEp"></small></div><button class="ev-skip" id="evSkip">건너뛰기 ⏭</button></div>
+  <div class="ev-top"><div><b id="evTitle"></b><small id="evEp"></small></div><button class="ev-voice" id="evVoice" hidden aria-label="대사 다시 듣기">🔊</button><button class="ev-skip" id="evSkip">건너뛰기 ⏭</button></div>
   <div class="ev-box" id="evBox"></div>
 </div>
 <!-- 엔딩: 필름 스트립 → 크레딧 → 쌍즈의 메시지 (js/ending.js, data/ending.json) -->
@@ -239,6 +242,12 @@
   <div class="end-grain" aria-hidden="true"></div>
   <div class="end-pause" aria-hidden="true">⏸ 탭하면 계속</div>
   <button class="ev-skip end-skip" id="endSkip">건너뛰기 ⏭</button>
+</div>
+<div class="voice-cap" id="voiceCap" hidden></div>
+<div class="msg-pop" id="msgPop" hidden role="dialog" aria-label="새 메시지">
+  <div class="mp-card"><div class="mp-app">💬 메신저 · <span id="mpTime">21:00</span></div>
+    <div class="mp-row"><img class="mp-ava" src="assets/cards/P08_t.webp" alt=""><div><b>쌍즈 🍓</b><p id="mpText"></p></div></div>
+    <div class="mp-btns"><button class="mp-later" id="mpLater">나중에</button><button class="mp-go" id="mpGo">바로 보기</button></div></div>
 </div>
 <div class="card-modal" id="cardModal" hidden role="dialog" aria-label="포토카드"><div class="card-box" id="cardBody"></div><p class="card-tap">탭해서 닫기</p></div>
 <!-- 타이틀(메인) 화면: js/title.js · 키 이미지는 사용자 제공(로고 포함, 수정하지 않음) -->

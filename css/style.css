@@ -626,3 +626,46 @@ body.in-moment .bubble .cap { color: #e2447f; font-weight: 800; }
 .msg-btn.ring { animation: ring .6s ease-in-out 3; }
 @keyframes ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
 #clock { font-variant-numeric: tabular-nums; font-weight: 700; }
+/* 음성 대사 (개인 빌드) */
+.ev-voice, .card-voice { pointer-events: auto; flex: none; border: 2px solid rgba(255,255,255,.8); background: rgba(29,20,36,.45); color: #fff; border-radius: 999px; min-width: 36px; min-height: 36px; font-size: 16px; margin-right: 6px; }
+.card-voice { position: absolute; right: 8px; bottom: 8px; z-index: 3; }
+.voice-cap { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 128px); transform: translateX(-50%); z-index: 9999; max-width: min(92vw, 420px); background: rgba(29,20,36,.72); color: #fff; border-radius: 12px; padding: 6px 12px; text-align: center; pointer-events: none; line-height: 1.35; }
+.voice-cap b { display: block; font-size: 14px; font-weight: 600; }
+.voice-cap small { display: block; font-size: 12px; opacity: .85; }
+/* v0.9.4 연타 보호: 새로 뜬 오버레이 살짝 페이드 인 */
+.guard-in { animation: guardIn .22s ease-out; }
+@keyframes guardIn { from { opacity: 0; } to { opacity: 1; } }
+/* v0.9.4 때쓰기 배너 */
+.tantrum { display: flex; align-items: center; gap: 8px; margin: 0 10px 6px; padding: 8px 10px; border: 3px solid var(--ink); border-radius: 14px; background: #FFE9A8; box-shadow: 0 3px 0 var(--ink); animation: ttWiggle 1.6s ease-in-out infinite; }
+.tantrum[hidden] { display: none; }
+.tantrum i { font-style: normal; font-size: 26px; }
+.tantrum p { flex: 1; margin: 0; line-height: 1.3; min-width: 0; }
+.tantrum b { display: block; font-size: 14px; }
+.tantrum span { display: block; font-size: 12px; }
+.tantrum small { display: block; font-size: 11px; opacity: .7; }
+.tantrum button { flex: none; min-height: 44px; padding: 0 12px; border: 3px solid var(--ink); border-radius: 12px; background: #FF8FB1; color: #fff; font: inherit; font-weight: 700; box-shadow: 0 3px 0 var(--ink); }
+@keyframes ttWiggle { 0%, 90%, 100% { transform: none; } 93% { transform: rotate(-1deg); } 96% { transform: rotate(1deg); } }
+.act { position: relative; }
+.act .cap { position: absolute; top: 3px; right: 5px; font-size: 10px; font-weight: 700; text-decoration: none; background: rgba(255,255,255,.85); border: 1.5px solid var(--ink); border-radius: 999px; padding: 0 5px; line-height: 15px; }
+.act .cap:empty { display: none; }
+.act.capped, .act.ttlock { opacity: .5; filter: grayscale(.5); }
+.act.ttlock::after { content: '🔒'; position: absolute; top: 2px; left: 4px; font-size: 12px; }
+/* v0.9.4 메신저 알림 팝업 */
+.msg-pop { position: fixed; inset: 0; z-index: 9000; background: rgba(20,15,30,.45); display: flex; align-items: flex-start; justify-content: center; padding: calc(env(safe-area-inset-top, 0px) + 14px) 10px 0; }
+.msg-pop[hidden] { display: none; }
+.mp-card { width: 100%; max-width: 440px; background: #fff; border: 3px solid var(--ink); border-radius: 18px; box-shadow: 0 6px 0 var(--ink); padding: 10px 12px 12px; animation: mpDrop .35s cubic-bezier(.2,1.4,.4,1); }
+@keyframes mpDrop { from { transform: translateY(-120%); } to { transform: none; } }
+.mp-app { font-size: 11px; opacity: .65; margin-bottom: 6px; }
+.mp-row { display: flex; gap: 10px; align-items: center; }
+.mp-ava { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; border: 2px solid var(--ink); flex: none; background: #FFE4EC; }
+.mp-row b { font-size: 15px; } .mp-row p { margin: 2px 0 0; font-size: 14px; line-height: 1.35; }
+.mp-btns { display: flex; gap: 8px; margin-top: 10px; }
+.mp-btns button { flex: 1; min-height: 46px; border: 3px solid var(--ink); border-radius: 12px; font: inherit; font-weight: 700; }
+.mp-go { background: #FF8FB1; color: #fff; box-shadow: 0 3px 0 var(--ink); } .mp-later { background: #f3f0f7; }
+.msg-btn.unread { animation: ttWiggle 1.2s infinite; }
+/* v0.9.5 이벤트 특별 장소 */
+.tantrum.evp { background: linear-gradient(90deg, #FFE1F0, #FFF3C4); }
+.place.evspot { position: relative; background: #FFF3C4; border-color: #FF8FB1; box-shadow: 0 0 0 3px rgba(255,143,177,.45), 0 0 18px 4px rgba(255,214,102,.8); animation: evGlow 1.4s ease-in-out infinite; }
+.place.evspot .newb { position: absolute; top: -9px; right: -6px; font-style: normal; font-size: 10px; font-weight: 800; color: #fff; background: #FF5C8A; border: 2px solid var(--ink); border-radius: 999px; padding: 0 6px; line-height: 16px; }
+@keyframes evGlow { 50% { box-shadow: 0 0 0 3px rgba(255,143,177,.25), 0 0 26px 8px rgba(255,214,102,1); } }
+.qopt .emo { font-size: 30px; line-height: 1; }
