@@ -5,7 +5,7 @@ import { noteMoment } from './events.js';
 //  - 유제품을 받아도 점수·스탯 감소 없음(벌 없음): 콤보만 끊기고 쌍즈가 "간질간질" 반응
 //  - 희귀도: 일반/희귀/전설 아이템 → 점수 + 보상 보너스(희귀 = 기분, 전설 = 설렘)
 //  - 하루 소프트 리밋: FULL_PLAYS판까지 보상 100%, 그 뒤로 줄어듦(0이 되지는 않음). 언제든 계속 놀 수 있음
-import { clamp, dayKey } from './state.js';
+import { clamp, dayKey, gainCrush, bump } from './state.js';
 
 export const ROUND_SEC = 45;
 export const FULL_PLAYS = 3;
@@ -132,7 +132,8 @@ export function applyResult(s, res, now = Date.now()) {
   const mg = ensureMg(s);
   const before = s.daily.minigame || 0, best = mg.best[res.stage] || 0;
   const rw = rewardFor(res, before, best);
-  s.stats.mood = clamp(s.stats.mood + rw.mood); s.stats.crush = clamp(s.stats.crush + rw.crush);
+  s.stats.mood = clamp(s.stats.mood + rw.mood); rw.crush = gainCrush(s, rw.crush, now);
+  bump(s, 'mg', 1, now); if (rw.tier !== 'ok') bump(s, 'mgGood', 1, now);
   s.stats.energy = clamp(s.stats.energy + rw.energy); s.stats.hunger = clamp(s.stats.hunger + rw.hunger);
   s.daily.minigame = before + 1; s.daily.done.studyOrPlay = true; s.stats_meta.plays++;
   noteMoment(s, 'minigame');

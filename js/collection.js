@@ -1,6 +1,7 @@
 // Stage 7: 성장·수집 (도감) — 순수 로직. DOM 없음 → node 테스트 가능
 // 데이터: lines(dialogue.json lines), events(dialogue.json events), wardrobe(data/wardrobe.json), taste(quiz.json taste)
 import { STAGES, FOODS } from './config.js';
+import { gainCrush } from './state.js';
 
 export const RARITY_P = { 일반: 0.85, 희귀: 0.12, 전설: 0.03 };   // PLAN §6 85/12/3
 export const STAGE_IDS = STAGES.map((x) => x.id);
@@ -98,7 +99,7 @@ export function routineReward(s, catalog, rnd = Math.random) {
   const d = s.daily; if (!d || d.card) return null;
   if (!(d.done.feed && d.done.talk && d.done.studyOrPlay)) return null;
   d.card = true;
-  s.stats.crush = Math.min(100, (s.stats.crush || 0) + 1);
+  gainCrush(s, 1);
   return { ...drawCard(s, catalog, { rnd }), why: 'routine' };
 }
 /** 포토카드 조각 3개 → 전설 카드 1장 확정 */

@@ -1,8 +1,8 @@
 // 행동 → 스탯 변화 + 대사 컨텍스트. 순수 로직(DOM 없음).
 import { noteFood } from './collection.js';
 import { noteMoment } from './events.js';
-import { clamp, moodState, stageOf, timeOfDay, dayKey } from './state.js';
-import { FOODS, GIFTS, DESSERT_DAILY_LIMIT, GIFT_CRUSH_DAILY } from './config.js';
+import { clamp, moodState, stageOf, timeOfDay, dayKey, gainCrush, bump } from './state.js';
+import { FOODS, GIFTS, DESSERT_DAILY_LIMIT, GIFT_CRUSH_DAILY, TALK_FULL, TALK_MOOD, TALK_MOOD_LOW, TALK_CRUSH_DAILY, PLAY_FULL, PLAY_MOOD, PLAY_MOOD_LOW, FULL_HUNGER } from './config.js';
 import { pickLine, pickSys, pickNostalgia } from './dialogue.js';
 
 // 대사 내용으로 표정 보정 (EXPRESSIONS.md 트리거)
@@ -15,7 +15,7 @@ export function textExpr(t = '') {
 }
 // 받침 유무로 조사 고르기: josa('스케치북','을','를') → '스케치북을'
 export const josa = (w, a, b) => { const c = w.charCodeAt(w.length - 1); const has = c >= 0xAC00 && c <= 0xD7A3 ? (c - 0xAC00) % 28 > 0 : false; return w + (has ? a : b); };
-const add = (s, k, v) => (s.stats[k] = clamp(s.stats[k] + v));
+const add = (s, k, v) => (k === 'crush' ? gainCrush(s, v) : (s.stats[k] = clamp(s.stats[k] + v)));
 export const ctxFor = (s, action, state, strict = false, extra = {}) => ({ action, state: state ?? moodState(s), stage: stageOf(s).dlg, time: timeOfDay().id, place: s.place || null, strict, ...extra });
 // 회상(원작 명장면) 시도: 조건 맞으면 25%·하루 1번
 const nostCtx = (s, on, extra = {}) => { const d = new Date(); return { on, stage: stageOf(s).dlg, state: moodState(s), place: s.place || null, crush: s.stats.crush, grade: s.stats.grade, month: d.getMonth() + 1, time: timeOfDay().id, ...extra }; };
@@ -32,12 +32,15 @@ export function doAction(s, act, arg) {
       s.stats_meta.feeds++; s.daily.done.feed = true; noteFood(s, f.id);
       if (f.dairy) {
         // 우유 알레르기(PLAN §6-1): 첫 번째 = 간질간질 + 기분 -10, 같은 날 두 번째부터 = 먼저 확인하고 거절(스탯 변화 없음)
-        if (s.daily.dairy >= 1) { noteMoment(s, 'refuse'); const l = pickSys('dairyRefuse'); return { line: l, expr: l.expr, fx: '🥛❌', allergy: 'refuse' }; }
+        if (s.daily.dairy >= 1) { noteMoment(s, 'refuse'); bump(s, 'dairyRefuse'); const l = pickSys('dairyRefuse'); return { line: l, expr: l.expr, fx: '🥛❌', allergy: 'refuse' }; }
         s.daily.dairy++;
         add(s, 'hunger', Math.round(f.hunger / 2)); add(s, 'mood', -10);
         const l = pickSys('dairy');
         return { line: l, expr: l.expr, fx: '💦', allergy: 'itch' };
       }
+      // 배부르면 식사는 거절(디저트 배는 따로). 수치가 늘 100에 붙어 있지 않게
+      if (!f.dessert && st.hunger >= FULL_HUNGER) return { line: pickSys('tooFull'), expr: 'E13', then: 'E01', fx: '🙅' };
+      bump(s, 'feed'); if (f.id === 'tanghulu') bump(s, 'tanghulu'); if (f.id === 'noodle') bump(s, 'noodle');
       noteMoment(s, 'feed', { food: f.id });
       if (f.dessert && st.mood < 30 && f.mood > 0) noteMoment(s, 'comfort');
       add(s, 'hunger', f.hunger);
@@ -52,16 +55,17 @@ export function doAction(s, act, arg) {
     }
     case 'play': {
       if (st.energy < 10) { const l = pickLine(ctxFor(s, '놀기', '졸림')); return { line: l, expr: 'E21', fx: '💤' }; }
-      s.stats_meta.plays++; s.daily.done.studyOrPlay = true;
+      s.stats_meta.plays++; s.daily.done.studyOrPlay = true; bump(s, 'play');
       const before = moodState(s);
-      add(s, 'mood', 15); add(s, 'energy', -10); add(s, 'hunger', -5);
+      s.daily.plays = (s.daily.plays || 0) + 1;
+      add(s, 'mood', s.daily.plays <= PLAY_FULL ? PLAY_MOOD : PLAY_MOOD_LOW); add(s, 'energy', -10); add(s, 'hunger', -5);
       const line = pickLine(ctxFor(s, '놀기', before === '샐짐' ? '샐짐' : '기분좋음'));
       return { line, expr: 'hop', then: after(line), fx: '🎵' };
     }
     case 'study': {
       if (st.energy < 15) return { line: pickSys('tooSleepyStudy'), expr: 'E21', fx: '💤' };
       if (st.mood < 25) { add(s, 'mood', -2); return { line: pickSys('studyRefuse'), expr: 'E13', fx: '' }; }
-      s.stats_meta.studies++; s.daily.done.studyOrPlay = true;
+      s.stats_meta.studies++; s.daily.done.studyOrPlay = true; bump(s, 'study');
       bumpStudyStreak(s); noteMoment(s, 'study');
       add(s, 'grade', 10); add(s, 'mood', -6); add(s, 'energy', -8); add(s, 'hunger', -4);
       const nl = tryNostalgia(s, '공부');
@@ -77,12 +81,14 @@ export function doAction(s, act, arg) {
       return { line, expr: 'E22', fx: '' };   // 잠든 동안은 항상 E22
     }
     case 'talk': {
-      s.stats_meta.talks++; s.daily.done.talk = true;
+      s.stats_meta.talks++; s.daily.done.talk = true; bump(s, 'talk');
       let state = moodState(s);
       // 설렘이 높을수록 자쉬 오빠 이야기(설렘 태그)가 나올 확률↑
       if (state === 'any' || state === '기분좋음') if (Math.random() < 0.15 + st.crush / 200) state = '설렘';
-      add(s, 'mood', 5);
-      if (state === '설렘' && Math.random() < 0.3) add(s, 'crush', 1);
+      // 하루 처음 몇 번만 크게: 기분 +5(TALK_FULL번까지, 그 뒤 +1) · 설렘 +1(TALK_CRUSH_DAILY번까지)
+      s.daily.talks = (s.daily.talks || 0) + 1;
+      add(s, 'mood', s.daily.talks <= TALK_FULL ? TALK_MOOD : TALK_MOOD_LOW);
+      if (s.daily.talks <= TALK_CRUSH_DAILY) add(s, 'crush', 1);
       const nl = tryNostalgia(s, '대화', { state: state === '설렘' ? '설렘' : moodState(s) });
       if (nl) return { line: nl, expr: after(nl), fx: '📖' };
       const line = pickLine(ctxFor(s, '대화', state));
@@ -92,7 +98,7 @@ export function doAction(s, act, arg) {
       return { line, expr: ex, fx: '' };
     }
     case 'gift': {
-      s.stats_meta.gifts++;
+      s.stats_meta.gifts++; bump(s, 'gift');
       const g = GIFTS.find((x) => x.id === arg) || GIFTS[Math.floor(Math.random() * GIFTS.length)];
       s.inventory[g.id] = (s.inventory[g.id] || 0) + 1;
       const state = st.mood < 30 ? '샐짐' : (Math.random() < 0.3 ? '기분좋음' : 'any');

@@ -26,9 +26,13 @@ export const SYSTEM_LINES = {
   sleepRefuse: ['아직 하나도 안 졸려! …진짜야.', '벌써 자라고? 나 애 아니거든!'],
   welcomeBack: ['왜 이제 왔어! 기다린 거 아니거든. …조금만 기다렸어.', '흥, 연락도 없이… 그래도 와줘서 고마워. 쬐끔.'],
   giftEnough: ['또 줘? 오늘은 벌써 많이 받았는데… 아껴 뒀다가 내일 줘. 헤헤.', '고마워! 근데 선물은 가끔 받아야 더 설레는 거야. 내일 또 줘!', '이거 다 받으면 내 서랍 터져! …내일 하나 더 줘.'],
+  tooFull: ['배불러… 더 먹으면 굴러다닐 거야. 디저트 배는 따로 있지만!', '방금 먹었잖아! 이따가 줘.'],
+  goodStreak: ['요즘 컨디션 최고야! 시험도 자신 있어. 헤헤.', '매일 챙겨 줘서 그런가, 몸이 가벼워! 고마워.'],
+  crushDaily: ['오늘은 심장이 너무 바빴어… 내일 또 설레게 해 줘.'],
+  crushStage: ['이 마음… 아직은 여기까지만. 조금 더 크면 알게 될 거야.'],
   hello: ['왔어? 헤헤.', '어, 왔다! 오늘은 뭐 할 거야?'],
 };
-const SYS_EXPR = { dairy: 'E05', dairyRefuse: 'E13', tooSweet: 'E23', studyRefuse: 'E13', tooSleepyStudy: 'E21', wake: 'E21', autoWake: 'E01', sleepRefuse: 'E13', welcomeBack: 'E10', hello: 'E01', giftEnough: 'E02' };
+const SYS_EXPR = { dairy: 'E05', dairyRefuse: 'E13', tooSweet: 'E23', studyRefuse: 'E13', tooSleepyStudy: 'E21', wake: 'E21', autoWake: 'E01', sleepRefuse: 'E13', welcomeBack: 'E10', hello: 'E01', giftEnough: 'E02', tooFull: 'E13', goodStreak: 'E01', crushDaily: 'E19', crushStage: 'E02' };
 const lastSys = {};
 export function pickSys(k) {
   const a = SYSTEM_LINES[k];

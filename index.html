@@ -34,9 +34,31 @@
 </head>
 <body>
 <div id="app" class="app">
+  <div class="crush-cut" id="crushCut" hidden><div class="cc-heart">💓</div><div class="cc-lv" id="ccLv"></div><div class="cc-line" id="ccLine"></div></div>
+  <div class="msgr" id="msgr" hidden>
+    <div class="mg-phone">
+      <div class="mg-sb"><span class="mg-clock">21:00</span><span>📶 🔋</span></div>
+      <div class="mg-head"><button class="mg-back" id="msgrBack" aria-label="닫기">‹</button><div class="mg-who"><b>쌍즈 🍓</b><small class="mg-status">접속 중</small></div><span class="mg-bond"></span></div>
+      <div class="mg-title"></div>
+      <div class="mg-log"><div class="mg-row sz mg-typing" hidden><p><i></i><i></i><i></i></p></div></div>
+      <div class="mg-choices"></div>
+    </div>
+    <div class="mg-view" id="mgView" hidden><img alt="사진"></div>
+  </div>
+  <div class="name-sheet" id="nameSheet" hidden>
+    <div class="name-card">
+      <div class="name-emo">🏢🍓</div>
+      <b>같은 아파트, 같은 중학교.</b>
+      <p>쌍즈의 오랜 소꿉친구인 당신의 이름은?</p>
+      <input id="nameInput" maxlength="8" placeholder="이름 (최대 8자)" autocomplete="off">
+      <button id="nameOk">이걸로 할래</button>
+    </div>
+  </div>
   <header class="topbar">
     <div class="title" id="title" title="길게 누르면 디버그">🍰 쌍즈 키우기</div>
     <div class="meta"><span id="dayLabel">D+1</span> · <span id="stageLabel">중학생</span> · <span id="todLabel">☀️</span> <span id="clock">--:--</span></div>
+    <button class="icon-btn msg-btn" id="btnMsg" aria-label="메신저">💬<b id="msgDot" hidden></b></button>
+    <button class="icon-btn goal-btn" id="btnGoals" aria-label="목표판">🎯<b id="goalBadge"></b></button>
     <button class="icon-btn" id="btnDex" aria-label="도감">📒</button>
     <button class="icon-btn" id="btnSettings" aria-label="설정">⚙️</button>
   </header>
@@ -119,6 +141,13 @@
 </div>
 
 <!-- 밥 메뉴 시트 -->
+<div class="sheet" id="goalSheet" hidden>
+  <div class="sheet-card goal-body">
+    <h3 id="goalTitle">🎯 목표판</h3>
+    <div id="goalBody"></div>
+    <button class="ghost" data-close>닫기</button>
+  </div>
+</div>
 <div class="sheet" id="feedSheet" hidden>
   <div class="sheet-card">
     <h3>뭐 먹일까?</h3>
@@ -155,6 +184,7 @@
     <label class="row vol"><span>🔔 효과음</span><input type="range" id="optSfx" min="0" max="100" step="5"><output id="optSfxV"></output></label>
     <p class="small muted" id="musicNote"></p>
     <p class="small">저장은 이 기기 브라우저(localStorage)에만 돼요. 앱을 닫아도 시간은 흘러요(최대 48시간 반영).</p>
+    <button class="ng-btn" id="btnNG" hidden>🔁 2회차 시작 <small>(도감·포토카드·반응 기록은 이어서)</small></button>
     <button class="danger" id="btnReset">처음부터 다시 키우기</button>
     <p class="small muted">팬메이드 · 비상업 · 전연령. 원작: 竹已 《偷偷藏不住》 / 드라마 《투투장부주》(2023). 캐릭터 그림은 오리지널 픽셀 디자인이에요.<br><span id="verLabel"></span><br>문제가 보이면 주소 끝에 <b>?debug=1</b> 을 붙여 열고 🐞 → 「피드백 복사」를 눌러 보내 주세요.</p>
     <button class="ghost" data-close>닫기</button>

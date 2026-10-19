@@ -12,25 +12,31 @@ const NIGHT = ['저녁', '밤', '새벽'];
 const isNight = (now) => NIGHT.includes(timeOfDay(now).id);
 const isDay = (now) => ['아침', '오후'].includes(timeOfDay(now).id);
 const UG = (s, now) => ['uni', 'grad'].includes(st(s, now));
+const HUG = (s, now) => ['high', 'uni', 'grad'].includes(st(s, now));
 const flag = (s, k) => !!(s.pflags || {})[k];
 const sameDay = (a, b) => new Date(a).toDateString() === new Date(b).toDateString();
 /** 해금 조건. 수치는 게임 설계(ILLUST_PROMPTS.md '해금 계획', 원작 근거 없음) */
 export const EVENT_RULES = {
   E0: () => true,   // 1화 첫 만남: 첫 접속 직후 가장 먼저 (예전 세이브도 처음 한 번)
-  E1: (s, now) => st(s, now) === 'mid' && seen(s, 'E0') && s.stats.crush >= 20,
-  E2: (s, now) => st(s, now) === 'high' && (s.streak?.study || 0) >= 7,
+  // 놓침 방지: 중학생 때 설렘 20을 못 채웠으면 고등학생이 된 뒤 바로(회상처럼)
+  E1: (s, now) => seen(s, 'E0') && ((st(s, now) === 'mid' && s.stats.crush >= 20) || HUG(s, now)),
+  // 공부 3일 연속(예전 7일: 고등학생 기간이 4일뿐이라 거의 불가능). 놓치면 대학에서
+  E2: (s, now) => (st(s, now) === 'high' && (s.streak?.study || 0) >= 3) || UG(s, now),
   E3: (s, now) => st(s, now) === 'uni' && s.stats.grade >= 60,
-  E4: (s, now) => st(s, now) === 'high' && dayNumber(s, now) >= HIGH_LAST_DAY,
+  // 고등 마지막 날. 그날 안 들어왔거나 시험을 먼저 봤으면 대학 첫날
+  E4: (s, now) => (st(s, now) === 'high' && dayNumber(s, now) >= HIGH_LAST_DAY) || UG(s, now),
   // 8화 계단 재회: 대학 첫날 밤(저녁·밤·새벽). 그 밤을 놓쳐도 다음 날부터는 언제든
   E12: (s, now) => st(s, now) === 'uni' && (isNight(now) || dayNumber(s, now) > UNI_FROM),
   E9: (s, now) => UG(s, now) && seen(s, 'E12') && s.stats.crush >= 40,
-  E5: (s, now) => UG(s, now) && isWinter(new Date(now)) && s.stats.crush >= 50,
+  // 첫눈: 겨울(12~2월)이면 바로, 아니어도 대학 D+12부터(이허의 늦은 첫눈). 설렘 50 ≤ 엔딩 80 이라 엔딩 전에 꼭 나옴
+  E5: (s, now) => UG(s, now) && s.stats.crush >= 50 && (isWinter(new Date(now)) || dayNumber(s, now) >= UNI_FROM + 4),
   // 12화 중앙 에어컨: E9 뒤 + 밤 + (오늘 시험을 봤거나 대학 D+3 이후 = 기말이 끝난 셈)
   E10: (s, now) => UG(s, now) && seen(s, 'E9') && isNight(now) && (((s.exam || {}).history || []).some((h) => sameDay(h.t, now)) || dayNumber(s, now) >= UNI_FROM + 3),
   E6: (s, now) => UG(s, now) && s.stats.crush >= 80,
-  E7: (s, now) => { const d = new Date(now); return UG(s, now) && d.getMonth() === 3 && d.getDate() === 22; },
+  // 생일(4/22) 당일, 아니면 E6 뒤 대학 D+13부터. ORDER에서 E8보다 앞이라 엔딩 전에 꼭 나옴
+  E7: (s, now) => { const d = new Date(now); return UG(s, now) && ((d.getMonth() === 3 && d.getDate() === 22) || (seen(s, 'E6') && dayNumber(s, now) >= UNI_FROM + 5)); },
   E11: (s, now) => UG(s, now) && seen(s, 'E6') && flag(s, 'noodle_postE6'),
-  E13: (s, now) => (st(s, now) === 'grad' || (st(s, now) === 'uni' && dayNumber(s, now) >= GRAD_FROM - 1)) && seen(s, 'E11') && !!(s.pcards || {}).P02 && s.place === 'beach' && isDay(now),
+  E13: (s, now) => (st(s, now) === 'grad' || (st(s, now) === 'uni' && dayNumber(s, now) >= GRAD_FROM - 1)) && seen(s, 'E11') && s.place === 'beach' && isDay(now),   // 예전엔 P02(고등학생 때만 얻는 카드)도 필요 → 놓치면 영영 불가라 뺌
   // Stage 7: 졸업 후 + E6(고백)을 본 뒤 + 설렘 80 + 바닷가. 시간대 제한 없음
   E8: (s, now) => st(s, now) === 'grad' && seen(s, 'E6') && s.stats.crush >= 80 && s.place === 'beach',
 };

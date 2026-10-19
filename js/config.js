@@ -1,7 +1,7 @@
 // 게임 상수 — PLAN.md v0.2 §5 기준
 export const SCHEMA_VERSION = 1;
 export const SAVE_KEY = 'sangzhi-pet.save';
-export const GAME_VERSION = '0.8.0-moment-pilot';
+export const GAME_VERSION = '0.9.0-msgr-pilot';
 
 export const STATS = [
   { key: 'hunger', label: '배고픔', icon: '🍚', color: '#FFB36B', hint: '높을수록 배불러요' },
@@ -17,7 +17,7 @@ export const DECAY = {
   mood: -4,          // 배고픔<30 또는 체력<20 이면 2배
   energyAwake: -5,
   energySleep: +15,
-  grade: -1,
+  grade: -0.4,       // 하루 약 -10 (예전 -1/h = 하루 -24 → 성적 60이 너무 어려웠음)
   crush: 0,
 };
 export const MAX_OFFLINE_H = 48;
@@ -45,6 +45,19 @@ export const FOODS = [
 export const DESSERT_DAILY_LIMIT = 3;
 // 선물 설렘: 하루 처음 N번만 설렘이 올라요(그 뒤엔 반응만, 설렘 +0). 연타로 설렘이 차는 문제 방지
 export const GIFT_CRUSH_DAILY = 2;
+// ── 밸런스: 설렘 상한 ── 하루에 오르는 설렘 합계 상한 + 단계별 상한(마음은 나이와 함께 자라요).
+// → 연타로 첫날 설렘 80 불가. 매일 꾸준히 하면 대학 D+10~11쯤 80, 가끔 하면 D+13~15쯤
+export const CRUSH_DAILY = 10;
+export const CRUSH_DAILY_STREAK_BONUS = 2;           // 좋은 컨디션 연속 2일 이상이면 하루 상한 +2
+export const CRUSH_STAGE_CAP = { mid: 30, high: 55, uni: 100, grad: 100 };
+// 대화·놀기 체감: 하루 처음 N번만 크게
+export const TALK_FULL = 4, TALK_MOOD = 5, TALK_MOOD_LOW = 1, TALK_CRUSH_DAILY = 3;
+export const PLAY_FULL = 3, PLAY_MOOD = 12, PLAY_MOOD_LOW = 3;
+export const FULL_HUNGER = 92;                        // 이 이상이면 식사 거절(배불러). 디저트는 됨
+// ── 돌봄 결과 ── 하루 평균 컨디션(배부름·기분·체력 평균) ≥ GOOD_DAY_AVG + 하루 루틴 완료 = '좋은 날'
+export const GOOD_DAY_AVG = 50;
+export const SULK_AWAY_H = 16;                        // 이만큼 비우거나, 배고픔·기분이 SULK_LOW 아래면 삐짐 장면(벌점 없음)
+export const SULK_LOW = 20;
 
 export const GIFTS = [
   { id: 'hairpin', name: '머리핀', icon: '🎀' },

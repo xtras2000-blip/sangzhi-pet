@@ -167,18 +167,24 @@ function tabItems(p) {
   const gifts = GIFTS.map((g) => `<div class="icard${S.inventory[g.id] ? '' : ' locked'}"><i>${g.icon}</i><b>${g.name}</b><small>준 횟수 ${S.inventory[g.id] || 0}</small></div>`);
   const best = S.minigame?.best || {};
   const mg = STAGES.map((st) => `<span>${st.name} ${best[st.id] ?? '-'}</span>`).join(' · ');
+  const rx = EXTRA.reactions();
   return head('수집', p.items.have, p.items.total, p.items.pct, '맞힌 취향 아이템은 집 방에 놓여요 (중·고: 남우 집, 대: 기숙사, 졸업 후: 아파트).') +
+    (rx ? `<h4>💬 반응 수집${S.ng ? ` <small>· ${S.ng + 1}회차</small>` : ''}</h4><p class="dnote react">아직 못 본 반응 ${rx.left}개 <small>(본 반응 ${rx.have}/${rx.total} · 설렘 순간·이벤트 선택지·삐짐 장면${S.ng ? '' : ' · 엔딩 뒤 2회차에서 새 선택지가 열려요'})</small></p>` : '') +
     `<h4>취향 아이템</h4><div class="igrid">${items.join('')}</div><h4>디저트 도감</h4><div class="igrid">${foods.join('')}</div>` +
     `<h4>선물 <small>(도감 진행률에는 안 들어가요)</small></h4><div class="igrid">${gifts.join('')}</div><h4>🍓 디저트 받기 최고 점수</h4><p class="dnote">${mg}</p>` +
     (S.rewards.length ? `<h4>이벤트 보상</h4><ul class="dlist">${S.rewards.map((r) => `<li>${r}</li>`).join('')}</ul>` : '');
 }
+let EXTRA = { reactions: () => null };
+export function setDexExtra(o) { EXTRA = { ...EXTRA, ...o }; }
+const seenEv = () => ({ ...((S.archive || {}).events || {}), ...(S.events || {}) });   // 2회차: 이전 회차에서 본 이벤트도 다시 보기 가능
 function tabEvents(p) {
   const evs = EV_ORDER.map((id) => getEvents().find((e) => e.id === id)).filter(Boolean);
-  const gal = `<h4>🖼️ 갤러리 <small>탭하면 다시 보기</small></h4><div class="egal">${evs.map((e) => (S.events || {})[e.id]
+  const SEEN = seenEv();
+  const gal = `<h4>🖼️ 갤러리 <small>탭하면 다시 보기</small></h4><div class="egal">${evs.map((e) => SEEN[e.id]
     ? `<button class="eg" data-replay="${e.id}">${artImg('event', e.id, { thumb: true })}<span>${e.title}</span></button>`
     : `<div class="eg locked">🔒<span>${e.id} · ${e.stage}</span></div>`).join('')}</div><h4>📔 기록</h4>`;
   return head('이벤트', p.events.have, p.events.total, p.events.pct) + endBtn() + gal + `<ul class="elist">${evs.map((e) => {
-    const seen = (S.events || {})[e.id];
+    const seen = SEEN[e.id];
     return `<li class="${seen ? 'seen' : ''}"><b>${e.id}</b><span>${seen ? e.title : '???'}</span><small>${seen ? `📅 ${seen}` : `${e.stage} · ${e.id === 'E8' ? '엔딩' : '조건 비밀'}`}</small>${seen && e.inspired ? `<em>${e.inspired}</em>` : ''}${seen ? `<button class="replay" data-replay="${e.id}">▶ 다시 보기</button>` : ''}</li>`;
   }).join('')}</ul>`;
 }

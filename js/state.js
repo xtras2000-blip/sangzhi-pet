@@ -1,5 +1,5 @@
 // 상태 · 저장 · 시간 경과 시뮬레이션
-import { SCHEMA_VERSION, SAVE_KEY, DECAY, MAX_OFFLINE_H, LOW, STAGES } from './config.js';
+import { SCHEMA_VERSION, SAVE_KEY, DECAY, MAX_OFFLINE_H, LOW, STAGES, CRUSH_DAILY, CRUSH_DAILY_STREAK_BONUS, CRUSH_STAGE_CAP, GOOD_DAY_AVG } from './config.js';
 
 const H = 3600_000;
 export const clamp = (v) => Math.max(0, Math.min(100, v));
@@ -31,10 +31,23 @@ export function newState(now = Date.now()) {
     minigame: { best: {}, total: 0, log: [] },
     ending: null,           // 엔딩: { first: 처음 본 날, count: 본 횟수 } (도감 '엔딩 다시 보기')
     outfit: {},             // 의상: 단계 id -> 입은 의상 W id (없으면 단계 기본 의상)
+    // ── 게임성 개편 ──
+    sc: {},                 // 단계별 카운터(목표판): 단계 id -> { feed, talk, study, play, gift, mg, mgGood, moment, momentGood, goodDay, tanghulu, place_beach … }
+    goals: { done: {}, early: {} },   // done: 단계 id -> 다 깬 날짜(→ 다음 시험 하루 일찍) · early: 알림 표시 여부
+    care: { streak: 0, best: 0, last: '', good: 0, sulk: '' },   // 좋은 날 연속 · 삐짐 장면 본 날
+    cuts: {},               // 설렘 10 단위 컷 본 기록: '10' -> 날짜
+    reactions: {},          // 본 반응(선택지 결과) 키 -> 횟수. 2회차에도 이어짐('아직 못 본 반응 N개')
+    evChoices: {},          // 이벤트에서 고른 선택지: E id -> 문자열
+    ng: 0,                  // 2회차 번호(0 = 1회차). 엔딩 본 뒤 '새로 키우기'로 +1
+    archive: { events: {} },// 이전 회차에서 본 이벤트(도감 갤러리용)
+    // ── 메신저(파일럿): 플레이어 = 쌍즈의 소꿉친구 ──
+    player: { name: '' },   // 첫 실행 때 입력한 이름(쌍즈가 이 이름으로 부름)
+    bond: { 우정: 0, 용기: 0 },   // 우정 = 둘 사이, 용기 = 쌍즈의 용기(핵심 장면 대사·카드 변형용, 엔딩은 원작 그대로)
+    msgr: { done: {}, picks: {} },   // done: 에피소드 id -> 읽은 날 · picks: 에피소드 id -> 고른 답 번호 목록
   };
 }
 // 하루 단위 카운터. nost = 오늘 나온 회상 대사 수(하루 1번)
-export const newDaily = (now = Date.now()) => ({ date: dayKey(now), desserts: 0, dairy: 0, nost: 0, taste: 0, pops: 0, minigame: 0, gifts: 0, moments: 0, card: false, done: { feed: false, talk: false, studyOrPlay: false } });
+export const newDaily = (now = Date.now()) => ({ date: dayKey(now), desserts: 0, dairy: 0, nost: 0, taste: 0, pops: 0, minigame: 0, gifts: 0, moments: 0, talks: 0, plays: 0, crushGain: 0, crushCapped: '', condSum: 0, condT: 0, card: false, done: { feed: false, talk: false, studyOrPlay: false } });
 
 // 스키마 마이그레이션: 버전이 오르면 여기에 단계별 변환 추가
 const MIGRATIONS = {
@@ -51,7 +64,7 @@ export function migrate(raw) {
   // 누락 필드 보정
   const base = newState(s.createdAt || Date.now());
   const hadExam = !!(s.exam && typeof s.exam.unlocked === 'number');
-  s = { ...base, ...s, quiz: { ...base.quiz, ...s.quiz }, exam: { ...base.exam, ...s.exam }, collection: { ...base.collection, ...s.collection }, minigame: { ...base.minigame, ...s.minigame }, stats: { ...base.stats, ...s.stats }, daily: { ...base.daily, ...s.daily }, settings: { ...base.settings, ...s.settings }, streak: { ...base.streak, ...s.streak }, outfit: (s.outfit && typeof s.outfit === 'object' && !Array.isArray(s.outfit)) ? { ...s.outfit } : {} };
+  s = { ...base, ...s, goals: { ...base.goals, ...s.goals }, care: { ...base.care, ...s.care }, archive: { ...base.archive, ...s.archive }, player: { ...base.player, ...s.player }, bond: { ...base.bond, ...s.bond }, msgr: { ...base.msgr, ...s.msgr }, quiz: { ...base.quiz, ...s.quiz }, exam: { ...base.exam, ...s.exam }, collection: { ...base.collection, ...s.collection }, minigame: { ...base.minigame, ...s.minigame }, stats: { ...base.stats, ...s.stats }, daily: { ...base.daily, ...s.daily }, settings: { ...base.settings, ...s.settings }, streak: { ...base.streak, ...s.streak }, outfit: (s.outfit && typeof s.outfit === 'object' && !Array.isArray(s.outfit)) ? { ...s.outfit } : {} };
   for (const k in s.stats) s.stats[k] = clamp(Number(s.stats[k]) || 0);
   // Stage 5 이전 저장: 이미 날짜로 올라간 단계는 그대로 인정(강등 없음)
   if (!hadExam) s.exam.unlocked = dayStageIndex(s, Date.now());
@@ -101,17 +114,54 @@ export function advance(s, now = Date.now()) {
     st.energy = clamp(st.energy + (s.asleep ? DECAY.energySleep : DECAY.energyAwake) * dt);
     st.grade = clamp(st.grade + DECAY.grade * dt);
     if (s.asleep && st.energy >= 100) { s.asleep = false; s.autoWoke = true; }
+    // 하루 평균 컨디션(좋은 날 판정용). 1분마다 날짜가 바뀌었는지 확인해서 정확한 날에 기록
+    const t = now - left * H;
+    if (dayKey(t) !== s.daily.date) rollDaily(s, t);
+    s.daily.condSum = (s.daily.condSum || 0) + condition(s) * dt; s.daily.condT = (s.daily.condT || 0) + dt;
   }
   s.lastTick = now;
   rollDaily(s, now);
   return capped;
 }
+/** 컨디션 = 배부름·기분·체력 평균(0~100) */
+export const condition = (s) => (s.stats.hunger + s.stats.mood + s.stats.energy) / 3;
+/** 끝난 하루가 '좋은 날'인지: 평균 컨디션 ≥ GOOD_DAY_AVG + 하루 루틴(밥·대화·공부/놀기) 완료 */
+export function isGoodDay(d) {
+  if (!d || !d.done) return false;
+  const avg = d.condT > 0 ? d.condSum / d.condT : 0;
+  return avg >= GOOD_DAY_AVG && d.done.feed && d.done.talk && d.done.studyOrPlay;
+}
+/** 단계별 카운터 올리기(목표판) */
+export function bump(s, key, n = 1, now = Date.now()) {
+  const id = stageOf(s, now).id; s.sc = s.sc || {}; const c = (s.sc[id] = s.sc[id] || {});
+  c[key] = (c[key] || 0) + n; return c[key];
+}
+/** 설렘 올리기/내리기: 오르는 건 하루 상한(CRUSH_DAILY, 좋은 날 연속 보너스) · 단계 상한(CRUSH_STAGE_CAP) 적용. 반환: 실제 변화량 */
+export function crushRoom(s, now = Date.now()) {
+  const cap = CRUSH_STAGE_CAP[stageOf(s, now).id] ?? 100;
+  const daily = CRUSH_DAILY + (((s.care || {}).streak || 0) >= 2 ? CRUSH_DAILY_STREAK_BONUS : 0);
+  return { daily, dailyLeft: Math.max(0, daily - (s.daily.crushGain || 0)), stageCap: cap, stageLeft: Math.max(0, cap - s.stats.crush) };
+}
+export function gainCrush(s, v, now = Date.now()) {
+  const before = s.stats.crush;
+  if (!(v > 0)) { s.stats.crush = clamp(before + (v || 0)); return Math.round((s.stats.crush - before) * 100) / 100; }
+  const r = crushRoom(s, now), g = Math.max(0, Math.min(v, r.dailyLeft, r.stageLeft));
+  if (g < v) s.daily.crushCapped = r.stageLeft <= r.dailyLeft ? 'stage' : 'daily';
+  s.stats.crush = clamp(before + g); s.daily.crushGain = (s.daily.crushGain || 0) + (s.stats.crush - before);
+  return Math.round((s.stats.crush - before) * 100) / 100;
+}
 
 export function dayKey(t) { const d = new Date(t); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; }
 function rollDaily(s, now) {
   const k = dayKey(now);
-  if (s.daily.date !== k) s.daily = newDaily(now);
+  if (s.daily.date === k) return;
+  // 끝난 날 평가 → 좋은 날 연속(벌점 없음: 끊기면 0부터)
+  const c = (s.care = s.care || { streak: 0, best: 0, last: '', good: 0, sulk: '' });
+  if (s.daily.date && isGoodDay(s.daily)) { c.streak = (c.streak || 0) + 1; c.best = Math.max(c.best || 0, c.streak); c.good = (c.good || 0) + 1; c.last = s.daily.date; try { bump(s, 'goodDay', 1, now - 60_000); } catch {} }
+  else if (s.daily.date) c.streak = 0;
+  s.daily = newDaily(now);
 }
+export const rollDay = rollDaily;
 
 export function dayNumber(s, now = Date.now()) {
   // 생성 시각의 자정 기준으로 달력 일수 계산 (D+1부터)
@@ -123,8 +173,14 @@ export function dayNumber(s, now = Date.now()) {
 export function dayStageIndex(s, now = Date.now()) {
   const d = dayNumber(s, now);
   let i = 0;
-  STAGES.forEach((st, k) => { if (d >= st.fromDay) i = k; });
+  STAGES.forEach((st, k) => { if (d >= stageFromDay(s, k)) i = k; });
   return i;
+}
+/** 단계 k가 열리는 날. 앞 단계 목표판을 다 깼으면 하루 일찍 */
+export function stageFromDay(s, k) {
+  const st = STAGES[k]; if (!st) return Infinity;
+  const prev = STAGES[k - 1];
+  return st.fromDay - (prev && s && s.goals && s.goals.done && s.goals.done[prev.id] ? 1 : 0);
 }
 /** 현재 단계 = min(날짜 단계, 시험으로 열린 단계). Stage 5부터 다음 단계는 성장 시험 통과가 필요 */
 export function stageOf(s, now = Date.now()) {

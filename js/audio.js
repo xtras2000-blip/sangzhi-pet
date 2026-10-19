@@ -8,7 +8,7 @@ const url = (n) => `assets/audio/${n}.${EXT}`;
 let enabled = false, bgm = null, bgmName = '', ctx = null, unlocked = false, sfxVol = 0.8, sfxBus = null;
 const UNLOCK_CB = [];
 const pool = {}, BUF = {}, FETCH = {};
-const COMMON = ['sfx_tap', 'sfx_eat', 'sfx_heart', 'sfx_sparkle', 'sfx_nope', 'sfx_cancel'];
+const COMMON = ['sfx_tap', 'sfx_eat', 'sfx_heart', 'sfx_heartbeat', 'sfx_sparkle', 'sfx_nope', 'sfx_cancel'];
 function ac() {
   if (ctx) return ctx;
   const C = typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext); if (!C) return null;

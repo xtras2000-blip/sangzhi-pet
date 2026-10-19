@@ -19,6 +19,9 @@ import { getEvents } from './dialogue.js';
 import * as DX from './dex_ui.js';
 import { initMobile } from './mobile.js';
 import * as MO from './moments.js';
+import * as GL from './goals.js';
+import * as MS from './messenger.js';
+import { gainCrush, condition, crushRoom, bump } from './state.js';
 
 const $ = (id) => document.getElementById(id);
 let S = load();
@@ -37,7 +40,7 @@ function curPlace() {
 function goPlace(id) {
   const p = PLACES[id]; if (!p || id === S.place) { $('placeSheet').hidden = true; return; }
   if (S.asleep) { toast('자는 중이에요'); return; }
-  S.place = id; $('placeSheet').hidden = true; UI.lastRoomKey = '';
+  S.place = id; $('placeSheet').hidden = true; UI.lastRoomKey = ''; bump(S, `place_${id}`);
   // Stage 4: 장소·단계별 도착 대사(dialogue.json action '도착'), 없으면 기본 문구
   const r = arriveLine(S, id);
   const line = r.line && r.line.action === '도착' || r.line?.action === '회상' ? r.line : { id: 'SYS_place', text: PLACE_LINES[id] || `${p.name} 도착!` };
@@ -76,6 +79,7 @@ function renderStats() {
     el.querySelector('.num').textContent = Math.round(v);
     el.classList.toggle('low', d.key !== 'grade' && d.key !== 'crush' && v < 30);
   }
+  crushJuice(); renderGoalBadge();
 }
 
 // ── 표정/애니메이션 선택 (EXPRESSIONS.md 트리거) ──
@@ -252,7 +256,8 @@ function checkPhotoCards() {   // Stage 8: 포토카드 P01~P10
   return true;
 }
 function maybeEvent(delay = 1600) {
-  if (UI.ending) return;
+  if (UI.ending || UI.msgr) return;
+  if (!UI.event && !UI.quiz && !UI.mg) checkGoalDone();
   checkRewards(); if (checkPhotoCards()) return;
   if (UI.event || UI.quiz || UI.mg || UI.card || S.asleep || DX.dexState().open) return;
   const id = dueEvent(S); if (!id) return;
@@ -290,7 +295,9 @@ async function playEvent(id) {
       else if (st.kind === 'reward' || st.kind === 'ending') await box.show(`${st.kind === 'ending' ? '🌅 엔딩' : '🎁 보상'}: ${st.text}`, { narr: true, wait: true });
       else if (st.kind === 'choice') {
         box.show('어떻게 할까?', { narr: true, instant: true }); clearTimeout(box.hideTimer);
-        const pick = await box.choose(st.options);
+        const opts = st.options.filter((o) => !GL.isNgOption(o) || (S.ng || 0) > 0);
+        const pick = await box.choose(opts);
+        (S.evChoices = S.evChoices || {})[id] = pick; MO.noteReaction(S, `E:${id}:${pick}`);
         await run(branchSteps(ev, pick));
       }
     }
@@ -356,7 +363,7 @@ function buildGiftMenu() {
 }
 $('giftMenu').addEventListener('click', (e) => {
   const b = e.target.closest('[data-gift]'); if (!b) return;
-  $('giftSheet').hidden = true; tick(); const r = doAction(S, 'gift', b.dataset.gift); say(r); if (r && typeof r.crush === 'number') gainFloat(r.crush); maybeEvent();
+  $('giftSheet').hidden = true; tick(); const r = doAction(S, 'gift', b.dataset.gift); say(r); if (r && r.crush === 0) gainFloat(0); maybeEvent();
 });
 
 $('actions').addEventListener('click', (e) => {
@@ -387,6 +394,7 @@ $('btnDex').onclick = () => { if (UI.event || UI.quiz || UI.mg) return; AU.sfx('
 
 // 설정
 function openSettings() {
+  $('btnNG').hidden = !GL.canNewGamePlus(S);
   const v = normVolumes(S.settings);
   $('optSound').checked = v.sound; $('optBgm').value = Math.round(v.bgm * 100); $('optSfx').value = Math.round(v.sfx * 100); volLabels();
   const mi = MU.musicInfo(); $('musicNote').textContent = mi.track ? `🎵 지금 곡: ${mi.title || mi.track}` : '🎵 OST 파일을 assets/music/ost/ 에 넣으면 장면마다 자동으로 나와요(지금은 없는 곳은 무음).';
@@ -513,7 +521,7 @@ async function runExam() {
   const L = QZ.quizData().lines, from = STAGES[S.exam.unlocked], to = STAGES[S.exam.unlocked + 1];
   const head = (i, dots) => `<span class="tag">📝 성장 시험</span><span>${from.name} → ${to.name}</span><span class="dots">${dots}</span>`;
   quizOpen('exam', head(0, '○○○'));
-  ask(L.examIntro + (QZ.hintLevel(S) ? `\n${L.examHint}` : ''), 'E07');
+  ask(L.examIntro + (QZ.careBonus(S) ? '\n✨ 컨디션 보너스! 요즘 잘 챙겨 줘서 보기가 2개만 나와.' : QZ.hintLevel(S) ? `\n${L.examHint}` : ''), 'E07');
   const foot = $('quizFoot');
   const go = await new Promise((res) => {
     const a = document.createElement('button'); a.textContent = '시작!'; a.onclick = (e) => { e.stopPropagation(); res(true); };
@@ -616,24 +624,117 @@ function gainFloat(d) {
   if (d > 0) { const h = document.querySelector('.stat[data-k="crush"]') || null; h && (h.classList.remove('flash'), void h.offsetWidth, h.classList.add('flash')); }
 }
 async function runMoment(m) {
-  if (!m || UI.quiz || UI.event || UI.mg || S.asleep) return;
+  if (!m) return;
+  const vis = MO.visibleChoices(S, m);
+  return runBeat({ ask: m.ask, caption: '💓 설렘 순간', choices: vis.map(({ c }) => c), apply: (k) => MO.answerMoment(S, m, vis[k].i) });
+}
+/** 삐짐 장면(돌봄 결과): 어떤 대답이든 기분이 돌아옴, 벌점 없음 */
+async function runSulk(sk) {
+  if (!sk) return;
+  GL.markSulk(S); save(S);
+  return runBeat({ ask: sk.ask, caption: '💢 삐짐', choices: sk.choices, apply: (k) => {
+    const c = sk.choices[k]; for (const key of ['mood', 'hunger', 'energy']) if (c[key]) S.stats[key] = Math.max(0, Math.min(100, S.stats[key] + c[key]));
+    MO.noteReaction(S, `S:${sk.id}:${k}`); bump(S, 'sulkSoothed');
+    return { line: { id: `SK_${sk.id}_${k}`, text: c.line }, expr: c.expr === 'eat' ? 'E01' : c.expr, then: c.then, crush: null, mood: c.mood || 0 };
+  } });
+}
+/** 공통: 말풍선 질문 → 선택지 → 반응. apply(k) → { line, expr, then, crush } */
+async function runBeat(b) {
+  if (!b || UI.quiz || UI.event || UI.mg || S.asleep) return;
   UI.quiz = 'moment'; box.locked = true; document.body.classList.add('in-moment'); renderScene();
   try {
-    setOverride(m.ask.expr || 'E02', 120000);
-    await box.show(m.ask.text, { caption: '💓 설렘 순간' });
+    setOverride(b.ask.expr || 'E02', 120000);
+    await box.show(b.ask.text, { caption: b.caption });
     clearTimeout(box.hideTimer);
-    const labels = m.choices.map((c) => c.label);
+    const labels = b.choices.map((c) => c.label);
     const pick = await box.choose(labels);
-    const r = MO.answerMoment(S, m, labels.indexOf(pick));
-    AU.sfx(r.crush > 0 ? 'sfx_heart' : 'sfx_nope');
+    UI.noBlush = true;
+    const r = b.apply(labels.indexOf(pick));
+    if (r.crush != null && r.crush <= 0) AU.sfx(r.crush < 0 ? 'sfx_nope' : 'sfx_tap');
     UI.quiz = null; box.locked = false; document.body.classList.remove('in-moment');
-    say({ line: r.line, expr: r.expr, then: r.then, fx: r.crush > 0 ? '💓' : '💢' });
+    say({ line: r.line, expr: r.expr, then: r.then, fx: r.crush > 0 ? '💓' : r.crush < 0 ? '💢' : '' });
     setOverride(r.expr, 4200, r.then);
-    gainFloat(r.crush);
+    if (r.crush === 0) gainFloat(0);   // 상한에 걸려 +0 (오르고 내린 건 renderStats 가 띄움)
+    if (r.mood) toast(`😊 기분 +${r.mood}`);
   } finally {
-    UI.quiz = null; box.locked = false; document.body.classList.remove('in-moment'); save(S); renderStats();
+    UI.quiz = null; box.locked = false; document.body.classList.remove('in-moment'); save(S); renderStats(); UI.noBlush = false;
     maybeEvent(3500);
   }
+}
+
+// ── 설렘 연출: 설렘이 바뀌면 +N 💓 · 심장 소리 · 3 이상이면 볼 빨개짐 · 10 단위를 넘으면 짧은 컷 ──
+function crushJuice() {
+  const v = S.stats.crush;
+  if (UI.lastCrush == null || UI.lastCrushSave !== S) { UI.lastCrush = v; UI.lastCrushSave = S; return; }
+  const d = Math.round((v - UI.lastCrush) * 10) / 10; if (!d) return;
+  const prev = UI.lastCrush; UI.lastCrush = v;
+  if (UI.ending) return;
+  gainFloat(Math.round(d));
+  if (d > 0) {
+    AU.sfx('sfx_heartbeat');
+    if (d >= 3 && !UI.event && !UI.mg && !UI.noBlush) setOverride('E19', 2600, 'E01');
+    for (let t = Math.floor(prev / 10) * 10 + 10; t <= v; t += 10) if (!(S.cuts || {})[t]) { (S.cuts = S.cuts || {})[t] = dayKey(Date.now()); (UI.cutQ = UI.cutQ || []).push(t); }
+    setTimeout(showCut, 1400);
+  }
+  const capped = S.daily.crushCapped; const key = `${S.daily.date}:${capped}`;
+  if (capped && UI.capToast !== key) { UI.capToast = key; setTimeout(() => toast(capped === 'stage' ? '💓 지금 단계에선 여기까지 · 다음 단계에서 더 깊어져요' : '💓 오늘 설렘은 여기까지 · 내일 또'), 2100); }
+}
+function showCut(force) {
+  const t = force ?? (UI.cutQ || [])[0]; if (t == null) return;
+  if (force == null && (UI.event || UI.quiz || UI.mg || UI.ending || UI.card || DX.dexState().open || !$('crushCut').hidden)) { setTimeout(showCut, 2500); return; }
+  if (force == null) UI.cutQ.shift();
+  const line = (MO.momentsData().cuts || {})[t] || '';
+  $('ccLv').textContent = `💓 설렘 ${t}`; $('ccLine').textContent = line; $('crushCut').hidden = false;
+  AU.sfx('sfx_heartbeat'); setTimeout(() => AU.sfx('sfx_heartbeat'), 700);
+  clearTimeout(UI.cutT); UI.cutT = setTimeout(() => { $('crushCut').hidden = true; if ((UI.cutQ || []).length) setTimeout(showCut, 600); }, 2800);
+}
+$('crushCut').addEventListener('click', () => { $('crushCut').hidden = true; clearTimeout(UI.cutT); if ((UI.cutQ || []).length) setTimeout(showCut, 600); });
+
+// ── 목표판 ──
+function renderGoalBadge() {
+  const b = GL.goalBoard(S); const el = $('btnGoals'); if (!el) return;
+  $('goalBadge').textContent = b.total ? `${b.done}/${b.total}` : '';
+  el.classList.toggle('done', b.complete);
+}
+function openGoals() {
+  const b = GL.goalBoard(S), st = stageOf(S), nx = GL.nextEvent(S, getEvents());
+  const rx = reactionCount();
+  const careLine = `🌤️ 좋은 컨디션 연속 ${S.care.streak || 0}일 (최고 ${S.care.best || 0}) · 오늘 평균 컨디션 ${Math.round(S.daily.condT > 0 ? S.daily.condSum / S.daily.condT : condition(S))}` + ((S.care.streak || 0) >= 2 ? ' · ✨ 컨디션 보너스: 시험 보기 2개 · 설렘 하루 상한 +2' : ' · 2일 연속이면 보너스');
+  const room = crushRoom(S);
+  const next = STAGES[STAGES.indexOf(st) + 1];
+  const note = b.finished ? (next ? `✅ 다 했어요! ${next.name} 성장 시험이 하루 일찍 열려요.` : '✅ 목표 전부 완료!') : next ? `다 하면 ${next.name} 성장 시험이 하루 일찍 열려요.` : '마지막 단계 목표예요.';
+  $('goalTitle').textContent = `🎯 ${st.name} 목표판 · ${b.done}/${b.total}`;
+  $('goalBody').innerHTML = `<div class="gbar"><i style="width:${b.pct}%"></i></div><p class="gnote">${note}</p>
+    <ul class="glist">${b.list.map((m) => `<li class="${m.ok ? 'ok' : ''}"><span>${m.icon || '•'}</span><b>${m.text}</b><small>${m.cur}/${m.n}</small></li>`).join('')}</ul>
+    ${nx ? `<div class="gnext"><div class="gsil" style="background-image:url('assets/events/${nx.id}_t.webp')"></div><div><small>다음 이야기</small><b>${nx.id} · ???</b><small>힌트: ${nx.hint || '조금 더 함께 지내면…'}</small></div></div>` : ''}
+    <p class="gcare">${careLine}<br>💓 오늘 설렘 +${Math.round(S.daily.crushGain || 0)}/${room.daily} · 이 단계 상한 ${room.stageCap}${rx ? `<br>💬 아직 못 본 반응 ${rx.left}개` : ''}</p>`;
+  $('goalSheet').hidden = false;
+}
+$('btnGoals').onclick = () => { if (UI.event || UI.quiz || UI.mg) return; AU.sfx('sfx_tap'); openGoals(); };
+function checkGoalDone() {
+  const id = GL.checkGoals(S); renderGoalBadge(); if (!id) return false;
+  save(S); AU.sfx('sfx_levelup'); toast('🎯 목표 전부 완료!');
+  setTimeout(() => { box.show((GL.goalsData().doneLine || {})[id] || '목표 완료!'); setOverride('hop', 2000, 'E01'); }, 900);
+  return true;
+}
+// ── 반응 수집 · 2회차 ──
+function reactionCount() {
+  const keys = [...MO.momentReactionKeys(S), ...GL.eventReactionKeys(S, getEvents()), ...GL.sulkReactionKeys()];
+  return keys.length ? GL.unseenReactions(S, keys) : null;
+}
+function startNewGamePlus() {
+  if (!GL.canNewGamePlus(S)) return;
+  if (!confirm(`${(S.ng || 0) + 2}회차를 시작할까요? 키우기는 처음부터지만 도감·포토카드·반응 기록은 이어져요. 새 선택지(✨)도 열려요.`)) return;
+  S = GL.newGamePlus(S); DX.setDexState(S); save(S); $('settingsSheet').hidden = true; UI.lastRoomKey = ''; UI.lastCrush = null; renderAll();
+  say({ line: { id: 'SYS_ng', text: '…어? 처음 보는 사람 같지 않아. 이상하다. 아무튼, 잘 부탁해!' }, expr: 'E02', then: 'E01' });
+  setTimeout(() => maybeEvent(), 3000);
+}
+$('btnNG').onclick = startNewGamePlus;
+/** 돌아왔을 때: 삐짐(오래 비움·배고픔) 또는 좋은 날 연속 인사 */
+function greetReturn(away) {
+  const sk = GL.sulkDue(S, away);
+  if (sk) { setTimeout(() => runSulk(sk), 1800); return true; }
+  return false;
 }
 
 // ── 루프 ──
@@ -647,6 +748,7 @@ function closeTop() {
   if (vis('cardModal')) { $('cardModal').click(); return true; }
   if (vis('debug')) { $('debug').hidden = true; return true; }
   const sh = [...document.querySelectorAll('.sheet')].find((x) => !x.hidden); if (sh) { sh.hidden = true; return true; }
+  if (vis('msgr')) { $('msgrBack').click(); return true; }
   if (vis('dex')) { $('dexClose').click(); return true; }
   if (vis('mg')) { if (vis('mgPause')) $('mgResume').click(); else if (vis('mgTitle')) $('mgLater').click(); else if (vis('mgResult')) $('mgDone').click(); else $('mgPauseBtn').click(); return true; }
   return false;
@@ -655,7 +757,7 @@ async function boot() {
   initMobile({ save: () => save(S), toast, closeTop });
   buildStats(); bindCatch(); END.bindEnding(); AU.setSound(S.settings.sound);
   MU.initMusic(); MU.setMusicResolver(musicSlot); applyVolumes();
-  await Promise.all([loadIllustIndex(), loadDialogue(), ensureSheet(stageOf(S).id), ensureSheet(wantedSheet()), loadRooms([S.place || (STAGE_PLACES[stageOf(S).id] || [])[0]]), QZ.loadQuiz(), MO.loadMoments(), loadIcons(), loadCatchIcons()]);
+  await Promise.all([loadIllustIndex(), loadDialogue(), ensureSheet(stageOf(S).id), ensureSheet(wantedSheet()), loadRooms([S.place || (STAGE_PLACES[stageOf(S).id] || [])[0]]), QZ.loadQuiz(), MO.loadMoments(), GL.loadGoals(), MS.loadMessenger(), loadIcons(), loadCatchIcons()]);
   onSheet((id, kind) => { if (kind === 'thumb') return; if (kind === 'room') UI.lastRoomKey = ''; else UI.lastDraw = ''; renderScene(); });
   buildFeedMenu();   // Stage 7a: 픽셀 아이콘(catch.png) 로드 후
   await DX.loadDex(ICONS); DX.setDexState(S);
@@ -670,28 +772,72 @@ async function boot() {
       if (q.get('event')) setTimeout(() => { delete S.events[q.get('event')]; playEvent(q.get('event')); }, 600);
       // ?debug=1&moment=M1: 설렘 순간 바로 띄우기(오늘 횟수 무시)
       if (q.get('moment')) setTimeout(() => runMoment(MO.momentById(q.get('moment'))), 1500);
+      // 게임성 개편 디버그: &stage=high|uni|grad · &crush=N · &good=N(좋은 날 연속) · &goals=1(목표판) · &goalsdone=1(목표 다 채움) · &cut=30(설렘 컷) · &sulk=1 · &ng=1(엔딩 본 상태 → 설정에 2회차 버튼)
+      { const sid = q.get('stage'); const k = STAGES.findIndex((x) => x.id === sid);
+        if (k > 0) { const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() - (STAGES[k].fromDay - 1)); S.createdAt = d.getTime(); S.exam.unlocked = k; S.exam.nextAt = 0; for (const id of EV_ORDER.slice(0, k === 1 ? 2 : k === 2 ? 4 : 12)) S.events[id] = S.events[id] || dayKey(Date.now()); } }
+      if (q.get('crush')) S.stats.crush = Math.max(0, Math.min(100, +q.get('crush') || 0));
+      if (q.get('good')) S.care.streak = +q.get('good') || 0;
+      if (q.get('goalsdone') === '1') { const b = GL.goalBoard(S); const c = (S.sc[b.stage] = S.sc[b.stage] || {}); for (const m of b.list) { if (m.kind === 'count') c[m.key] = m.n; if (m.kind === 'event') S.events[m.id2] = S.events[m.id2] || dayKey(Date.now()); if (m.kind === 'stat') S.stats[m.key] = Math.max(S.stats[m.key], m.n); if (m.kind === 'streak') S.streak = { study: m.n, last: dayKey(Date.now()) }; } }
+      if (q.get('goals') === '1') setTimeout(openGoals, 1500);
+      if (q.get('cut')) setTimeout(() => showCut(+q.get('cut')), 1500);
+      if (q.get('sulk') === '1') { S.care.sulk = ''; setTimeout(() => runSulk(GL.sulkDue(S, 99)), 1500); }
+      // 메신저 파일럿: &msg=mid_d1 | uni_drunk (바로 열기) · &name=이름 · &askname=1(이름 입력 화면) · &fast=1(빠르게)
+      if (q.get('name')) S.player.name = MS.cleanName(q.get('name'));
+      if (q.get('askname') === '1') S.player.name = '';
+      if (q.get('msg')) { const ep = MS.episode(q.get('msg')); if (ep) { delete S.msgr.done[ep.id]; if (ep.event) S.events[ep.event] = S.events[ep.event] || dayKey(Date.now()); UI.debugMsg = ep; } }
+      if (q.get('ng') === '1') { S.ending = S.ending || { first: dayKey(Date.now()), count: 1 }; setTimeout(openSettings, 1500); }
     } }
   const qp = new URLSearchParams(location.search).get('place'); if (qp && PLACES[qp]) S.place = qp;
   requestAnimationFrame(renderChar);
   await runTitle();
   const away = advance(S);
   save(S); renderAll();
-  if (firstRun || UI.titleReset) say({ line: { id: 'SYS_new', text: '안녕! 나 쌍즈야. 앞으로 잘 부탁해! …꼬맹이라고 부르면 삐질 거야.' }, expr: 'E01' });
+  DX.setDexExtra({ reactions: reactionCount });
+  const needName = !S.player.name && (!navigator.webdriver || new URLSearchParams(location.search).get('askname') === '1');
+  if (needName) { await askName(); say({ line: { id: 'SYS_name', text: MS.fill('{call}! 이따 밤 9시에 문자할게. 폰 꼭 봐!', S.player.name) }, expr: 'hop', then: 'E01' }); }
+  else if (UI.debugMsg) setTimeout(() => openMsgr(UI.debugMsg), 600);
+  else if (firstRun || UI.titleReset) say({ line: { id: 'SYS_new', text: '안녕! 나 쌍즈야. 앞으로 잘 부탁해! …꼬맹이라고 부르면 삐질 거야.' }, expr: 'E01' });
+  else if (!S.asleep && greetReturn(away)) { /* 삐짐 장면 */ }
   else if (away >= 3 && !S.asleep) say({ line: pickSys('welcomeBack'), expr: 'E10', then: 'E13' });
+  else if (!S.asleep && (S.care.streak || 0) >= 2 && S.care.greeted !== dayKey(Date.now())) { S.care.greeted = dayKey(Date.now()); say({ line: pickSys('goodStreak'), expr: 'hop', then: 'E01' }); }
   else if (!S.asleep) say({ line: pickSys('hello'), expr: 'E01' });
 
   if (!firstRun) setTimeout(examNudge, 2500);
   maybeEvent(4000);
-  setInterval(() => { if (document.hidden) return; tick(); save(S); renderStats(); if (!box.busy) maybeEvent(); if (!UI.mg) renderScene(); }, 5000);         // 실시간 감소 + 이벤트 해금 확인
+  renderMsgDot();
+  setInterval(() => { if (document.hidden) return; renderMsgDot(); tick(); save(S); renderStats(); if (!box.busy) maybeEvent(); if (!UI.mg) renderScene(); }, 5000);         // 실시간 감소 + 이벤트 해금 확인
   setInterval(() => { if (document.hidden) return; UI.frame ^= 1; renderScene(); }, 600);              // 2프레임 애니
   addEventListener('resize', () => { UI.lastRoomKey = ''; renderScene(); });
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) { const a = advance(S); renderAll(); if (a >= 3 && !S.asleep) say({ line: pickSys('welcomeBack'), expr: 'E10', then: 'E13' }); } else save(S); });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) { const a = advance(S); renderAll(); if (!S.asleep && greetReturn(a)) return; if (a >= 3 && !S.asleep) say({ line: pickSys('welcomeBack'), expr: 'E10', then: 'E13' }); } else save(S); });
 }
+// ── 메신저(파일럿): 이름 입력 · 밤 9시 채팅 ──
+function askName() {
+  return new Promise((res) => {
+    const sh = $('nameSheet'), inp = $('nameInput'); sh.hidden = false; inp.value = S.player.name || '';
+    setTimeout(() => { try { inp.focus(); } catch {} }, 100);
+    const ok = () => { const v = MS.cleanName(inp.value); if (!v) { inp.focus(); toast('이름을 적어 줘!'); return; } S.player.name = v; save(S); sh.hidden = true; AU.sfx('sfx_tap'); res(v); };
+    $('nameOk').onclick = ok; inp.onkeydown = (e) => { if (e.key === 'Enter') ok(); };
+  });
+}
+function renderMsgDot() { const d = $('msgDot'); if (d) d.hidden = !MS.pending(S, Date.now(), stageOf(S).id); }
+async function openMsgr(ep) {
+  if (UI.msgr) return;
+  if (!S.player.name) await askName();
+  UI.msgr = true; AU.sfx('sfx_tap');
+  const fast = new URLSearchParams(location.search).get('fast') === '1';
+  try { await MS.runChat($('msgr'), S, ep, { fast, sfx: () => AU.sfx('sfx_tap') }); } finally { UI.msgr = false; save(S); renderMsgDot(); }
+}
+$('btnMsg').onclick = () => {
+  if (UI.event || UI.quiz || UI.mg) return;
+  const ep = MS.pending(S, Date.now(), stageOf(S).id);
+  if (ep) openMsgr(ep); else { AU.sfx('sfx_tap'); toast(new Date().getHours() < 21 ? '아직 새 메시지 없음. 밤 9시쯤 쌍즈가 문자할지도?' : '새 메시지 없음'); }
+};
+$('msgrBack').onclick = () => { const r = $('msgr'); if (r._abort) r._abort(); };
 // ── 타이틀(메인) 화면: 이어하기 / 새로 시작 / 설정. 자동 테스트(webdriver)·?notitle=1·디버그 바로 재생 때는 건너뜀(?title=1 이면 항상) ──
 function wantTitle() {
   const q = new URLSearchParams(location.search);
   if (q.get('title') === '1') return true;
-  if (q.get('notitle') === '1' || q.get('event') || q.get('moment') || q.get('ending') === '1') return false;
+  if (q.get('notitle') === '1' || q.get('event') || q.get('moment') || q.get('ending') === '1' || (q.get('debug') === '1' && ['goals', 'cut', 'sulk', 'ng', 'stage', 'msg'].some((k) => q.get(k)))) return false;
   return !navigator.webdriver;
 }
 async function runTitle() {
@@ -715,7 +861,7 @@ function forceNost(on = '대화', extra = {}) {
   const ctx = { on, stage: stageOf(S).dlg, state: moodState(S), place: S.place, crush: S.stats.crush, grade: S.stats.grade, month: d.getMonth() + 1, time: timeOfDay().id, ...extra };
   const l = pickNostalgia(ctx, S, true); if (l) say({ line: l, expr: l.expr }); return l;
 }
-window.SZ = { MO, runMoment: (id) => runMoment(id ? MO.momentById(id) : MO.dueMoment(S)), gainFloat, END, startEnding, get ending() { return END.endingState(); }, get evShot() { return UI.evShot; }, skipEvent, checkPhotoCards, get state() { return S; }, get sheet() { return charSheet(); }, box, playEvent, forceNost, get event() { return UI.event; }, get food() { return UI.food; }, get lastLine() { return UI.lastLine; }, goPlace, get place() { return curPlace(); }, fastForward, say, setOverride, get anim() { return currentAnim(performance.now()).name; }, doAction: (a, x) => { const r = doAction(S, a, x); say(r); return r; }, renderAll, save: () => save(S),
+window.SZ = { MS, openMsgr: (id) => openMsgr(MS.episode(id)), askName, GL, openGoals, showCut, runSulk, reactionCount, startNewGamePlus, MO, runMoment: (id) => runMoment(id ? MO.momentById(id) : MO.dueMoment(S)), gainFloat, END, startEnding, get ending() { return END.endingState(); }, get evShot() { return UI.evShot; }, skipEvent, checkPhotoCards, get state() { return S; }, get sheet() { return charSheet(); }, box, playEvent, forceNost, get event() { return UI.event; }, get food() { return UI.food; }, get lastLine() { return UI.lastLine; }, goPlace, get place() { return curPlace(); }, fastForward, say, setOverride, get anim() { return currentAnim(performance.now()).name; }, doAction: (a, x) => { const r = doAction(S, a, x); say(r); return r; }, renderAll, save: () => save(S),
   runPop: (id) => runPop(id ? QZ.quizData().questions.find((q) => q.id === id) : QZ.pickPop(S)), runExam, runTaste: (id) => runTaste(id ? QZ.quizData().taste.find((t) => t.id === id) : QZ.pickTaste(S)), get quiz() { return UI.quiz; }, QZ,
   MG, AU, MU, get music() { return MU.musicInfo(); }, get musicSlot() { return musicSlot(); }, startCatch, closeCatch, get mg() { return catchState(); }, mgDebug: catchDebug, buildPlayMenu,
   CL, DX, openDex: (t) => DX.openDex(S, t), closeDex: DX.closeDex, get dex() { return DX.dexState(); }, checkRewards, dexProgress: () => DX.dexProgress(S) };

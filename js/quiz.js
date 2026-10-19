@@ -6,7 +6,7 @@
 //    탈락: 벌점 없음, 다음 날(자정 이후) 다시. 3번 이상 탈락 → 보기 2개(힌트), 5번 이상 → 정답에 ✨ 표시 = 절대 막히지 않음
 //  - 취향 맞히기: 단계 해금된 세트만, 하루 3번. scored=false(드라마 미확인) 세트는 설렘 점수 없음 + 라벨 표시
 import { STAGES, RARITY_WEIGHT } from './config.js';
-import { clamp, dayStageIndex, stageOf } from './state.js';
+import { clamp, dayStageIndex, stageOf, gainCrush } from './state.js';
 
 export const POP_RATE = 0.15;
 export const EXAM_SIZE = 3, EXAM_PASS = 2, HINT_AFTER = 3, SPARKLE_AFTER = 5, TASTE_PER_DAY = 3;
@@ -20,7 +20,7 @@ export async function loadQuiz(url = 'data/quiz.json') { setQuiz(await (await fe
 
 const pickOne = (arr, rnd = Math.random) => arr[Math.floor(rnd() * arr.length)];
 const curDlg = (s, now) => stageOf(s, now).dlg;
-const add = (s, k, v) => (s.stats[k] = clamp(s.stats[k] + v));
+const add = (s, k, v) => (k === 'crush' ? gainCrush(s, v) : (s.stats[k] = clamp(s.stats[k] + v)));
 function rollRarity(rnd = Math.random) {
   const tot = Object.values(RARITY_WEIGHT).reduce((a, b) => a + b, 0);
   let r = rnd() * tot;
@@ -91,7 +91,9 @@ export function pickExam(s, rnd = Math.random) {
   s.exam.asked = out.map((q) => q.id);
   return out;
 }
-export const hintLevel = (s) => (s.exam.fails >= SPARKLE_AFTER ? 2 : s.exam.fails >= HINT_AFTER ? 1 : 0);
+// 좋은 컨디션 연속 2일 이상 = '컨디션 보너스': 처음부터 보기 2개(힌트 1단계)
+export const careBonus = (s) => ((s.care || {}).streak || 0) >= 2;
+export const hintLevel = (s) => (s.exam.fails >= SPARKLE_AFTER ? 2 : (s.exam.fails >= HINT_AFTER || careBonus(s)) ? 1 : 0);
 /** 힌트 1단계 이상이면 보기 2개(정답 + 오답 1개). 반환: 표시할 options 인덱스 배열 */
 export function examOptions(s, q, rnd = Math.random) {
   const all = q.options.map((_, i) => i);
