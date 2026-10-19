@@ -34,7 +34,7 @@ export function newState(now = Date.now()) {
   };
 }
 // 하루 단위 카운터. nost = 오늘 나온 회상 대사 수(하루 1번)
-export const newDaily = (now = Date.now()) => ({ date: dayKey(now), desserts: 0, dairy: 0, nost: 0, taste: 0, pops: 0, minigame: 0, card: false, done: { feed: false, talk: false, studyOrPlay: false } });
+export const newDaily = (now = Date.now()) => ({ date: dayKey(now), desserts: 0, dairy: 0, nost: 0, taste: 0, pops: 0, minigame: 0, gifts: 0, moments: 0, card: false, done: { feed: false, talk: false, studyOrPlay: false } });
 
 // 스키마 마이그레이션: 버전이 오르면 여기에 단계별 변환 추가
 const MIGRATIONS = {

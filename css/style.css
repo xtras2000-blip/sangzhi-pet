@@ -517,3 +517,14 @@ body.in-title .dbg-fab, body.in-title .rotate-hint { display: none; }
 .row.vol span { flex: 0 0 auto; }
 .row.vol input[type=range] { flex: 1 1 auto; width: auto; height: 28px; accent-color: var(--berry); touch-action: pan-x; }
 .row.vol output { flex: 0 0 34px; text-align: right; font-size: 12px; color: var(--ink2); }
+
+/* 설렘 순간: 💓 수치 떠오르기 · 설렘 막대 반짝 */
+.gain-float { position: absolute; left: 50%; top: -4%; transform: translateX(-50%); z-index: 4; pointer-events: none; white-space: nowrap;
+  font-weight: 900; font-size: 30px; color: #ff4f8b; -webkit-text-stroke: 1.5px #fff; paint-order: stroke fill; text-shadow: 0 3px 0 var(--ink), 0 0 12px rgba(255,120,170,.8);
+  animation: gainUp 1.9s cubic-bezier(.2,.9,.3,1.2) forwards; }
+.gain-float.down { color: #7c86a8; text-shadow: 0 3px 0 var(--ink); }
+.gain-float.zero { color: #b8a9b6; font-size: 22px; text-shadow: 0 2px 0 var(--ink); }
+@keyframes gainUp { 0% { opacity: 0; transform: translate(-50%, 24px) scale(.5); } 18% { opacity: 1; transform: translate(-50%, 0) scale(1.25); } 30% { transform: translate(-50%, 0) scale(1); } 80% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -40px) scale(1); } }
+.stat.flash { animation: statFlash 1.2s ease-out; }
+@keyframes statFlash { 0%, 60% { background: rgba(255,120,170,.35); border-radius: 8px; } 100% { background: transparent; } }
+body.in-moment .bubble .cap { color: #e2447f; font-weight: 800; }

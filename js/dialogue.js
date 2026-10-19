@@ -25,9 +25,10 @@ export const SYSTEM_LINES = {
   autoWake: ['푹 잤어! 오늘도 힘내 볼까?', '개운하다~ 꿈에서 디저트 가게 갔었어.'],
   sleepRefuse: ['아직 하나도 안 졸려! …진짜야.', '벌써 자라고? 나 애 아니거든!'],
   welcomeBack: ['왜 이제 왔어! 기다린 거 아니거든. …조금만 기다렸어.', '흥, 연락도 없이… 그래도 와줘서 고마워. 쬐끔.'],
+  giftEnough: ['또 줘? 오늘은 벌써 많이 받았는데… 아껴 뒀다가 내일 줘. 헤헤.', '고마워! 근데 선물은 가끔 받아야 더 설레는 거야. 내일 또 줘!', '이거 다 받으면 내 서랍 터져! …내일 하나 더 줘.'],
   hello: ['왔어? 헤헤.', '어, 왔다! 오늘은 뭐 할 거야?'],
 };
-const SYS_EXPR = { dairy: 'E05', dairyRefuse: 'E13', tooSweet: 'E23', studyRefuse: 'E13', tooSleepyStudy: 'E21', wake: 'E21', autoWake: 'E01', sleepRefuse: 'E13', welcomeBack: 'E10', hello: 'E01' };
+const SYS_EXPR = { dairy: 'E05', dairyRefuse: 'E13', tooSweet: 'E23', studyRefuse: 'E13', tooSleepyStudy: 'E21', wake: 'E21', autoWake: 'E01', sleepRefuse: 'E13', welcomeBack: 'E10', hello: 'E01', giftEnough: 'E02' };
 const lastSys = {};
 export function pickSys(k) {
   const a = SYSTEM_LINES[k];

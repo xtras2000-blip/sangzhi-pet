@@ -1,7 +1,7 @@
 // 게임 상수 — PLAN.md v0.2 §5 기준
 export const SCHEMA_VERSION = 1;
 export const SAVE_KEY = 'sangzhi-pet.save';
-export const GAME_VERSION = '0.7.0-stage7';
+export const GAME_VERSION = '0.8.0-moment-pilot';
 
 export const STATS = [
   { key: 'hunger', label: '배고픔', icon: '🍚', color: '#FFB36B', hint: '높을수록 배불러요' },
@@ -43,6 +43,8 @@ export const FOODS = [
   { id: 'icecream', px: 'icecream', name: '아이스크림',   icon: '🍦', hunger: 8,  mood: 12, dessert: true,  dairy: true },
 ];
 export const DESSERT_DAILY_LIMIT = 3;
+// 선물 설렘: 하루 처음 N번만 설렘이 올라요(그 뒤엔 반응만, 설렘 +0). 연타로 설렘이 차는 문제 방지
+export const GIFT_CRUSH_DAILY = 2;
 
 export const GIFTS = [
   { id: 'hairpin', name: '머리핀', icon: '🎀' },

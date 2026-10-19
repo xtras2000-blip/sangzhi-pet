@@ -2,7 +2,7 @@
 import { noteFood } from './collection.js';
 import { noteMoment } from './events.js';
 import { clamp, moodState, stageOf, timeOfDay, dayKey } from './state.js';
-import { FOODS, GIFTS, DESSERT_DAILY_LIMIT } from './config.js';
+import { FOODS, GIFTS, DESSERT_DAILY_LIMIT, GIFT_CRUSH_DAILY } from './config.js';
 import { pickLine, pickSys, pickNostalgia } from './dialogue.js';
 
 // 대사 내용으로 표정 보정 (EXPRESSIONS.md 트리거)
@@ -96,12 +96,19 @@ export function doAction(s, act, arg) {
       const g = GIFTS.find((x) => x.id === arg) || GIFTS[Math.floor(Math.random() * GIFTS.length)];
       s.inventory[g.id] = (s.inventory[g.id] || 0) + 1;
       const state = st.mood < 30 ? '샐짐' : (Math.random() < 0.3 ? '기분좋음' : 'any');
-      add(s, 'mood', 12); add(s, 'crush', 3);
+      s.daily.gifts = (s.daily.gifts || 0) + 1;
       const note = `${g.icon} ${josa(g.name, '을', '를')} 줬어요`;
+      if (s.daily.gifts > GIFT_CRUSH_DAILY) {
+        // 하루 한도 초과: 반응은 하지만 설렘 +0, 기분만 조금. 힌트 대사
+        add(s, 'mood', 2);
+        const l = pickSys('giftEnough');
+        return { line: l, expr: l.expr, then: 'E01', fx: g.icon, note: `${note} · 💓 오늘 선물 설렘은 끝 (내일 다시)`, gift: g.id, crush: 0 };
+      }
+      add(s, 'mood', 12); add(s, 'crush', 3);
       const nl = tryNostalgia(s, '선물', { item: g.id });
-      if (nl) return { line: nl, expr: 'E11', then: after(nl), fx: g.icon, note, gift: g.id };
+      if (nl) return { line: nl, expr: 'E11', then: after(nl), fx: g.icon, note, gift: g.id, crush: 3 };
       const line = pickLine(ctxFor(s, '선물', state, false, { item: g.id }));
-      return { line, expr: 'E11', then: after(line), fx: g.icon, note, gift: g.id };
+      return { line, expr: 'E11', then: after(line), fx: g.icon, note, gift: g.id, crush: 3 };
     }
   }
   return { line: pickSys('hello'), expr: 'E01' };
