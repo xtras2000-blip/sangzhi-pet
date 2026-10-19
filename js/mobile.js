@@ -32,6 +32,8 @@ export function initMobile({ save, toast, closeTop }) {
   // 3) 첫 터치에서 소리 unlock (iOS Safari)
   const first = () => { unlockAudio(); removeEventListener('pointerdown', first, true); removeEventListener('touchend', first, true); };
   addEventListener('pointerdown', first, true); addEventListener('touchend', first, true);
+  // 개인용 안드로이드 앱(사용자 에이전트에 SangzhiPersonal): 탭 없이 소리 시작(앱이 자동 재생 허용)
+  if (/SangzhiPersonal/.test(navigator.userAgent)) setTimeout(first, 300);
 
   // 4) 백그라운드로 갈 때 저장 + 소리 멈춤
   const bye = () => { try { save(); } catch {} };
