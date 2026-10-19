@@ -1,62 +1,273 @@
 {
-  "_doc": "OST 슬롯 배치표 (OST_PLAN.md). 슬롯마다 우선순위 목록: 앞에서부터 파일이 있는 첫 곡을 틀어요. 'duck' = 지금 곡을 그대로 두고 소리만 줄임. 파일은 assets/music/ost/<file>.(m4a|ogg|mp3) — 확장자는 아무거나. 하나도 없으면 무음(또는 fallback 곡).",
-  "dir": "assets/music/ost/",
-  "tracks": {
-    "ost01":  { "file": "ost_01_zhixiang_toutou_canghao",      "title": "只想把你偷偷藏好",       "ko": "너를 몰래 숨겨두고 싶어", "kind": "vocal" },
-    "ost01i": { "file": "ost_01_zhixiang_toutou_canghao_inst", "title": "只想把你偷偷藏好 (伴奏)", "kind": "inst" },
-    "ost02":  { "file": "ost_02_woyou_xihuan_derenle",         "title": "我有喜欢的人了",          "ko": "나 좋아하는 사람 생겼어", "kind": "vocal" },
-    "ost02i": { "file": "ost_02_woyou_xihuan_derenle_inst",    "title": "我有喜欢的人了 (伴奏)",   "kind": "inst" },
-    "ost03":  { "file": "ost_03_be_your_light",                "title": "Be Your Light",            "kind": "vocal" },
-    "ost03i": { "file": "ost_03_be_your_light_inst",           "title": "Be Your Light (伴奏)",     "kind": "inst" },
-    "ost04":  { "file": "ost_04_cisheng_weiyi_suoyuan",        "title": "你是我此生唯一所愿",      "ko": "너는 내 평생 단 하나의 소원", "kind": "vocal" },
-    "ost04i": { "file": "ost_04_cisheng_weiyi_suoyuan_inst",   "title": "你是我此生唯一所愿 (伴奏)", "kind": "inst" },
-    "ost05":  { "file": "ost_05_youni",                        "title": "有你",                     "ko": "네가 있어서", "kind": "vocal" },
-    "ost05i": { "file": "ost_05_youni_inst",                   "title": "有你 (伴奏)",              "kind": "inst" },
-    "ost06":  { "file": "ost_06_tou_xingxing_deren",           "title": "偷星星的人",               "ko": "별을 훔친 사람", "kind": "vocal" },
-    "ost06i": { "file": "ost_06_tou_xingxing_deren_inst",      "title": "偷星星的人 (伴奏)",        "kind": "inst" },
-    "ost07":  { "file": "ost_07_forever_star",                 "title": "Forever Star",             "kind": "vocal" },
-    "ost07i": { "file": "ost_07_forever_star_inst",            "title": "Forever Star (伴奏)",      "kind": "inst" },
-    "ost08":  { "file": "ost_08_haoxiang_diaojin_aiqinghai",   "title": "我好想掉进爱情海里 (선택)", "kind": "vocal" },
-    "bgm_minigame":          { "file": "bgm_minigame",          "dir": "assets/audio/", "title": "디저트 받기 (자체 작곡 CC0)", "kind": "fallback", "short": true },
-    "bgm_first_snow_ending": { "file": "bgm_first_snow_ending", "dir": "assets/audio/", "title": "첫눈 엔딩 (자체 작곡 CC0)", "kind": "fallback", "short": true }
+ "_doc": "OST 슬롯 배치표 (OST_PLAN.md). 슬롯마다 우선순위 목록: 앞에서부터 파일이 있는 첫 곡을 틀어요. 'duck' = 지금 곡을 그대로 두고 소리만 줄임. 파일은 assets/music/ost/<file>.(m4a|ogg|mp3) — 확장자는 아무거나. 하나도 없으면 무음(또는 fallback 곡). · 임시(2026-10-19): 반주(i)·ost01이 아직 없어 타이틀·장소 목록 끝에 있는 보컬 곡을 덧붙임 → 반주 파일이 들어오면 앞 순서 곡이 자동으로 우선",
+ "dir": "assets/music/ost/",
+ "tracks": {
+  "ost01": {
+   "file": "ost_01_zhixiang_toutou_canghao",
+   "title": "只想把你偷偷藏好",
+   "ko": "너를 몰래 숨겨두고 싶어",
+   "kind": "vocal"
   },
-  "slots": {
-    "title":                   ["ost01", "ost01i"],
-    "place:home_nanwu:day":    ["ost02i", "ost06i"],
-    "place:home_nanwu:night":  ["ost06i", "ost02i"],
-    "place:school:day":        ["ost01i", "ost02i"],
-    "place:school:night":      ["ost02i", "ost01i"],
-    "place:dessert:day":       ["ost03i", "ost01i"],
-    "place:dessert:night":     ["ost06i", "ost03i"],
-    "place:dorm:day":          ["ost02i", "ost01i"],
-    "place:dorm:night":        ["ost07i", "ost06i"],
-    "place:campus:day":        ["ost01i", "ost03i"],
-    "place:campus:night":      ["ost07i", "ost04i"],
-    "place:yihe_street:day":   ["ost03i", "ost01i"],
-    "place:yihe_street:night": ["ost04i", "ost07i"],
-    "place:apartment:day":     ["ost03i", "ost01i"],
-    "place:apartment:night":   ["ost07i", "ost04i"],
-    "place:beach:day":         ["ost04i", "ost03i"],
-    "place:beach:night":       ["ost04i", "ost07i"],
-    "quiz":                    "duck",
-    "minigame":                ["ost03i", "ost03", "bgm_minigame"],
-    "event:E0":  ["ost02", "ost02i"],
-    "event:E1":  ["ost01i", "ost02i"],
-    "event:E2":  ["ost06i", "ost06"],
-    "event:E4":  ["ost05", "ost05i"],
-    "event:E3":  ["ost06", "ost06i"],
-    "event:E12": ["ost05i", "ost07i"],
-    "event:E9":  ["ost04i", "ost05i"],
-    "event:E5":  ["ost04i", "ost04"],
-    "event:E10": ["ost02i", "ost08"],
-    "event:E6":  ["ost07", "ost07i"],
-    "event:E7":  ["ost01", "ost01i"],
-    "event:E11": ["ost07i", "ost03i"],
-    "event:E13": ["ost03", "ost03i"],
-    "event:E8":  ["ost04", "ost04i"],
-    "ending:strip":   ["ost02", "ost02i", "bgm_first_snow_ending"],
-    "ending:credits": ["ost06", "ost06i", "bgm_first_snow_ending"]
+  "ost01i": {
+   "file": "ost_01_zhixiang_toutou_canghao_inst",
+   "title": "只想把你偷偷藏好 (伴奏)",
+   "kind": "inst"
   },
-  "gain": { "vocal": 0.8, "inst": 1.0, "fallback": 0.9 },
-  "fade": { "place": 1000, "eventOut": 700, "eventIn": 1200, "duck": 400, "duckLevel": 0.35, "loopXfade": 1200 }
+  "ost02": {
+   "file": "ost_02_woyou_xihuan_derenle",
+   "title": "我有喜欢的人了",
+   "ko": "나 좋아하는 사람 생겼어",
+   "kind": "vocal"
+  },
+  "ost02i": {
+   "file": "ost_02_woyou_xihuan_derenle_inst",
+   "title": "我有喜欢的人了 (伴奏)",
+   "kind": "inst"
+  },
+  "ost03": {
+   "file": "ost_03_be_your_light",
+   "title": "Be Your Light",
+   "kind": "vocal"
+  },
+  "ost03i": {
+   "file": "ost_03_be_your_light_inst",
+   "title": "Be Your Light (伴奏)",
+   "kind": "inst"
+  },
+  "ost04": {
+   "file": "ost_04_cisheng_weiyi_suoyuan",
+   "title": "你是我此生唯一所愿",
+   "ko": "너는 내 평생 단 하나의 소원",
+   "kind": "vocal"
+  },
+  "ost04i": {
+   "file": "ost_04_cisheng_weiyi_suoyuan_inst",
+   "title": "你是我此生唯一所愿 (伴奏)",
+   "kind": "inst"
+  },
+  "ost05": {
+   "file": "ost_05_youni",
+   "title": "有你",
+   "ko": "네가 있어서",
+   "kind": "vocal"
+  },
+  "ost05i": {
+   "file": "ost_05_youni_inst",
+   "title": "有你 (伴奏)",
+   "kind": "inst"
+  },
+  "ost06": {
+   "file": "ost_06_tou_xingxing_deren",
+   "title": "偷星星的人",
+   "ko": "별을 훔친 사람",
+   "kind": "vocal"
+  },
+  "ost06i": {
+   "file": "ost_06_tou_xingxing_deren_inst",
+   "title": "偷星星的人 (伴奏)",
+   "kind": "inst"
+  },
+  "ost07": {
+   "file": "ost_07_forever_star",
+   "title": "Forever Star",
+   "kind": "vocal"
+  },
+  "ost07i": {
+   "file": "ost_07_forever_star_inst",
+   "title": "Forever Star (伴奏)",
+   "kind": "inst"
+  },
+  "ost08": {
+   "file": "ost_08_haoxiang_diaojin_aiqinghai",
+   "title": "我好想掉进爱情海里 (선택)",
+   "kind": "vocal"
+  },
+  "bgm_minigame": {
+   "file": "bgm_minigame",
+   "dir": "assets/audio/",
+   "title": "디저트 받기 (자체 작곡 CC0)",
+   "kind": "fallback",
+   "short": true
+  },
+  "bgm_first_snow_ending": {
+   "file": "bgm_first_snow_ending",
+   "dir": "assets/audio/",
+   "title": "첫눈 엔딩 (자체 작곡 CC0)",
+   "kind": "fallback",
+   "short": true
+  }
+ },
+ "slots": {
+  "title": [
+   "ost01",
+   "ost01i",
+   "ost02"
+  ],
+  "place:home_nanwu:day": [
+   "ost02i",
+   "ost06i",
+   "ost05"
+  ],
+  "place:home_nanwu:night": [
+   "ost06i",
+   "ost02i",
+   "ost05"
+  ],
+  "place:school:day": [
+   "ost01i",
+   "ost02i",
+   "ost02"
+  ],
+  "place:school:night": [
+   "ost02i",
+   "ost01i",
+   "ost02"
+  ],
+  "place:dessert:day": [
+   "ost03i",
+   "ost01i",
+   "ost03"
+  ],
+  "place:dessert:night": [
+   "ost06i",
+   "ost03i",
+   "ost03"
+  ],
+  "place:dorm:day": [
+   "ost02i",
+   "ost01i",
+   "ost05"
+  ],
+  "place:dorm:night": [
+   "ost07i",
+   "ost06i",
+   "ost05"
+  ],
+  "place:campus:day": [
+   "ost01i",
+   "ost03i",
+   "ost02"
+  ],
+  "place:campus:night": [
+   "ost07i",
+   "ost04i",
+   "ost02"
+  ],
+  "place:yihe_street:day": [
+   "ost03i",
+   "ost01i",
+   "ost03"
+  ],
+  "place:yihe_street:night": [
+   "ost04i",
+   "ost07i",
+   "ost03"
+  ],
+  "place:apartment:day": [
+   "ost03i",
+   "ost01i",
+   "ost05"
+  ],
+  "place:apartment:night": [
+   "ost07i",
+   "ost04i",
+   "ost05"
+  ],
+  "place:beach:day": [
+   "ost04i",
+   "ost03i",
+   "ost03"
+  ],
+  "place:beach:night": [
+   "ost04i",
+   "ost07i",
+   "ost03"
+  ],
+  "quiz": "duck",
+  "minigame": [
+   "ost03i",
+   "ost03",
+   "bgm_minigame"
+  ],
+  "event:E0": [
+   "ost02",
+   "ost02i"
+  ],
+  "event:E1": [
+   "ost01i",
+   "ost02i"
+  ],
+  "event:E2": [
+   "ost06i",
+   "ost06"
+  ],
+  "event:E4": [
+   "ost05",
+   "ost05i"
+  ],
+  "event:E3": [
+   "ost06",
+   "ost06i"
+  ],
+  "event:E12": [
+   "ost05i",
+   "ost07i"
+  ],
+  "event:E9": [
+   "ost04i",
+   "ost05i"
+  ],
+  "event:E5": [
+   "ost04i",
+   "ost04"
+  ],
+  "event:E10": [
+   "ost02i",
+   "ost08"
+  ],
+  "event:E6": [
+   "ost07",
+   "ost07i"
+  ],
+  "event:E7": [
+   "ost01",
+   "ost01i"
+  ],
+  "event:E11": [
+   "ost07i",
+   "ost03i"
+  ],
+  "event:E13": [
+   "ost03",
+   "ost03i"
+  ],
+  "event:E8": [
+   "ost04",
+   "ost04i"
+  ],
+  "ending:strip": [
+   "ost02",
+   "ost02i",
+   "bgm_first_snow_ending"
+  ],
+  "ending:credits": [
+   "ost06",
+   "ost06i",
+   "bgm_first_snow_ending"
+  ]
+ },
+ "gain": {
+  "vocal": 0.8,
+  "inst": 1.0,
+  "fallback": 0.9
+ },
+ "fade": {
+  "place": 1000,
+  "eventOut": 700,
+  "eventIn": 1200,
+  "duck": 400,
+  "duckLevel": 0.35,
+  "loopXfade": 1200,
+  "loopXfadeVocal": 3000
+ }
 }

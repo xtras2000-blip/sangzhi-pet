@@ -109,7 +109,7 @@ async function streamPlayer(t) {
   if (out) { out.gain.value = 0; out.connect(bus()); }
   await new Promise((ok) => { const a = els[0]; if (a.readyState >= 1) return ok(); a.addEventListener('loadedmetadata', ok, { once: true }); a.addEventListener('error', ok, { once: true }); setTimeout(ok, 4000); });
   const dur = isFinite(els[0].duration) ? els[0].duration : 0;
-  const lr = loopRange(t.entry, dur), XF = FADE().loopXfade / 1000;
+  const lr = loopRange(t.entry, dur), XF = ((t.kind === 'vocal' && FADE().loopXfadeVocal) || FADE().loopXfade) / 1000;   // 보컬 곡을 장소 BGM으로 돌릴 땐 끝↔처음을 더 길게 겹침
   let act = 0, timer = 0, level = 0, paused = false, dead = false;
   const play = (a) => { const p = a.play(); if (p && p.catch) p.catch(() => {}); };
   const tick = () => {

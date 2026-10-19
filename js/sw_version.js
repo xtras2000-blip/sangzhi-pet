@@ -1,2 +1,2 @@
 // 자동 생성: tools/build_sw.py
-export const SW_VERSION = 'sz-28de49bdc2';
+export const SW_VERSION = 'sz-1aead3a2dc';
