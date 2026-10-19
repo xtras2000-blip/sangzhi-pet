@@ -1,0 +1,617 @@
+{
+ "_doc": "Stage 5 퀴즈 데이터 — QUIZ.md v0.1 기반. stage = 출제 가능한 최소 단계(중<고<대<졸, any=어느 단계든). verified=true(✅ 출처 2곳+)만 성장 시험에 사용, ⚠️는 팝퀴즈 전용이며 '미확인' 표시. answer = options 인덱스(0부터).",
+ "sources": {
+  "Q": "QUOTES.md",
+  "W": "위키백과 「偷偷藏不住 (电视剧)」",
+  "BD": "바이두백과 회차 줄거리",
+  "TC": "台词课 줄거리",
+  "N10": "원작 소설 10장",
+  "N45": "원작 소설 45장",
+  "N49": "원작 소설 49장",
+  "QQ1": "텐센트 뉴스(의상·소품)",
+  "QQ2": "텐센트 뉴스(주연·제작진 인터뷰)",
+  "BJ": "新京报 2023-07-17 기사",
+  "NM": "나무위키 등장인물"
+ },
+ "questions": [
+  {
+   "id": "Q01",
+   "stage": "중",
+   "verified": true,
+   "src": "W·Q",
+   "q": "내 애칭은 뭐게?",
+   "options": [
+    "즈즈(只只)",
+    "쌍쌍",
+    "꼬북이",
+    "딸기"
+   ],
+   "answer": 0
+  },
+  {
+   "id": "Q02",
+   "stage": "중",
+   "verified": true,
+   "src": "W·N49·BD",
+   "q": "나는 뭘 마시면 안 될까?",
+   "options": [
+    "우롱차",
+    "오렌지주스",
+    "우유",
+    "물"
+   ],
+   "answer": 2
+  },
+  {
+   "id": "Q03",
+   "stage": "고",
+   "verified": false,
+   "src": "W",
+   "q": "우유 말고 내가 못 먹는 건?",
+   "options": [
+    "소고기·양고기",
+    "딸기",
+    "사탕",
+    "쌀밥"
+   ],
+   "answer": 0
+  },
+  {
+   "id": "Q04",
+   "stage": "대",
+   "verified": true,
+   "src": "W·QQ2·BJ",
+   "q": "내가 엄청 좋아하는 요리는?",
+   "options": [
+    "마라탕",
+    "타로 크리스피 오리",
+    "훠궈",
+    "짜장면"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q05",
+   "stage": "중",
+   "verified": true,
+   "src": "W·BD",
+   "q": "내 취미는 뭘까?",
+   "options": [
+    "그림 그리기",
+    "농구",
+    "낚시",
+    "요리"
+   ],
+   "answer": 0
+  },
+  {
+   "id": "Q06",
+   "stage": "대",
+   "verified": true,
+   "src": "QQ1·QQ2",
+   "q": "내 휴대폰 케이스엔 어떤 동물이 있게?",
+   "options": [
+    "고양이",
+    "곰",
+    "개구리",
+    "토끼"
+   ],
+   "answer": 2
+  },
+  {
+   "id": "Q07",
+   "stage": "대",
+   "verified": false,
+   "src": "NM",
+   "q": "내 생일은 언제게?",
+   "options": [
+    "1월 1일",
+    "4월 22일",
+    "7월 7일",
+    "12월 25일"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q08",
+   "stage": "중",
+   "verified": false,
+   "src": "BD",
+   "q": "자쉬 오빠를 처음 봤을 때 나는 무슨 오해를 했게?",
+   "options": [
+    "도둑인 줄",
+    "쌍옌 오빠가 성형한 줄",
+    "새 선생님인 줄",
+    "배달원인 줄"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q09",
+   "stage": "중",
+   "verified": true,
+   "src": "W·BD·Q",
+   "q": "학부모를 불러오래서 내가 자쉬 오빠한테 부탁한 건?",
+   "options": [
+    "숙제 대신 해주기",
+    "가짜 보호자로 선생님 만나기",
+    "엄마한테 거짓말하기",
+    "전학"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q10",
+   "stage": "중",
+   "verified": true,
+   "src": "W·Q",
+   "q": "나랑 자쉬 오빠는 어떤 사이로 만났게?",
+   "options": [
+    "옆집 이웃",
+    "과외 선생님",
+    "친오빠의 대학 룸메이트",
+    "사촌"
+   ],
+   "answer": 2
+  },
+  {
+   "id": "Q11",
+   "stage": "고",
+   "verified": true,
+   "src": "BD·TC·QQ2",
+   "q": "자쉬 오빠가 준 인형은 무슨 동물?",
+   "options": [
+    "하얀 곰",
+    "여우",
+    "토끼",
+    "강아지"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q12",
+   "stage": "고",
+   "verified": true,
+   "src": "BD·TC",
+   "q": "그 여우 인형은 원래 어디서 난 거게?",
+   "options": [
+    "오빠가 대회에서 받은 상품",
+    "인형 뽑기",
+    "생일 선물로 산 것",
+    "쌍옌 오빠 것"
+   ],
+   "answer": 0
+  },
+  {
+   "id": "Q13",
+   "stage": "고",
+   "verified": true,
+   "src": "BD·TC",
+   "q": "자쉬 오빠가 늦은 줄 알았는데, 사실은 뭘 하다 온 거게?",
+   "options": [
+    "게임",
+    "나 줄 따뜻한 우유 사 오기",
+    "낮잠",
+    "아르바이트"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q14",
+   "stage": "고",
+   "verified": true,
+   "src": "BD·N10",
+   "q": "못 마시는 그 우유, 나는 어떻게 했게?",
+   "options": [
+    "친구 줬음",
+    "우유는 버리고 병만 간직",
+    "그냥 마심",
+    "돌려줌"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q15",
+   "stage": "고",
+   "verified": true,
+   "src": "BD·N10·Q",
+   "q": "그 우유병 안에 내가 채운 건?",
+   "options": [
+    "사탕",
+    "동전",
+    "마음을 적은 종이별",
+    "모래"
+   ],
+   "answer": 2
+  },
+  {
+   "id": "Q16",
+   "stage": "고",
+   "verified": false,
+   "src": "N10(소설)",
+   "q": "종이별 말고 우유병에 같이 넣은 건?",
+   "options": [
+    "오빠가 써준 작문",
+    "시험지",
+    "사진",
+    "반지"
+   ],
+   "answer": 0
+  },
+  {
+   "id": "Q17",
+   "stage": "고",
+   "verified": false,
+   "src": "BD·TC(같은 줄거리 계열)",
+   "q": "쌍옌 오빠가 날 챙겨줄 때 가져온, 내가 좋아하는 간식은?",
+   "options": [
+    "막대사탕",
+    "감자칩",
+    "떡",
+    "아이스크림"
+   ],
+   "answer": 0
+  },
+  {
+   "id": "Q18",
+   "stage": "고",
+   "verified": false,
+   "src": "BD",
+   "q": "고등학생 때 내가 제일 약했던 과목은?",
+   "options": [
+    "국어",
+    "영어",
+    "물리",
+    "미술"
+   ],
+   "answer": 2
+  },
+  {
+   "id": "Q19",
+   "stage": "고",
+   "verified": true,
+   "src": "Q·refs 기사",
+   "q": "내 쪽지에 적힌 꿈 1번은?",
+   "options": [
+    "가수 되기",
+    "이허대학 합격",
+    "세계 여행",
+    "카페 사장"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q20",
+   "stage": "대",
+   "verified": false,
+   "src": "QQ2",
+   "q": "이허(宜荷)는 어떤 도시게?",
+   "options": [
+    "북쪽 사막 도시",
+    "남쪽 바닷가 도시",
+    "산골 마을",
+    "섬나라 수도"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q21",
+   "stage": "대",
+   "verified": true,
+   "src": "Q·QQ2",
+   "q": "이허에 첫눈 오던 날, 내가 오빠한테 해준 건?",
+   "options": [
+    "목도리 선물",
+    "다친 곳에 약 발라주기",
+    "눈사람 만들기",
+    "노래 불러주기"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q22",
+   "stage": "대",
+   "verified": true,
+   "src": "Q(12화)·QQ2",
+   "q": "\"누구한테나 잘해줘, ○○처럼.\" 내가 오빠를 뭐에 비유했게?",
+   "options": [
+    "햇님",
+    "중앙 에어컨",
+    "강아지",
+    "편의점"
+   ],
+   "answer": 1
+  },
+  {
+   "id": "Q23",
+   "stage": "대",
+   "verified": false,
+   "src": "W",
+   "q": "자쉬 오빠의 꿈은 뭐게?",
+   "options": [
+    "게임 디자이너",
+    "의사",
+    "파일럿",
+    "요리사"
+   ],
+   "answer": 0
+  },
+  {
+   "id": "Q24",
+   "stage": "any",
+   "verified": true,
+   "src": "W·Q",
+   "q": "드라마 《투투장부주》는 몇 부작?",
+   "options": [
+    "16부작",
+    "20부작",
+    "25부작",
+    "40부작"
+   ],
+   "answer": 2
+  },
+  {
+   "id": "Q25",
+   "stage": "any",
+   "verified": true,
+   "src": "W·Q",
+   "q": "원작 소설 작가는 누구게?",
+   "options": [
+    "죽이(竹已)",
+    "구만(顾漫)",
+    "묵향동후(墨香铜臭)",
+    "탕치(唐七)"
+   ],
+   "answer": 0
+  }
+ ],
+ "taste": [
+  {
+   "id": "T_phone",
+   "topic": "폰케이스",
+   "stage": "대",
+   "verified": true,
+   "scored": true,
+   "src": "QQ1·QQ2",
+   "note": "개구리 케이스의 정확한 디자인은 미확인 → 일반적인 초록 개구리로 그림",
+   "ask": "새 폰케이스 갖고 싶어! 뭐가 나한테 어울릴까?",
+   "answer": "case_frog",
+   "spot": "책상 위 휴대폰",
+   "options": [
+    {
+     "icon": "case_frog",
+     "label": "개구리"
+    },
+    {
+     "icon": "case_cat",
+     "label": "고양이"
+    },
+    {
+     "icon": "case_bear",
+     "label": "곰"
+    },
+    {
+     "icon": "case_flower",
+     "label": "꽃"
+    }
+   ],
+   "item": "개구리 폰케이스"
+  },
+  {
+   "id": "T_plush",
+   "topic": "인형",
+   "stage": "고",
+   "verified": true,
+   "scored": true,
+   "src": "BD·TC·QQ2",
+   "ask": "침대에 둘 인형 하나만… 골라 줄래?",
+   "answer": "plush_fox",
+   "spot": "침대 위",
+   "options": [
+    {
+     "icon": "plush_fox",
+     "label": "여우"
+    },
+    {
+     "icon": "plush_bunny",
+     "label": "토끼"
+    },
+    {
+     "icon": "plush_puppy",
+     "label": "강아지"
+    },
+    {
+     "icon": "plush_penguin",
+     "label": "펭귄"
+    }
+   ],
+   "item": "여우 인형"
+  },
+  {
+   "id": "T_snack",
+   "topic": "간식",
+   "stage": "고",
+   "verified": true,
+   "scored": true,
+   "src": "BD·TC",
+   "ask": "공부하면서 먹을 거! 뭐 사 올 거야?",
+   "answer": "lollipop",
+   "spot": "간식 서랍",
+   "options": [
+    {
+     "icon": "lollipop",
+     "label": "막대사탕"
+    },
+    {
+     "icon": "milk_pudding",
+     "label": "우유 푸딩",
+     "dairy": true
+    },
+    {
+     "icon": "icecream",
+     "label": "아이스크림",
+     "dairy": true
+    },
+    {
+     "icon": "peanuts",
+     "label": "땅콩"
+    }
+   ],
+   "item": "막대사탕",
+   "note": "台词课 줄거리는 바이두 줄거리를 바탕으로 했을 수 있음(독립 출처인지 미확인)"
+  },
+  {
+   "id": "T_drink",
+   "topic": "음료",
+   "stage": "대",
+   "verified": false,
+   "scored": false,
+   "src": "N45·N49",
+   "label": "원작 소설 기준 · 드라마 미확인",
+   "ask": "목말라~ 뭐 마실까?",
+   "answer": "oolong",
+   "spot": "책상 컵",
+   "options": [
+    {
+     "icon": "oolong",
+     "label": "우롱차"
+    },
+    {
+     "icon": "milk",
+     "label": "흰 우유",
+     "dairy": true
+    },
+    {
+     "icon": "milktea",
+     "label": "밀크티",
+     "dairy": true
+    },
+    {
+     "icon": "latte",
+     "label": "라떼",
+     "dairy": true
+    }
+   ],
+   "item": "우롱차"
+  },
+  {
+   "id": "T_hobby",
+   "topic": "취미 도구",
+   "stage": "중",
+   "verified": true,
+   "scored": true,
+   "src": "W·BD",
+   "ask": "주말에 뭐 하고 놀지? 도구 사 줘!",
+   "answer": "art_set",
+   "spot": "이젤",
+   "options": [
+    {
+     "icon": "art_set",
+     "label": "그림 도구"
+    },
+    {
+     "icon": "guitar",
+     "label": "기타"
+    },
+    {
+     "icon": "soccer",
+     "label": "축구공"
+    },
+    {
+     "icon": "fishing",
+     "label": "낚싯대"
+    }
+   ],
+   "item": "그림 도구"
+  },
+  {
+   "id": "T_dinner",
+   "topic": "저녁 메뉴",
+   "stage": "대",
+   "verified": true,
+   "scored": true,
+   "src": "W·QQ2·BJ",
+   "ask": "오늘 저녁은 내가 좋아하는 거! 맞혀 봐~",
+   "answer": "taro_duck",
+   "spot": "식탁",
+   "options": [
+    {
+     "icon": "taro_duck",
+     "label": "타로 크리스피 오리"
+    },
+    {
+     "icon": "lamb_skewer",
+     "label": "양꼬치",
+     "cantEat": true
+    },
+    {
+     "icon": "beef_burger",
+     "label": "소고기버거",
+     "cantEat": true
+    },
+    {
+     "icon": "cream_pasta",
+     "label": "크림 파스타",
+     "dairy": true
+    }
+   ],
+   "item": "타로 크리스피 오리"
+  }
+ ],
+ "lines": {
+  "popIntro": [
+   "있잖아, 이거 맞혀봐!",
+   "퀴즈 타임~ 나에 대해 얼마나 알아?",
+   "갑자기 궁금해졌어. 이거 알아?",
+   "딱 하나만 물어볼게!",
+   "흐흥, 이건 못 맞히지?"
+  ],
+  "correct": {
+   "일반": [
+    "정답! 역시 내 편이야.",
+    "오~ 맞았어! 제법인데?",
+    "딩동댕! 칭찬해 줄게."
+   ],
+   "희귀": [
+    "헐, 그걸 알아? …너 나한테 관심 많구나?",
+    "어떻게 알았지…? 괜히 기분 좋네."
+   ],
+   "전설": [
+    "…그런 것까지 기억해 주는 사람, 너밖에 없어. 고마워."
+   ]
+  },
+  "wrong": [
+   "흥, 그것도 몰라? 다음엔 꼭 맞혀!",
+   "땡! …삐질 거야. 3초만.",
+   "아깝다~ 힌트 줄게. 다음에 또 물어볼 거야!",
+   "에이, 괜찮아. 나도 가끔 헷갈려."
+  ],
+  "answerIs": "정답은 '{a}'였어!",
+  "unverified": "⚠️ 출처 한 곳뿐 · 미확인 문항",
+  "examReady": [
+   "오늘 나 성장 시험 보는 날이야! 응원해 줄 거지?"
+  ],
+  "examIntro": "📝 성장 시험! 3문제 중 2문제만 맞히면 통과야.",
+  "examHint": "이번엔 힌트 줄게… 보기 두 개는 지웠어!",
+  "examPass": [
+   "봤지? 나 이제 다음 단계야! 꼬맹이 소리 금지!"
+  ],
+  "examFail": [
+   "오늘은 컨디션이 안 좋았던 거야. 내일 다시 해!",
+   "괜찮아, 시험은 또 보면 되지. 내일 다시 하자!"
+  ],
+  "examLater": "알았어, 마음의 준비 되면 말해!",
+  "tasteCorrect": [
+   "어떻게 알았어?! 이거 진짜 내 스타일이야!",
+   "와… 딱 내가 갖고 싶던 거야!"
+  ],
+  "tasteWrong": [
+   "음… 나쁘진 않은데, 내 스타일은 아니야.",
+   "고마워! …근데 다음엔 더 잘 맞혀 줘?"
+  ],
+  "tasteDairy": "나 우유 안 되는 거 알면서! …모르면 지금 외워!",
+  "tasteCantEat": "나 그거 못 먹어~ 다른 거 골라 줘!",
+  "tasteAgain": "이건 이미 있지롱~ 그래도 또 골라 줘서 기뻐!",
+  "tasteLimit": "오늘은 그만~ 내일 또 골라 줘!"
+ }
+}

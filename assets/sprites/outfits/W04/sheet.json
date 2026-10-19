@@ -1,0 +1,141 @@
+{
+ "cell": 352,
+ "scaleRef": 352,
+ "stage": "high",
+ "outfit": "W04",
+ "image": "sheet.png",
+ "aliases": {
+  "E06": "eat"
+ },
+ "anims": {
+  "idle": {
+   "row": 0,
+   "frames": 4,
+   "fps": 3,
+   "loop": true
+  },
+  "blink": {
+   "row": 1,
+   "frames": 3,
+   "fps": 12,
+   "loop": false
+  },
+  "E01": {
+   "row": 2,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E02": {
+   "row": 3,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E19": {
+   "row": 4,
+   "frames": 2,
+   "fps": 4,
+   "loop": true
+  },
+  "E13": {
+   "row": 5,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E05": {
+   "row": 6,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E23": {
+   "row": 7,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E21": {
+   "row": 8,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E07": {
+   "row": 9,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E11": {
+   "row": 10,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E10": {
+   "row": 11,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E15": {
+   "row": 12,
+   "frames": 2,
+   "fps": 2,
+   "loop": true
+  },
+  "E22": {
+   "row": 13,
+   "frames": 2,
+   "fps": 1.2,
+   "loop": true
+  },
+  "eat": {
+   "row": 14,
+   "frames": 4,
+   "fps": 4,
+   "loop": true
+  },
+  "hop": {
+   "row": 15,
+   "frames": 4,
+   "fps": 8,
+   "loop": false,
+   "offsets": [
+    0,
+    -8,
+    -13,
+    0
+   ]
+  },
+  "eat_rice": {
+   "row": 14,
+   "frames": 4,
+   "fps": 4,
+   "loop": true
+  },
+  "eat_noodle": {
+   "row": 16,
+   "frames": 4,
+   "fps": 4,
+   "loop": true
+  },
+  "eat_tanghulu": {
+   "row": 17,
+   "frames": 4,
+   "fps": 4,
+   "loop": true
+  },
+  "eat_lollipop": {
+   "row": 18,
+   "frames": 4,
+   "fps": 4,
+   "loop": true
+  }
+ },
+ "hi": true,
+ "eatNote": "Stage 5: 음식별 먹기 프레임 (tools/build_eat.py, src tools/src_eat/). eat = eat_rice",
+ "outfitNote": "tools/build_outfit.py — 단계 high v5 프레임을 의상 W04 로 편집한 원화(tools/src_outfits/W04/), blink 는 단계 시트 눈 띠 파생"
+}

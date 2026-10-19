@@ -1,0 +1,4953 @@
+{
+ "character": "쌍즈(桑稚)",
+ "note": "팬메이드 대사. 일반 대사는 모두 오리지널. action '회상' 줄만 QUOTES.md Part 1의 짧은 인용(작성자 번역)을 담고 quote 번호로 출처를 화면에 표기. stage: 중/고/대/졸/any",
+ "count": 433,
+ "lines": [
+  {
+   "id": "L001",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "배고파… 밥 안 주면 오빠한테 이를 거야!"
+  },
+  {
+   "id": "L002",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "나 지금 배에서 공룡 소리 나는 거 들려? 들리지?"
+  },
+  {
+   "id": "L003",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "밥! 밥! 밥! …아, 조르는 거 아니거든!"
+  },
+  {
+   "id": "L004",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "딸기 탕후루 하나만… 아니 두 개만! 우유 든 건 빼고!"
+  },
+  {
+   "id": "L005",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "오늘 급식 진짜 맛없었단 말이야. 위로 간식 필요해."
+  },
+  {
+   "id": "L006",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "쌍옌 오빠가 내 과자 또 먹었어! 복수할 거야!"
+  },
+  {
+   "id": "L007",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "배고파서 숙제가 안 돼. 이건 과학이야."
+  },
+  {
+   "id": "L008",
+   "stage": "중",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "라면 끓여줄 거면 계란 꼭 넣어줘. 꼭!"
+  },
+  {
+   "id": "L009",
+   "stage": "중",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "헤헤, 오늘 기분 최고야! 이유는… 비밀!"
+  },
+  {
+   "id": "L010",
+   "stage": "중",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "나 오늘 선생님한테 칭찬받았다? 진짜로!"
+  },
+  {
+   "id": "L011",
+   "stage": "중",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "노래 불러줄까? 아, 듣지 마! 부끄러워!"
+  },
+  {
+   "id": "L012",
+   "stage": "중",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오빠 친구가 오늘 집에 온대… 아, 아무 상관 없거든!"
+  },
+  {
+   "id": "L013",
+   "stage": "중",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "나 오늘 머리 예쁘지? 예쁘다고 해!"
+  },
+  {
+   "id": "L014",
+   "stage": "중",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "뭐야, 왜 웃어? 나 따라 웃는 거야?"
+  },
+  {
+   "id": "L015",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "흥. 말 안 할 거야."
+  },
+  {
+   "id": "L016",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "나 애 아니거든! 중학생이거든!"
+  },
+  {
+   "id": "L017",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E05",
+   "text": "쌍옌 오빠 미워. 세상에서 제일 미워."
+  },
+  {
+   "id": "L018",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "왜 다들 날 꼬맹이 취급해? 나도 다 컸어!"
+  },
+  {
+   "id": "L019",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "…사과하면 생각해 볼게. 딸기 탕후루랑 같이."
+  },
+  {
+   "id": "L020",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "볼 빵빵한 거 아니거든! 화난 거거든!"
+  },
+  {
+   "id": "L021",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "선생님이 또 학부모 불러오래… 엄마한텐 비밀이야, 알았지?"
+  },
+  {
+   "id": "L022",
+   "stage": "중",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "졸려… 오 분만… 아니 십 분만…"
+  },
+  {
+   "id": "L023",
+   "stage": "중",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "숙제 다 했으니까 자도 되지? 응?"
+  },
+  {
+   "id": "L024",
+   "stage": "중",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "인형 안고 잘래. 하얀 곰돌이 어디 갔어?"
+  },
+  {
+   "id": "L025",
+   "stage": "중",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "내일 아침에 깨워줘. 근데 살살 깨워야 돼."
+  },
+  {
+   "id": "L026",
+   "stage": "중",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "꿈에서 디저트 가게 갈 거야. 따라오지 마!"
+  },
+  {
+   "id": "L027",
+   "stage": "중",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "수학 진짜 싫어… 근데 해야지. 꿈이 있으니까."
+  },
+  {
+   "id": "L028",
+   "stage": "중",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "이 문제 알려줄 사람… 아, 오빠 친구한테 물어볼까? 아니야!"
+  },
+  {
+   "id": "L029",
+   "stage": "중",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "나 이번 시험 잘 보면 뭐 해줄 거야?"
+  },
+  {
+   "id": "L030",
+   "stage": "중",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "글씨 예쁘게 쓰는 연습 중이야. 이름 쓰는 거… 그냥 연습이야!"
+  },
+  {
+   "id": "L031",
+   "stage": "중",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "집중! 집중! …근데 간식 먹으면서 하면 안 돼?"
+  },
+  {
+   "id": "L032",
+   "stage": "중",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "선생님이 그러는데 꿈은 크게 가지래. 나 크게 가졌어. 비밀이지만."
+  },
+  {
+   "id": "L033",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오, 오빠 친구 이름이 무슨 '자'야? 그냥 궁금해서!"
+  },
+  {
+   "id": "L034",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "얼굴 빨갛다고? 더워서 그런 거야! 더워서!"
+  },
+  {
+   "id": "L035",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "아, 아니거든! 좋아하는 거 아니라고!!"
+  },
+  {
+   "id": "L036",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "그 오빠가 나한테 '꼬맹이'라고 했어. 꼬맹이 아니거든… 흥."
+  },
+  {
+   "id": "L037",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "과일 갖다주러 오빠 방 들어가는 거야. 다른 이유 없어!"
+  },
+  {
+   "id": "L038",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "우와, 나 주는 거야? …고마워. 진짜로!"
+  },
+  {
+   "id": "L039",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "이거 아까워서 못 먹겠어. 아니 먹을래."
+  },
+  {
+   "id": "L040",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "선물 받으면 일기장에 적어둬야지. 날짜까지!"
+  },
+  {
+   "id": "L041",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "흥, 이거 하나로 안 넘어가… 하지만 받을게."
+  },
+  {
+   "id": "L042",
+   "stage": "중",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E05",
+   "text": "게임 하자! 쌍옌 오빠는 끼워주지 마!"
+  },
+  {
+   "id": "L043",
+   "stage": "중",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "숨바꼭질! 나 진짜 잘 숨는다? 마음도 잘 숨기고… 아, 아무것도 아냐!"
+  },
+  {
+   "id": "L044",
+   "stage": "중",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E15",
+   "text": "종이별 접는 법 알려줄까? 하나 접을 때마다 소원 하나야."
+  },
+  {
+   "id": "L045",
+   "stage": "중",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "나 이겼어! 다시 해도 또 이길 거야!"
+  },
+  {
+   "id": "L046",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "좋은 아침! …아직 졸려."
+  },
+  {
+   "id": "L047",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오늘 학교 가기 싫어… 그래도 갈게."
+  },
+  {
+   "id": "L048",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "아침밥 빵이야? 딸기잼 듬뿍!"
+  },
+  {
+   "id": "L049",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 일기 쓸 거야. 훔쳐보면 절교야!"
+  },
+  {
+   "id": "L050",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E15",
+   "text": "밤하늘에 별 많다. 종이별보다 예쁜가?"
+  },
+  {
+   "id": "L051",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "잘 자. 내일 또 와야 돼. 약속!"
+  },
+  {
+   "id": "L052",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E19",
+   "text": "오늘 일기 한 줄: '꿈 1번, 2번…' 아, 보지 마!!!"
+  },
+  {
+   "id": "L053",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "그 오빠가 내 머리 쓰다듬었어. 오늘 머리 안 감을래… 농담이야!"
+  },
+  {
+   "id": "L054",
+   "stage": "중",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "오빠가 아니라 '자쉬 오빠'라고 부르면 이상할까?"
+  },
+  {
+   "id": "L055",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E11",
+   "text": "하얀 곰 인형…? 이거 평생 간직할 거야."
+  },
+  {
+   "id": "L056",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "전설",
+   "expr": "E02",
+   "text": "나 비밀 하나 있어. 이름 세 글자짜리… 아직은 말 못 해."
+  },
+  {
+   "id": "L057",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "야자 전에 뭐 좀 먹어야 돼. 진짜 쓰러져!"
+  },
+  {
+   "id": "L058",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "편의점 삼각김밥 말고… 디저트! 디저트!"
+  },
+  {
+   "id": "L059",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "배고프면 예민해지는 거 알지? 지금 예민해."
+  },
+  {
+   "id": "L060",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "밥 먹고 공부하면 두 배로 잘 돼. 아마도."
+  },
+  {
+   "id": "L061",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "오빠가 용돈 안 줘. 그러니까 네가 사줘!"
+  },
+  {
+   "id": "L062",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "딸기 타르트 한 조각이면 수학 한 단원 할 수 있어."
+  },
+  {
+   "id": "L063",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "우유는 마시면 간질간질해서 안 돼. 대신 딸기 주스! 딸기면 다 좋아."
+  },
+  {
+   "id": "L064",
+   "stage": "고",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "배고파… 이러다 내 꿈도 굶어 죽어."
+  },
+  {
+   "id": "L065",
+   "stage": "고",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "모의고사 점수 올랐어! 나 천재인가 봐!"
+  },
+  {
+   "id": "L066",
+   "stage": "고",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하늘 진짜 예쁘다. 사진 찍어 둘래."
+  },
+  {
+   "id": "L067",
+   "stage": "고",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "헤헤, 오늘은 뭐든 할 수 있을 것 같아."
+  },
+  {
+   "id": "L068",
+   "stage": "고",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "친구랑 떡볶이 먹었어. 근데 디저트 배는 따로야."
+  },
+  {
+   "id": "L069",
+   "stage": "고",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "나 요즘 좀 어른스러워지지 않았어? 그렇지?"
+  },
+  {
+   "id": "L070",
+   "stage": "고",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "노래 들으면서 공부하면 행복해."
+  },
+  {
+   "id": "L071",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "나 이제 고등학생이거든? 애 취급 금지!"
+  },
+  {
+   "id": "L072",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E05",
+   "text": "쌍옌 오빠가 또 놀렸어. 진짜 오빠 맞아?"
+  },
+  {
+   "id": "L073",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "흥, 연락도 안 하고… 아, 너 말고! 그냥 누구!"
+  },
+  {
+   "id": "L074",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "기다린 거 아니거든. …조금만 기다렸어."
+  },
+  {
+   "id": "L075",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "말 걸지 마. …아니, 걸어도 돼. 조금만."
+  },
+  {
+   "id": "L076",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "치, 다들 나만 빼고 재밌는 거 하지?"
+  },
+  {
+   "id": "L077",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "또 꼬맹이래. 나 키도 컸거든!"
+  },
+  {
+   "id": "L078",
+   "stage": "고",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "문제집 베고 잠들 것 같아…"
+  },
+  {
+   "id": "L079",
+   "stage": "고",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "새벽까지 공부했어… 칭찬해 줘… zzz"
+  },
+  {
+   "id": "L080",
+   "stage": "고",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "눈이 자꾸 감겨. 오 분만 기대도 돼?"
+  },
+  {
+   "id": "L081",
+   "stage": "고",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "내일 일찍 깨워줘. 대신 알람 소리 크게 하지 마."
+  },
+  {
+   "id": "L082",
+   "stage": "고",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "avoid": [
+    "campus"
+   ],
+   "expr": "E21",
+   "text": "꿈에서라도 그 대학 캠퍼스 걸어 볼래."
+  },
+  {
+   "id": "L083",
+   "stage": "고",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "이허대학교 가려면 점수 더 올려야 돼!"
+  },
+  {
+   "id": "L084",
+   "stage": "고",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "지도 펴놓고 이허까지 가는 길 그려봤어. 그냥… 지리 공부야!"
+  },
+  {
+   "id": "L085",
+   "stage": "고",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "영어 단어 백 개! 할 수 있어, 쌍즈!"
+  },
+  {
+   "id": "L086",
+   "stage": "고",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "포기 안 해. 나 고집 센 거 알지?"
+  },
+  {
+   "id": "L087",
+   "stage": "고",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "공부 가르쳐 주던 사람이 있었는데… 아무튼 열심히 할 거야."
+  },
+  {
+   "id": "L088",
+   "stage": "고",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "오답노트 예쁘게 정리했어. 봐봐!"
+  },
+  {
+   "id": "L089",
+   "stage": "고",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "대학 가면 하고 싶은 거 엄청 많아. 그러니까 지금 버틸래."
+  },
+  {
+   "id": "L090",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "메신저 알림 울렸어! …아, 쌍옌 오빠네. 흥."
+  },
+  {
+   "id": "L091",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "그 사람한테 생일 축하 문자 보낼까 말까… 백 번 고민 중."
+  },
+  {
+   "id": "L092",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "얼굴 빨간 거 아니야! 히터 때문이야!"
+  },
+  {
+   "id": "L093",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "아, 아니거든! 그냥 오빠 친구라고!"
+  },
+  {
+   "id": "L094",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "학부모 대신 와줬던 날 기억나… 아, 아무것도 아냐!"
+  },
+  {
+   "id": "L095",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "이거 나 주는 거야? 진짜? 꺅… 아, 고마워!"
+  },
+  {
+   "id": "L096",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "선물은 고맙지만 숙제는 안 해줄 거지? …알아."
+  },
+  {
+   "id": "L097",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "포장지도 안 버릴 거야. 보물 상자에 넣을 거야."
+  },
+  {
+   "id": "L098",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "흥, 이런 걸로 기분 풀리는 거 아니야. …풀렸어."
+  },
+  {
+   "id": "L099",
+   "stage": "고",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "노래방 가자! 나 고음 된다?"
+  },
+  {
+   "id": "L100",
+   "stage": "고",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E15",
+   "text": "종이별 오늘 열 개 접었어. 유리병 반은 찼다!"
+  },
+  {
+   "id": "L101",
+   "stage": "고",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "눈싸움 하자! 봐주기 없기!"
+  },
+  {
+   "id": "L102",
+   "stage": "고",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오빠 게임기 몰래 하자. 쉿!"
+  },
+  {
+   "id": "L103",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "등교하기 싫다… 그래도 지각은 안 해."
+  },
+  {
+   "id": "L104",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "아침에 거울 보니까 앞머리가 망했어. 보지 마!"
+  },
+  {
+   "id": "L105",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하루도 파이팅! …너도!"
+  },
+  {
+   "id": "L106",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "avoid": [
+    "home_nanwu"
+   ],
+   "expr": "E01",
+   "text": "야자 끝! 별 보면서 집 가는 중이야."
+  },
+  {
+   "id": "L107",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 일기는 좀 길어질 것 같아."
+  },
+  {
+   "id": "L108",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "잘 자. 나도 잘 거야. …진짜로 잘 거야."
+  },
+  {
+   "id": "L109",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E10",
+   "text": "그 사람한테 여자친구 있으면… 아냐, 상관없어. 상관… 없어."
+  },
+  {
+   "id": "L110",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E15",
+   "text": "종이별 안에 쓴 말은 절대 안 보여줄 거야. 절대!"
+  },
+  {
+   "id": "L111",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "가끔은 빨리 어른이 되고 싶어. 그러면 꼬맹이 소리 안 듣겠지?"
+  },
+  {
+   "id": "L112",
+   "stage": "고",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E10",
+   "text": "…나 오늘 좀 슬퍼. 이유는 묻지 마. 그냥 옆에 있어 줘."
+  },
+  {
+   "id": "L113",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "전설",
+   "expr": "E02",
+   "text": "꿈이 두 개 있었어. 하나는 꼭 이룰 거야. 다른 하나는… 비밀."
+  },
+  {
+   "id": "L114",
+   "stage": "대",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "기숙사 식당 문 닫았어… 살려줘!"
+  },
+  {
+   "id": "L115",
+   "stage": "대",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "과제하다가 밥 먹는 거 까먹었어. 나 바보야?"
+  },
+  {
+   "id": "L116",
+   "stage": "대",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "avoid": [
+    "dessert"
+   ],
+   "expr": "E23",
+   "text": "디저트 가게 신메뉴 나왔대! 가자 가자!"
+  },
+  {
+   "id": "L117",
+   "stage": "대",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "딸기 탕후루는 진리야. 반박 불가."
+  },
+  {
+   "id": "L118",
+   "stage": "대",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "배고파서 리포트 첫 문장도 안 써져."
+  },
+  {
+   "id": "L119",
+   "stage": "대",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "오늘은 훠궈 먹고 싶어! 아니면 탕후루. 아니면 둘 다!"
+  },
+  {
+   "id": "L120",
+   "stage": "대",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "커피 말고 과일차! 밀크티는 우유 들어가서 패스. 당 충전 필수야."
+  },
+  {
+   "id": "L121",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이허 날씨 오늘 너무 좋아!"
+  },
+  {
+   "id": "L122",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "나 장학금 받았어! 오늘은 내가 쏜다!"
+  },
+  {
+   "id": "L123",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "헤헤, 요즘 매일이 좀 설레."
+  },
+  {
+   "id": "L124",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "이제 진짜 어른이야. 꼬맹이 소리 금지!"
+  },
+  {
+   "id": "L125",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "avoid": [
+    "campus"
+   ],
+   "expr": "E01",
+   "text": "캠퍼스 산책했는데 바람이 좋았어."
+  },
+  {
+   "id": "L126",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "룸메이트들이랑 수다 떨다 배 아플 뻔했어."
+  },
+  {
+   "id": "L127",
+   "stage": "대",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "나 이제 대학생이거든? 아직도 애 취급이야?"
+  },
+  {
+   "id": "L128",
+   "stage": "대",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "답장이 왜 이렇게 늦어? …안 기다렸어."
+  },
+  {
+   "id": "L129",
+   "stage": "대",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "흥, 오늘은 디저트 두 개 사줘야 풀릴 거야."
+  },
+  {
+   "id": "L130",
+   "stage": "대",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E05",
+   "text": "쌍옌 오빠는 아직도 잔소리야. 진짜 할아버지 같아."
+  },
+  {
+   "id": "L131",
+   "stage": "대",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E10",
+   "text": "인턴 힘들었어… 그래도 안 울었어. 조금밖에."
+  },
+  {
+   "id": "L132",
+   "stage": "대",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "치, 나만 신경 쓰는 것 같잖아."
+  },
+  {
+   "id": "L133",
+   "stage": "대",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "밤샘 과제 끝… 이불이 날 부른다…"
+  },
+  {
+   "id": "L134",
+   "stage": "대",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "오늘은 꿈 안 꾸고 푹 잘래."
+  },
+  {
+   "id": "L135",
+   "stage": "대",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "자기 전에 물 한 잔만… 우유는 말고! 간질간질해지니까."
+  },
+  {
+   "id": "L136",
+   "stage": "대",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "내일 1교시야… 깨워줘… 제발…"
+  },
+  {
+   "id": "L137",
+   "stage": "대",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "잘 자, 오늘도 고마웠어."
+  },
+  {
+   "id": "L138",
+   "stage": "대",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "전공 공부 생각보다 재밌어. 이 과 선택 잘했어!"
+  },
+  {
+   "id": "L139",
+   "stage": "대",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "도서관 자리 맡았어! 오늘 다 끝낼 거야."
+  },
+  {
+   "id": "L140",
+   "stage": "대",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "조별과제… 나 혼자 다 하는 기분이야."
+  },
+  {
+   "id": "L141",
+   "stage": "대",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "시험 끝나면 디저트 투어 갈 거야. 약속!"
+  },
+  {
+   "id": "L142",
+   "stage": "대",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "이제 공부는 누구 따라가려고 하는 게 아니라 나를 위해 하는 거야."
+  },
+  {
+   "id": "L143",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "자쉬 오빠가 같은 도시에 있다니… 아직도 신기해."
+  },
+  {
+   "id": "L144",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "오빠 회사 근처 지나가다가… 우연이야! 우연!"
+  },
+  {
+   "id": "L145",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "얼굴 빨간 거 아니야! 이허 날씨가 더운 거야!"
+  },
+  {
+   "id": "L146",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "아, 아니거든! 그냥 밥 같이 먹은 거라고!"
+  },
+  {
+   "id": "L147",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "'꼬맹이' 말고 이름으로 불러줬어… 헤헤."
+  },
+  {
+   "id": "L148",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "우와, 센스 있다! 나 이런 거 좋아하는 거 어떻게 알았어?"
+  },
+  {
+   "id": "L149",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "이거 오빠한테 자랑해야지. 쌍옌 오빠 말고!"
+  },
+  {
+   "id": "L150",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "선물 고마워. 다음엔 내가 줄게."
+  },
+  {
+   "id": "L151",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "포장 너무 예뻐서 뜯기 아까워."
+  },
+  {
+   "id": "L152",
+   "stage": "대",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "avoid": [
+    "beach"
+   ],
+   "expr": "E01",
+   "text": "바다 보러 가고 싶다. 파도 소리 좋아해."
+  },
+  {
+   "id": "L153",
+   "stage": "대",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "보드게임 하자! 나 이번엔 안 져!"
+  },
+  {
+   "id": "L154",
+   "stage": "대",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E15",
+   "text": "첫눈 오면 같이 나가자. 꼭!"
+  },
+  {
+   "id": "L155",
+   "stage": "대",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "사진 찍자! 이번엔 내가 예쁘게 나와야 돼."
+  },
+  {
+   "id": "L156",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "좋은 아침! 오늘 수업 세 개야…"
+  },
+  {
+   "id": "L157",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "아침 햇살 받으면서 걷는 거 좋아."
+  },
+  {
+   "id": "L158",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘도 나 응원해 줄 거지?"
+  },
+  {
+   "id": "L159",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오늘 하루 어땠어? 나는… 꽤 괜찮았어."
+  },
+  {
+   "id": "L160",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "밤에 전화하면 목소리 더 다정하게 들리는 거 알아?"
+  },
+  {
+   "id": "L161",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E15",
+   "text": "별 보니까 옛날에 접던 종이별 생각난다."
+  },
+  {
+   "id": "L162",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E15",
+   "text": "첫눈 오는 날, 상처에 약 발라주면서 '아파?' 물어봤던 거 기억나."
+  },
+  {
+   "id": "L163",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "오빠가 그러더라. 하고 싶으면 그냥 해도 된대. 그래서 나도 용기 내볼래."
+  },
+  {
+   "id": "L164",
+   "stage": "대",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "좋아한다는 마음을 더는 숨기지 않아도 된다니. 이상해, 근데 좋아."
+  },
+  {
+   "id": "L165",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "text": "오빠한테 좋은 일은 두 배로 돌아왔으면 좋겠어. 진심이야."
+  },
+  {
+   "id": "L166",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "전설",
+   "expr": "E15",
+   "text": "몇 년 동안 접은 종이별, 이제 주인한테 줄 수 있을 것 같아."
+  },
+  {
+   "id": "L167",
+   "stage": "any",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "밥 줘! 밥! 굶기면 삐질 거야!"
+  },
+  {
+   "id": "L168",
+   "stage": "any",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "배고픈 쌍즈는 무서운 쌍즈야."
+  },
+  {
+   "id": "L169",
+   "stage": "any",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "단 거 없어? 진짜 하나도?"
+  },
+  {
+   "id": "L170",
+   "stage": "any",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "딸기 들어간 거면 다 좋아!"
+  },
+  {
+   "id": "L171",
+   "stage": "any",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "간식 서랍 비었어… 누가 먹었어? 쌍옌 오빠지?!"
+  },
+  {
+   "id": "L172",
+   "stage": "any",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "헤헤, 너 오니까 좋다."
+  },
+  {
+   "id": "L173",
+   "stage": "any",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 운이 좋은 날인가 봐!"
+  },
+  {
+   "id": "L174",
+   "stage": "any",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "기분 좋아서 춤추고 싶어! 보지 마!"
+  },
+  {
+   "id": "L175",
+   "stage": "any",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "나 지금 엄청 웃고 있지? 다 너 때문이야."
+  },
+  {
+   "id": "L176",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "흥!"
+  },
+  {
+   "id": "L177",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "몰라! 말 안 해!"
+  },
+  {
+   "id": "L178",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "나 지금 삐졌어. 달래 줘야 돼."
+  },
+  {
+   "id": "L179",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "사과는 디저트로 받아."
+  },
+  {
+   "id": "L180",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "…그래도 와줘서 고마워. 쬐끔."
+  },
+  {
+   "id": "L181",
+   "stage": "any",
+   "state": "졸림",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "하암… 졸려."
+  },
+  {
+   "id": "L182",
+   "stage": "any",
+   "state": "졸림",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "눈꺼풀이 천 근이야…"
+  },
+  {
+   "id": "L183",
+   "stage": "any",
+   "state": "졸림",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "나 잠깐만 잘게. 깨우면 화낼 거야."
+  },
+  {
+   "id": "L184",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "eat",
+   "text": "잘 먹겠습니다!"
+  },
+  {
+   "id": "L185",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "eat",
+   "text": "음~ 이 맛이야!"
+  },
+  {
+   "id": "L186",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "eat",
+   "text": "배부르다~ 이제 행복해."
+  },
+  {
+   "id": "L187",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "eat",
+   "text": "한 입만 더! 진짜 한 입만!"
+  },
+  {
+   "id": "L188",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "eat",
+   "text": "디저트 배는 따로 있는 거 알지?"
+  },
+  {
+   "id": "L189",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "eat",
+   "text": "맛있다! 너도 한 입 먹어볼래?"
+  },
+  {
+   "id": "L190",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "eat",
+   "text": "냠냠… 오늘 최고의 순간이야."
+  },
+  {
+   "id": "L191",
+   "stage": "any",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "재밌다! 한 판 더!"
+  },
+  {
+   "id": "L192",
+   "stage": "any",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "나 이겼지? 인정해!"
+  },
+  {
+   "id": "L193",
+   "stage": "any",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "너랑 노는 게 제일 재밌어. 쌍옌 오빠보다!"
+  },
+  {
+   "id": "L194",
+   "stage": "any",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "봐주지 마! 진짜 실력으로 이길 거야!"
+  },
+  {
+   "id": "L195",
+   "stage": "any",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "공부 끝! 칭찬해 줘!"
+  },
+  {
+   "id": "L196",
+   "stage": "any",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "열심히 하면 꿈에 한 발짝 가까워지는 거야."
+  },
+  {
+   "id": "L197",
+   "stage": "any",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "머리 터질 것 같아… 단 거 줘."
+  },
+  {
+   "id": "L198",
+   "stage": "any",
+   "state": "any",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "오늘 목표 완료! 나 대단하지?"
+  },
+  {
+   "id": "L199",
+   "stage": "any",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E22",
+   "text": "잘 자…"
+  },
+  {
+   "id": "L200",
+   "stage": "any",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E22",
+   "text": "내일 또 보자."
+  },
+  {
+   "id": "L201",
+   "stage": "any",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E22",
+   "text": "꿈에서 만나. 아니 꿈엔 오지 마! 부끄러워!"
+  },
+  {
+   "id": "L202",
+   "stage": "any",
+   "state": "any",
+   "action": "잠",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E22",
+   "text": "이불 덮어줘서 고마워."
+  },
+  {
+   "id": "L203",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "새벽",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "왜 아직 안 자? 나도 안 자지만…"
+  },
+  {
+   "id": "L204",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "새벽",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "새벽엔 마음이 말랑해져. 이상하지?"
+  },
+  {
+   "id": "L205",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "새벽",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "몰래 일기 쓰는 시간이야. 쉿."
+  },
+  {
+   "id": "L206",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오후엔 디저트 타임이지!"
+  },
+  {
+   "id": "L207",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "나른하다… 낮잠 자고 싶어."
+  },
+  {
+   "id": "L208",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "avoid": [
+    "beach",
+    "yihe_street",
+    "campus"
+   ],
+   "expr": "E01",
+   "text": "햇살 좋다. 산책 갈래?"
+  },
+  {
+   "id": "L209",
+   "stage": "any",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "선물?! 나 진짜 좋아!"
+  },
+  {
+   "id": "L210",
+   "stage": "any",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "고마워! 이건 보물 상자행이야."
+  },
+  {
+   "id": "L211",
+   "stage": "any",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "헤헤, 받기만 해서 미안해. 다음엔 내가!"
+  },
+  {
+   "id": "L212",
+   "stage": "any",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "아, 아니거든!!"
+  },
+  {
+   "id": "L213",
+   "stage": "any",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "얼굴 빨간 거 아니라고!"
+  },
+  {
+   "id": "L214",
+   "stage": "any",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "그, 그냥 궁금해서 물어본 거야!"
+  },
+  {
+   "id": "L215",
+   "stage": "any",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "심장 소리 들려? 안 들리지? 다행이다…"
+  },
+  {
+   "id": "L216",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E15",
+   "text": "첫눈 오는 날에 소원 빌면 이뤄진대. 나도 빌었어."
+  },
+  {
+   "id": "L217",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "text": "내 이름엔 '어리다'는 뜻이 있대. 근데 마음은 안 어려!"
+  },
+  {
+   "id": "L218",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "text": "엄마 아빠가 날 엄청 사랑해. 그래서 나도 사랑을 줄 줄 아는 거래."
+  },
+  {
+   "id": "L219",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "text": "좋아하는 마음은 숨기려고 하면 더 티 나는 것 같아."
+  },
+  {
+   "id": "L220",
+   "stage": "any",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "전설",
+   "expr": "E02",
+   "text": "그 이름, 처음엔 어떤 글자인지도 몰랐어. 그래도 좋았어."
+  },
+  {
+   "id": "L221",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "일어났어! …아니 아직 반만."
+  },
+  {
+   "id": "L222",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "아침 공기 상쾌해! 오늘도 힘내자."
+  },
+  {
+   "id": "L223",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "아침밥 안 먹으면 하루 종일 우울해."
+  },
+  {
+   "id": "L224",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "저녁",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "저녁 뭐 먹지? 너가 골라!"
+  },
+  {
+   "id": "L225",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "저녁",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "노을 진짜 예쁘다. 같이 봐서 좋아."
+  },
+  {
+   "id": "L226",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "저녁",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘도 수고했어. 나도 수고했어!"
+  },
+  {
+   "id": "L227",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "저녁",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "저녁 먹고 디저트! 순서 지켜야 돼."
+  },
+  {
+   "id": "L228",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "밤인데 배고프면 어떡해…"
+  },
+  {
+   "id": "L229",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 고마웠어. 진짜야."
+  },
+  {
+   "id": "L230",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "불 끄기 전에 하나만 말할게. 내일도 와!"
+  },
+  {
+   "id": "L231",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "…선물 줘도 안 풀려. 진짜야. …예쁘다."
+  },
+  {
+   "id": "L232",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "이걸로 퉁치려고? …일단 받을게."
+  },
+  {
+   "id": "L233",
+   "stage": "any",
+   "state": "졸림",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "말 걸면 대답은 해줄게… 졸려서 이상한 말 해도 몰라…"
+  },
+  {
+   "id": "L234",
+   "stage": "any",
+   "state": "졸림",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "음… 뭐라고? 꿈인가?"
+  },
+  {
+   "id": "L235",
+   "stage": "any",
+   "state": "공부",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "지금 공부 중이야! 방해하면… 간식 가져와."
+  },
+  {
+   "id": "L236",
+   "stage": "any",
+   "state": "공부",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "한 문제만 더 풀고 놀아줄게."
+  },
+  {
+   "id": "L237",
+   "stage": "any",
+   "state": "기분좋음",
+   "action": "선물",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E11",
+   "text": "이건 진짜 평생 간직할래. 약속해!"
+  },
+  {
+   "id": "L238",
+   "stage": "고",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "text": "눈 오는 날엔 아무 이유 없이 기분 좋아져. 너도 그래?"
+  },
+  {
+   "id": "L239",
+   "stage": "대",
+   "state": "설렘",
+   "action": "선물",
+   "time": "any",
+   "rarity": "전설",
+   "expr": "E19",
+   "text": "바닷가에서 받은 이 반지… 아, 아니 그냥 상상이야! 상상!"
+  },
+  {
+   "id": "L240",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "avoid": [
+    "home_nanwu"
+   ],
+   "expr": "E01",
+   "text": "학교 끝! 집에 가서 간식 먹을 거야!"
+  },
+  {
+   "id": "L241",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오빠 친구들 또 게임하러 왔어… 시끄러워. 근데 과일은 갖다줄 거야."
+  },
+  {
+   "id": "L242",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "체육복 입은 날은 더 배고파."
+  },
+  {
+   "id": "L243",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "avoid": [
+    "dessert"
+   ],
+   "expr": "E01",
+   "text": "방과후에 디저트 가게 들렀다 가자!"
+  },
+  {
+   "id": "L244",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "avoid": [
+    "dessert"
+   ],
+   "expr": "E01",
+   "text": "공강이다! 디저트 카페 가자!"
+  },
+  {
+   "id": "L245",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "오후 수업 졸려… 커피 말고 과일 타르트 줘."
+  },
+  {
+   "id": "L246",
+   "stage": "any",
+   "state": "배고픔",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "밥 생각만 나… 너 얼굴이 만두로 보여."
+  },
+  {
+   "id": "L247",
+   "stage": "any",
+   "state": "배고픔",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "꼬르륵… 방금 그거 내 배 아니야!"
+  },
+  {
+   "id": "L248",
+   "stage": "any",
+   "state": "기분좋음",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘은 내가 이길 것 같은 날이야!"
+  },
+  {
+   "id": "L249",
+   "stage": "any",
+   "state": "기분좋음",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "웃다가 배 아파! 그만 웃겨!"
+  },
+  {
+   "id": "L250",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "놀아줘도 안 풀려… 한 판만 더 하면 풀릴지도."
+  },
+  {
+   "id": "L251",
+   "stage": "any",
+   "state": "졸림",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "놀고 싶은데 눈이 감겨… 반칙이야…"
+  },
+  {
+   "id": "L252",
+   "stage": "고",
+   "state": "설렘",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "희귀",
+   "expr": "E19",
+   "text": "이 시간에 그 사람도 깨어 있을까… 아, 혼잣말이야!"
+  },
+  {
+   "id": "L253",
+   "stage": "대",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 같은 날이 매일이었으면 좋겠어."
+  },
+  {
+   "id": "L254",
+   "stage": "중",
+   "state": "샐짐",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "밥 먹어도 화 안 풀려. …디저트는 별개야."
+  },
+  {
+   "id": "L255",
+   "stage": "대",
+   "state": "샐짐",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "화날 땐 단 거! 이건 국룰이야."
+  },
+  {
+   "id": "L256",
+   "stage": "중",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E01",
+   "text": "다녀왔습니다~! 쌍옌 오빠, 내 간식 건드렸으면 각오해!"
+  },
+  {
+   "id": "L257",
+   "stage": "중",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E01",
+   "text": "집이다! 숙제부터… 아니, 간식부터."
+  },
+  {
+   "id": "L258",
+   "stage": "고",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E02",
+   "text": "다녀왔습니다. …오늘 야자 진짜 길었어."
+  },
+  {
+   "id": "L259",
+   "stage": "고",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E15",
+   "text": "방에 오자마자 종이별 병부터 확인. 하나도 안 없어졌지?"
+  },
+  {
+   "id": "L260",
+   "stage": "any",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E01",
+   "text": "역시 집이 최고야. 이불 냄새 좋다~"
+  },
+  {
+   "id": "L261",
+   "stage": "중",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E02",
+   "text": "학교 왔다… 오늘 쪽지시험 없겠지? 제발."
+  },
+  {
+   "id": "L262",
+   "stage": "중",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "교문 앞에서 선생님이랑 눈 마주쳤어. 나 지각 아니지?"
+  },
+  {
+   "id": "L263",
+   "stage": "중",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "운동장 넓다! 쉬는 시간에 뛰어야지."
+  },
+  {
+   "id": "L264",
+   "stage": "고",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E02",
+   "text": "고등학교는 계단이 왜 이렇게 많아…"
+  },
+  {
+   "id": "L265",
+   "stage": "고",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "모의고사 날이야. 심호흡, 심호흡."
+  },
+  {
+   "id": "L266",
+   "stage": "고",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E19",
+   "text": "교문 볼 때마다 생각나는 날이 있어. 아, 아무것도 아냐!"
+  },
+  {
+   "id": "L267",
+   "stage": "중",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "여기 진열장 좀 봐! …하나만 먹어도 되지? 우유 안 들어간 걸로!"
+  },
+  {
+   "id": "L268",
+   "stage": "중",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "사장님, 저 또 왔어요! 오늘은 딸기 들어간 거요!"
+  },
+  {
+   "id": "L269",
+   "stage": "고",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "시험 끝난 기념! 오늘은 두 개… 아니 하나."
+  },
+  {
+   "id": "L270",
+   "stage": "고",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "창가 자리 비었다! 저기 앉자."
+  },
+  {
+   "id": "L271",
+   "stage": "any",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E02",
+   "text": "달콤한 냄새… 여기 오면 기분이 풀려."
+  },
+  {
+   "id": "L272",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dorm",
+   "expr": "E01",
+   "text": "기숙사 도착. 룸메들 아직 안 왔나 봐."
+  },
+  {
+   "id": "L273",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dorm",
+   "expr": "E01",
+   "text": "침대가 날 부른다… 아니야, 과제부터!"
+  },
+  {
+   "id": "L274",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dorm",
+   "expr": "E01",
+   "text": "룸메가 간식 나눠줬어! 우유 들어간 건 사양했지만."
+  },
+  {
+   "id": "L275",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "apartment",
+   "expr": "E01",
+   "text": "집이다~ 오늘도 수고했어, 나."
+  },
+  {
+   "id": "L276",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "apartment",
+   "expr": "E19",
+   "text": "현관에 신발 두 켤레… 헤헤, 아무것도 아냐."
+  },
+  {
+   "id": "L277",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "apartment",
+   "expr": "E01",
+   "text": "창문 열면 바다 냄새가 조금 나. 좋다."
+  },
+  {
+   "id": "L278",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E02",
+   "text": "바닷바람 좋다… 이허는 남우랑 공기부터 달라."
+  },
+  {
+   "id": "L279",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "골목마다 벽화가 있어! 사진 찍어줘!"
+  },
+  {
+   "id": "L280",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "이 거리 걷는 거 좋아. 고등학교 땐 지도로만 보던 데야."
+  },
+  {
+   "id": "L281",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "퇴근길엔 꼭 이 거리로 와. 바다 보이잖아."
+  },
+  {
+   "id": "L282",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "여기 가게들 이제 다 외웠어. 저기 사장님이 덤도 주신다?"
+  },
+  {
+   "id": "L283",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "주말 아침 이 거리는 조용해서 좋아."
+  },
+  {
+   "id": "L284",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "이허대 캠퍼스! 야자수 있는 학교라니, 아직도 신기해."
+  },
+  {
+   "id": "L285",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E02",
+   "text": "다음 수업 강의실 어디더라… 또 헤맬 것 같아."
+  },
+  {
+   "id": "L286",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "도서관 앞 계단, 여기 앉아 있으면 바람이 좋아."
+  },
+  {
+   "id": "L287",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "졸업했는데도 캠퍼스 오면 학생 된 기분이야."
+  },
+  {
+   "id": "L288",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "후배들 보니까 나 신입생 때 생각난다."
+  },
+  {
+   "id": "L289",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E02",
+   "text": "여기 벤치에서 오빠 기다렸었는데… 헤헤."
+  },
+  {
+   "id": "L290",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "바다다! 신발 벗어도 돼? 조금만 걸을래."
+  },
+  {
+   "id": "L291",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "파도 소리 들으니까 머리가 맑아져."
+  },
+  {
+   "id": "L292",
+   "stage": "대",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "모래에 이름 쓰면 파도가 지워 가. 그래서 몰래 쓸 수 있어."
+  },
+  {
+   "id": "L293",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "또 왔다, 우리 바닷가."
+  },
+  {
+   "id": "L294",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "여기 오면 오래된 비밀이 생각나. 이젠 비밀 아니지만."
+  },
+  {
+   "id": "L295",
+   "stage": "졸",
+   "state": "any",
+   "action": "도착",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "노을 보러 왔어. 오늘은 안 놓칠 거야."
+  },
+  {
+   "id": "L296",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "급식 메뉴 봤어? 오늘 탕수육이래!"
+  },
+  {
+   "id": "L297",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "쉬는 시간 10분은 너무 짧아. 20분으로 해줘."
+  },
+  {
+   "id": "L298",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "짝꿍이 지우개 또 빌려 갔어. 벌써 다섯 번째야."
+  },
+  {
+   "id": "L299",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E02",
+   "text": "칠판 글씨가 안 보여… 앞자리로 바꿔 달라고 할까?"
+  },
+  {
+   "id": "L300",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "야자 시간엔 창밖만 봐도 시간이 안 가."
+  },
+  {
+   "id": "L301",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "복도 끝 창문에서 보면 노을이 예뻐."
+  },
+  {
+   "id": "L302",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E02",
+   "text": "모의고사 끝나면 매점 가자. 내가 쏠게… 반만."
+  },
+  {
+   "id": "L303",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E01",
+   "text": "교실 뒤 게시판에 이허대 사진 붙여놨어. 동기부여야!"
+  },
+  {
+   "id": "L304",
+   "stage": "any",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E13",
+   "text": "숙제 안 해왔다고 혼났어… 흥, 다음엔 해올 거야."
+  },
+  {
+   "id": "L305",
+   "stage": "any",
+   "state": "졸림",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E21",
+   "text": "수업 시간에 졸면 안 되는데… 눈꺼풀이…"
+  },
+  {
+   "id": "L306",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "저녁",
+   "rarity": "일반",
+   "place": "school",
+   "expr": "E02",
+   "text": "야자 끝나고 나오면 하늘이 깜깜해… 그래도 별은 예뻐."
+  },
+  {
+   "id": "L307",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "딸기 탕후루 반짝반짝해. 보석 같아!"
+  },
+  {
+   "id": "L308",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "생크림 케이크는 보기만 할게. 보는 건 괜찮아."
+  },
+  {
+   "id": "L309",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "여기 사장님이 내 얼굴 기억하신대. 단골이니까!"
+  },
+  {
+   "id": "L310",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "디저트 하나 고르는 데 십 분 걸리는 거, 정상이야."
+  },
+  {
+   "id": "L311",
+   "stage": "중",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E05",
+   "text": "쌍옌 오빠한테는 여기 비밀이야. 다 뺏어 먹으니까!"
+  },
+  {
+   "id": "L312",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dessert",
+   "expr": "E01",
+   "text": "여기서 공부하면 단 거 먹으면서 할 수 있어. 완벽해."
+  },
+  {
+   "id": "L313",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E01",
+   "text": "내 방 들어올 땐 노크해야 돼! 비밀이 많거든."
+  },
+  {
+   "id": "L314",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E01",
+   "text": "책상 서랍은 절대 열지 마. 절대!"
+  },
+  {
+   "id": "L315",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E02",
+   "text": "오빠 방에서 또 게임 소리 나… 시끄러워."
+  },
+  {
+   "id": "L316",
+   "stage": "고",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "place": "home_nanwu",
+   "expr": "E01",
+   "text": "창문 열어두면 밤공기가 시원해. 별도 보이고."
+  },
+  {
+   "id": "L317",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dorm",
+   "expr": "E01",
+   "text": "룸메들이 내 이불 귀엽대. 딸기 무늬거든."
+  },
+  {
+   "id": "L318",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dorm",
+   "expr": "E01",
+   "text": "기숙사 통금 전에는 꼭 들어와. 나 모범생이야."
+  },
+  {
+   "id": "L319",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "dorm",
+   "expr": "E01",
+   "text": "책상 위에 남우에서 가져온 가족사진 붙여놨어."
+  },
+  {
+   "id": "L320",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "apartment",
+   "expr": "E01",
+   "text": "화분에 물 줬어? 내가 줬어. 칭찬해 줘."
+  },
+  {
+   "id": "L321",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "apartment",
+   "expr": "E02",
+   "text": "소파에 누우면 일어나기 싫어져…"
+  },
+  {
+   "id": "L322",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "apartment",
+   "expr": "E01",
+   "text": "주방에서 뭐 해 먹을까? 우유만 빼면 다 돼!"
+  },
+  {
+   "id": "L323",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "골목 끝 가게 망고 빙수 맛있대. 우유 안 들어간 걸로!"
+  },
+  {
+   "id": "L324",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "저기 등대 보여? 밤엔 불 켜져서 예뻐."
+  },
+  {
+   "id": "L325",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "길고양이다! 쉿, 놀라지 않게…"
+  },
+  {
+   "id": "L326",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "엽서 가게 있다! 남우 집에 한 장 보내야지."
+  },
+  {
+   "id": "L327",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E19",
+   "text": "이 거리 처음 같이 걸었던 날 기억나… 아, 혼잣말이야."
+  },
+  {
+   "id": "L328",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "퇴근하고 걷는 이 길이 하루 중 제일 좋아."
+  },
+  {
+   "id": "L329",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "주말 시장 열렸다! 구경하자."
+  },
+  {
+   "id": "L330",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "place": "yihe_street",
+   "expr": "E01",
+   "text": "밤엔 가게 불빛이 바다에 비쳐. 반짝반짝해."
+  },
+  {
+   "id": "L331",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "공강엔 잔디밭에 누워 있고 싶어."
+  },
+  {
+   "id": "L332",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "도서관 창가 자리는 경쟁이 치열해."
+  },
+  {
+   "id": "L333",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "학생식당 오늘 메뉴 괜찮대! 가자."
+  },
+  {
+   "id": "L334",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "동아리 홍보 전단 또 받았어. 그림 동아리 들까?"
+  },
+  {
+   "id": "L335",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "그때 그 강의실 아직 그대로네."
+  },
+  {
+   "id": "L336",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "학교 앞 분식집 사장님이 날 기억하셨어!"
+  },
+  {
+   "id": "L337",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "캠퍼스 걸으면 스무 살 쌍즈가 아직 여기 있는 것 같아."
+  },
+  {
+   "id": "L338",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "place": "campus",
+   "expr": "E01",
+   "text": "밤 캠퍼스는 조용해서 좋아. 별도 잘 보이고."
+  },
+  {
+   "id": "L339",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "조개껍데기 주웠어! 보물 상자에 넣을래."
+  },
+  {
+   "id": "L340",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "파도 따라 뛰다가 신발 다 젖었어… 괜찮아!"
+  },
+  {
+   "id": "L341",
+   "stage": "대",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "바다 앞에 서면 고민이 작아지는 것 같아."
+  },
+  {
+   "id": "L342",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "모래사장에 발자국 두 줄. 헤헤."
+  },
+  {
+   "id": "L343",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "바닷바람에 머리 다 날려… 사진 찍지 마!"
+  },
+  {
+   "id": "L344",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "여기서 들었던 말, 평생 안 잊을 거야."
+  },
+  {
+   "id": "L345",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "저녁",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E01",
+   "text": "노을이 바다에 녹는 것 같아. 같이 봐서 좋다."
+  },
+  {
+   "id": "L346",
+   "stage": "any",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "place": "beach",
+   "expr": "E02",
+   "text": "밤바다는 좀 무서운데… 옆에 있어 줘."
+  },
+  {
+   "id": "L347",
+   "stage": "졸",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "퇴근하고 오니까 배고파… 오늘 뭐 먹어?"
+  },
+  {
+   "id": "L348",
+   "stage": "졸",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "요리 연습 중인데 라면이 제일 맛있어. 이상하다."
+  },
+  {
+   "id": "L349",
+   "stage": "졸",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "점심 굶었어. 회의가 너무 길었어…"
+  },
+  {
+   "id": "L350",
+   "stage": "졸",
+   "state": "배고픔",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E23",
+   "text": "딸기 탕후루 사러 가자! 어른도 탕후루 먹어."
+  },
+  {
+   "id": "L351",
+   "stage": "졸",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 일 칭찬받았어! 나 사회인 체질인가 봐."
+  },
+  {
+   "id": "L352",
+   "stage": "졸",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "첫 월급으로 엄마 아빠 선물 샀어. 뿌듯해!"
+  },
+  {
+   "id": "L353",
+   "stage": "졸",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "요즘 매일이 평온해. 이런 게 행복인가 봐."
+  },
+  {
+   "id": "L354",
+   "stage": "졸",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "쌍옌 오빠가 웬일로 밥 사준대! 내일 해가 서쪽에서 뜨겠다."
+  },
+  {
+   "id": "L355",
+   "stage": "졸",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E10",
+   "text": "오늘 회사에서 억울한 일 있었어… 안 울었어. 거의."
+  },
+  {
+   "id": "L356",
+   "stage": "졸",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E13",
+   "text": "다 컸는데 아직도 꼬맹이래. 흥!"
+  },
+  {
+   "id": "L357",
+   "stage": "졸",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E10",
+   "text": "연락 늦으면 서운해. 어른이어도 서운해."
+  },
+  {
+   "id": "L358",
+   "stage": "졸",
+   "state": "샐짐",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E05",
+   "text": "쌍옌 오빠가 또 '밥은 먹고 다니냐'래. 내가 애야?"
+  },
+  {
+   "id": "L359",
+   "stage": "졸",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "야근했더니 머리가 멍해… 오늘은 일찍 잘래."
+  },
+  {
+   "id": "L360",
+   "stage": "졸",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "이불 속이 세상에서 제일 좋아."
+  },
+  {
+   "id": "L361",
+   "stage": "졸",
+   "state": "졸림",
+   "action": "잠",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "내일 출근이야… 알람 세 개 맞춰야지."
+  },
+  {
+   "id": "L362",
+   "stage": "졸",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "퇴근하고 공부하는 나, 좀 멋있지?"
+  },
+  {
+   "id": "L363",
+   "stage": "졸",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "자격증 시험 준비 중이야. 이번엔 붙을 거야!"
+  },
+  {
+   "id": "L364",
+   "stage": "졸",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "그림 공부 다시 시작했어. 어릴 때부터 좋아했거든."
+  },
+  {
+   "id": "L365",
+   "stage": "졸",
+   "state": "공부",
+   "action": "공부",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E07",
+   "text": "책 한 권 다 읽었어! 이 기세로 한 권 더."
+  },
+  {
+   "id": "L366",
+   "stage": "졸",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오빠가 퇴근길에 데리러 온대. 헤헤… 기다리는 거 아니야."
+  },
+  {
+   "id": "L367",
+   "stage": "졸",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "아직도 오빠가 '쌍즈' 하고 부르면 심장이 쿵 해."
+  },
+  {
+   "id": "L368",
+   "stage": "졸",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E19",
+   "text": "얼굴 빨간 거 아니라니까! 어른도 빨개질 수 있어!"
+  },
+  {
+   "id": "L369",
+   "stage": "졸",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "오빠가 내 그림 보고 칭찬해 줬어. 하루 종일 기분 좋아."
+  },
+  {
+   "id": "L370",
+   "stage": "졸",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E02",
+   "text": "같은 도시에 산다는 게 이렇게 좋은 거였구나."
+  },
+  {
+   "id": "L371",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "다 커서 받는 선물도 여전히 설레!"
+  },
+  {
+   "id": "L372",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "고마워. 책상 위에 둘래. 매일 보게."
+  },
+  {
+   "id": "L373",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E11",
+   "text": "선물엔 선물로 갚아야지. 기대해!"
+  },
+  {
+   "id": "L374",
+   "stage": "졸",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "주말엔 무조건 놀 거야! 일 얘기 금지!"
+  },
+  {
+   "id": "L375",
+   "stage": "졸",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "보드게임 하자. 어른이 돼도 승부는 진지해."
+  },
+  {
+   "id": "L376",
+   "stage": "졸",
+   "state": "any",
+   "action": "놀기",
+   "time": "any",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "산책 가자! 바다 쪽으로."
+  },
+  {
+   "id": "L377",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "좋은 아침! 출근 준비 십 분 컷 도전!"
+  },
+  {
+   "id": "L378",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "아침",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "아침엔 커피 대신 과일 주스. 나는 이게 좋아."
+  },
+  {
+   "id": "L379",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "오늘 하루도 무사히 끝! 수고했어, 우리."
+  },
+  {
+   "id": "L380",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "밤",
+   "rarity": "일반",
+   "expr": "E01",
+   "text": "밤에 창문 열면 파도 소리가 조금 들려."
+  },
+  {
+   "id": "L381",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "오후",
+   "rarity": "일반",
+   "expr": "E21",
+   "text": "오후 세 시는 왜 이렇게 졸릴까… 간식 타임!"
+  },
+  {
+   "id": "L382",
+   "stage": "졸",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "text": "어릴 때 쓴 꿈 목록, 이제 두 개 다 이뤘어. 헤헤."
+  },
+  {
+   "id": "L383",
+   "stage": "졸",
+   "state": "any",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "text": "남우 집에 가면 아직도 내 방 그대로야. 서랍 속 쪽지까지."
+  },
+  {
+   "id": "L384",
+   "stage": "졸",
+   "state": "기분좋음",
+   "action": "대화",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "text": "가끔 열세 살 쌍즈한테 말해주고 싶어. 괜찮다고, 다 잘된다고."
+  },
+  {
+   "id": "L385",
+   "stage": "졸",
+   "state": "설렘",
+   "action": "대화",
+   "time": "any",
+   "rarity": "전설",
+   "expr": "E02",
+   "text": "오래 숨겨 왔던 마음이 이렇게 따뜻한 일상이 될 줄 몰랐어."
+  },
+  {
+   "id": "L386",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "hairpin",
+   "expr": "E11",
+   "text": "머리핀이다! 앞머리 고정하기 딱 좋아. 지금 해볼래!"
+  },
+  {
+   "id": "L387",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "hairpin",
+   "expr": "E11",
+   "text": "이거 하고 학교 가면 다들 물어보겠지? 헤헤."
+  },
+  {
+   "id": "L388",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "hairpin",
+   "expr": "E11",
+   "text": "리본 머리핀… 거울 좀 줘! 어울려? 어울리지?"
+  },
+  {
+   "id": "L389",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "hairpin",
+   "expr": "E11",
+   "text": "이 머리핀, 오늘 옷이랑 딱 맞아! 센스 뭐야."
+  },
+  {
+   "id": "L390",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "hairpin",
+   "expr": "E11",
+   "text": "출근할 때 하고 갈래. 작게 반짝이는 거, 나만 알게."
+  },
+  {
+   "id": "L391",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "starpaper",
+   "expr": "E15",
+   "text": "종이별 색종이! 오늘 밤에 하나 접어야지. 소원도 하나."
+  },
+  {
+   "id": "L392",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "starpaper",
+   "expr": "E11",
+   "text": "유리병 채우려면 아직 멀었어. 고마워, 진짜로!"
+  },
+  {
+   "id": "L393",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "starpaper",
+   "expr": "E11",
+   "text": "색깔 진짜 많다… 제일 예쁜 색은 아껴둘래."
+  },
+  {
+   "id": "L394",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "starpaper",
+   "expr": "E15",
+   "text": "아직도 종이별 접는 거 알고 준 거야? 손이 기억해."
+  },
+  {
+   "id": "L395",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "starpaper",
+   "expr": "E11",
+   "text": "이걸로 접은 별은… 누구한테 줄지 벌써 정해져 있어."
+  },
+  {
+   "id": "L396",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "sketch",
+   "expr": "E11",
+   "text": "스케치북! 첫 장엔 뭐 그릴까? …비밀!"
+  },
+  {
+   "id": "L397",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "sketch",
+   "expr": "E11",
+   "text": "나 그림 잘 그린다? 너 그려줄까?"
+  },
+  {
+   "id": "L398",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "sketch",
+   "expr": "E11",
+   "text": "공부하다 쉬는 시간에 그려야지. 낙서 아니고 작품이야!"
+  },
+  {
+   "id": "L399",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "sketch",
+   "expr": "E11",
+   "text": "새 스케치북은 늘 설레. 바다부터 그릴래."
+  },
+  {
+   "id": "L400",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "sketch",
+   "expr": "E11",
+   "text": "첫 장은 비워둘래. 특별한 걸 그리고 싶거든."
+  },
+  {
+   "id": "L401",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "candy",
+   "expr": "E11",
+   "text": "별사탕이다! 하나씩 아껴 먹어야지… 두 개만."
+  },
+  {
+   "id": "L402",
+   "stage": "중",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "candy",
+   "expr": "E11",
+   "text": "별사탕 색깔별로 줄 세워 봤어. 노란색이 제일 많아!"
+  },
+  {
+   "id": "L403",
+   "stage": "고",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "candy",
+   "expr": "E11",
+   "text": "공부할 때 하나씩 먹으면 머리가 반짝해질 것 같아!"
+  },
+  {
+   "id": "L404",
+   "stage": "대",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "candy",
+   "expr": "E15",
+   "text": "하나 먹을 때마다 작은 소원 하나. 우유 안 들어가서 다행이야!"
+  },
+  {
+   "id": "L405",
+   "stage": "졸",
+   "state": "any",
+   "action": "선물",
+   "time": "any",
+   "rarity": "일반",
+   "item": "candy",
+   "expr": "E11",
+   "text": "별사탕은 몇 살이 돼도 좋아. 진짜야."
+  },
+  {
+   "id": "L406",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "rice",
+   "expr": "eat",
+   "text": "집밥 최고! 엄마 반찬 생각난다."
+  },
+  {
+   "id": "L407",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "rice",
+   "expr": "eat",
+   "text": "밥 한 공기 뚝딱! 나 잘 먹지?"
+  },
+  {
+   "id": "L408",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "rice",
+   "expr": "eat",
+   "text": "따끈따끈한 밥이 제일 위로가 돼."
+  },
+  {
+   "id": "L409",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "noodle",
+   "expr": "eat",
+   "text": "계란 라면! 계란 꼭 넣은 거 맞지? 헤헤."
+  },
+  {
+   "id": "L410",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "noodle",
+   "expr": "eat",
+   "text": "후루룩… 국물까지 다 마실 거야."
+  },
+  {
+   "id": "L411",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "noodle",
+   "expr": "eat",
+   "text": "라면은 남이 끓여준 게 제일 맛있어."
+  },
+  {
+   "id": "L412",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "tanghulu",
+   "expr": "eat",
+   "text": "딸기 탕후루! 바삭바삭 반짝반짝!"
+  },
+  {
+   "id": "L413",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "tanghulu",
+   "expr": "eat",
+   "text": "와작! 설탕 껍질 깨지는 소리 좋아."
+  },
+  {
+   "id": "L414",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "tanghulu",
+   "expr": "eat",
+   "text": "딸기는 언제나 옳아. 탕후루는 더 옳아."
+  },
+  {
+   "id": "L415",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "lollipop",
+   "expr": "eat",
+   "text": "막대사탕 물고 있으면 기분이 좋아져."
+  },
+  {
+   "id": "L416",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "lollipop",
+   "expr": "eat",
+   "text": "다 녹을 때까지 아껴 먹을래."
+  },
+  {
+   "id": "L417",
+   "stage": "any",
+   "state": "any",
+   "action": "밥",
+   "time": "any",
+   "rarity": "일반",
+   "item": "lollipop",
+   "expr": "eat",
+   "text": "딸기 맛이다! 내 최애 맛!"
+  },
+  {
+   "id": "L418",
+   "stage": "중",
+   "state": "설렘",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E19",
+   "quote": 1,
+   "trig": {
+    "minCrush": 30,
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "그 오빠가 또 놀렸어. \"꼬맹아, 너 왜 그래? 오빠만 보면 얼굴이 빨개지네.\" …아니거든!!"
+  },
+  {
+   "id": "L419",
+   "stage": "고",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E19",
+   "quote": 2,
+   "trig": {
+    "minGrade": 60,
+    "on": [
+     "공부"
+    ]
+   },
+   "text": "메모장에 몰래 써 둔 거 있어. \"내 꿈: 1. 이허대학 합격 2. …\" 2번은 절대 못 보여줘!"
+  },
+  {
+   "id": "L420",
+   "stage": "고",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "quote": 6,
+   "trig": {
+    "minCrush": 30,
+    "place": "school",
+    "on": [
+     "대화",
+     "도착"
+    ]
+   },
+   "text": "선생님 앞에서 그 오빠가 그랬어. \"난 우리 집 꼬맹이 편 들러 온 거지, 공정하러 온 게 아니야.\" …왜 자꾸 생각나지."
+  },
+  {
+   "id": "L421",
+   "stage": "대",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E15",
+   "quote": 11,
+   "trig": {
+    "minCrush": 50,
+    "season": "winter",
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "첫눈 오던 날, 약 발라주면서 그것만 물었어. \"아파?\" …내 손이 더 떨렸는데."
+  },
+  {
+   "id": "L422",
+   "stage": "대",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "quote": 12,
+   "trig": {
+    "minCrush": 40,
+    "state": "기분좋음",
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "그때 오빠한테 그랬어. \"세상에 그렇게 다정한 오빠라면, 똑같은 다정함을 두 배로 돌려받을 거야.\" 지금도 그렇게 믿어."
+  },
+  {
+   "id": "L423",
+   "stage": "대",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "quote": 7,
+   "trig": {
+    "minCrush": 40,
+    "on": [
+     "선물"
+    ]
+   },
+   "text": "오빠는 늘 그랬어. \"다른 여자애들이 가진 건, 우리 쌍즈도 가져야지.\" …그 말 들으면 아직도 간지러워."
+  },
+  {
+   "id": "L424",
+   "stage": "졸",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "quote": 7,
+   "trig": {
+    "minCrush": 40,
+    "on": [
+     "선물"
+    ]
+   },
+   "text": "오빠가 자주 하던 말. \"다른 여자애들이 가진 건, 우리 쌍즈도 가져야지.\" 이제 내가 다 커서 웃겨."
+  },
+  {
+   "id": "L425",
+   "stage": "대",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E10",
+   "quote": 17,
+   "trig": {
+    "state": "샐짐",
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "속상할 때면 오빠 말이 생각나. \"우는 게 아이의 권리라면, 평생 아이로 살아.\" …조금 괜찮아졌어."
+  },
+  {
+   "id": "L426",
+   "stage": "졸",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E10",
+   "quote": 17,
+   "trig": {
+    "state": "샐짐",
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "\"우는 게 아이의 권리라면, 평생 아이로 살아.\" 오빠 말대로, 오늘은 조금 울어도 되지?"
+  },
+  {
+   "id": "L427",
+   "stage": "대",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E15",
+   "quote": 3,
+   "trig": {
+    "minCrush": 60,
+    "state": "설렘",
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "\"네 이름이 어떤 글자인지도 모를 때부터, 난 널 좋아했어.\" …언젠가 이 말, 꼭 직접 할 거야."
+  },
+  {
+   "id": "L428",
+   "stage": "대",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E15",
+   "quote": 20,
+   "trig": {
+    "minCrush": 60,
+    "item": "starpaper",
+    "on": [
+     "선물"
+    ]
+   },
+   "text": "종이별 유리병 건넨 날, 내가 그랬어. \"이제 오빠가 정말 좋은 사람이라는 걸 믿어줄래?\""
+  },
+  {
+   "id": "L429",
+   "stage": "졸",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E19",
+   "quote": 15,
+   "trig": {
+    "minCrush": 70,
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "\"나 너 쫓아다녀도 돼?\" 그때 오빠 진지한 얼굴, 지금 생각해도 웃겨. 헤헤."
+  },
+  {
+   "id": "L430",
+   "stage": "졸",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E01",
+   "quote": 21,
+   "trig": {
+    "minCrush": 60,
+    "on": [
+     "선물"
+    ]
+   },
+   "text": "이번엔 내가 말할 차례야. \"다른 사람이 가진 건, 우리 자쉬도 가질 거야.\" 오빠 선물은 내가 고를래!"
+  },
+  {
+   "id": "L431",
+   "stage": "졸",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "희귀",
+   "expr": "E02",
+   "quote": 23,
+   "trig": {
+    "place": "beach",
+    "on": [
+     "도착",
+     "대화"
+    ]
+   },
+   "text": "여기서 오빠가 \"비밀 하나 말해줄게\" 하더니… 그다음은 우리만 아는 비밀이야."
+  },
+  {
+   "id": "L432",
+   "stage": "졸",
+   "state": "any",
+   "action": "회상",
+   "time": "밤",
+   "rarity": "전설",
+   "expr": "E15",
+   "quote": 25,
+   "trig": {
+    "minCrush": 80,
+    "on": [
+     "대화"
+    ]
+   },
+   "text": "옛날 일기장 마지막 장에 이렇게 써 있어. \"짝사랑도, 혼자만의 일이 아닐 수 있었다.\" …응, 맞는 말이야."
+  },
+  {
+   "id": "L433",
+   "stage": "졸",
+   "state": "any",
+   "action": "회상",
+   "time": "any",
+   "rarity": "전설",
+   "expr": "E15",
+   "quote": 24,
+   "trig": {
+    "minCrush": 90,
+    "on": [
+     "대화",
+     "선물"
+    ]
+   },
+   "text": "오빠가 그랬어. \"너는 내 평생 단 하나의 소원이야.\" …이건 평생 자랑할 거야."
+  }
+ ],
+ "events": [
+  {
+   "id": "E0",
+   "title": "첫 만남 — 오빠 성형했어?",
+   "stage": "중",
+   "unlock": "첫 접속",
+   "inspired": "1화 수박 그릇을 들고 오빠 방에 갔다가 처음 본 오빠 친구를 오빠로 착각한 장면",
+   "script": [
+    "(학부모 소환장을 숨긴 채, 수박 한 그릇을 들고 2층 오빠 방으로 올라간다)",
+    "쌍즈: 오빠~ 수박 먹어. 그리고 부탁이 하나 있는데…",
+    "(창가 책상에 앉아 있던 낯선 사람이 돌아본다)",
+    "쌍즈: …어? 오빠, 성형했어? 왜 이렇게 잘생겨졌어?!",
+    "(뒤에서 쌍옌 오빠 목소리: \"또 무슨 사고 쳤어?\")",
+    "쌍즈: 오, 오빠 친구였어?! 아, 아무것도 아니야! 수박이나 먹어요!",
+    "[보상] 도감: 수박 한 그릇"
+   ],
+   "shots": [
+    {
+     "art": "E0_close",
+     "at": "성형했어"
+    }
+   ]
+  },
+  {
+   "id": "E1",
+   "title": "꼬맹이의 가짜 보호자",
+   "stage": "중",
+   "unlock": "설렘≥20",
+   "inspired": "학부모 소환 때 오빠 친구가 대신 학교에 와준 장면",
+   "script": [
+    "(선생님이 학부모를 불러오라고 했다)",
+    "쌍즈: 엄마한테 말하면 끝장이야… 쌍옌 오빠는 절대 안 도와줄 거고.",
+    "쌍즈: …오빠 친구한테 부탁해 볼까? 아, 아니야! 근데…",
+    "[선택] 용기 내서 부탁한다 / 혼자 해결한다",
+    "쌍즈: (교문 앞) 진짜 와줬네… 고, 고마워. 이 은혜는 디저트로 갚을게!"
+   ],
+   "branch": {
+    "용기 내서 부탁한다": [
+     "쌍즈: 저, 저기… 내일 학교 좀 와 줄 수 있어? 딱 한 번만!"
+    ],
+    "혼자 해결한다": [
+     "쌍즈: 혼자 해 볼게… 할 수 있어.",
+     "(그런데 다음 날, 교문 앞에 익숙한 사람이 서 있었다)"
+    ]
+   }
+  },
+  {
+   "id": "E2",
+   "title": "종이별 유리병",
+   "stage": "고",
+   "unlock": "공부 7일 연속",
+   "inspired": "7년 동안 접은 종이별(원작 모티프)",
+   "script": [
+    "쌍즈: 오늘도 하나 접었어. 몇 개째더라…",
+    "쌍즈: 안에 뭐 썼냐고? 비밀! 열어보면 절교야!",
+    "[보상] 도감: 종이별 유리병"
+   ]
+  },
+  {
+   "id": "E3",
+   "title": "꿈 목록",
+   "stage": "대",
+   "unlock": "성적≥60",
+   "inspired": "8화 기숙사에서 별 쪽지 '목표'에 줄 긋기(원작 모티프; 메모 문구는 소설)",
+   "script": [
+    "(기숙사 밤. 스탠드 불빛 아래 예전에 접어 둔 별 쪽지를 펼친다)",
+    "쌍즈: …이 줄, 이제 그을래. 혼자 보는 거니까 상관없잖아.",
+    "쌍즈: 보, 보지 마!! 꿈 목록이야. 1번은 이미 이뤘고… 2번은… 아무튼 아무것도 아니야!!",
+    "[보상] 희귀 대사 해금"
+   ]
+  },
+  {
+   "id": "E4",
+   "title": "혼자 떠난 비행기",
+   "stage": "고",
+   "unlock": "고등 마지막 주",
+   "inspired": "이허로 혼자 날아갔다 오해하고 돌아온 장면(순화)",
+   "script": [
+    "쌍즈: …나 그냥 바람 쐬고 왔어. 아무 일 없었어.",
+    "쌍즈: 소중한 거 상자에 다 넣었어. 이제 안 꺼낼 거야.",
+    "[선택] 꼭 안아준다(위로) / 디저트를 건넨다",
+    "쌍즈: …고마워. 오늘은 조금만 울어도 돼?"
+   ],
+   "branch": {
+    "꼭 안아준다(위로)": [
+     "(말없이 토닥토닥)"
+    ],
+    "디저트를 건넨다": [
+     "쌍즈: …딸기 탕후루네. 우유 안 들어간 거. 기억했구나."
+    ]
+   },
+   "shots": [
+    {
+     "art": "E4_close",
+     "at": "상자에 다 넣었어"
+    }
+   ]
+  },
+  {
+   "id": "E5",
+   "title": "첫눈과 약상자",
+   "stage": "대",
+   "unlock": "겨울 + 설렘≥50",
+   "inspired": "이허 첫눈 날 상처에 약 발라준 장면",
+   "script": [
+    "(창밖에 첫눈)",
+    "쌍즈: 눈이다! 근데… 오빠 얼굴 다쳤잖아. 이리 줘봐.",
+    "쌍즈: 아파? 참아. 나 이런 거 잘해.",
+    "쌍즈: 왜 그렇게 봐? 얼굴 빨간 거 아니야! 추워서야!"
+   ]
+  },
+  {
+   "id": "E6",
+   "title": "'이제 쫓아가도 돼?'",
+   "stage": "대",
+   "unlock": "설렘≥80",
+   "inspired": "'我能追你了吗?' 고백 장면(오마주)",
+   "script": [
+    "쌍즈: 오늘 오빠가 이상한 걸 물어봤어…",
+    "쌍즈: 조건 다 맞는다면서… 나한테 물어봐도 되냐고.",
+    "쌍즈: 대답? 아, 아직 안 했어! …사실 했어. 헤헤."
+   ]
+  },
+  {
+   "id": "E7",
+   "title": "우리 쌍즈도 가져야지",
+   "stage": "대",
+   "unlock": "생일(4/22)",
+   "inspired": "'别的小姑娘有的，我们只只也得有' 모티프",
+   "script": [
+    "쌍즈: 오늘 내 생일인 거 알았어? 몰랐으면 삐질 거야!",
+    "쌍즈: 우유 안 들어간 케이크에 초 꽂았어. 소원은… 다른 애들 가진 거 나도 다 갖기! 농담이야.",
+    "쌍즈: 근데 진짜 소원은, 내가 좋아하는 사람들도 다 행복한 거야.",
+    "[보상] 생일 의상"
+   ]
+  },
+  {
+   "id": "E8",
+   "title": "바닷가의 비밀",
+   "stage": "졸",
+   "unlock": "졸업 후 + E6 본 뒤 + 설렘≥80 + 바닷가",
+   "inspired": "결말 바닷가 산책·고백",
+   "script": [
+    "(파도 소리가 들리는 바닷가)",
+    "쌍즈: 비밀 하나 말해줄까? 나 아주 오래전부터… 아, 너도 알지?",
+    "(장미 꽃다발 너머로, 그가 작은 반지 상자를 연다)",
+    "쌍즈: 오래 숨겼던 마음, 이제 하나도 안 숨길 거야.",
+    "[엔딩] 숨길 수 없는 마음"
+   ],
+   "shots": [
+    {
+     "art": "E8_close",
+     "at": "반지 상자"
+    }
+   ]
+  },
+  {
+   "id": "E9",
+   "title": "병원 보호자",
+   "stage": "대",
+   "unlock": "E12 뒤 + 설렘≥40",
+   "inspired": "9~10화 맹장 수술 후 밤새 곁을 지키고 아침에 얼굴을 닦아 준 장면",
+   "script": [
+    "(맹장 수술을 받은 다음 날 아침, 병실. 오빠는 의자에서 잠들어 있다)",
+    "쌍즈: 밤새 여기 있었던 거야…? 바보 같아. 보호자 노릇은 왜 해.",
+    "쌍즈: 얼굴에 뭐 묻었어. 가만있어 봐, 닦아 줄게. …움직이지 말라니까.",
+    "(그 순간 오빠가 눈을 뜬다)",
+    "쌍즈: 깨, 깨어 있었어?! 아니야, 이건 그냥… 수건이 마침 손에 있어서!",
+    "[보상] 희귀 대사 해금"
+   ]
+  },
+  {
+   "id": "E10",
+   "title": "중앙 에어컨",
+   "stage": "대",
+   "unlock": "E9 뒤 + 시험 끝난 밤",
+   "inspired": "12화 기말이 끝난 밤 친구들과 놀다 취해 업혀 가며 투정 부린 장면(순화)",
+   "script": [
+    "(기말시험이 끝난 밤. 친구들과 처음 마셔 본 술 한 잔에 그만 취해 버렸다)",
+    "(속이 울렁거려 한바탕 고생한 뒤… 오빠가 말없이 재킷을 벗어 들고 물병을 건넨다)",
+    "쌍즈: 업지 마… 나 45킬로 넘어. 오빠 수술했잖아, 업으면 안 돼… 흑.",
+    "쌍즈: 있잖아, 내가 좋아하는 사람은… 누구한테나 다 잘해 줘. 중앙 에어컨이야, 중앙 에어컨.",
+    "(등에 업힌 채 조용해지더니, 쌔근쌔근 잠이 든다)",
+    "쌍즈: (다음 날 아침) …어제 일은 전부 잊어 줘. 진짜로. 부탁이야!!",
+    "[보상] 희귀 대사 해금"
+   ],
+   "shots": [
+    {
+     "art": "E10_after",
+     "at": "잠이 든다"
+    }
+   ]
+  },
+  {
+   "id": "E11",
+   "title": "오빠를 위한 장수면",
+   "stage": "대",
+   "unlock": "E6 뒤 + 계란 라면 먹이기",
+   "inspired": "17화 식당을 통째로 빌려 생일 장수면을 직접 끓여 준 장면",
+   "script": [
+    "(흰 아치 창이 있는 식당을 통째로 빌렸다. 금색 곰 풍선, 촛불, 그리고 레시피 메모)",
+    "쌍즈: 오늘은 내가 요리할 거야. 오빠 생일이니까! 들어오지 마!",
+    "쌍즈: 앗 뜨거… 아냐 아냐, 냄비 엎은 거 아니야! 면은 무사해!",
+    "쌍즈: 장수면은 끊지 말고 한 번에 먹어야 오래 산대. …맛없으면 사진만 찍어도 돼.",
+    "쌍즈: 다 먹었어? 국물까지? …헤헤, 생일 축하해, 오빠.",
+    "[보상] 도감: 장수면"
+   ]
+  },
+  {
+   "id": "E12",
+   "title": "계단 위의 재회",
+   "stage": "대",
+   "unlock": "대학 첫날 밤",
+   "inspired": "8화 대학 입학 후 광장 돌계단에서 다시 만난 장면",
+   "script": [
+    "(대학에 온 첫 주, 밤의 광장. 돌계단에 익숙한 뒷모습이 앉아 있다)",
+    "쌍즈: …오빠? 진짜 오빠야? 여기서 뭐 해?",
+    "쌍즈: 꼬맹이라고 부르지 마! 나 이제 대학생이거든? 꼬맹이 아니거든?",
+    "쌍즈: …기숙사까지 데려다준다고? 흥, 그럼 꿀물이라도 사 주든가.",
+    "(그가 편의점 봉투에서 꿀 한 병을 꺼내 건넨다. 흥, 하고 고개를 돌렸지만 볼이 빨갛다)",
+    "[보상] 도감: 꿀 한 병"
+   ],
+   "shots": [
+    {
+     "art": "E12_after",
+     "at": "꿀 한 병을 꺼내"
+    }
+   ]
+  },
+  {
+   "id": "E13",
+   "title": "나란히 달리는 자전거",
+   "stage": "대·졸",
+   "unlock": "E11 뒤 + P02 + 바닷가 낮",
+   "inspired": "24화 바닷가 순환도로를 각자 자전거로 나란히 달린 장면(4화 뒷자리의 짝)",
+   "script": [
+    "(흐린 낮, 바닷가 순환도로. 이번엔 자전거가 두 대다)",
+    "쌍즈: 기억나? 옛날엔 내가 오빠 자전거 뒷자리에 앉았었잖아.",
+    "쌍즈: 이제 나 혼자서도 잘 타거든! 봐, 안 넘어지지?",
+    "쌍즈: …그래도 너무 빨리 가지 마. 나란히 가자, 이렇게.",
+    "[보상] 의상: 오트밀 꽈배기 가디건"
+   ]
+  }
+ ],
+ "quotes": {
+  "1": {
+   "ko": "꼬맹아, 너 왜 그래? 오빠만 보면 얼굴이 빨개지네.",
+   "zh": "小孩，你怎么回事啊？一见到哥哥就脸红。",
+   "who": "돤자쉬",
+   "warn": false,
+   "src": "[J],[V]"
+  },
+  "2": {
+   "ko": "내 꿈: 1. 이허대학 합격 2. 돤자쉬",
+   "zh": "我的梦想：1.考上宜荷大学；2.段嘉许。",
+   "who": "쌍즈(메모)",
+   "warn": true,
+   "src": "[J],[K]"
+  },
+  "3": {
+   "ko": "네 이름이 어떤 글자인지도 모를 때부터, 난 널 좋아했어.",
+   "zh": "在还没弄清楚你名字对应的是哪个字的时候，我就喜欢上你了。",
+   "who": "쌍즈",
+   "warn": false,
+   "src": "[B],[K],[V]"
+  },
+  "6": {
+   "ko": "난 우리 집 꼬맹이 편 들러 온 거지, 공정하러 온 게 아니야.",
+   "zh": "我是来给我家小孩撑腰的，不是来支持公道的。",
+   "who": "돤자쉬",
+   "warn": true,
+   "src": "[V]"
+  },
+  "7": {
+   "ko": "다른 여자애들이 가진 건, 우리 쌍즈도 가져야지.",
+   "zh": "别的小姑娘有的，我们只只也得有。",
+   "who": "돤자쉬",
+   "warn": false,
+   "src": "[J],[V],[D]"
+  },
+  "11": {
+   "ko": "아파?",
+   "zh": "会不会疼啊？",
+   "who": "쌍즈",
+   "warn": false,
+   "src": "[B]"
+  },
+  "12": {
+   "ko": "세상에 그렇게 다정한 오빠라면, 똑같은 다정함을 두 배로 돌려받을 거야.",
+   "zh": "对世界那么温柔的你，也一定会加倍地受到相同的待遇。",
+   "who": "쌍즈",
+   "warn": false,
+   "src": "[B],[K]"
+  },
+  "15": {
+   "ko": "네가 말한 조건, 나 다 맞는 것 같은데. 그럼 물어볼게, 나 너 쫓아다녀도 돼?",
+   "zh": "你说的这些条件，我都符合。所以，问你个事儿。我能追你了吗？",
+   "who": "돤자쉬",
+   "warn": false,
+   "src": "[J],[B],[D],[K]"
+  },
+  "17": {
+   "ko": "우는 게 아이의 권리라면, 평생 아이로 살아. 그러면 되잖아?",
+   "zh": "如果你觉得哭是小孩的权利，那你就当一辈子的小孩，行不行？",
+   "who": "돤자쉬",
+   "warn": false,
+   "src": "[J],[B],[D],[K]"
+  },
+  "20": {
+   "ko": "내가 영원히 숨기고 싶던 비밀까지 다 말했어. 이제 오빠가 정말 좋은 사람이라는 걸 믿어줄래?",
+   "zh": "你能不能相信，你自己真的很好。",
+   "who": "쌍즈",
+   "warn": false,
+   "src": "[B]"
+  },
+  "21": {
+   "ko": "다른 사람이 가진 건, 우리 자쉬도 가질 거야.",
+   "zh": "别人有的，我们嘉许也会有的。",
+   "who": "쌍즈",
+   "warn": false,
+   "src": "[K]"
+  },
+  "23": {
+   "ko": "비밀 하나 말해줄게. 내가 좋아한다고 티 내기 전부터, 난 몰래 널 좋아했어.",
+   "zh": "我跟你说个秘密，在我表现出对你的喜欢之前，我就偷偷喜欢你了。",
+   "who": "돤자쉬",
+   "warn": false,
+   "src": "[B]"
+  },
+  "24": {
+   "ko": "너는 내 평생 단 하나의 소원이야.",
+   "zh": "你是我此生唯一所愿。",
+   "who": "돤자쉬",
+   "warn": false,
+   "src": "[J],[V],[K]"
+  },
+  "25": {
+   "ko": "짝사랑도, 혼자만의 일이 아닐 수 있었다.",
+   "zh": "暗恋，原来也可以不仅是一个人的事情。",
+   "who": "내레이션",
+   "warn": false,
+   "src": "[B],[D],[K]"
+  }
+ }
+}

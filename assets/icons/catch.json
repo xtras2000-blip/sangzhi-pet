@@ -1,0 +1,70 @@
+{
+ "cell": 64,
+ "image": "catch.png",
+ "icons": {
+  "strawberry": [
+   0,
+   0
+  ],
+  "tanghulu": [
+   1,
+   0
+  ],
+  "jelly": [
+   2,
+   0
+  ],
+  "fruit_tart": [
+   3,
+   0
+  ],
+  "paper_star": [
+   4,
+   0
+  ],
+  "star_jar": [
+   5,
+   0
+  ],
+  "strawberry_milk": [
+   6,
+   0
+  ],
+  "cream_cake": [
+   7,
+   0
+  ],
+  "rice": [
+   0,
+   1
+  ],
+  "noodle": [
+   1,
+   1
+  ],
+  "lollipop": [
+   2,
+   1
+  ],
+  "oolong": [
+   3,
+   1
+  ],
+  "milk": [
+   4,
+   1
+  ],
+  "milktea": [
+   5,
+   1
+  ],
+  "icecream": [
+   6,
+   1
+  ],
+  "milk_pudding": [
+   7,
+   1
+  ]
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "cell": 64,
+ "image": "taste.png",
+ "icons": {
+  "case_frog": [
+   0,
+   0
+  ],
+  "case_cat": [
+   1,
+   0
+  ],
+  "case_bear": [
+   2,
+   0
+  ],
+  "case_flower": [
+   3,
+   0
+  ],
+  "plush_fox": [
+   4,
+   0
+  ],
+  "plush_bunny": [
+   5,
+   0
+  ],
+  "plush_puppy": [
+   6,
+   0
+  ],
+  "plush_penguin": [
+   7,
+   0
+  ],
+  "lollipop": [
+   0,
+   1
+  ],
+  "milk_pudding": [
+   1,
+   1
+  ],
+  "icecream": [
+   2,
+   1
+  ],
+  "peanuts": [
+   3,
+   1
+  ],
+  "oolong": [
+   4,
+   1
+  ],
+  "milk": [
+   5,
+   1
+  ],
+  "milktea": [
+   6,
+   1
+  ],
+  "latte": [
+   7,
+   1
+  ],
+  "art_set": [
+   0,
+   2
+  ],
+  "guitar": [
+   1,
+   2
+  ],
+  "soccer": [
+   2,
+   2
+  ],
+  "fishing": [
+   3,
+   2
+  ],
+  "taro_duck": [
+   4,
+   2
+  ],
+  "lamb_skewer": [
+   5,
+   2
+  ],
+  "beef_burger": [
+   6,
+   2
+  ],
+  "cream_pasta": [
+   7,
+   2
+  ]
+ }
+}

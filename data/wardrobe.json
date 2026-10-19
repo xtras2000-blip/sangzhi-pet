@@ -1,0 +1,445 @@
+[
+ {
+  "id": "W01",
+  "name": "남색 트레이닝 교복",
+  "stage": "mid",
+  "game": true,
+  "tag": "기본 의상",
+  "period": "중2 회상(1~2화), 아역",
+  "verified": "✅",
+  "colors": [
+   "#1F2A4D",
+   "#F4F4F2",
+   "#151214"
+  ]
+ },
+ {
+  "id": "W02",
+  "name": "줄무늬 가디건 교복(동복)",
+  "stage": "high",
+  "game": true,
+  "tag": "고교 기본",
+  "period": "고2, 2~6화",
+  "verified": "✅",
+  "colors": [
+   "#FAFAF7",
+   "#F3F0E8",
+   "#1E2440",
+   "#1C1F2E",
+   "#0E0E10"
+  ]
+ },
+ {
+  "id": "W03",
+  "name": "교복 + 회색 후드 집업",
+  "stage": "high",
+  "game": false,
+  "tag": "",
+  "period": "고교",
+  "verified": "✅",
+  "colors": [
+   "#C9CCCF"
+  ]
+ },
+ {
+  "id": "W04",
+  "name": "하복 + 리본 포니테일(우유병 장면)",
+  "stage": "high",
+  "game": true,
+  "tag": "",
+  "period": "고2 여름, 2화 \"우유병을 볼에 대는\" 장면",
+  "verified": "✅",
+  "colors": [
+   "#F6F7F8"
+  ]
+ },
+ {
+  "id": "W05",
+  "name": "교복 + 크림 가디건",
+  "stage": "high",
+  "game": false,
+  "tag": "",
+  "period": "고교(추정)",
+  "verified": "미확인",
+  "colors": [
+   "#D9E6F2",
+   "#EDE6D6",
+   "#22345E",
+   "#1A1A1A"
+  ]
+ },
+ {
+  "id": "W06",
+  "name": "운동회 룩",
+  "stage": "high",
+  "game": true,
+  "tag": "",
+  "period": "고교 운동회(바이두 2화 줄거리)",
+  "verified": "✅",
+  "colors": [
+   "#C9B8E0",
+   "#F5F5F2",
+   "#F7F7F7"
+  ]
+ },
+ {
+  "id": "W07",
+  "name": "곰 귀 셰르파 후드(이허 공항)",
+  "stage": "high",
+  "game": true,
+  "tag": "이벤트 한정",
+  "period": "고3, 이허 공항에서 오해하고 울던 장면(7~8화)",
+  "verified": "✅",
+  "colors": [
+   "#C9A27E",
+   "#E3D3BC",
+   "#1F2433"
+  ]
+ },
+ {
+  "id": "W08",
+  "name": "크림 블라우스 원피스 + 검은 리본 끈",
+  "stage": "high",
+  "game": true,
+  "tag": "",
+  "period": "고교~대학(기사는 고교 쪽에 나열, 확정 못 함)",
+  "verified": "✅",
+  "colors": [
+   "#F2EBDD",
+   "#121212",
+   "#7CC242"
+  ]
+ },
+ {
+  "id": "W09",
+  "name": "흰 러플 칼라 블라우스 + 검정 치마(쌍똥머리)",
+  "stage": "uni",
+  "game": true,
+  "tag": "",
+  "period": "대학(추정)",
+  "verified": "✅",
+  "colors": [
+   "#FFFFFF",
+   "#151515"
+  ]
+ },
+ {
+  "id": "W10",
+  "name": "회색 후드 + 분홍 캐미(신입생)",
+  "stage": "uni",
+  "game": true,
+  "tag": "대학 기본",
+  "period": "대학 신입생, 기숙사",
+  "verified": "✅",
+  "colors": [
+   "#B9C0BE",
+   "#F1D3D3",
+   "#F8F8F6"
+  ]
+ },
+ {
+  "id": "W11",
+  "name": "회색 스웨트 세트",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "미확인",
+  "colors": [
+   "#CFCFCC"
+  ]
+ },
+ {
+  "id": "W12",
+  "name": "블루그레이 셋업 + 줄무늬 숄 / 줄무늬 맨투맨",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "",
+  "colors": [
+   "#9FB0C4",
+   "#F0EEE8",
+   "#1A1A1A",
+   "#B8AE98"
+  ]
+ },
+ {
+  "id": "W13",
+  "name": "분홍 가디건 + 분홍 캐미 + 데님 반바지",
+  "stage": "uni",
+  "game": true,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#F2C9CF",
+   "#EFB9C0",
+   "#9DB8D3"
+  ]
+ },
+ {
+  "id": "W14",
+  "name": "분홍 시폰 공주 원피스",
+  "stage": "uni",
+  "game": true,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#E9C6CB"
+  ]
+ },
+ {
+  "id": "W15",
+  "name": "빨간 물방울 캐미 원피스 + 검은 가디건(생일 데이트)",
+  "stage": "uni",
+  "game": true,
+  "tag": "이벤트 한정",
+  "period": "대학, 자쉬 오빠와 생일 데이트",
+  "verified": "✅",
+  "colors": [
+   "#B5121B",
+   "#141414"
+  ]
+ },
+ {
+  "id": "W16",
+  "name": "파랑 멜빵 원피스 + 흰 가디건",
+  "stage": "uni",
+  "game": true,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#3E8FD0",
+   "#FAFAF8"
+  ]
+ },
+ {
+  "id": "W17",
+  "name": "남색 물방울 티드레스 + 검은 가디건",
+  "stage": "uni",
+  "game": true,
+  "tag": "졸업 시기 기본 후보",
+  "period": "대학 후반",
+  "verified": "✅",
+  "colors": [
+   "#1A1E2C"
+  ]
+ },
+ {
+  "id": "W18",
+  "name": "베레모 + 양갈래 땋은 머리 + 오트밀 니트",
+  "stage": "uni",
+  "game": true,
+  "tag": "겨울",
+  "period": "대학 겨울",
+  "verified": "✅",
+  "colors": [
+   "#1B1B1D",
+   "#C2A68A"
+  ]
+ },
+ {
+  "id": "W19",
+  "name": "한쪽 땋은 머리 + 브라운 가디건",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#9C7F60",
+   "#F7F5F0"
+  ]
+ },
+ {
+  "id": "W20",
+  "name": "민트 러플 민소매 블라우스",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#C9D6C6"
+  ]
+ },
+ {
+  "id": "W21",
+  "name": "연보라 오프숄더 블라우스",
+  "stage": "uni",
+  "game": true,
+  "tag": "밤 데이트",
+  "period": "대학, 밤 장면",
+  "verified": "✅",
+  "colors": [
+   "#C4AED9"
+  ]
+ },
+ {
+  "id": "W22",
+  "name": "안경 + 크림 가디건 + 똥머리(공부 모드)",
+  "stage": "uni",
+  "game": true,
+  "tag": "공부 버튼용",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#EFE8DA",
+   "#202020"
+  ]
+ },
+ {
+  "id": "W23",
+  "name": "크림 퍼지 가디건 + 분홍 원피스",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#F1EADF",
+   "#EBC8C8"
+  ]
+ },
+ {
+  "id": "W24",
+  "name": "줄무늬 집업 + 회색 반바지",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#EDE3D6",
+   "#B48C7A",
+   "#A9A6A2"
+  ]
+ },
+ {
+  "id": "W25",
+  "name": "핑크 캡 + 회색 후드 원피스(자전거)",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#E8C2C8",
+   "#B7B5B3"
+  ]
+ },
+ {
+  "id": "W26",
+  "name": "니트 베스트 2종",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "고교~대학(추정)",
+  "verified": "미확인",
+  "colors": [
+   "#26304D"
+  ]
+ },
+ {
+  "id": "W27",
+  "name": "흰 티 + 롤러 보호대",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "미확인",
+  "colors": []
+ },
+ {
+  "id": "W28",
+  "name": "흰 반팔 티 + 긴 웨이브",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "✅",
+  "colors": [
+   "#FBFBFB"
+  ]
+ },
+ {
+  "id": "W29",
+  "name": "연하늘 후드 집업 + 핑크 미니스커트",
+  "stage": "uni",
+  "game": false,
+  "tag": "",
+  "period": "대학",
+  "verified": "",
+  "colors": [
+   "#A9CDE0",
+   "#E6A9B4"
+  ]
+ },
+ {
+  "id": "W30",
+  "name": "흰 블라우스(인턴, 꽃다발)",
+  "stage": "grad",
+  "game": false,
+  "tag": "",
+  "period": "인턴 시기, 자쉬가 꽃을 보내 달래준 장면",
+  "verified": "✅",
+  "colors": [
+   "#F8F8F6",
+   "#2A1E1A"
+  ]
+ },
+ {
+  "id": "W31",
+  "name": "블루그레이 블레이저",
+  "stage": "grad",
+  "game": true,
+  "tag": "인턴 기본",
+  "period": "후반부(추정)",
+  "verified": "미확인",
+  "colors": [
+   "#B8C6D2"
+  ]
+ },
+ {
+  "id": "W32",
+  "name": "졸업 가운",
+  "stage": "grad",
+  "game": true,
+  "tag": "졸업 이벤트",
+  "period": "이허대 졸업(홍보 이미지)",
+  "verified": "✅",
+  "colors": [
+   "#1C1C1E",
+   "#E3C243",
+   "#5A3526"
+  ]
+ },
+ {
+  "id": "W33",
+  "name": "해변 프러포즈 룩",
+  "stage": "grad",
+  "game": true,
+  "tag": "엔딩 한정",
+  "period": "최종화 해변",
+  "verified": "✅",
+  "colors": [
+   "#5C7EA6",
+   "#F3B6C2"
+  ]
+ },
+ {
+  "id": "W34",
+  "name": "흰 머리띠 룩",
+  "stage": "grad",
+  "game": true,
+  "tag": "액세서리",
+  "period": "고교~대학",
+  "verified": "✅",
+  "colors": [
+   "#F5F2EE"
+  ]
+ }
+]

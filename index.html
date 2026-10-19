@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FFE4EC">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="쌍즈 키우기">
+<meta name="description" content="쌍즈를 키우는 팬메이드 픽셀 다마고치 (비상업)">
+<title>쌍즈 키우기</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="쌍즈 키우기">
+<meta property="og:description" content="쌍즈를 키우는 팬메이드 픽셀 다마고치 (비상업·개인용)">
+<meta property="og:image" content="assets/title/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- iOS 홈 화면 앱 시작 화면(타이틀 키 이미지, tools/build_title.py) -->
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" href="assets/title/splash_1170x2532.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)" href="assets/title/splash_1179x2556.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" href="assets/title/splash_1284x2778.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="assets/title/splash_1125x2436.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="assets/title/splash_828x1792.jpg">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="assets/title/splash_750x1334.jpg">
+<link rel="preload" href="assets/title/title_1024.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/app/icon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/app/apple-touch-icon.png">
+<link rel="preload" href="fonts/Galmuri11-Bold-sub.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app" class="app">
+  <header class="topbar">
+    <div class="title" id="title" title="길게 누르면 디버그">🍰 쌍즈 키우기</div>
+    <div class="meta"><span id="dayLabel">D+1</span> · <span id="stageLabel">중학생</span> · <span id="todLabel">☀️</span> <span id="clock">--:--</span></div>
+    <button class="icon-btn" id="btnDex" aria-label="도감">📒</button>
+    <button class="icon-btn" id="btnSettings" aria-label="설정">⚙️</button>
+  </header>
+
+  <section class="stats" id="stats" aria-label="상태"></section>
+
+  <main class="stage" id="stage">
+    <canvas id="room" class="pixel room"></canvas>
+    <button class="place-btn" id="btnPlace" aria-label="장소 이동"><span id="placeLabel"></span> ▾</button>
+    <div class="event-veil" id="eventVeil" hidden><div class="event-title" id="eventTitle"></div></div>
+    <div class="bubble" id="bubble" role="status" aria-live="polite">
+      <span class="rarity" id="bubbleRarity"></span>
+      <span class="bubble-text" id="bubbleText">…</span>
+      <span class="bubble-cap" id="bubbleCap"></span>
+      <div class="bubble-choices" id="bubbleChoices"></div>
+      <span class="bubble-next" id="bubbleNext" hidden>▼</span>
+    </div>
+    <div class="char-wrap" id="charWrap">
+      <div class="fx" id="fx"></div>
+      <canvas id="char" class="pixel char" width="64" height="64" aria-label="쌍즈"></canvas>
+      <div class="shadow"></div>
+    </div>
+    <div class="sleep-veil" id="sleepVeil"><span>Z z z</span></div>
+    <!-- Stage 5: 성장 시험 버튼 (날짜가 찼을 때만) + 퀴즈 카드 -->
+    <button class="exam-btn" id="btnExam" hidden>📝 성장 시험</button>
+    <div class="quiz" id="quiz" hidden role="dialog" aria-label="퀴즈">
+      <div class="quiz-head" id="quizHead"></div>
+      <div class="quiz-opts" id="quizOpts"></div>
+      <div class="quiz-foot" id="quizFoot"></div>
+    </div>
+  </main>
+
+  <nav class="actions" id="actions">
+    <button class="act" data-act="feed"><i>🍙</i><b>밥 주기</b></button>
+    <button class="act" data-act="play"><i>🎮</i><b>놀아주기</b></button>
+    <button class="act" data-act="study"><i>✏️</i><b>공부</b></button>
+    <button class="act" data-act="sleep"><i>🛏️</i><b id="sleepLabel">재우기</b></button>
+    <button class="act" data-act="talk"><i>💬</i><b>대화</b></button>
+    <button class="act" data-act="gift"><i>🎁</i><b>선물</b></button>
+  </nav>
+  <footer class="fan-note">fan-made · 비상업적 팬 작품 · 《투투장부주》 공식과 무관</footer>
+  <!-- Stage 6: 미니게임 ① 디저트 받기 (js/catch_ui.js) -->
+  <div class="mg" id="mg" hidden role="dialog" aria-label="디저트 받기">
+    <canvas id="mgBg" class="pixel mg-bg"></canvas>
+    <canvas id="mgCv" class="mg-cv"></canvas>
+    <div class="mg-hud">
+      <div class="mg-timer"><span id="mgTime"></span><b id="mgSec">45</b></div>
+      <div class="mg-sc"><span>🍓</span><b id="mgScore">0</b><em id="mgCombo"></em></div>
+      <button class="mg-ib" id="mgPauseBtn" aria-label="일시정지">⏸</button>
+    </div>
+    <div class="mg-count" id="mgCount"></div>
+    <div class="mg-bubble" id="mgBubble" hidden></div>
+    <div class="mg-panel" id="mgTitle" hidden>
+      <div id="mgTitleBody"></div>
+      <div class="mg-btns"><button class="mg-go" id="mgStart">시작!</button><button class="mg-ib" id="mgSound" aria-label="소리 켜기/끄기">🔇</button><button class="mg-ghost" id="mgLater">나중에</button></div>
+    </div>
+    <div class="mg-panel" id="mgPause" hidden>
+      <h3>⏸ 잠깐 쉬는 중</h3><p class="mg-note">그만두면 이번 판은 기록·보상 없이 끝나요(벌점 없음).</p>
+      <div class="mg-btns"><button class="mg-go" id="mgResume">계속하기</button><button class="mg-ghost" id="mgQuit">그만하기</button></div>
+    </div>
+    <div class="mg-panel" id="mgResult" hidden>
+      <div id="mgResultBody"></div>
+      <div class="mg-btns"><button class="mg-go" id="mgAgain">한 판 더</button><button class="mg-ghost" id="mgDone">끝내기</button></div>
+    </div>
+    <div class="mg-ctrl" id="mgCtrl"><button class="mg-arrow" id="mgLeft" aria-label="왼쪽">◀</button><span class="mg-hint">화면을 끌어도 움직여요</span><button class="mg-arrow" id="mgRight" aria-label="오른쪽">▶</button></div>
+  </div>
+</div>
+
+<!-- Stage 6: 놀아주기 메뉴 -->
+<div class="sheet" id="playSheet" hidden>
+  <div class="sheet-card">
+    <h3>🎮 뭐 하고 놀까?</h3>
+    <div class="play-menu" id="playMenu">
+      <button class="play-opt" data-play="catch"><i>🍓</i><b>디저트 받기</b><small id="playCatchInfo">45초 · 우유는 피하기!</small></button>
+      <button class="play-opt" data-play="taste"><i>🎯</i><b>취향 맞히기</b><small id="playTasteInfo"></small></button>
+      <button class="play-opt" data-play="quick"><i>🎵</i><b>그냥 같이 놀기</b><small>짧게 수다 떨며 놀기</small></button>
+    </div>
+    <button class="ghost" data-close>닫기</button>
+  </div>
+</div>
+
+<!-- 밥 메뉴 시트 -->
+<div class="sheet" id="feedSheet" hidden>
+  <div class="sheet-card">
+    <h3>뭐 먹일까?</h3>
+    <div class="menu" id="feedMenu"></div>
+    <button class="ghost" data-close>닫기</button>
+  </div>
+</div>
+
+<!-- 선물 고르기 (Stage 4) -->
+<div class="sheet" id="giftSheet" hidden>
+  <div class="sheet-card">
+    <h3>🎁 뭘 선물할까?</h3>
+    <button class="taste-entry" id="btnTaste">🎯 쌍즈 취향 맞히기 <small id="tasteLeft"></small></button>
+    <div class="menu" id="giftMenu"></div>
+    <button class="ghost" data-close>닫기</button>
+  </div>
+</div>
+
+<!-- 장소 이동 -->
+<div class="sheet" id="placeSheet" hidden>
+  <div class="sheet-card">
+    <h3>📍 어디 갈까?</h3>
+    <div class="menu" id="placeMenu"></div>
+    <button class="ghost" data-close>닫기</button>
+  </div>
+</div>
+
+<!-- 설정 -->
+<div class="sheet" id="settingsSheet" hidden>
+  <div class="sheet-card">
+    <h3>⚙️ 설정</h3>
+    <label class="row"><span>소리 (BGM·효과음)</span><input type="checkbox" id="optSound"></label>
+    <label class="row vol"><span>🎵 배경음악</span><input type="range" id="optBgm" min="0" max="100" step="5"><output id="optBgmV"></output></label>
+    <label class="row vol"><span>🔔 효과음</span><input type="range" id="optSfx" min="0" max="100" step="5"><output id="optSfxV"></output></label>
+    <p class="small muted" id="musicNote"></p>
+    <p class="small">저장은 이 기기 브라우저(localStorage)에만 돼요. 앱을 닫아도 시간은 흘러요(최대 48시간 반영).</p>
+    <button class="danger" id="btnReset">처음부터 다시 키우기</button>
+    <p class="small muted">팬메이드 · 비상업 · 전연령. 원작: 竹已 《偷偷藏不住》 / 드라마 《투투장부주》(2023). 캐릭터 그림은 오리지널 픽셀 디자인이에요.<br><span id="verLabel"></span><br>문제가 보이면 주소 끝에 <b>?debug=1</b> 을 붙여 열고 🐞 → 「피드백 복사」를 눌러 보내 주세요.</p>
+    <button class="ghost" data-close>닫기</button>
+  </div>
+</div>
+
+<!-- 디버그 (제목 길게 누르기 / ?debug=1) -->
+<div class="debug" id="debug" hidden>
+  <div class="debug-head">🛠 DEBUG <button data-close>✕</button></div>
+  <div class="debug-grid">
+    <button data-dbg="ff1">+1시간</button>
+    <button data-dbg="ff6">+6시간</button>
+    <button data-dbg="ff24">+24시간</button>
+    <button data-dbg="ff72">+72h(캡)</button>
+    <button data-dbg="hunger10">배고픔 10</button>
+    <button data-dbg="mood10">기분 10</button>
+    <button data-dbg="energy10">체력 10</button>
+    <button data-dbg="crush20">설렘 +20</button>
+    <button data-dbg="full">전부 80</button>
+    <button data-dbg="stage">다음 단계</button>
+    <button data-dbg="evt">이벤트 E1→E8</button>
+    <button data-dbg="nost">회상 강제</button>
+    <button data-dbg="quiz">팝퀴즈</button>
+    <button data-dbg="exam">시험 강제</button>
+    <button data-dbg="taste">취향 강제</button>
+    <button data-dbg="mg">미니게임</button>
+    <button data-dbg="save">저장 출력</button>
+    <button data-dbg="reset">리셋</button>
+  </div>
+  <pre id="debugInfo" class="dbg-info"></pre>
+  <button class="dbg-feedback" id="btnFeedback">📋 피드백 복사 (기기 정보 포함)</button>
+  <pre id="debugOut"></pre>
+</div>
+
+<!-- Stage 7: 도감 (js/dex_ui.js) -->
+<div class="dex" id="dex" hidden role="dialog" aria-label="도감">
+  <header class="dex-top"><b>📒 도감</b><span class="dex-total" id="dexTotal">0%</span><button class="dex-x" id="dexClose" aria-label="닫기">✕</button></header>
+  <nav class="dex-tabs" id="dexTabs"></nav>
+  <section class="dex-body" id="dexBody"></section>
+</div>
+<div class="evfull" id="evFull" hidden role="dialog" aria-label="이벤트">
+  <div class="ev-pic"><img id="evImg" alt=""><img id="evImg2" class="ev-shot" alt=""></div>
+  <div class="ev-top"><div><b id="evTitle"></b><small id="evEp"></small></div><button class="ev-skip" id="evSkip">건너뛰기 ⏭</button></div>
+  <div class="ev-box" id="evBox"></div>
+</div>
+<!-- 엔딩: 필름 스트립 → 크레딧 → 쌍즈의 메시지 (js/ending.js, data/ending.json) -->
+<div class="ending" id="ending" hidden role="dialog" aria-label="엔딩">
+  <div class="end-strip"><p class="end-title" id="endStripTitle"></p><div class="end-film" id="endFilm"><div class="end-track" id="endTrack"></div></div></div>
+  <div class="end-credits" id="endCredits"><div class="end-roll" id="endRoll"></div></div>
+  <div class="end-msg"><img class="end-msg-bg" id="endMsgBg" alt=""><div class="end-msg-card"><div class="end-msg-lines" id="endMsgLines"></div><button class="end-back" id="endBack" hidden>돌아가기</button></div></div>
+  <div class="end-grain" aria-hidden="true"></div>
+  <div class="end-pause" aria-hidden="true">⏸ 탭하면 계속</div>
+  <button class="ev-skip end-skip" id="endSkip">건너뛰기 ⏭</button>
+</div>
+<div class="card-modal" id="cardModal" hidden role="dialog" aria-label="포토카드"><div class="card-box" id="cardBody"></div><p class="card-tap">탭해서 닫기</p></div>
+<!-- 타이틀(메인) 화면: js/title.js · 키 이미지는 사용자 제공(로고 포함, 수정하지 않음) -->
+<div class="title-screen" id="titleScreen" hidden role="dialog" aria-label="타이틀">
+  <div class="t-bg" aria-hidden="true"></div>
+  <picture><source type="image/webp" srcset="assets/title/title_1024.webp 683w, assets/title/title_1536.webp 1024w" sizes="100vw"><img class="t-key" id="titleKey" src="assets/title/title_1024.jpg" alt="쌍즈 키우기" decoding="async" fetchpriority="high"></picture>
+  <div class="t-bokeh" id="titleBokeh" aria-hidden="true"></div>
+  <div class="t-ui">
+    <p class="t-tap">TAP TO START<small>화면을 터치해 주세요</small></p>
+    <div class="t-menu"><button class="t-btn main" id="tContinue">이어하기</button><button class="t-btn" id="tNew">새로 시작</button><button class="t-btn icon" id="tSettings" aria-label="설정">⚙️ 설정</button></div>
+    <p class="t-note">fan-made · 비상업 · 개인용</p>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+<button class="rotate-hint" id="rotateHint" hidden>📱 세로로 돌리면 더 크게 보여요 <small>(탭해서 닫기)</small></button>
+<button class="dbg-fab" id="dbgFab" aria-label="디버그·피드백">🐞</button>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

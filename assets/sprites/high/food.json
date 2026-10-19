@@ -1,0 +1,1 @@
+{"foods": ["rice", "noodle", "tanghulu", "lollipop"], "pw": 51, "ph": 47, "rects": [[125, 119, 51, 47], [127, 146, 51, 47], [127, 147, 51, 47], [127, 146, 51, 47]], "note": "eat \ud504\ub808\uc784\ubcc4 \ud328\uce58 \uc704\uce58(\uc140 \uc88c\ud45c). tools/build_food_eat.py"}
