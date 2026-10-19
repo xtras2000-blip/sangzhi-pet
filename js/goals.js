@@ -1,7 +1,7 @@
 // 단계별 목표판 · 다음 이벤트 실루엣 · 삐짐 장면 고르기 · 2회차(새로 키우기) · 못 본 반응 세기. 순수 로직(DOM 없음)
 // 데이터: data/goals.json, data/scenes.json
 import { STAGES } from './config.js';
-import { stageOf, dayKey, newState, condition } from './state.js';
+import { stageOf, dayKey, newState, condition, gnow } from './state.js';
 import { ORDER } from './events.js';
 import { SULK_AWAY_H, SULK_LOW } from './config.js';
 
@@ -29,13 +29,13 @@ export function missionProgress(s, stageId, m) {
   return { cur: Math.min(cur, n), n, ok: cur >= n };
 }
 /** 단계 목표 목록 + 진행률 */
-export function goalBoard(s, now = Date.now(), stageId = stageOf(s, now).id) {
+export function goalBoard(s, now = gnow(), stageId = stageOf(s, now).id) {
   const list = (G.stages[stageId] || []).map((m) => ({ ...m, ...missionProgress(s, stageId, m) }));
   const done = list.filter((x) => x.ok).length;
   return { stage: stageId, list, done, total: list.length, pct: list.length ? Math.round((done / list.length) * 100) : 0, complete: list.length > 0 && done === list.length, finished: !!((s.goals || {}).done || {})[stageId] };
 }
 /** 다 깼으면 기록(다음 단계 시험이 하루 일찍). 반환: 새로 끝낸 단계 id 또는 null */
-export function checkGoals(s, now = Date.now()) {
+export function checkGoals(s, now = gnow()) {
   const b = goalBoard(s, now);
   s.goals = s.goals || { done: {}, early: {} }; s.goals.done = s.goals.done || {};
   if (!b.complete || s.goals.done[b.stage]) return null;
@@ -44,7 +44,7 @@ export function checkGoals(s, now = Date.now()) {
 }
 /** 다음에 볼 이벤트(실루엣): 이 단계에서 아직 안 본 첫 이벤트, 없으면 전체에서 */
 const DLG_STAGE = { mid: '중', high: '고', uni: '대', grad: '졸' };
-export function nextEvent(s, events = [], now = Date.now()) {
+export function nextEvent(s, events = [], now = gnow()) {
   const tag = DLG_STAGE[stageOf(s, now).id];
   const unseen = ORDER.filter((id) => !(s.events || {})[id]);
   const byStage = unseen.find((id) => { const e = events.find((x) => x.id === id); return e && String(e.stage || '').includes(tag); });
@@ -54,14 +54,14 @@ export function nextEvent(s, events = [], now = Date.now()) {
 
 // ── 삐짐 장면 ──
 /** 지금 삐짐 장면을 띄울지: 오래 비웠거나(awayH) 배고픔·기분이 너무 낮을 때, 하루 1번 */
-export function sulkDue(s, awayH = 0, now = Date.now()) {
+export function sulkDue(s, awayH = 0, now = gnow()) {
   if (!s || s.asleep || !SC.sulk.length) return null;
   if ((s.care || {}).sulk === dayKey(now)) return null;
   const hungry = s.stats.hunger < SULK_LOW;
   if (!(awayH >= SULK_AWAY_H || hungry || s.stats.mood < SULK_LOW)) return null;
   return SC.sulk.find((x) => x.when === (hungry ? 'hungry' : 'any')) || SC.sulk[0];
 }
-export function markSulk(s, now = Date.now()) { s.care = s.care || {}; s.care.sulk = dayKey(now); }
+export function markSulk(s, now = gnow()) { s.care = s.care || {}; s.care.sulk = dayKey(now); }
 
 // ── 반응 수집 · 2회차 ──
 /** 이벤트 선택지 반응 키(✨ = 2회차 선택지) */
@@ -82,7 +82,7 @@ export function unseenReactions(s, allKeys) {
   return { total, have, left: total - have };
 }
 /** 2회차: 기록(도감·포토카드·대사·반응·엔딩·최고 점수·설정)은 이어서, 키우기는 처음부터. ng +1 */
-export function newGamePlus(prev, now = Date.now()) {
+export function newGamePlus(prev, now = gnow()) {
   const s = newState(now);
   s.ng = (prev.ng || 0) + 1;
   s.collection = prev.collection; s.pcards = prev.pcards; s.seenLines = prev.seenLines; s.reactions = prev.reactions || {};

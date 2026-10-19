@@ -1,5 +1,5 @@
 {
- "note": "밤 메신저(파일럿). 플레이어 = 쌍즈의 소꿉친구(같은 아파트·같은 중·고, 대학은 다름). {name}=플레이어 이름, {call}=부르는 말(이름+아/야), {name_i}=이름+이(받침 있을 때만). 줄 종류: sz(쌍즈 말풍선: text, typing=입력 중 표시 ms, wait=그 전 멈춤 ms, pause=입력 중이 떴다 사라지는 횟수) · me(내가 보낸 말: 선택지에서) · photo(art=이벤트 그림 id, text=사진 밑 말) · sys(가운데 회색 글: 시간·안내, clock=폰 상단 시각 바꿈) · choice(options: label=버튼, say=실제로 보내는 말(없으면 label), g={우정,용기}, then=이어지는 줄). 원작 장면 날의 사진은 이벤트 일러스트를 '사진'으로 보냄",
+ "note": "밤 메신저(파일럿). 플레이어 = 쌍즈의 소꿉친구(같은 아파트·같은 중·고, 대학은 다름). {name}=플레이어 이름, {call}=부르는 말(이름+아/야), {name_i}=이름+이(받침 있을 때만). 줄 종류: sz(쌍즈 말풍선: text, typing=입력 중 표시 ms, wait=그 전 멈춤 ms, pause=입력 중이 떴다 사라지는 횟수) · me(내가 보낸 말: 선택지에서) · photo(art=이벤트 그림 id, text=사진 밑 말) · sys(가운데 회색 글: 시간·안내, clock=폰 상단 시각 바꿈) · choice(options: label=버튼, say=실제로 보내는 말(없으면 label), g={우정,용기}, then=이어지는 줄). 원작 장면 날의 사진은 이벤트 일러스트를 '사진'으로 보냄 · generic=true: 대본 없는 날의 임시 짧은 채팅(단계별 2개씩 번갈아). 하루에 문자는 1번",
  "gauges": {
   "우정": {
    "icon": "🤝",
@@ -592,6 +592,577 @@
      "t": "sz",
      "text": "자쉬 오빠한테는 절대 말하지 마. 둘만의 비밀이야 🤫",
      "typing": 1600
+    }
+   ]
+  },
+  {
+   "id": "gen_mid_a",
+   "stage": "mid",
+   "title": "중학생 · 평범한 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "mid",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "{call} 자?",
+     "typing": 500
+    },
+    {
+     "t": "sz",
+     "text": "나 숙제하다가 졸아서 공책에 침 흘렸어ㅋㅋ",
+     "typing": 1500
+    },
+    {
+     "t": "sz",
+     "text": "쌍옌 오빠가 그거 사진 찍었어. 가만 안 둬",
+     "typing": 1400
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "ㅋㅋㅋ 그 사진 나도 보내 줘",
+       "g": {
+        "우정": 1
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "절대 안 돼!! 너까지 그러기야?",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "내일 숙제 같이 하자",
+       "g": {
+        "우정": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "역시 너밖에 없어. 내일 탕후루는 내가 살게",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "잘 자! 내일 놀이터 7시 50분 🍓",
+     "typing": 1000
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
+    }
+   ]
+  },
+  {
+   "id": "gen_mid_b",
+   "stage": "mid",
+   "title": "중학생 · 평범한 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "mid",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "{call}… 오늘 매점 딸기 탕후루 품절이었어ㅠㅠ",
+     "typing": 1500
+    },
+    {
+     "t": "sz",
+     "text": "세상이 나한테 왜 이래",
+     "typing": 900
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "내일 일찍 가서 사 올게",
+       "g": {
+        "우정": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "진짜?? 너 천사야?",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "다른 거 먹으면 되잖아",
+       "then": [
+        {
+         "t": "sz",
+         "text": "탕후루 대신은 없어. 그건 탕후루에 대한 예의가 아니야",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "아무튼 잘 자~",
+     "typing": 700
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
+    }
+   ]
+  },
+  {
+   "id": "gen_high_a",
+   "stage": "high",
+   "title": "고등학생 · 야자 끝난 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "high",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "{call} 야자 끝났어… 영혼 탈출함",
+     "typing": 1300
+    },
+    {
+     "t": "sz",
+     "text": "수학 모의고사 또 망했어",
+     "typing": 1000
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "다음엔 같이 공부하자",
+       "g": {
+        "우정": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "너 진짜 착하다. 내 성적표 보고도 그런 말이 나와?",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "너 목표 있잖아. 할 수 있어",
+       "g": {
+        "용기": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "…응. 나 꼭 그 대학 갈 거야.",
+         "typing": 1000
+        },
+        {
+         "t": "sz",
+         "text": "이유는 비밀",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "내일 등굣길에 봐!",
+     "typing": 800
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
+    }
+   ]
+  },
+  {
+   "id": "gen_high_b",
+   "stage": "high",
+   "title": "고등학생 · 야자 끝난 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "high",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "오늘 체육 시간에 넘어졌어",
+     "typing": 1100
+    },
+    {
+     "t": "sz",
+     "text": "근데 아무도 못 봤어. 아마. 제발",
+     "typing": 1300
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "봤는데ㅋㅋ 귀여웠어",
+       "g": {
+        "우정": 1
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "아아악 잊어 줘!!",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "안 다쳤어?",
+       "g": {
+        "우정": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "무릎 조금. 괜찮아, 밴드 붙였어. 딸기 그림 있는 걸로",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "잘 자 {name}!",
+     "typing": 700
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
+    }
+   ]
+  },
+  {
+   "id": "gen_uni_a",
+   "stage": "uni",
+   "title": "대학생 · 기숙사의 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "uni",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "{call}~ 기숙사 와이파이 또 끊겼어",
+     "typing": 1300
+    },
+    {
+     "t": "sz",
+     "text": "닝웨이는 벌써 자고 위신은 통화 중이야. 너네 학교는 어때?",
+     "typing": 1800
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "여기도 맨날 끊겨ㅋㅋ",
+       "g": {
+        "우정": 1
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "역시 대학 와이파이는 다 똑같구나",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "보고 싶다. 주말에 볼래?",
+       "g": {
+        "우정": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "좋아!! 맛있는 거 먹자. 내가 맛집 알아 놨어",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "그럼 주말에! 잘 자~",
+     "typing": 900
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
+    }
+   ]
+  },
+  {
+   "id": "gen_uni_b",
+   "stage": "uni",
+   "title": "대학생 · 기숙사의 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "uni",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "오늘 도서관에서 누구 봤게",
+     "typing": 1200
+    },
+    {
+     "t": "sz",
+     "text": "…아니다 말 안 할래",
+     "typing": 1000,
+     "wait": 900
+    },
+    {
+     "t": "sz",
+     "text": "그냥 공부 열심히 했다는 얘기야!",
+     "typing": 1200
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "누군데? 자쉬 오빠?",
+       "g": {
+        "용기": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "아니거든!!",
+         "typing": 1000
+        },
+        {
+         "t": "sz",
+         "text": "…응.",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "그래 열심히 했구나ㅋㅋ",
+       "g": {
+        "우정": 1
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "응. 진짜야. 진짜로 공부만 했어",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "잘 자 {name}",
+     "typing": 700
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
+    }
+   ]
+  },
+  {
+   "id": "gen_grad_a",
+   "stage": "grad",
+   "title": "사회인 · 퇴근한 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "grad",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "{call} 오늘 회사 회의에서 말 한마디도 못 했어",
+     "typing": 1500
+    },
+    {
+     "t": "sz",
+     "text": "근데 끝나고 칭찬받았다?",
+     "typing": 1000
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "역시 쌍즈!",
+       "g": {
+        "우정": 1
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "헤헤. 오늘은 내가 나한테 탕후루 사 줄 거야",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "다음엔 말해 봐. 너 잘하잖아",
+       "g": {
+        "용기": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "…응. 다음엔 꼭 손 들게",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "내일도 힘내자. 잘 자!",
+     "typing": 900
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
+    }
+   ]
+  },
+  {
+   "id": "gen_grad_b",
+   "stage": "grad",
+   "title": "사회인 · 퇴근한 밤",
+   "at": "21:04",
+   "generic": true,
+   "placeholder": true,
+   "avail": {
+    "stage": "grad",
+    "fromHour": 21
+   },
+   "lines": [
+    {
+     "t": "sys",
+     "text": "오늘 21:04",
+     "clock": "21:04"
+    },
+    {
+     "t": "sz",
+     "text": "요즘 밤하늘 보면 생각나는 게 있어",
+     "typing": 1400
+    },
+    {
+     "t": "sz",
+     "text": "종이별 접던 거",
+     "typing": 900,
+     "wait": 800
+    },
+    {
+     "t": "choice",
+     "options": [
+      {
+       "label": "아직도 접어?",
+       "g": {
+        "용기": 1
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "…가끔. 아주 가끔",
+         "typing": 1000
+        }
+       ]
+      },
+      {
+       "label": "그때 진짜 많이 접었지",
+       "g": {
+        "우정": 2
+       },
+       "then": [
+        {
+         "t": "sz",
+         "text": "너도 같이 접어 줬잖아. 고마워, 진짜로",
+         "typing": 1000
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "sz",
+     "text": "잘 자 {name} ⭐",
+     "typing": 800
+    },
+    {
+     "t": "sys",
+     "text": "쌍즈 · 접속 안 함"
     }
    ]
   }

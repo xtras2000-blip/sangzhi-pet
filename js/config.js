@@ -1,7 +1,7 @@
 // 게임 상수 — PLAN.md v0.2 §5 기준
 export const SCHEMA_VERSION = 1;
 export const SAVE_KEY = 'sangzhi-pet.save';
-export const GAME_VERSION = '0.9.0-msgr-pilot';
+export const GAME_VERSION = '0.9.1-timeflow';
 
 export const STATS = [
   { key: 'hunger', label: '배고픔', icon: '🍚', color: '#FFB36B', hint: '높을수록 배불러요' },
@@ -107,3 +107,13 @@ export function stageScale(st) {
 export const RECENT_MAX = 12;          // 최근 N줄은 다시 안 나옴(후보가 모자라면 직전 줄만 제외)
 export const NOSTALGIA_P = 0.25;       // 회상 조건이 맞을 때 발동 확률(하루 1번)
 export const TYPE_MS = 32;             // 한 글자 타이핑 간격(ms)
+
+// ── 게임 속 하루(행동하면 시간이 흐름) ──
+// 아침 7시에 시작 → 행동마다 시간이 지남 → 밤 9시에 쌍즈 문자 → '재우기'로 하루 끝(다음 날 아침)
+export const DAY_START_MIN = 7 * 60;     // 07:00
+export const MSG_AT_MIN = 21 * 60;       // 21:00 친구 메신저
+export const NIGHT_SLEEP_MIN = 20 * 60;  // 20시부터 '재우기' = 하루 끝내기(그 전엔 낮잠)
+export const DAY_LAST_MIN = 23 * 60 + 30;// 시계는 23:30에서 멈춤(자야 다음 날)
+export const ACTION_MIN = { feed: 60, talk: 90, play: 90, study: 120, gift: 60, nap: 120, minigame: 90, place: 60 };   // 07→21시 = 14시간 ≈ 행동 9~10번
+export const NAP_ENERGY = 30;            // 낮잠 체력 +30
+export const NIGHT_ENERGY = 100;         // 밤잠 → 체력 가득

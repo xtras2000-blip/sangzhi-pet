@@ -1,6 +1,6 @@
 // 밤 메신저(파일럿) — 플레이어 = 쌍즈의 소꿉친구. 데이터: data/messenger.json
 // 순수 로직(테스트용)과 화면 재생기(runChat)로 나뉨
-import { dayNumber } from './state.js';
+import { dayNumber, gnow } from './state.js';
 
 let DATA = { gauges: {}, episodes: [] };
 export const setMessenger = (d) => { DATA = d || DATA; };
@@ -25,8 +25,8 @@ export function fill(text, name) {
 }
 
 // ── 언제 열리나 ── (21시 폰 시각 · 단계 · 원작 장면 이후)
-export function isAvailable(s, ep, now = Date.now(), stageId) {
-  if (!ep || (s.msgr && s.msgr.done[ep.id])) return false;
+export function isAvailable(s, ep, now = gnow(), stageId) {
+  if (!ep || (!ep.generic && s.msgr && s.msgr.done[ep.id])) return false;
   const a = ep.avail || {};
   if (a.stage && stageId && a.stage !== stageId) return false;
   if (a.fromHour != null && new Date(now).getHours() < a.fromHour) return false;
@@ -34,7 +34,15 @@ export function isAvailable(s, ep, now = Date.now(), stageId) {
   if (a.afterEvent && !(s.events && s.events[a.afterEvent])) return false;
   return true;
 }
-export const pending = (s, now, stageId) => episodes().find((e) => isAvailable(s, e, now, stageId)) || null;
+/** 오늘 밤 올 문자: 하루 1번. 대본 있는 날(첫날·원작 장면 뒤)이 먼저, 없으면 그 단계의 임시 짧은 채팅을 번갈아 */
+export function pending(s, now = gnow(), stageId) {
+  const day = dayNumber(s, now);
+  if (s.msgr && s.msgr.last === day) return null;
+  const sc = episodes().find((e) => !e.generic && isAvailable(s, e, now, stageId));
+  if (sc) return sc;
+  const gen = episodes().filter((e) => e.generic && isAvailable(s, e, now, stageId));
+  return gen.length ? gen[day % gen.length] : null;
+}
 
 // ── 게이지 ──
 export function applyGauges(s, g) {
@@ -54,7 +62,7 @@ export function pick(s, ep, ci, oi) {
   (s.msgr.picks[ep.id] ||= [])[ci] = oi;
   return { opt, delta: applyGauges(s, opt.g) };
 }
-export function finish(s, ep, now = Date.now()) { s.msgr.done[ep.id] = now; }
+export function finish(s, ep, now = gnow()) { s.msgr.done[ep.id] = now; s.msgr.last = dayNumber(s, now); }
 
 // ── 화면 재생기 ──
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

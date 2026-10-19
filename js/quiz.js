@@ -6,7 +6,7 @@
 //    탈락: 벌점 없음, 다음 날(자정 이후) 다시. 3번 이상 탈락 → 보기 2개(힌트), 5번 이상 → 정답에 ✨ 표시 = 절대 막히지 않음
 //  - 취향 맞히기: 단계 해금된 세트만, 하루 3번. scored=false(드라마 미확인) 세트는 설렘 점수 없음 + 라벨 표시
 import { STAGES, RARITY_WEIGHT } from './config.js';
-import { clamp, dayStageIndex, stageOf, gainCrush } from './state.js';
+import { clamp, dayStageIndex, stageOf, gainCrush, gnow } from './state.js';
 
 export const POP_RATE = 0.15;
 export const EXAM_SIZE = 3, EXAM_PASS = 2, HINT_AFTER = 3, SPARKLE_AFTER = 5, TASTE_PER_DAY = 3;
@@ -39,7 +39,7 @@ export function poolFor(stageDlg, { verifiedOnly = false } = {}) {
 // ── B. 팝퀴즈 ──
 export function shouldPop(s, rnd = Math.random) { return !s.asleep && poolFor(curDlg(s)).length > 0 && rnd() < POP_RATE; }
 /** 반복 없는 선택: 이번 바퀴(cycle)에 안 낸 것 중에서. 다 냈으면 새 바퀴(직전 문항은 제외) */
-export function pickPop(s, rnd = Math.random, now = Date.now()) {
+export function pickPop(s, rnd = Math.random, now = gnow()) {
   const pool = poolFor(curDlg(s, now));
   if (!pool.length) return null;
   let left = pool.filter((q) => !s.quiz.cycle.includes(q.id));
@@ -74,7 +74,7 @@ export function answerPop(s, q, choice, rnd = Math.random) {
 // ── C. 성장 시험 ──
 export const isLastStage = (s) => s.exam.unlocked >= STAGES.length - 1;
 /** 날짜는 찼는데 아직 시험을 안 통과한 상태 + 재도전 시각이 지났는지 */
-export function examDue(s, now = Date.now()) {
+export function examDue(s, now = gnow()) {
   if (isLastStage(s)) return false;
   return dayStageIndex(s, now) > s.exam.unlocked && now >= (s.exam.nextAt || 0);
 }
@@ -104,7 +104,7 @@ export function examOptions(s, q, rnd = Math.random) {
 }
 export const examPassed = (nCorrect) => nCorrect >= EXAM_PASS;
 /** 시험 결과 반영. 통과: 다음 단계 해금 + 포토카드 / 탈락: 다음 날 자정 이후 재도전 */
-export function finishExam(s, nCorrect, now = Date.now()) {
+export function finishExam(s, nCorrect, now = gnow()) {
   const from = STAGES[s.exam.unlocked];
   const pass = examPassed(nCorrect);
   s.exam.history.push({ stage: from.id, n: nCorrect, pass, t: now });
@@ -125,10 +125,10 @@ export function finishExam(s, nCorrect, now = Date.now()) {
 }
 
 // ── 취향 맞히기 ──
-export function tasteSetsFor(s, now = Date.now()) { const r = stageRank(curDlg(s, now)); return Q.taste.filter((t) => stageRank(t.stage) <= r); }
-export function canTaste(s, now = Date.now()) { return !s.asleep && tasteSetsFor(s, now).length > 0 && (s.daily.taste || 0) < TASTE_PER_DAY; }
+export function tasteSetsFor(s, now = gnow()) { const r = stageRank(curDlg(s, now)); return Q.taste.filter((t) => stageRank(t.stage) <= r); }
+export function canTaste(s, now = gnow()) { return !s.asleep && tasteSetsFor(s, now).length > 0 && (s.daily.taste || 0) < TASTE_PER_DAY; }
 /** 아직 못 모은 세트 우선 */
-export function pickTaste(s, rnd = Math.random, now = Date.now()) {
+export function pickTaste(s, rnd = Math.random, now = gnow()) {
   const sets = tasteSetsFor(s, now); if (!sets.length) return null;
   const todo = sets.filter((t) => !s.collection.items[t.answer]);
   return pickOne(todo.length ? todo : sets, rnd);

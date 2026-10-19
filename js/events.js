@@ -1,5 +1,5 @@
 // Stage 4: 이벤트 E1~E8 해금 조건 + 스크립트 파싱 (순수 로직, DOM 없음)
-import { stageOf, dayNumber, timeOfDay } from './state.js';
+import { stageOf, dayNumber, timeOfDay, gnow } from './state.js';
 import { STAGES } from './config.js';
 
 const isWinter = (d) => [12, 1, 2].includes(d.getMonth() + 1);
@@ -58,12 +58,12 @@ export const CARD_RULES = {
 };
 export const CARD_IDS = Object.keys(CARD_RULES);
 /** 지금 새로 얻는 포토카드 id 목록 (기록은 하지 않음) */
-export function dueCards(s, now = Date.now()) {
+export function dueCards(s, now = gnow()) {
   if (!s) return [];
   return CARD_IDS.filter((id) => !(s.pcards || {})[id] && CARD_RULES[id](s, now));
 }
 /** 그 순간 조건을 보고 플래그 남기기. kind: refuse | comfort | study | minigame | feed */
-export function noteMoment(s, kind, info = {}, now = Date.now()) {
+export function noteMoment(s, kind, info = {}, now = gnow()) {
   const f = (s.pflags = s.pflags || {}); const id = st(s, now);
   if (kind === 'refuse') { if (id === 'high') f.refuse_high = 1; if (id === 'uni' && seen(s, 'E12')) f.refuse_uni = 1; }
   if (kind === 'comfort' && id === 'high') f.comfort_high = 1;
@@ -73,7 +73,7 @@ export function noteMoment(s, kind, info = {}, now = Date.now()) {
 }
 
 /** 지금 볼 수 있는(아직 안 본) 이벤트 id 또는 null */
-export function dueEvent(s, now = Date.now()) {
+export function dueEvent(s, now = gnow()) {
   if (!s || s.asleep) return null;
   for (const id of ORDER) if (EVENT_RULES[id]) if (!(s.events || {})[id] && EVENT_RULES[id](s, now)) return id;
   return null;

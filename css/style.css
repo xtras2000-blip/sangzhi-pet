@@ -615,3 +615,14 @@ body.in-moment .bubble .cap { color: #e2447f; font-weight: 800; }
 .topbar .meta { grid-column: 1; grid-row: 2; text-align: left; line-height: 1.2; padding-left: 3px; }
 .topbar .icon-btn { grid-row: 1 / span 2; align-self: center; }
 .cc-line { word-break: keep-all; overflow-wrap: anywhere; }
+/* ── 게임 속 하루: 밤잠 → 다음 날 아침 ── */
+.day-fade { position: fixed; inset: 0; z-index: 95; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: #141a33; color: #fff3e2; opacity: 0; pointer-events: none; }
+.day-fade[hidden] { display: none; }
+.day-fade.go { animation: dayFade 2.6s ease-in-out forwards; pointer-events: auto; }
+.day-fade span { font-size: 16px; opacity: .85; }
+.day-fade b { font-size: 34px; }
+.day-fade small { font-size: 13px; opacity: .8; }
+@keyframes dayFade { 0% { opacity: 0; background: #141a33; } 20% { opacity: 1; background: #141a33; } 65% { opacity: 1; background: #f6b98a; } 100% { opacity: 0; background: #ffe7c7; } }
+.msg-btn.ring { animation: ring .6s ease-in-out 3; }
+@keyframes ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
+#clock { font-variant-numeric: tabular-nums; font-weight: 700; }

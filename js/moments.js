@@ -1,5 +1,5 @@
 // 설렘 순간: 대화 버튼 → 쌍즈가 묻고, 내가 대답을 고르면 반응(표정·대사) + 설렘 변화. 데이터: data/moments.json (순수 로직, DOM 없음)
-import { clamp, stageOf, dayKey, gainCrush, bump } from './state.js';
+import { clamp, stageOf, dayKey, gainCrush, bump, gnow } from './state.js';
 
 let M = { rules: { perDay: 2 }, moments: [] };
 export function setMoments(d) { M = { ...(d || {}), rules: { perDay: 2, ...(d && d.rules) }, moments: (d && d.moments) || [], cuts: (d && d.cuts) || {} }; return M; }
@@ -17,7 +17,7 @@ export const visibleChoices = (s, m) => m.choices.map((c, i) => ({ c, i })).filt
 export function momentReactionKeys(s) { return M.moments.flatMap((m) => visibleChoices(s, m).map(({ i }) => `M:${m.id}:${i}`)); }
 
 /** 지금 대화 버튼을 누르면 나올 설렘 순간(없으면 null). 하루 perDay번까지, 오늘 아직 안 본 것 우선(전부 봤으면 fallbackRepeat일 때 다시) */
-export function dueMoment(s, now = Date.now(), rnd = Math.random) {
+export function dueMoment(s, now = gnow(), rnd = Math.random) {
   if (!s || s.asleep) return null;
   const n = momentsToday(s);
   if (n >= (M.rules.perDay || 2)) return null;
@@ -32,7 +32,7 @@ export function dueMoment(s, now = Date.now(), rnd = Math.random) {
   return pick[Math.floor(rnd() * pick.length)] || null;
 }
 /** 대답 반영. 반환: { line, expr, then, crush(실제 변화), choice } */
-export function answerMoment(s, m, idx, now = Date.now()) {
+export function answerMoment(s, m, idx, now = gnow()) {
   const c = m.choices[idx] || m.choices[0], R = rec(s);
   const gain = gainCrush(s, c.crush || 0, now);
   bump(s, 'moment', 1, now); if ((c.crush || 0) > 0) bump(s, 'momentGood', 1, now);
